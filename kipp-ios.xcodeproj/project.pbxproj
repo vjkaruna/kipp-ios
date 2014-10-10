@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACAA419E75E12004C31ED /* AppDelegate.swift */; };
+		669ACAA719E75E12004C31ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACAA619E75E12004C31ED /* ViewController.swift */; };
+		669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 669ACAA819E75E12004C31ED /* Main.storyboard */; };
+		669ACAAC19E75E12004C31ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 669ACAAB19E75E12004C31ED /* Images.xcassets */; };
+		669ACAAF19E75E12004C31ED /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669ACAAD19E75E12004C31ED /* LaunchScreen.xib */; };
+		669ACABB19E75E13004C31ED /* kipp_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACABA19E75E13004C31ED /* kipp_iosTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		669ACAB519E75E13004C31ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 669ACA9719E75E12004C31ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 669ACA9E19E75E12004C31ED;
+			remoteInfo = "kipp-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		669ACA9F19E75E12004C31ED /* kipp-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kipp-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		669ACAA319E75E12004C31ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		669ACAA419E75E12004C31ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		669ACAA619E75E12004C31ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		669ACAA919E75E12004C31ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		669ACAAB19E75E12004C31ED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		669ACAAE19E75E12004C31ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		669ACAB419E75E13004C31ED /* kipp-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "kipp-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		669ACAB919E75E13004C31ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		669ACABA19E75E13004C31ED /* kipp_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kipp_iosTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		669ACA9C19E75E12004C31ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		669ACAB119E75E13004C31ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		669ACA9619E75E12004C31ED = {
+			isa = PBXGroup;
+			children = (
+				669ACAA119E75E12004C31ED /* kipp-ios */,
+				669ACAB719E75E13004C31ED /* kipp-iosTests */,
+				669ACAA019E75E12004C31ED /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		669ACAA019E75E12004C31ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				669ACA9F19E75E12004C31ED /* kipp-ios.app */,
+				669ACAB419E75E13004C31ED /* kipp-iosTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		669ACAA119E75E12004C31ED /* kipp-ios */ = {
+			isa = PBXGroup;
+			children = (
+				669ACAA419E75E12004C31ED /* AppDelegate.swift */,
+				669ACAA619E75E12004C31ED /* ViewController.swift */,
+				669ACAA819E75E12004C31ED /* Main.storyboard */,
+				669ACAAB19E75E12004C31ED /* Images.xcassets */,
+				669ACAAD19E75E12004C31ED /* LaunchScreen.xib */,
+				669ACAA219E75E12004C31ED /* Supporting Files */,
+			);
+			path = "kipp-ios";
+			sourceTree = "<group>";
+		};
+		669ACAA219E75E12004C31ED /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				669ACAA319E75E12004C31ED /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		669ACAB719E75E13004C31ED /* kipp-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				669ACABA19E75E13004C31ED /* kipp_iosTests.swift */,
+				669ACAB819E75E13004C31ED /* Supporting Files */,
+			);
+			path = "kipp-iosTests";
+			sourceTree = "<group>";
+		};
+		669ACAB819E75E13004C31ED /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				669ACAB919E75E13004C31ED /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		669ACA9E19E75E12004C31ED /* kipp-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 669ACABE19E75E13004C31ED /* Build configuration list for PBXNativeTarget "kipp-ios" */;
+			buildPhases = (
+				669ACA9B19E75E12004C31ED /* Sources */,
+				669ACA9C19E75E12004C31ED /* Frameworks */,
+				669ACA9D19E75E12004C31ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "kipp-ios";
+			productName = "kipp-ios";
+			productReference = 669ACA9F19E75E12004C31ED /* kipp-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		669ACAB319E75E13004C31ED /* kipp-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 669ACAC119E75E13004C31ED /* Build configuration list for PBXNativeTarget "kipp-iosTests" */;
+			buildPhases = (
+				669ACAB019E75E13004C31ED /* Sources */,
+				669ACAB119E75E13004C31ED /* Frameworks */,
+				669ACAB219E75E13004C31ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				669ACAB619E75E13004C31ED /* PBXTargetDependency */,
+			);
+			name = "kipp-iosTests";
+			productName = "kipp-iosTests";
+			productReference = 669ACAB419E75E13004C31ED /* kipp-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		669ACA9719E75E12004C31ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = vjkaruna;
+				TargetAttributes = {
+					669ACA9E19E75E12004C31ED = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					669ACAB319E75E13004C31ED = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 669ACA9E19E75E12004C31ED;
+					};
+				};
+			};
+			buildConfigurationList = 669ACA9A19E75E12004C31ED /* Build configuration list for PBXProject "kipp-ios" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 669ACA9619E75E12004C31ED;
+			productRefGroup = 669ACAA019E75E12004C31ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				669ACA9E19E75E12004C31ED /* kipp-ios */,
+				669ACAB319E75E13004C31ED /* kipp-iosTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		669ACA9D19E75E12004C31ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */,
+				669ACAAF19E75E12004C31ED /* LaunchScreen.xib in Resources */,
+				669ACAAC19E75E12004C31ED /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		669ACAB219E75E13004C31ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		669ACA9B19E75E12004C31ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				669ACAA719E75E12004C31ED /* ViewController.swift in Sources */,
+				669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		669ACAB019E75E13004C31ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				669ACABB19E75E13004C31ED /* kipp_iosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		669ACAB619E75E13004C31ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 669ACA9E19E75E12004C31ED /* kipp-ios */;
+			targetProxy = 669ACAB519E75E13004C31ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		669ACAA819E75E12004C31ED /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				669ACAA919E75E12004C31ED /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		669ACAAD19E75E12004C31ED /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				669ACAAE19E75E12004C31ED /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		669ACABC19E75E13004C31ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		669ACABD19E75E13004C31ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		669ACABF19E75E13004C31ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "kipp-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		669ACAC019E75E13004C31ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "kipp-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		669ACAC219E75E13004C31ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "kipp-iosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kipp-ios.app/kipp-ios";
+			};
+			name = Debug;
+		};
+		669ACAC319E75E13004C31ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "kipp-iosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kipp-ios.app/kipp-ios";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		669ACA9A19E75E12004C31ED /* Build configuration list for PBXProject "kipp-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				669ACABC19E75E13004C31ED /* Debug */,
+				669ACABD19E75E13004C31ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		669ACABE19E75E13004C31ED /* Build configuration list for PBXNativeTarget "kipp-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				669ACABF19E75E13004C31ED /* Debug */,
+				669ACAC019E75E13004C31ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		669ACAC119E75E13004C31ED /* Build configuration list for PBXNativeTarget "kipp-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				669ACAC219E75E13004C31ED /* Debug */,
+				669ACAC319E75E13004C31ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 669ACA9719E75E12004C31ED /* Project object */;
+}
