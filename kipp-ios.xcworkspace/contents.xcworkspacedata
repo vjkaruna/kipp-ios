@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:kipp-ios.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:Bolts.framework"
+      name = "Bolts.framework">
+      <FileRef
+         location = "group:Bolts">
+      </FileRef>
+      <FileRef
+         location = "group:Headers">
+      </FileRef>
+      <Group
+         location = "group:Versions"
+         name = "Versions">
+         <Group
+            location = "group:A"
+            name = "A">
+            <FileRef
+               location = "group:Bolts">
+            </FileRef>
+            <Group
+               location = "group:DeprecatedHeaders"
+               name = "DeprecatedHeaders">
+            </Group>
+            <Group
+               location = "group:Headers"
+               name = "Headers">
+               <FileRef
+                  location = "group:BFAppLink.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFAppLinkNavigation.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFAppLinkResolving.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFAppLinkReturnToRefererController.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFAppLinkReturnToRefererView.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFAppLinkReturnToRefererView_Internal.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFAppLinkTarget.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFExecutor.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFMeasurementEvent.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFTask.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFTaskCompletionSource.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFURL.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BFWebViewAppLinkResolver.h">
+               </FileRef>
+               <FileRef
+                  location = "group:Bolts.h">
+               </FileRef>
+               <FileRef
+                  location = "group:BoltsVersion.h">
+               </FileRef>
+            </Group>
+         </Group>
+         <FileRef
+            location = "group:Current">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+      location = "group:Parse.framework"
+      name = "Parse.framework">
+      <FileRef
+         location = "group:Headers">
+      </FileRef>
+      <FileRef
+         location = "group:Parse">
+      </FileRef>
+      <FileRef
+         location = "group:Resources">
+      </FileRef>
+      <FileRef
+         location = "group:third_party_licenses.txt">
+      </FileRef>
+      <Group
+         location = "group:Versions"
+         name = "Versions">
+         <Group
+            location = "group:A"
+            name = "A">
+            <Group
+               location = "group:Headers"
+               name = "Headers">
+               <FileRef
+                  location = "group:Parse.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PF_MBProgressHUD.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PF_Twitter.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFACL.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFAnalytics.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFAnonymousUtils.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFCloud.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFConfig.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFConstants.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFFile.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFGeoPoint.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFImageView.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFInstallation.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFLogInView.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFLogInViewController.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFNetworkActivityIndicatorManager.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFObject+Subclass.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFObject.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFProduct.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFProductTableViewController.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFPurchase.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFPurchaseTableViewCell.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFPush.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFQuery.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFQueryTableViewController.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFRelation.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFRole.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFSignUpView.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFSignUpViewController.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFSubclassing.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFTableViewCell.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFTwitterUtils.h">
+               </FileRef>
+               <FileRef
+                  location = "group:PFUser.h">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Parse">
+            </FileRef>
+            <Group
+               location = "group:Resources"
+               name = "Resources">
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+               <FileRef
+                  location = "group:Localizable.strings">
+               </FileRef>
+            </Group>
+         </Group>
+         <FileRef
+            location = "group:Current">
+         </FileRef>
+      </Group>
+   </Group>
+</Workspace>

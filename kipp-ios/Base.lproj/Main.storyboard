@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" userLabel="Login" customClass="ViewController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,11 +15,78 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="KIPP Bay Area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW9-v3-QDG">
+                                <rect key="frame" x="216" y="120" width="168" height="36"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DV-EU-Rkp">
+                                <rect key="frame" x="250" y="256" width="100" height="33"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Tap to Login">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="4uY-0i-yPl" kind="show" id="Jms-Ip-XoH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.33725490196078434" green="0.55686274509803924" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="vW9-v3-QDG" secondAttribute="centerY" id="8yt-f3-6Nf"/>
+                            <constraint firstItem="5DV-EU-Rkp" firstAttribute="top" secondItem="vW9-v3-QDG" secondAttribute="bottom" constant="100" id="9NG-qW-2f7"/>
+                            <constraint firstAttribute="centerX" secondItem="vW9-v3-QDG" secondAttribute="centerX" id="AIH-c5-wZ2"/>
+                            <constraint firstAttribute="centerX" secondItem="5DV-EU-Rkp" secondAttribute="centerX" id="RmA-bx-Q1G"/>
+                            <constraint firstItem="vW9-v3-QDG" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="100" id="mtj-1m-6UP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8yt-f3-6Nf"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Home-->
+        <scene sceneID="9SE-sc-Pfj">
+            <objects>
+                <viewController id="di2-sB-cSC" userLabel="Home" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ecT-27-sI7"/>
+                        <viewControllerLayoutGuide type="bottom" id="CZy-jd-38t"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="utd-gz-llJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" id="RDm-fm-gfx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Az-dm-gnh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1773" y="381"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="YPh-2F-hOp">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="4uY-0i-yPl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="YfW-el-w6r">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="di2-sB-cSC" kind="relationship" relationship="viewControllers" id="ZO3-aK-hE6"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D5k-2T-zyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="381"/>
         </scene>
     </scenes>
 </document>
