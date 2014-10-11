@@ -12,10 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    // TODO: Remove this when finished
+    var storyboard = UIStoryboard(name: "ClassRoster", bundle: nil)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId("kyHMOOZDxjNGJ6moZEoRz8WIygUT402Cr4nFgSzA", clientKey: "t32qn2VTGTm5EBCXqo85COvSj945wB5CAqi4KNje")
+        
+        if true { // FOR TESTING PURPOSES ONLY
+            let vc = storyboard.instantiateViewControllerWithIdentifier("ClassRosterNC") as UIViewController
+            window?.rootViewController = vc
+        }
         return true
     }
 
