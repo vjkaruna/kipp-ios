@@ -22,12 +22,16 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         parentsTable.delegate = self
         parentsTable.dataSource = self
         
+        println("performing a Parse query")
+        
         var classroomQuery = PFQuery(className: "Parent")
         
         classroomQuery.findObjectsInBackgroundWithBlock { (parents:[AnyObject]!, error: NSError!) -> Void in
             
             for obj in parents {
-                self.parents.append(obj as Parent)
+                var parent = Parent(obj: obj as PFObject)
+                println("\(parent.firstName)")
+                self.parents.append(parent)
             }
             self.parentsTable.reloadData()
         }

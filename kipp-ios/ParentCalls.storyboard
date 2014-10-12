@@ -8,13 +8,13 @@
         <!--Parent Calls Controller-->
         <scene sceneID="xI6-bX-skX">
             <objects>
-                <tableViewController id="I73-gt-eeu" customClass="ParentCallsController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ParentCallsC" id="I73-gt-eeu" customClass="ParentCallsController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sLx-vc-3Tp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="ParentCell" selectionStyle="default" indentationWidth="10" id="v9s-Mj-TZz">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParentCell" id="v9s-Mj-TZz">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v9s-Mj-TZz" id="JlZ-qI-Yr7">
                                     <autoresizingMask key="autoresizingMask"/>
