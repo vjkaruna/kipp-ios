@@ -20,6 +20,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if true { // FOR TESTING PURPOSES ONLY
             
             // TODO: Remove this when finished
+            var storyboard = UIStoryboard(name: "ParentCalls", bundle: nil)
+            
+            PFUser.logInWithUsernameInBackground("vanessa", password:"test123") {
+                (user: PFUser!, error: NSError!) -> Void in
+                if user != nil {
+                    // Do stuff after successful login.
+                    println("login succeeded")
+                    let vc = storyboard.instantiateViewControllerWithIdentifier("ParentCallsNC") as UIViewController
+                    self.window?.rootViewController = vc
+                } else {
+                    // The login failed. Check error to see why.
+                    println("login failed")
+                }
+            }
+        }
+        /**
+        if true { // FOR TESTING PURPOSES ONLY
+            
+            // TODO: Remove this when finished
             var storyboard = UIStoryboard(name: "ClassRoster", bundle: nil)
             
             PFUser.logInWithUsernameInBackground("vanessa", password:"test123") {
@@ -35,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+        **/
         return true
     }
 
