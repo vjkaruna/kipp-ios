@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if user != nil {
                     // Do stuff after successful login.
                     println("login succeeded")
-                    let vc = storyboard.instantiateViewControllerWithIdentifier("ClassRosterNC") as UIViewController
+                    let vc = storyboard.instantiateViewControllerWithIdentifier("ClassroomTabBarController") as UIViewController
                     self.window?.rootViewController = vc
                 } else {
                     // The login failed. Check error to see why.

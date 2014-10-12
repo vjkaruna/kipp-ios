@@ -15,6 +15,9 @@
 		54682D6419EA376D00CCE795 /* ParseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6319EA376D00CCE795 /* ParseUtils.swift */; };
 		54682D6719EA450E00CCE795 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6619EA450E00CCE795 /* ProfileViewController.swift */; };
 		54682D6A19EA469700CCE795 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6919EA469700CCE795 /* Protocols.swift */; };
+		54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6B19EB232C00CCE795 /* ClassroomsViewController.swift */; };
+		54682D6E19EB27F200CCE795 /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6D19EB27F200CCE795 /* Classroom.swift */; };
+		54682D7019EB2FAF00CCE795 /* ClassroomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6F19EB2FAF00CCE795 /* ClassroomTableViewCell.swift */; };
 		669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACAA419E75E12004C31ED /* AppDelegate.swift */; };
 		669ACAA719E75E12004C31ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACAA619E75E12004C31ED /* ViewController.swift */; };
 		669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 669ACAA819E75E12004C31ED /* Main.storyboard */; };
@@ -53,6 +56,9 @@
 		54682D6319EA376D00CCE795 /* ParseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseUtils.swift; sourceTree = "<group>"; };
 		54682D6619EA450E00CCE795 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		54682D6919EA469700CCE795 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		54682D6B19EB232C00CCE795 /* ClassroomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassroomsViewController.swift; sourceTree = "<group>"; };
+		54682D6D19EB27F200CCE795 /* Classroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
+		54682D6F19EB2FAF00CCE795 /* ClassroomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassroomTableViewCell.swift; sourceTree = "<group>"; };
 		669ACA9F19E75E12004C31ED /* kipp-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kipp-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		669ACAA319E75E12004C31ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		669ACAA419E75E12004C31ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				54682D5E19E9EC2F00CCE795 /* Student.swift */,
+				54682D6D19EB27F200CCE795 /* Classroom.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -118,9 +125,10 @@
 		54682D5D19E9EC1000CCE795 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				54682D6619EA450E00CCE795 /* ProfileViewController.swift */,
-				54682D5819E9D06E00CCE795 /* RosterViewController.swift */,
 				669ACAA619E75E12004C31ED /* ViewController.swift */,
+				54682D6B19EB232C00CCE795 /* ClassroomsViewController.swift */,
+				54682D5819E9D06E00CCE795 /* RosterViewController.swift */,
+				54682D6619EA450E00CCE795 /* ProfileViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -138,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				54682D6019E9EC7D00CCE795 /* StudentTableViewCell.swift */,
+				54682D6F19EB2FAF00CCE795 /* ClassroomTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -362,9 +371,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				669ACAA719E75E12004C31ED /* ViewController.swift in Sources */,
+				54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */,
 				54682D6119E9EC7D00CCE795 /* StudentTableViewCell.swift in Sources */,
 				669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */,
 				54682D5919E9D06E00CCE795 /* RosterViewController.swift in Sources */,
+				54682D6E19EB27F200CCE795 /* Classroom.swift in Sources */,
+				54682D7019EB2FAF00CCE795 /* ClassroomTableViewCell.swift in Sources */,
 				54682D6719EA450E00CCE795 /* ProfileViewController.swift in Sources */,
 				54682D5F19E9EC2F00CCE795 /* Student.swift in Sources */,
 				54682D6419EA376D00CCE795 /* ParseUtils.swift in Sources */,
