@@ -14,12 +14,28 @@ class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
     @IBOutlet weak var displayName: UILabel!
     
     // add left and right constraint that's set by VC's pan gesture recognizer
+    @IBOutlet weak var rightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leftConstraint: NSLayoutConstraint!
+
     var delegate: ProfileImageTappedDelegate?
     
     var student: Student? {
         willSet {
             self.displayName.text = "\(newValue!.firstName) \(newValue!.lastName)"
         }
+    }
+    
+    var panLocation: CGPoint? {
+        willSet {
+            self.panLocation = newValue
+            self.rightConstraint.constant += -newValue!.x
+            NSLog("New x constraint \(self.rightConstraint.constant)")
+        }
+    }
+    
+    @IBAction func didTapAbsent(sender: UIButton) {
+        NSLog("\(student!.firstName) is absent")
+        // change color of cell?
     }
     
     @IBAction func didTapProfilePic(sender: AnyObject) {

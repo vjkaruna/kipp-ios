@@ -46,12 +46,13 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let touchedLocation = sender.locationInView(tableView)
         let touchedIndexPath = tableView.indexPathForRowAtPoint(touchedLocation)
         if touchedIndexPath != nil {
-            let touchedCell = tableView.cellForRowAtIndexPath(touchedIndexPath!)
+            let touchedCell = tableView.cellForRowAtIndexPath(touchedIndexPath!) as StudentTableViewCell
             let velocity = sender.velocityInView(tableView)
             let translation = sender.translationInView(tableView)
             switch(sender.state) {
             case .Began, .Changed, .Ended:
                 NSLog("v: \(velocity.x), t: \(translation.x)")
+                touchedCell.panLocation = translation
             default:
                 NSLog("Unhandled state")
             }
