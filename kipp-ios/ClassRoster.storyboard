@@ -1,14 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YFN-by-nhA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VQC-QM-9XB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Classrooms View Controller-->
+        <scene sceneID="a2i-fi-TNA">
+            <objects>
+                <viewController id="KUm-nH-Twn" customClass="ClassroomsViewController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MOj-TR-7Y2"/>
+                        <viewControllerLayoutGuide type="bottom" id="zke-fF-gwN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WFq-Wh-Jj7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kUd-q9-OjF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="classroomCell" id="7vh-wy-NDm" customClass="ClassroomTableViewCell" customModule="kipp_ios" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7vh-wy-NDm" id="FJs-rF-7nS">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Class Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9U0-tH-dAn">
+                                                    <rect key="frame" x="41" y="11" width="204" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="classLabel" destination="9U0-tH-dAn" id="b9r-MG-yNz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kUd-q9-OjF" firstAttribute="leading" secondItem="WFq-Wh-Jj7" secondAttribute="leading" id="0bt-sa-23O"/>
+                            <constraint firstItem="zke-fF-gwN" firstAttribute="top" secondItem="kUd-q9-OjF" secondAttribute="bottom" id="1h4-01-q0G"/>
+                            <constraint firstItem="kUd-q9-OjF" firstAttribute="top" secondItem="WFq-Wh-Jj7" secondAttribute="topMargin" id="jel-Ji-TeA"/>
+                            <constraint firstAttribute="trailing" secondItem="kUd-q9-OjF" secondAttribute="trailing" id="uCS-qS-FHp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="x4m-xO-kBj"/>
+                    <connections>
+                        <outlet property="tableView" destination="kUd-q9-OjF" id="6Bl-Ut-HMz"/>
+                        <segue destination="Xcm-yw-tRd" kind="show" identifier="rosterSegue" id="oTS-dE-lHG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZj-IN-xHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3096" y="404"/>
+        </scene>
         <!--Roster View Controller-->
         <scene sceneID="KDg-cn-ooh">
             <objects>
-                <viewController id="Xcm-yw-tRd" customClass="RosterViewController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RosterViewController" id="Xcm-yw-tRd" customClass="RosterViewController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ea4-a1-Ar7"/>
                         <viewControllerLayoutGuide type="bottom" id="Hhl-sB-NTE"/>
@@ -96,7 +150,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1748" y="438"/>
+            <point key="canvasLocation" x="3781" y="404"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="cdQ-Ix-aOh">
@@ -148,44 +202,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="73V-u4-LMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2412" y="438"/>
+            <point key="canvasLocation" x="4453" y="404"/>
         </scene>
         <!--Tab Bar Controller-->
-        <scene sceneID="zBY-AK-rX4">
+        <scene sceneID="5IW-0r-fGh">
             <objects>
-                <tabBarController storyboardIdentifier="ClassRosterNC" automaticallyAdjustsScrollViewInsets="NO" id="YFN-by-nhA" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="ClassroomTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="VQC-QM-9XB" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="GgL-18-nHo"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="aSn-Bx-FIr">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="n5f-Nf-FD7">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="bf0-fO-lOw" kind="relationship" relationship="viewControllers" id="PEr-jx-bjg"/>
+                        <segue destination="7TV-qT-myA" kind="relationship" relationship="viewControllers" id="u2t-Ye-AlQ"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m3d-eX-eNS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QCF-D0-L5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="430" y="438"/>
+            <point key="canvasLocation" x="1741" y="404"/>
         </scene>
         <!--Item-->
-        <scene sceneID="gDD-ZY-m6b">
+        <scene sceneID="T2s-7f-VDw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bf0-fO-lOw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Nti-cz-HCj"/>
+                <navigationController storyboardIdentifier="ClassroomNC" automaticallyAdjustsScrollViewInsets="NO" id="7TV-qT-myA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Dz7-7u-eZ0"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CRk-7s-jtV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qhF-0X-a6k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Xcm-yw-tRd" kind="relationship" relationship="rootViewController" id="Dyu-NQ-fZt"/>
+                        <segue destination="KUm-nH-Twn" kind="relationship" relationship="rootViewController" id="N92-au-RrE"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a3E-op-yUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Smr-Wr-K1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="438"/>
+            <point key="canvasLocation" x="2431" y="404"/>
         </scene>
     </scenes>
 </document>
