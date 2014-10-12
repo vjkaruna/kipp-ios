@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,36 +24,24 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         
-//        var classroomQuery = PFQuery(className: "Classroom")
-//        classroomQuery.whereKey("teacher", equalTo:teacher)
-//        classroomQuery.whereKey("period", equalTo:period)
-//        
-//        var classrooms = classroomQuery.findObjects() as [PFObject]
-//        
-//        for classroom in classrooms {
-//            var studentQuery = classroom.relationForKey("students").query()
-//            studentQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-//                let results = objects as [PFObject]
-//                self.students = Student.studentsWithArray(results)
-//                self.tableView.reloadData()
-//            }
-//        }
         var classroomQuery = PFQuery(className: "Classroom")
         classroomQuery.whereKey("teacher", equalTo:teacher)
         classroomQuery.whereKey("period", equalTo:period)
         classroomQuery.includeKey("students")
         
         classroomQuery.getFirstObjectInBackgroundWithBlock { (classroom, error) -> Void in
+            // HACK to add more students to this class...
 //            let student = PFObject(className: "Student")
-//            student["firstName"] = "Sally"
-//            student["lastName"] = "Hitchens"
-//            student["studentId"] = 4
+//            student["firstName"] = "Bobby"
+//            student["lastName"] = "Wheeler"
+//            student["studentId"] = 5
 //            classroom.addObject(student, forKey: "students")
 //            classroom.save()
             let students = classroom.objectForKey("students") as NSArray
             self.students = Student.studentsWithArray(students)
             self.tableView.reloadData()
         }
+        navigationItem.title = "Period \(period)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +57,34 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
         let student = students[indexPath.row]
         cell.student = student
+        cell.delegate = self
         return cell
+    }
+    
+    @IBAction func didPanCell(sender: UIPanGestureRecognizer) {
+        let touchedLocation = sender.locationInView(tableView)
+        let touchedIndexPath = tableView.indexPathForRowAtPoint(touchedLocation)
+        if touchedIndexPath != nil {
+            let touchedCell = tableView.cellForRowAtIndexPath(touchedIndexPath!)
+            let velocity = sender.velocityInView(tableView)
+            let translation = sender.translationInView(tableView)
+            switch(sender.state) {
+            case .Began, .Changed, .Ended:
+                NSLog("v: \(velocity.x), t: \(translation.x)")
+            default:
+                NSLog("Unhandled state")
+            }
+        }
+    }
+    
+    func didTapProfileImg(student: Student) {
+        self.performSegueWithIdentifier("profileSegue", sender: student)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "profileSegue") {
+            var profileVC = segue.destinationViewController as ProfileViewController
+            profileVC.student = sender as Student
+        }
     }
 }

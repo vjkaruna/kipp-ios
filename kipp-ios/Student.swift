@@ -24,6 +24,7 @@ class Student: NSObject {
         for pfobj in array {
             students.append(Student(obj: pfobj as PFObject))
         }
+        students.sort({$0.firstName < $1.firstName})
         return students
     }
 }

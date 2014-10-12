@@ -8,15 +8,22 @@
 
 import UIKit
 
-class StudentTableViewCell: UITableViewCell {
+class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var displayName: UILabel!
+    
+    // add left and right constraint that's set by VC's pan gesture recognizer
+    var delegate: ProfileImageTappedDelegate?
     
     var student: Student? {
         willSet {
             self.displayName.text = "\(newValue!.firstName) \(newValue!.lastName)"
         }
+    }
+    
+    @IBAction func didTapProfilePic(sender: AnyObject) {
+        delegate?.didTapProfileImg(student!)
     }
     
     override func awakeFromNib() {
