@@ -12,30 +12,47 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var tableView: UITableView!
     
-    var currentUser: PFUser!
+    var teacher: PFUser!
     var students: [Student] = [Student]()
+    var period: Int = 1 // This should be set by caller
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentUser = PFUser.currentUser()
+        teacher = PFUser.currentUser()
         
         tableView.delegate = self
         tableView.dataSource = self
         
+//        var classroomQuery = PFQuery(className: "Classroom")
+//        classroomQuery.whereKey("teacher", equalTo:teacher)
+//        classroomQuery.whereKey("period", equalTo:period)
+//        
+//        var classrooms = classroomQuery.findObjects() as [PFObject]
+//        
+//        for classroom in classrooms {
+//            var studentQuery = classroom.relationForKey("students").query()
+//            studentQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+//                let results = objects as [PFObject]
+//                self.students = Student.studentsWithArray(results)
+//                self.tableView.reloadData()
+//            }
+//        }
         var classroomQuery = PFQuery(className: "Classroom")
-        classroomQuery.whereKey("teacher", equalTo:currentUser)
+        classroomQuery.whereKey("teacher", equalTo:teacher)
+        classroomQuery.whereKey("period", equalTo:period)
+        classroomQuery.includeKey("students")
         
-        var classrooms = classroomQuery.findObjects() as [PFObject]
-        
-        for classroom in classrooms {
-            var studentQuery = classroom.relationForKey("students").query()
-            studentQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-                let results = objects as [PFObject]
-                self.students = Student.studentsWithArray(results)
-                self.tableView.reloadData()
-            }
-
+        classroomQuery.getFirstObjectInBackgroundWithBlock { (classroom, error) -> Void in
+//            let student = PFObject(className: "Student")
+//            student["firstName"] = "Sally"
+//            student["lastName"] = "Hitchens"
+//            student["studentId"] = 4
+//            classroom.addObject(student, forKey: "students")
+//            classroom.save()
+            let students = classroom.objectForKey("students") as NSArray
+            self.students = Student.studentsWithArray(students)
+            self.tableView.reloadData()
         }
     }
 
