@@ -12,15 +12,28 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    // TODO: Remove this when finished
-    var storyboard = UIStoryboard(name: "ClassRoster", bundle: nil)
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId("kyHMOOZDxjNGJ6moZEoRz8WIygUT402Cr4nFgSzA", clientKey: "t32qn2VTGTm5EBCXqo85COvSj945wB5CAqi4KNje")
         
         if true { // FOR TESTING PURPOSES ONLY
-            let vc = storyboard.instantiateViewControllerWithIdentifier("ClassRosterNC") as UIViewController
-            window?.rootViewController = vc
+            
+            // TODO: Remove this when finished
+            var storyboard = UIStoryboard(name: "ClassRoster", bundle: nil)
+            
+            PFUser.logInWithUsernameInBackground("vanessa", password:"test123") {
+                (user: PFUser!, error: NSError!) -> Void in
+                if user != nil {
+                    // Do stuff after successful login.
+                    println("login succeeded")
+                    let vc = storyboard.instantiateViewControllerWithIdentifier("ClassRosterNC") as UIViewController
+                    self.window?.rootViewController = vc
+                } else {
+                    // The login failed. Check error to see why.
+                    println("login failed")
+                }
+            }
         }
         return true
     }

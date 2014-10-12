@@ -10,6 +10,8 @@
 		54682D5719E9D02300CCE795 /* ClassRoster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5619E9D02300CCE795 /* ClassRoster.storyboard */; };
 		54682D5919E9D06E00CCE795 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D5819E9D06E00CCE795 /* RosterViewController.swift */; };
 		54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */; };
+		54682D5F19E9EC2F00CCE795 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D5E19E9EC2F00CCE795 /* Student.swift */; };
+		54682D6119E9EC7D00CCE795 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6019E9EC7D00CCE795 /* StudentTableViewCell.swift */; };
 		669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACAA419E75E12004C31ED /* AppDelegate.swift */; };
 		669ACAA719E75E12004C31ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACAA619E75E12004C31ED /* ViewController.swift */; };
 		669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 669ACAA819E75E12004C31ED /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 		54682D5619E9D02300CCE795 /* ClassRoster.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClassRoster.storyboard; sourceTree = "<group>"; };
 		54682D5819E9D06E00CCE795 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassHeaderView.xib; sourceTree = "<group>"; };
+		54682D5E19E9EC2F00CCE795 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		54682D6019E9EC7D00CCE795 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
 		669ACA9F19E75E12004C31ED /* kipp-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kipp-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		669ACAA319E75E12004C31ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		669ACAA419E75E12004C31ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54682D5C19E9EC0800CCE795 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				54682D5E19E9EC2F00CCE795 /* Student.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		54682D5D19E9EC1000CCE795 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				54682D5819E9D06E00CCE795 /* RosterViewController.swift */,
+				669ACAA619E75E12004C31ED /* ViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		54682D6219E9EC8F00CCE795 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				54682D5619E9D02300CCE795 /* ClassRoster.storyboard */,
+				669ACAA819E75E12004C31ED /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		669ACA9619E75E12004C31ED = {
 			isa = PBXGroup;
 			children = (
@@ -121,15 +151,15 @@
 		669ACAA119E75E12004C31ED /* kipp-ios */ = {
 			isa = PBXGroup;
 			children = (
+				54682D6219E9EC8F00CCE795 /* Storyboards */,
+				54682D5D19E9EC1000CCE795 /* View Controllers */,
+				54682D5C19E9EC0800CCE795 /* Models */,
 				669ACAA419E75E12004C31ED /* AppDelegate.swift */,
-				669ACAA619E75E12004C31ED /* ViewController.swift */,
-				669ACAA819E75E12004C31ED /* Main.storyboard */,
 				669ACAAB19E75E12004C31ED /* Images.xcassets */,
 				669ACAAD19E75E12004C31ED /* LaunchScreen.xib */,
 				669ACAA219E75E12004C31ED /* Supporting Files */,
-				54682D5619E9D02300CCE795 /* ClassRoster.storyboard */,
-				54682D5819E9D06E00CCE795 /* RosterViewController.swift */,
 				54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */,
+				54682D6019E9EC7D00CCE795 /* StudentTableViewCell.swift */,
 			);
 			path = "kipp-ios";
 			sourceTree = "<group>";
@@ -315,8 +345,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				669ACAA719E75E12004C31ED /* ViewController.swift in Sources */,
+				54682D6119E9EC7D00CCE795 /* StudentTableViewCell.swift in Sources */,
 				669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */,
 				54682D5919E9D06E00CCE795 /* RosterViewController.swift in Sources */,
+				54682D5F19E9EC2F00CCE795 /* Student.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

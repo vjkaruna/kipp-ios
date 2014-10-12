@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studentCell" rowHeight="107" id="0Vm-Tl-HGh">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studentCell" rowHeight="107" id="0Vm-Tl-HGh" customClass="StudentTableViewCell" customModule="kipp_ios" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Vm-Tl-HGh" id="PN7-cv-6jl">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -36,6 +36,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="displayName" destination="6sx-v0-85e" id="kRP-e5-o8p"/>
+                                            <outlet property="profilePic" destination="4oY-CG-Ph8" id="BoS-vH-ERn"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -49,6 +53,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Nti-cz-HCj"/>
+                    <connections>
+                        <outlet property="tableView" destination="Nx1-S7-avk" id="WhW-jc-ymE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3n-Dn-FLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
