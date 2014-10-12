@@ -15,6 +15,7 @@
 		54682D6419EA376D00CCE795 /* ParseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6319EA376D00CCE795 /* ParseUtils.swift */; };
 		54682D6719EA450E00CCE795 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6619EA450E00CCE795 /* ProfileViewController.swift */; };
 		54682D6A19EA469700CCE795 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6919EA469700CCE795 /* Protocols.swift */; };
+		667E300119EB042700A297CE /* Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667E300019EB042700A297CE /* Parent.swift */; };
 		669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACAA419E75E12004C31ED /* AppDelegate.swift */; };
 		669ACAA719E75E12004C31ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACAA619E75E12004C31ED /* ViewController.swift */; };
 		669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 669ACAA819E75E12004C31ED /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		54682D6319EA376D00CCE795 /* ParseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseUtils.swift; sourceTree = "<group>"; };
 		54682D6619EA450E00CCE795 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		54682D6919EA469700CCE795 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		667E300019EB042700A297CE /* Parent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parent.swift; sourceTree = "<group>"; };
 		669ACA9F19E75E12004C31ED /* kipp-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kipp-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		669ACAA319E75E12004C31ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		669ACAA419E75E12004C31ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				54682D5E19E9EC2F00CCE795 /* Student.swift */,
+				667E300019EB042700A297CE /* Parent.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				54682D5F19E9EC2F00CCE795 /* Student.swift in Sources */,
 				54682D6419EA376D00CCE795 /* ParseUtils.swift in Sources */,
 				54682D6A19EA469700CCE795 /* Protocols.swift in Sources */,
+				667E300119EB042700A297CE /* Parent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
