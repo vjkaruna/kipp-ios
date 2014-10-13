@@ -145,6 +145,7 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
+                                            <outlet property="animatingLayerView" destination="loI-8T-HlR" id="2V3-SK-fTJ"/>
                                             <outlet property="displayName" destination="6sx-v0-85e" id="kRP-e5-o8p"/>
                                             <outlet property="leftConstraint" destination="Nv7-uT-hkz" id="PPv-4o-6Xd"/>
                                             <outlet property="profilePic" destination="4oY-CG-Ph8" id="BoS-vH-ERn"/>

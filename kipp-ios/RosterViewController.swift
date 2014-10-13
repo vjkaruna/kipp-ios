@@ -52,7 +52,7 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             switch(sender.state) {
             case .Began, .Changed, .Ended:
                 NSLog("v: \(velocity.x), t: \(translation.x)")
-                touchedCell.panLocation = translation
+                touchedCell.xPanLocation = translation.x
             default:
                 NSLog("Unhandled state")
             }
