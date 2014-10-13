@@ -21,8 +21,9 @@
 		6649802719EB37F80050ACB9 /* ParentCalls.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6649802619EB37F80050ACB9 /* ParentCalls.storyboard */; };
 		6649802919EB38040050ACB9 /* ParentCallsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649802819EB38040050ACB9 /* ParentCallsController.swift */; };
 		6649802B19EB38230050ACB9 /* Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649802A19EB38230050ACB9 /* Parent.swift */; };
+		6649802D19EC37230050ACB9 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649802C19EC37230050ACB9 /* Teacher.swift */; };
 		669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACAA419E75E12004C31ED /* AppDelegate.swift */; };
-		669ACAA719E75E12004C31ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACAA619E75E12004C31ED /* ViewController.swift */; };
+		669ACAA719E75E12004C31ED /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669ACAA619E75E12004C31ED /* LoginViewController.swift */; };
 		669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 669ACAA819E75E12004C31ED /* Main.storyboard */; };
 		669ACAAC19E75E12004C31ED /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 669ACAAB19E75E12004C31ED /* Images.xcassets */; };
 		669ACAAF19E75E12004C31ED /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 669ACAAD19E75E12004C31ED /* LaunchScreen.xib */; };
@@ -65,10 +66,11 @@
 		6649802619EB37F80050ACB9 /* ParentCalls.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ParentCalls.storyboard; sourceTree = "<group>"; };
 		6649802819EB38040050ACB9 /* ParentCallsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentCallsController.swift; sourceTree = "<group>"; };
 		6649802A19EB38230050ACB9 /* Parent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parent.swift; sourceTree = "<group>"; };
+		6649802C19EC37230050ACB9 /* Teacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		669ACA9F19E75E12004C31ED /* kipp-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kipp-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		669ACAA319E75E12004C31ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		669ACAA419E75E12004C31ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		669ACAA619E75E12004C31ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		669ACAA619E75E12004C31ED /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		669ACAA919E75E12004C31ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		669ACAAB19E75E12004C31ED /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		669ACAAE19E75E12004C31ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				6649802A19EB38230050ACB9 /* Parent.swift */,
+				6649802C19EC37230050ACB9 /* Teacher.swift */,
 				54682D5E19E9EC2F00CCE795 /* Student.swift */,
 				54682D6D19EB27F200CCE795 /* Classroom.swift */,
 			);
@@ -132,7 +135,7 @@
 		54682D5D19E9EC1000CCE795 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				669ACAA619E75E12004C31ED /* ViewController.swift */,
+				669ACAA619E75E12004C31ED /* LoginViewController.swift */,
 				54682D6B19EB232C00CCE795 /* ClassroomsViewController.swift */,
 				6649802819EB38040050ACB9 /* ParentCallsController.swift */,
 				54682D5819E9D06E00CCE795 /* RosterViewController.swift */,
@@ -380,7 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				669ACAA719E75E12004C31ED /* ViewController.swift in Sources */,
+				669ACAA719E75E12004C31ED /* LoginViewController.swift in Sources */,
 				54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */,
 				54682D6119E9EC7D00CCE795 /* StudentTableViewCell.swift in Sources */,
 				6649802B19EB38230050ACB9 /* Parent.swift in Sources */,
@@ -392,6 +395,7 @@
 				54682D5F19E9EC2F00CCE795 /* Student.swift in Sources */,
 				54682D6419EA376D00CCE795 /* ParseUtils.swift in Sources */,
 				54682D6A19EA469700CCE795 /* Protocols.swift in Sources */,
+				6649802D19EC37230050ACB9 /* Teacher.swift in Sources */,
 				6649802919EB38040050ACB9 /* ParentCallsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
