@@ -8,8 +8,9 @@
 
 import UIKit
 
-class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate {
+class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, UIGestureRecognizerDelegate {
 
+    @IBOutlet var panGesture: UIPanGestureRecognizer!
     @IBOutlet weak var tableView: UITableView!
     
     var teacher: PFUser!
@@ -18,8 +19,10 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        panGesture.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+
         self.tableView.reloadData()
         
         navigationItem.title = "Period \(classroom.period)"
@@ -59,6 +62,7 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    
     func didTapProfileImg(student: Student) {
         self.performSegueWithIdentifier("profileSegue", sender: student)
     }
@@ -68,5 +72,10 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             var profileVC = segue.destinationViewController as ProfileViewController
             profileVC.student = sender as Student
         }
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        // To let us scroll table and swipe cell
+        return true
     }
 }

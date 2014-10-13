@@ -168,6 +168,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Cw8-Ea-U0l"/>
                     <connections>
+                        <outlet property="panGesture" destination="k0z-RV-Nb6" id="a1L-0E-DEM"/>
                         <outlet property="tableView" destination="Nx1-S7-avk" id="WhW-jc-ymE"/>
                         <segue destination="Zo5-jS-isH" kind="presentation" identifier="profileSegue" modalTransitionStyle="flipHorizontal" id="bgk-hq-8DP"/>
                     </connections>
