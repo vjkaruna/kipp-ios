@@ -37,6 +37,16 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         }
     }
 
+    @IBAction func callTouched(sender: AnyObject) {
+        var callbutton = sender as UIButton
+        var cell = callbutton.superview?.superview as UITableViewCell
+        var indexPath = self.parentsTable.indexPathForCell(cell) as NSIndexPath!
+        var parent = parents[indexPath.row]
+        
+        self.dialNumber(parent.phone)
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -61,7 +71,7 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("ParentCell", forIndexPath: indexPath) as UITableViewCell
 
         var parentNameLabel = cell.viewWithTag(101) as UILabel
-        var callButtonLabel = cell.viewWithTag(102) as UIButton
+        //var callButtonLabel = cell.viewWithTag(102) as UIButton
         parentNameLabel.text = parents[indexPath.row].firstName
 
         return cell
@@ -112,5 +122,10 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func dialNumber(phonestr: String) {
+        let telstr = "telprompt://\(phonestr)"
+        UIApplication.sharedApplication().openURL(NSURL(string:telstr))
+    }
 
 }
