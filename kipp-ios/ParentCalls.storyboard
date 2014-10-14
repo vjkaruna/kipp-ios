@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Parent Calls Controller-->
+        <scene sceneID="xI6-bX-skX">
+            <objects>
+                <tableViewController storyboardIdentifier="ParentCallsC" id="I73-gt-eeu" customClass="ParentCallsController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sLx-vc-3Tp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParentCell" id="v9s-Mj-TZz">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v9s-Mj-TZz" id="JlZ-qI-Yr7">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAr-ko-muE" userLabel="ParentName">
+                                            <rect key="frame" x="96" y="11" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="et5-V8-nC9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" tag="102" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibb-32-TKR" userLabel="Call">
+                                            <rect key="frame" x="493" y="7" width="59" height="22"/>
+                                            <state key="normal" image="sample-1004-voicemail">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="callTouched:" destination="I73-gt-eeu" eventType="touchUpInside" id="mVL-UE-gz6"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ibb-32-TKR" firstAttribute="top" secondItem="mAr-ko-muE" secondAttribute="top" id="1dc-dO-bzv"/>
+                                        <constraint firstItem="mAr-ko-muE" firstAttribute="top" secondItem="JlZ-qI-Yr7" secondAttribute="topMargin" constant="10" id="1qQ-25-TwD"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ibb-32-TKR" secondAttribute="trailing" constant="16" id="K4d-c5-eNu"/>
+                                        <constraint firstItem="mAr-ko-muE" firstAttribute="centerY" secondItem="Ibb-32-TKR" secondAttribute="centerY" constant="3.5" id="MT8-Xk-lw0"/>
+                                        <constraint firstItem="mAr-ko-muE" firstAttribute="leading" secondItem="JlZ-qI-Yr7" secondAttribute="leadingMargin" constant="20" id="hq9-26-p4l"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="1dc-dO-bzv"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="I73-gt-eeu" id="GFI-hX-nwI"/>
+                            <outlet property="delegate" destination="I73-gt-eeu" id="gqO-s6-hOC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="eFx-ko-jAE"/>
+                    <connections>
+                        <outlet property="parentsTable" destination="sLx-vc-3Tp" id="inY-ki-ceS"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94Z-87-N3U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1962" y="373"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="ZTr-AA-17r">
+            <objects>
+                <navigationController storyboardIdentifier="ParentCallsNC" automaticallyAdjustsScrollViewInsets="NO" id="9YX-lN-A29" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Z3A-sJ-dlm"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ung-ru-vsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="I73-gt-eeu" kind="relationship" relationship="rootViewController" id="ZtX-gn-b0W"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ae-Aj-rkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1150" y="373"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="wwt-n7-lXe">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="9r0-qA-ERK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="I54-ff-bgA">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9YX-lN-A29" kind="relationship" relationship="viewControllers" id="IJI-U5-tMz"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="566-5X-jjt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="338" y="373"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="sample-1004-voicemail" width="28" height="12"/>
+    </resources>
+</document>
