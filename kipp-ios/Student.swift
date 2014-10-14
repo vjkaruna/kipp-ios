@@ -62,11 +62,16 @@ class Student: NSObject {
             isAbsentQ.whereKey("studentId", equalTo: self.studentId)
             isAbsentQ.whereKey("type", equalTo: AttendanceType.Absent.toRaw())
             isAbsentQ.whereKey("date", equalTo: forDate.beginningOfDay())
-            isAbsentQ.getFirstObjectInBackgroundWithBlock({ (row, error) -> Void in
+            isAbsentQ.findObjectsInBackgroundWithBlock({ (results, error) -> Void in
                 if error == nil {
-                    self.attendance = .Absent
-                    self.delegate?.attendanceDidChange()
-                    NSLog("Found absent entry for student \(self.firstName)")
+                    if results.count > 0 {
+                        self.attendance = .Absent
+                        self.delegate?.attendanceDidChange()
+                        NSLog("Found absent entry for student \(self.firstName)")
+                    } else {
+                        self.attendance = .Present
+                        NSLog("\(self.firstName) present")
+                    }
                 } else {
                     NSLog("error: \(error)")
                 }

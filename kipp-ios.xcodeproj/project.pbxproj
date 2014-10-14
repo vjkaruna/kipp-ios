@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		541BF93819ED05C4007307C6 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541BF93719ED05C4007307C6 /* CharacterViewController.swift */; };
 		54682D5719E9D02300CCE795 /* ClassRoster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5619E9D02300CCE795 /* ClassRoster.storyboard */; };
 		54682D5919E9D06E00CCE795 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D5819E9D06E00CCE795 /* RosterViewController.swift */; };
 		54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		541BF93719ED05C4007307C6 /* CharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		54682D5619E9D02300CCE795 /* ClassRoster.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClassRoster.storyboard; sourceTree = "<group>"; };
 		54682D5819E9D06E00CCE795 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassHeaderView.xib; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				6649802819EB38040050ACB9 /* ParentCallsController.swift */,
 				54682D5819E9D06E00CCE795 /* RosterViewController.swift */,
 				54682D6619EA450E00CCE795 /* ProfileViewController.swift */,
+				541BF93719ED05C4007307C6 /* CharacterViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				6649802B19EB38230050ACB9 /* Parent.swift in Sources */,
 				669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */,
 				54682D5919E9D06E00CCE795 /* RosterViewController.swift in Sources */,
+				541BF93819ED05C4007307C6 /* CharacterViewController.swift in Sources */,
 				54682D6E19EB27F200CCE795 /* Classroom.swift in Sources */,
 				54682D7019EB2FAF00CCE795 /* ClassroomTableViewCell.swift in Sources */,
 				54682D6719EA450E00CCE795 /* ProfileViewController.swift in Sources */,

@@ -58,6 +58,7 @@ class ClassroomsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let vc = storyboard!.instantiateViewControllerWithIdentifier("RosterViewController") as RosterViewController
         vc.classroom = classes![indexPath.row] as Classroom
         self.navigationController?.pushViewController(vc, animated: true)
