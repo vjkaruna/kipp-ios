@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
+class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate, StudentProfileChangedDelegate {
     
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var displayName: UILabel!
@@ -22,8 +22,16 @@ class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
     var delegate: ProfileImageTappedDelegate?
     
     var student: Student? {
-        willSet {
-            self.displayName.text = "\(newValue!.firstName) \(newValue!.lastName)"
+        willSet(newStudent) {
+            if newStudent != nil {
+                newStudent!.delegate = self
+                NSLog("HELLO?")
+                self.displayName.text = "\(newStudent!.firstName) \(newStudent!.lastName)"
+                newStudent!.fillAttendanceState() // If we want attendance for specific date, we can pass the date here
+            }
+        }
+        didSet {
+            setCellForState()
         }
     }
     
@@ -43,15 +51,33 @@ class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             }
         }
     }
+    func attendanceDidChange() {
+        setCellForState()
+    }
+    
+    func setCellForState() {
+        if student != nil && student!.attendance != nil {
+            switch student!.attendance! {
+            case .Absent:
+                NSLog("\(student!.firstName) is absent")
+                self.animatingLayerView.backgroundColor = UIColor.redColor()
+                self.animatingLayerView.alpha = 0.4
+            default:
+                self.animatingLayerView.backgroundColor = UIColor.whiteColor()
+            }
+        }
+    }
     
     @IBAction func didTapAbsent(sender: UIButton) {
-        NSLog("\(student!.firstName) is absent")
+        NSLog("\(student!.firstName) is absent") // UPDATE or CREATE row in Attendance table entry (only one entry per day)
         UIView.animateWithDuration(0.5, animations: {
             self.rightConstraint.constant = 0
             self.leftConstraint.constant = 0
+            self.animatingLayerView.backgroundColor = UIColor.redColor()
+            self.animatingLayerView.alpha = 0.4
             self.contentView.layoutIfNeeded()
         })
-        // change color of cell?
+        student!.markAsAbsent()
     }
     
     @IBAction func didTapProfilePic(sender: AnyObject) {
@@ -68,5 +94,6 @@ class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
 
         // Configure the view for the selected state
     }
+    
 
 }

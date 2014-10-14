@@ -11,3 +11,7 @@ import Foundation
 protocol ProfileImageTappedDelegate {
     func didTapProfileImg(student: Student)
 }
+
+protocol StudentProfileChangedDelegate {
+    func attendanceDidChange()
+}

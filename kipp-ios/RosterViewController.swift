@@ -42,6 +42,7 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let student = classroom.students[indexPath.row]
         cell.student = student
         cell.delegate = self
+//        cell.setCellForState()
         return cell
     }
     
@@ -61,7 +62,6 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-    
     
     func didTapProfileImg(student: Student) {
         self.performSegueWithIdentifier("profileSegue", sender: student)
