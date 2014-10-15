@@ -50,19 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func userDidLogin() {
-        let tabBarController = UITabBarController()
-        
-        let classRosterSB = UIStoryboard(name: "ClassRoster", bundle: nil)
-        let rosterNavController = classRosterSB.instantiateViewControllerWithIdentifier("ClassroomTabBarController") as UIViewController
-        let parentCallsSB = UIStoryboard(name: "ParentCalls", bundle: nil)
-        let callsNavController = parentCallsSB.instantiateViewControllerWithIdentifier("ParentCallsC") as UIViewController
-        
-        let controllers = [rosterNavController, callsNavController]
-        tabBarController.viewControllers = controllers
-        window?.rootViewController = tabBarController
-        let firstImage = UIImage(named: "icon")
-        rosterNavController.tabBarItem = UITabBarItem(title: "roster", image: firstImage, tag: 1)
-        callsNavController.tabBarItem = UITabBarItem(title: "calls", image: firstImage, tag: 1)
+        window?.rootViewController = TabBarViewController()
     }
     
     func userDidLogout() {
