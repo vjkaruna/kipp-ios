@@ -40,6 +40,7 @@
 		66D2DE2719E9B81700661E13 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D2DE1D19E9B81700661E13 /* StoreKit.framework */; };
 		66D2DE2819E9B81700661E13 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D2DE1E19E9B81700661E13 /* SystemConfiguration.framework */; };
 		849D0FC651104C3EA3891FEA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4141796B4DD45A99734D2AC /* libPods.a */; };
+		FCA0872A19EE4A0900CF57FD /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		66D2DE2919E9B85000661E13 /* kipp-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kipp-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		78FC4C889E284FEEBD42E47F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C4141796B4DD45A99734D2AC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = lib/controllers/TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				54682D5819E9D06E00CCE795 /* RosterViewController.swift */,
 				54682D6619EA450E00CCE795 /* ProfileViewController.swift */,
 				541BF93719ED05C4007307C6 /* CharacterViewController.swift */,
+				FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA0872A19EE4A0900CF57FD /* TabBarViewController.swift in Sources */,
 				669ACAA719E75E12004C31ED /* LoginViewController.swift in Sources */,
 				54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */,
 				54682D6119E9EC7D00CCE795 /* StudentTableViewCell.swift in Sources */,
