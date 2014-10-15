@@ -47,23 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         **/
-        return true
     }
     
     func userDidLogin() {
-        
-        
-        if (PFUser.currentUser().username == "vanessa") {
-            var storyboard = UIStoryboard(name: "ClassRoster", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("ClassroomTabBarController") as UIViewController
-            self.window?.rootViewController = vc
-        } else {
-            var storyboard = UIStoryboard(name: "ParentCalls", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("ParentCallsC") as UIViewController
-            self.window?.rootViewController = vc
-        }
-        
-
+        window?.rootViewController = TabBarViewController()
     }
     
     func userDidLogout() {

@@ -8,8 +8,9 @@
 
 import UIKit
 
-class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate {
+class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, UIGestureRecognizerDelegate {
 
+    @IBOutlet var panGesture: UIPanGestureRecognizer!
     @IBOutlet weak var tableView: UITableView!
     
     var teacher: PFUser!
@@ -18,8 +19,10 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        panGesture.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+
         self.tableView.reloadData()
         
         navigationItem.title = "Period \(classroom.period)"
@@ -39,19 +42,27 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let student = classroom.students[indexPath.row]
         cell.student = student
         cell.delegate = self
+//        cell.setCellForState()
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let student = classroom.students[indexPath.row]
+        self.performSegueWithIdentifier("optionsSegue", sender: student)
     }
     
     @IBAction func didPanCell(sender: UIPanGestureRecognizer) {
         let touchedLocation = sender.locationInView(tableView)
         let touchedIndexPath = tableView.indexPathForRowAtPoint(touchedLocation)
         if touchedIndexPath != nil {
-            let touchedCell = tableView.cellForRowAtIndexPath(touchedIndexPath!)
+            let touchedCell = tableView.cellForRowAtIndexPath(touchedIndexPath!) as StudentTableViewCell
             let velocity = sender.velocityInView(tableView)
             let translation = sender.translationInView(tableView)
             switch(sender.state) {
             case .Began, .Changed, .Ended:
                 NSLog("v: \(velocity.x), t: \(translation.x)")
+                touchedCell.xPanLocation = translation.x
             default:
                 NSLog("Unhandled state")
             }
@@ -66,6 +77,15 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if (segue.identifier == "profileSegue") {
             var profileVC = segue.destinationViewController as ProfileViewController
             profileVC.student = sender as Student
+        } else if (segue.identifier == "optionsSegue") {
+            var characterVC = segue.destinationViewController as CharacterViewController
+            characterVC.student = sender as Student
         }
+        
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        // To let us scroll table and swipe cell
+        return true
     }
 }

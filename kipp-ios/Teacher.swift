@@ -14,9 +14,7 @@ let userDidLoginNotification = "userDidLoginNotification"
 class Teacher: NSObject {
     var username: String!
     
-    
     init(obj: PFObject) {
         self.username = obj["firstName"] as NSString
     }
-    
 }
