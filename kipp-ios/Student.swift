@@ -53,7 +53,6 @@ class Student: NSObject {
         absentEntry.saveInBackground() // or save eventually?
         self.attendance = .Absent
         self.delegate?.attendanceDidChange()
-        
     }
     
     func fillAttendanceState(forDate: NSDate = NSDate.date()) {

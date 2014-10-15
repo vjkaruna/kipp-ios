@@ -20,7 +20,6 @@ class Parent: NSObject {
         self.studentId = obj["studentId"] as NSInteger
         self.phone = obj["phone"] as NSString
         self.parentId = obj["parentId"] as NSInteger
-        
     }
     
     class func parentsWithArray(array: NSArray) -> [Parent] {
