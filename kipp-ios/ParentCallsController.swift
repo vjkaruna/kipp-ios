@@ -24,16 +24,14 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         
         println("performing a Parse query")
         
-        var classroomQuery = PFQuery(className: "Parent")
-        
-        classroomQuery.findObjectsInBackgroundWithBlock { (parents:[AnyObject]!, error: NSError!) -> Void in
-            
-            for obj in parents {
-                var parent = Parent(obj: obj as PFObject)
-                println("\(parent.firstName)")
-                self.parents.append(parent)
+        ParseClient.sharedInstance.findParentsWithCompletion() {
+            (parents:[Parent]?, error: NSError?) -> Void in
+            if error == nil {
+                self.parents = parents!
+                self.parentsTable.reloadData()
+            } else {
+                NSLog("ERROR getting parents data from Parse!")
             }
-            self.parentsTable.reloadData()
         }
     }
 

@@ -25,6 +25,21 @@ class ParseClient: NSObject {
         return PFUser.currentUser()
     }
     
+    func findParentsWithCompletion(completion: (parents: [Parent]?, error: NSError?) -> ()) {
+
+        var classroomQuery = PFQuery(className: "Parent")
+        classroomQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                let PFParents = objects as [PFObject]
+                let parents = Parent.parentsWithArray(PFParents)
+                completion(parents: parents, error: nil)
+            } else {
+                NSLog("error: \(error)")
+                completion(parents: nil, error: error)
+            }
+        }
+    }
+    
     func loginWithCompletion(username: String, password: String, completion: (user: PFUser?, error: NSError?) -> ()) {
         PFUser.logInWithUsernameInBackground(username, password: password) { (user: PFUser?, error: NSError?) -> Void in
             completion(user: user, error: error)
