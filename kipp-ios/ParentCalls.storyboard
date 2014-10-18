@@ -25,7 +25,7 @@
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="et5-V8-nC9"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" tag="102" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibb-32-TKR" userLabel="Call">
@@ -38,6 +38,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="Ibb-32-TKR" firstAttribute="top" secondItem="mAr-ko-muE" secondAttribute="top" id="1dc-dO-bzv"/>
                                         <constraint firstItem="mAr-ko-muE" firstAttribute="top" secondItem="JlZ-qI-Yr7" secondAttribute="topMargin" constant="10" id="1qQ-25-TwD"/>
