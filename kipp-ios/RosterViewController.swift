@@ -49,7 +49,8 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let student = classroom.students[indexPath.row]
-        self.performSegueWithIdentifier("optionsSegue", sender: student)
+//        self.performSegueWithIdentifier("optionsSegue", sender: student)
+        self.performSegueWithIdentifier("characterSegue", sender: student)
     }
     
     @IBAction func didPanCell(sender: UIPanGestureRecognizer) {
@@ -77,9 +78,9 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if (segue.identifier == "profileSegue") {
             var profileVC = segue.destinationViewController as ProfileViewController
             profileVC.student = sender as Student
-        } else if (segue.identifier == "optionsSegue") {
+        } else if (segue.identifier == "characterSegue") {
             var characterVC = segue.destinationViewController as CharacterViewController
-            characterVC.student = sender as Student
+            characterVC.student = sender as? Student
         }
         
     }

@@ -13,12 +13,16 @@
 		54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */; };
 		54682D5F19E9EC2F00CCE795 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D5E19E9EC2F00CCE795 /* Student.swift */; };
 		54682D6119E9EC7D00CCE795 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6019E9EC7D00CCE795 /* StudentTableViewCell.swift */; };
+		54682D6419EA376D00CCE795 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6319EA376D00CCE795 /* ParseClient.swift */; };
 		54682D6719EA450E00CCE795 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6619EA450E00CCE795 /* ProfileViewController.swift */; };
 		54682D6A19EA469700CCE795 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6919EA469700CCE795 /* Protocols.swift */; };
 		54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6B19EB232C00CCE795 /* ClassroomsViewController.swift */; };
 		54682D6E19EB27F200CCE795 /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6D19EB27F200CCE795 /* Classroom.swift */; };
 		54682D7019EB2FAF00CCE795 /* ClassroomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6F19EB2FAF00CCE795 /* ClassroomTableViewCell.swift */; };
 		6615BEF119F3065200B7D8EC /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6615BEF019F3065200B7D8EC /* ParseClient.swift */; };
+		54B3B0C619EE5BA500BC83B1 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54B3B0C519EE5BA500BC83B1 /* CharacterView.xib */; };
+		54B3B0C819EE613A00BC83B1 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B3B0C719EE613A00BC83B1 /* CharacterView.swift */; };
+		54B3B0CA19EFAD2F00BC83B1 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */; };
 		6649802719EB37F80050ACB9 /* ParentCalls.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6649802619EB37F80050ACB9 /* ParentCalls.storyboard */; };
 		6649802919EB38040050ACB9 /* ParentCallsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649802819EB38040050ACB9 /* ParentCallsController.swift */; };
 		6649802B19EB38230050ACB9 /* Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649802A19EB38230050ACB9 /* Parent.swift */; };
@@ -60,12 +64,16 @@
 		54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassHeaderView.xib; sourceTree = "<group>"; };
 		54682D5E19E9EC2F00CCE795 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		54682D6019E9EC7D00CCE795 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
+		54682D6319EA376D00CCE795 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		54682D6619EA450E00CCE795 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		54682D6919EA469700CCE795 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		54682D6B19EB232C00CCE795 /* ClassroomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassroomsViewController.swift; sourceTree = "<group>"; };
 		54682D6D19EB27F200CCE795 /* Classroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
 		54682D6F19EB2FAF00CCE795 /* ClassroomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassroomTableViewCell.swift; sourceTree = "<group>"; };
 		6615BEF019F3065200B7D8EC /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		54B3B0C519EE5BA500BC83B1 /* CharacterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterView.xib; sourceTree = "<group>"; };
+		54B3B0C719EE613A00BC83B1 /* CharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
+		54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		6649802619EB37F80050ACB9 /* ParentCalls.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ParentCalls.storyboard; sourceTree = "<group>"; };
 		6649802819EB38040050ACB9 /* ParentCallsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentCallsController.swift; sourceTree = "<group>"; };
 		6649802A19EB38230050ACB9 /* Parent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parent.swift; sourceTree = "<group>"; };
@@ -166,6 +174,9 @@
 			children = (
 				54682D6019E9EC7D00CCE795 /* StudentTableViewCell.swift */,
 				54682D6F19EB2FAF00CCE795 /* ClassroomTableViewCell.swift */,
+				54B3B0C519EE5BA500BC83B1 /* CharacterView.xib */,
+				54B3B0C719EE613A00BC83B1 /* CharacterView.swift */,
+				54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -203,6 +214,7 @@
 				669ACAAD19E75E12004C31ED /* LaunchScreen.xib */,
 				669ACAA219E75E12004C31ED /* Supporting Files */,
 				54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */,
+				54682D6319EA376D00CCE795 /* ParseClient.swift */,
 				54682D6919EA469700CCE795 /* Protocols.swift */,
 			);
 			path = "kipp-ios";
@@ -334,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54B3B0C619EE5BA500BC83B1 /* CharacterView.xib in Resources */,
 				669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */,
 				54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */,
 				669ACAAF19E75E12004C31ED /* LaunchScreen.xib in Resources */,
@@ -394,6 +407,7 @@
 				669ACAA719E75E12004C31ED /* LoginViewController.swift in Sources */,
 				54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */,
 				54682D6119E9EC7D00CCE795 /* StudentTableViewCell.swift in Sources */,
+				54B3B0C819EE613A00BC83B1 /* CharacterView.swift in Sources */,
 				6649802B19EB38230050ACB9 /* Parent.swift in Sources */,
 				669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */,
 				6615BEF119F3065200B7D8EC /* ParseClient.swift in Sources */,
@@ -401,8 +415,10 @@
 				541BF93819ED05C4007307C6 /* CharacterViewController.swift in Sources */,
 				54682D6E19EB27F200CCE795 /* Classroom.swift in Sources */,
 				54682D7019EB2FAF00CCE795 /* ClassroomTableViewCell.swift in Sources */,
+				54B3B0CA19EFAD2F00BC83B1 /* CharacterTableViewCell.swift in Sources */,
 				54682D6719EA450E00CCE795 /* ProfileViewController.swift in Sources */,
 				54682D5F19E9EC2F00CCE795 /* Student.swift in Sources */,
+				54682D6419EA376D00CCE795 /* ParseClient.swift in Sources */,
 				54682D6A19EA469700CCE795 /* Protocols.swift in Sources */,
 				6649802D19EC37230050ACB9 /* Teacher.swift in Sources */,
 				6649802919EB38040050ACB9 /* ParentCallsController.swift in Sources */,
