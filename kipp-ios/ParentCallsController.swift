@@ -11,6 +11,8 @@ import UIKit
 class ParentCallsController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     var parents = [Parent]()
+    var selectedCells = [Bool]()
+    var rowHeight = 80.0
 
     @IBOutlet var parentsTable: UITableView!
     
@@ -28,6 +30,7 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
             (parents:[Parent]?, error: NSError?) -> Void in
             if error == nil {
                 self.parents = parents!
+                self.selectedCells = Array(count:self.parents.count, repeatedValue:false)
                 self.parentsTable.reloadData()
             } else {
                 NSLog("ERROR getting parents data from Parse!")
@@ -77,7 +80,22 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         return cell
     }
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (selectedCells[indexPath.row]) {
+            return CGFloat(rowHeight * 2.0)
+        } else {
+            return CGFloat(rowHeight)
+        }
+    }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        selectedCells[indexPath.row] = true
+        parentsTable.beginUpdates()
+        parentsTable.endUpdates()
+        
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
