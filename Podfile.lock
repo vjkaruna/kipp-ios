@@ -5,14 +5,17 @@ PODS:
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
+  - SWTableViewCell (0.3.4)
 
 DEPENDENCIES:
   - Parse
   - SDWebImage (~> 3.6)
+  - SWTableViewCell (~> 0.3)
 
 SPEC CHECKSUMS:
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Parse: db1a09c832b7509edcc88a65dc07229f5e578c73
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  SWTableViewCell: 169334f3bd63f2525a070208cc876d17c0f0c9cf
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.34.4
