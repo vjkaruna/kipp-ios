@@ -35,6 +35,10 @@ class Student: NSObject {
         self.studentId = obj["studentId"] as NSInteger
     }
     
+     var fullName: String {
+        return "\(self.firstName) \(self.lastName)"
+    }
+    
     class func studentsWithArray(array: NSArray) -> [Student] {
         var students = [Student]()
         

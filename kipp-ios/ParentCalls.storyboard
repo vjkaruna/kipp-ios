@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -9,18 +9,19 @@
         <scene sceneID="xI6-bX-skX">
             <objects>
                 <tableViewController storyboardIdentifier="ParentCallsC" id="I73-gt-eeu" customClass="ParentCallsController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sLx-vc-3Tp">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="sLx-vc-3Tp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.20163806070000001" green="0.27418782339999997" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParentCell" id="v9s-Mj-TZz">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v9s-Mj-TZz" id="JlZ-qI-Yr7">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAr-ko-muE" userLabel="ParentName">
-                                            <rect key="frame" x="96" y="11" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAr-ko-muE" userLabel="ParentName">
+                                            <rect key="frame" x="28" y="18" width="42" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="et5-V8-nC9"/>
                                             </constraints>
@@ -28,8 +29,12 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" tag="102" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibb-32-TKR" userLabel="Call">
-                                            <rect key="frame" x="493" y="7" width="59" height="22"/>
+                                        <button opaque="NO" tag="102" contentMode="scaleAspectFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibb-32-TKR" userLabel="Call">
+                                            <rect key="frame" x="548" y="18" width="28" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="6s9-Tb-8tR"/>
+                                                <constraint firstAttribute="height" constant="60" id="g2g-7O-SAa"/>
+                                            </constraints>
                                             <state key="normal" image="sample-1004-voicemail">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -37,13 +42,21 @@
                                                 <action selector="callTouched:" destination="I73-gt-eeu" eventType="touchUpInside" id="mVL-UE-gz6"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJu-cL-rL0">
+                                            <rect key="frame" x="28" y="46" width="61" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="Ibb-32-TKR" firstAttribute="top" secondItem="mAr-ko-muE" secondAttribute="top" id="1dc-dO-bzv"/>
                                         <constraint firstItem="mAr-ko-muE" firstAttribute="top" secondItem="JlZ-qI-Yr7" secondAttribute="topMargin" constant="10" id="1qQ-25-TwD"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Ibb-32-TKR" secondAttribute="trailing" constant="16" id="K4d-c5-eNu"/>
-                                        <constraint firstItem="mAr-ko-muE" firstAttribute="centerY" secondItem="Ibb-32-TKR" secondAttribute="centerY" constant="3.5" id="MT8-Xk-lw0"/>
+                                        <constraint firstItem="BJu-cL-rL0" firstAttribute="top" secondItem="mAr-ko-muE" secondAttribute="bottom" constant="8" id="KGQ-oG-wyy"/>
+                                        <constraint firstItem="mAr-ko-muE" firstAttribute="top" secondItem="Ibb-32-TKR" secondAttribute="top" id="MT8-Xk-lw0"/>
+                                        <constraint firstItem="BJu-cL-rL0" firstAttribute="leading" secondItem="mAr-ko-muE" secondAttribute="leading" id="cYd-13-NBT"/>
                                         <constraint firstItem="mAr-ko-muE" firstAttribute="leading" secondItem="JlZ-qI-Yr7" secondAttribute="leadingMargin" constant="20" id="hq9-26-p4l"/>
                                     </constraints>
                                     <variation key="default">

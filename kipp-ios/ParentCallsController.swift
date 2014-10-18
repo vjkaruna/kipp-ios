@@ -70,7 +70,9 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
 
         var parentNameLabel = cell.viewWithTag(101) as UILabel
         //var callButtonLabel = cell.viewWithTag(102) as UIButton
-        parentNameLabel.text = parents[indexPath.row].firstName
+        parentNameLabel.text = parents[indexPath.row].fullName
+        var studentNameLabel = cell.viewWithTag(103) as UILabel
+        studentNameLabel.text = parents[indexPath.row].student?.fullName
 
         return cell
     }
