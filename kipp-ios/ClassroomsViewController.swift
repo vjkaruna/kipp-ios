@@ -19,19 +19,15 @@ class ClassroomsViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         
-        var classroomQuery = PFQuery(className: "Classroom")
-        classroomQuery.whereKey("teacher", equalTo: PFUser.currentUser())
-        classroomQuery.includeKey("students")
-        
-        classroomQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-            if error == nil {
-                let classrooms = objects as [PFObject]
-                self.classes = Classroom.classroomsWithArray(classrooms)
+        ParseClient.sharedInstance.findClassroomsWithCompletion() { (classrooms: [Classroom]?, error: NSError?) -> Void in
+            if classrooms != nil {
+                self.classes = classrooms
                 self.tableView.reloadData()
-            } else {
-                NSLog("error: \(error)")
             }
-        })
+            else {
+                NSLog("error getting classroom data from Parse")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

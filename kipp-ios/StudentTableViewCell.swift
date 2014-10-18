@@ -36,17 +36,24 @@ class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate, Studen
     
     var xPanLocation: CGFloat = 0 {
         willSet {
-//            self.panLocation = newValue
+            var newConstraintVal: CGFloat = 0
             if self.xPanLocation < newValue {
-                let newConstraintVal = max(self.rightConstraint.constant - newValue, 0)
+                newConstraintVal = max(-newValue, 0)
                 self.rightConstraint.constant = newConstraintVal
                 self.leftConstraint.constant = -newConstraintVal
                 NSLog("Pan right?? New x constraint \(newConstraintVal)")
             } else if self.xPanLocation > newValue {
-                let newConstraintVal = min(self.rightConstraint.constant - newValue, self.frame.width)
+                newConstraintVal = min(-newValue, self.frame.width)
                 self.rightConstraint.constant = newConstraintVal
                 self.leftConstraint.constant = -newConstraintVal
                 NSLog("Pan left?? New x constraint \(newConstraintVal)")
+            }
+            if newConstraintVal > 60 { // animate color change only when change is required
+                self.contentView.backgroundColor = UIColor.redColor()
+                self.contentView.alpha = 0.4
+            } else if newConstraintVal != 0 {
+                self.contentView.backgroundColor = UIColor.yellowColor()
+                self.contentView.alpha = 0.4
             }
         }
     }
@@ -60,7 +67,11 @@ class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate, Studen
             case .Absent:
                 NSLog("\(student!.firstName) is absent")
                 self.animatingLayerView.backgroundColor = UIColor.redColor()
-                self.animatingLayerView.alpha = 0.4
+                self.animatingLayerView.alpha = 1.0
+            case .Tardy:
+                NSLog("\(student!.firstName) is late")
+                self.animatingLayerView.backgroundColor = UIColor.yellowColor()
+                self.animatingLayerView.alpha = 1.0
             default:
                 self.animatingLayerView.backgroundColor = UIColor.whiteColor()
             }
@@ -73,10 +84,23 @@ class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate, Studen
             self.rightConstraint.constant = 0
             self.leftConstraint.constant = 0
             self.animatingLayerView.backgroundColor = UIColor.redColor()
-            self.animatingLayerView.alpha = 0.4
+            self.animatingLayerView.alpha = 1
+            self.bringSubviewToFront(self.animatingLayerView)
             self.contentView.layoutIfNeeded()
         })
-        student!.markAsAbsent()
+        student!.markAttendanceForType(.Absent)
+    }
+    
+    @IBAction func didTapLate(sender: AnyObject) {
+        NSLog("\(student!.firstName) is late") // UPDATE or CREATE row in Attendance table entry (only one entry per day)
+        UIView.animateWithDuration(0.5, animations: {
+            self.rightConstraint.constant = 0
+            self.leftConstraint.constant = 0
+            self.animatingLayerView.backgroundColor = UIColor.yellowColor()
+            self.animatingLayerView.alpha = 1.0
+            self.contentView.layoutIfNeeded()
+        })
+        student!.markAttendanceForType(.Tardy)
     }
     
     @IBAction func didTapProfilePic(sender: AnyObject) {
