@@ -15,38 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        Parse.setApplicationId("kyHMOOZDxjNGJ6moZEoRz8WIygUT402Cr4nFgSzA", clientKey: "t32qn2VTGTm5EBCXqo85COvSj945wB5CAqi4KNje")
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogin", name: userDidLoginNotification, object: nil)
         
-        if (PFUser.currentUser() != nil) {
+        if (ParseClient.sharedInstance.getCurrentUser() != nil) {
             userDidLogin()
         }
         
         return true
-        
-        /**
-        
-        if true { // FOR TESTING PURPOSES ONLY
-            
-            // TODO: Remove this when finished
-            var storyboard = UIStoryboard(name: "ParentCalls", bundle: nil)
-            
-            PFUser.logInWithUsernameInBackground("vanessa", password:"test123") {
-                (user: PFUser!, error: NSError!) -> Void in
-                if user != nil {
-                    // Do stuff after successful login.
-                    println("login succeeded")
-                    let vc = storyboard.instantiateViewControllerWithIdentifier("ParentCallsC") as UIViewController
-                    self.window?.rootViewController = vc
-                } else {
-                    // The login failed. Check error to see why.
-                    println("login failed")
-                }
-            }
-        }
-        **/
     }
     
     func userDidLogin() {

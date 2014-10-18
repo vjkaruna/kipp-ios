@@ -21,11 +21,10 @@ class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate, Studen
     
     var delegate: ProfileImageTappedDelegate?
     
-    var student: Student? {
+    weak var student: Student? {
         willSet(newStudent) {
             if newStudent != nil {
                 newStudent!.delegate = self
-                NSLog("HELLO?")
                 self.displayName.text = "\(newStudent!.firstName) \(newStudent!.lastName)"
                 newStudent!.fillAttendanceState() // If we want attendance for specific date, we can pass the date here
             }
