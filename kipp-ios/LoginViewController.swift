@@ -17,9 +17,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        var message = PFObject(className: "TestObject")
-//        message["text"] = "testing Parse"
-//        message.saveInBackground()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,8 +31,7 @@ class LoginViewController: UIViewController {
         var username = usernameField.text
         var password = passwordField.text
         
-        PFUser.logInWithUsernameInBackground(username, password:password) {
-            (user: PFUser!, error: NSError!) -> Void in
+        ParseClient.sharedInstance.loginWithCompletion(username, password: password) { (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 // Do stuff after successful login.
                 println("login succeeded")

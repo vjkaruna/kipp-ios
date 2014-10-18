@@ -45,13 +45,13 @@ class Student: NSObject {
         return students
     }
     
-    func markAsAbsent(forDate: NSDate = NSDate.date()) {
+    func markAttendanceForType(type: AttendanceType, forDate: NSDate = NSDate.date()) {
         var absentEntry = PFObject(className: "Attendance")
-        absentEntry["type"] = AttendanceType.Absent.toRaw()
+        absentEntry["type"] = type.toRaw()
         absentEntry["date"] = forDate.beginningOfDay()
         absentEntry["studentId"] = self.studentId
         absentEntry.saveInBackground() // or save eventually?
-        self.attendance = .Absent
+        self.attendance = type
         self.delegate?.attendanceDidChange()
     }
     
@@ -59,14 +59,16 @@ class Student: NSObject {
         if attendance == nil {
             var isAbsentQ = PFQuery(className: "Attendance")
             isAbsentQ.whereKey("studentId", equalTo: self.studentId)
-            isAbsentQ.whereKey("type", equalTo: AttendanceType.Absent.toRaw())
+//            isAbsentQ.whereKey("type", equalTo: AttendanceType.Absent.toRaw())
             isAbsentQ.whereKey("date", equalTo: forDate.beginningOfDay())
             isAbsentQ.findObjectsInBackgroundWithBlock({ (results, error) -> Void in
                 if error == nil {
                     if results.count > 0 {
-                        self.attendance = .Absent
+                        let result = results[0] as PFObject
+                        let rawAttendanceType = result["type"] as Int
+                        self.attendance = AttendanceType.fromRaw(rawAttendanceType)
                         self.delegate?.attendanceDidChange()
-                        NSLog("Found absent entry for student \(self.firstName)")
+                        NSLog("Found entry for student \(self.firstName)")
                     } else {
                         self.attendance = .Present
                         NSLog("\(self.firstName) present")
