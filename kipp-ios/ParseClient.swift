@@ -138,3 +138,28 @@ class ParseClient: NSObject {
         })
     }
 }
+
+let calendar = NSCalendar(identifier: NSGregorianCalendar)
+
+extension NSDate {
+    func isSameDay(date: NSDate) -> Bool {
+        let dateComponents = calendar.components( .DayCalendarUnit | .MonthCalendarUnit | .YearCalendarUnit, fromDate: date)
+        let nowComponents = calendar.components( .DayCalendarUnit | .MonthCalendarUnit | .YearCalendarUnit, fromDate: NSDate())
+        return (dateComponents.day == nowComponents.day && dateComponents.month == nowComponents.month && dateComponents.year == nowComponents.year)
+    }
+    func beginningOfDay() -> NSDate {
+        let dateComponents = calendar.components( .DayCalendarUnit | .MonthCalendarUnit | .YearCalendarUnit, fromDate: self)
+        dateComponents.hour = 0
+        dateComponents.minute = 0
+        dateComponents.second = 0
+        return calendar.dateFromComponents(dateComponents)!
+    }
+    func endOfDay() -> NSDate {
+        let dateComponents = calendar.components( .DayCalendarUnit | .MonthCalendarUnit | .YearCalendarUnit, fromDate: self)
+        dateComponents.hour = 23
+        dateComponents.minute = 59
+        dateComponents.second = 59
+        return calendar.dateFromComponents(dateComponents)!
+    }
+}
+
