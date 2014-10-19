@@ -25,6 +25,21 @@ class ParseClient: NSObject {
         return PFUser.currentUser()
     }
     
+    func findParentsWithCompletion(completion: (parents: [Parent]?, error: NSError?) -> ()) {
+
+        var parentQuery = PFQuery(className: "Parent")
+        parentQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                let PFParents = objects as [PFObject]
+                let parents = Parent.parentsWithArray(PFParents)
+                completion(parents: parents, error: nil)
+            } else {
+                NSLog("error: \(error)")
+                completion(parents: nil, error: error)
+            }
+        }
+    }
+    
     func loginWithCompletion(username: String, password: String, completion: (user: PFUser?, error: NSError?) -> ()) {
         PFUser.logInWithUsernameInBackground(username, password: password) { (user: PFUser?, error: NSError?) -> Void in
             completion(user: user, error: error)
@@ -44,6 +59,80 @@ class ParseClient: NSObject {
             } else {
                 NSLog("error: \(error)")
                 completion(classrooms: nil, error: error)
+            }
+        })
+    }
+    
+    func saveCharacterValueWithCompletion(studentId: Int, characterTrait: CharacterTrait, forDate: NSDate, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
+        var characterEntry = PFObject(className: "CharacterTrait")
+        
+        if characterEntry.objectId != nil {
+            characterEntry["objectId"] = characterEntry.objectId
+        }
+        characterEntry["type"] = characterTrait.title
+        characterEntry["studentId"] = studentId
+        characterEntry["score"] = characterTrait.score
+
+        characterEntry.saveInBackgroundWithBlock { (saved, error) -> Void in
+            if saved {
+                completion(parseObj: characterEntry, error: nil)
+            } else {
+                NSLog("Failed to save character trait entry")
+                completion(parseObj: nil, error: error)
+            }
+        }
+    }
+    
+    func getLatestCharacterScoreWithCompletion(studentId: Int, characterTrait: String, completion: (characterTrait: CharacterTrait?, error: NSError?) -> ()) {
+        var characterQuery = PFQuery(className: "CharacterTrait")
+        characterQuery.whereKey("type", equalTo: characterTrait)
+        characterQuery.whereKey("studentId", equalTo: studentId)
+        characterQuery.orderByDescending("createdAt")
+        characterQuery.getFirstObjectInBackgroundWithBlock({ (pfobject, error) -> Void in
+            if pfobject != nil {
+                let characterTrait = CharacterTrait(pfobj: pfobject)
+                completion(characterTrait: characterTrait, error: nil)
+            } else {
+                completion(characterTrait: nil, error: error)
+            }
+        })
+    }
+    
+    func saveArrayInBulk(array: NSArray) {
+//        PFObject.saveAllInBackground(array, target: AnyObject!, selector: <#Selector#>)
+        PFObject.saveAllInBackground(array)
+    }
+    
+    func markAttendance(studentId: Int, attendance: AttendanceType, forDate: NSDate) {
+        var absentEntry = PFObject(className: "Attendance")
+        
+        absentEntry["type"] = attendance.toRaw()
+        absentEntry["date"] = forDate.beginningOfDay()
+        absentEntry["studentId"] = studentId
+        absentEntry.saveInBackground() // or save eventually?
+    }
+    
+    func getAttendanceForDateWithCompletion(studentId: Int, forDate: NSDate, completion: (attendanceType: AttendanceType?, error: NSError?) -> ()) {
+        var attendanceType = AttendanceType.Present
+        
+        var isAbsentQ = PFQuery(className: "Attendance")
+        isAbsentQ.whereKey("studentId", equalTo: studentId)
+        isAbsentQ.whereKey("date", equalTo: forDate.beginningOfDay())
+        isAbsentQ.findObjectsInBackgroundWithBlock({ (results, error) -> Void in
+            if error == nil {
+                if results.count > 0 {
+                    let result = results[0] as PFObject
+                    let rawAttendanceType = result["type"] as Int
+                    attendanceType = AttendanceType.fromRaw(rawAttendanceType)!
+                    
+                    NSLog("Found entry for student \(studentId)")
+                } else {
+                    NSLog("\(studentId) present")
+                }
+                completion(attendanceType: attendanceType, error: nil)
+            } else {
+                NSLog("error: \(error)")
+                completion(attendanceType: nil, error: error)
             }
         })
     }

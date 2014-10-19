@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -295,6 +295,7 @@
                                         <connections>
                                             <outlet property="characterImgView" destination="oXJ-kT-nuE" id="EBt-Z5-tGD"/>
                                             <outlet property="scoreLabel" destination="awx-wJ-aVh" id="xaq-9X-egS"/>
+                                            <outlet property="slider" destination="VmP-mk-y96" id="07h-yw-52u"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

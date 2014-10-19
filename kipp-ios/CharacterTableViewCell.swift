@@ -12,21 +12,32 @@ class CharacterTableViewCell: UITableViewCell {
     
     @IBOutlet weak var characterImgView: UIImageView!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var slider: UISlider!
+    
+    var score: Int? {
+        willSet {
+            scoreLabel.text = "\(newValue ?? 0)"
+            slider.value = Float(newValue ?? 0)
+        }
+    }
+    var row: Int!
+    
+    var delegate: CharacterTraitUpdatedDelegate?
     
     var characterTrait: CharacterTrait? {
         willSet {
-            characterImgView.image = UIImage(named: newValue!.getRoundAsset())
+            characterImgView.image = UIImage(named: newValue!.imgName)
         }
     }
     @IBAction func sliderDidChange(sender: UISlider) {
         let sliderValue = Int(sender.value)
         scoreLabel.text = "\(sliderValue)"
+        delegate?.traitScoreDidUpdate(sliderValue, forRow: row)
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        scoreLabel.text = "0"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
