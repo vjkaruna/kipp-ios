@@ -13,7 +13,7 @@ class CharacterViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var tableView: UITableView!
     
-    var loadedTraitValues = [Int]()
+    var loadedTraitValues: [Int]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,7 @@ class CharacterViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.dataSource = self
         tableView.delegate = self
         
+        loadedTraitValues = [Int](count: student!.characterArray.count, repeatedValue: 0)
         loadScores()
     }
     
@@ -54,7 +55,7 @@ class CharacterViewController: UIViewController, UITableViewDataSource, UITableV
         for index in 0..<student!.characterArray.count {
             let characterTrait = student!.characterArray[index]
             if characterTrait.score != loadedTraitValues[index] {
-                NSLog("\(characterTrait.score) != \(loadedTraitValues[index])")
+                NSLog("Saving \(characterTrait.title) with value \(characterTrait.score) (Old value: \(loadedTraitValues[index]))")
 //                ParseClient.sharedInstance.saveCharacterValueWithCompletion(student!.studentId, characterTrait: characterTrait, forDate: today) { (parseObj, error) -> ()in
 //                    if parseObj != nil {
 //                        characterTrait.objectId = parseObj!.objectId
@@ -89,9 +90,9 @@ class CharacterViewController: UIViewController, UITableViewDataSource, UITableV
                 if characterTrait != nil {
                     NSLog("Found \(characterTrait!.title) with score \(characterTrait!.score)")
                     self.student!.characterArray[index].score = characterTrait!.score
-                    self.loadedTraitValues.append(characterTrait!.score)
+                    self.loadedTraitValues[index] = characterTrait!.score
                 } else {
-                    self.loadedTraitValues.append(0)
+                    self.loadedTraitValues[index] = 0
                 }
                 if index == self.student!.characterArray.count - 1 {
                     self.tableView.reloadData() // this is terrible, but don't know how to do a bulk query on this type of data...

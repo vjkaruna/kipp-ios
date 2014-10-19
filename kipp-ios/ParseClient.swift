@@ -27,7 +27,6 @@ class ParseClient: NSObject {
     
     func findParentsWithCompletion(completion: (parents: [Parent]?, error: NSError?) -> ()) {
         var parentQuery = PFQuery(className: "Parent")
-        parentQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
         parentQuery.includeKey("Student")
         
         parentQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
