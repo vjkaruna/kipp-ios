@@ -26,11 +26,10 @@ class ParseClient: NSObject {
     }
     
     func findParentsWithCompletion(completion: (parents: [Parent]?, error: NSError?) -> ()) {
-
-        var classroomQuery = PFQuery(className: "Parent")
-        classroomQuery.includeKey("Student")
+        var parentQuery = PFQuery(className: "Parent")
+        parentQuery.includeKey("Student")
         
-        classroomQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        parentQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
                 let PFParents = objects as [PFObject]
                 let parents = Parent.parentsWithArray(PFParents)
@@ -65,9 +64,44 @@ class ParseClient: NSObject {
         })
     }
     
-    func saveCharacterValue(studentId: Int, characterTrait: String, value: Int) {
-        // this would save eventually to Parse and store it internally to the student model
+    func saveCharacterValueWithCompletion(studentId: Int, characterTrait: CharacterTrait, forDate: NSDate, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
+        var characterEntry = PFObject(className: "CharacterTrait")
         
+        if characterEntry.objectId != nil {
+            characterEntry["objectId"] = characterEntry.objectId
+        }
+        characterEntry["type"] = characterTrait.title
+        characterEntry["studentId"] = studentId
+        characterEntry["score"] = characterTrait.score
+
+        characterEntry.saveInBackgroundWithBlock { (saved, error) -> Void in
+            if saved {
+                completion(parseObj: characterEntry, error: nil)
+            } else {
+                NSLog("Failed to save character trait entry")
+                completion(parseObj: nil, error: error)
+            }
+        }
+    }
+    
+    func getLatestCharacterScoreWithCompletion(studentId: Int, characterTrait: String, completion: (characterTrait: CharacterTrait?, error: NSError?) -> ()) {
+        var characterQuery = PFQuery(className: "CharacterTrait")
+        characterQuery.whereKey("type", equalTo: characterTrait)
+        characterQuery.whereKey("studentId", equalTo: studentId)
+        characterQuery.orderByDescending("createdAt")
+        characterQuery.getFirstObjectInBackgroundWithBlock({ (pfobject, error) -> Void in
+            if pfobject != nil {
+                let characterTrait = CharacterTrait(pfobj: pfobject)
+                completion(characterTrait: characterTrait, error: nil)
+            } else {
+                completion(characterTrait: nil, error: error)
+            }
+        })
+    }
+    
+    func saveArrayInBulk(array: NSArray) {
+//        PFObject.saveAllInBackground(array, target: AnyObject!, selector: <#Selector#>)
+        PFObject.saveAllInBackground(array)
     }
     
     func markAttendance(studentId: Int, attendance: AttendanceType, forDate: NSDate) {

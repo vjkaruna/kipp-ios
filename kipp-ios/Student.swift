@@ -20,6 +20,8 @@ class Student: NSObject {
     
     var attendance: AttendanceType?
     
+    var characterArray: [CharacterTrait] = CharacterTrait.defaultCharacterTraitArray()
+    
     init(obj: PFObject) {
         self.firstName = obj["firstName"] as NSString
         self.lastName = obj["lastName"] as NSString

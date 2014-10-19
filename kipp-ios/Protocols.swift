@@ -15,3 +15,7 @@ protocol ProfileImageTappedDelegate {
 protocol StudentProfileChangedDelegate {
     func attendanceDidChange()
 }
+
+protocol CharacterTraitUpdatedDelegate {
+    func traitScoreDidUpdate(value: Int, forRow row: Int)
+}
