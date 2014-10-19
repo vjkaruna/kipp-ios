@@ -11,6 +11,8 @@ import UIKit
 class ParentCallsController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     var parents = [Parent]()
+    var selectedCells = [Bool]()
+    var rowHeight = 80.0
 
     @IBOutlet var parentsTable: UITableView!
     
@@ -24,16 +26,15 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         
         println("performing a Parse query")
         
-        var classroomQuery = PFQuery(className: "Parent")
-        
-        classroomQuery.findObjectsInBackgroundWithBlock { (parents:[AnyObject]!, error: NSError!) -> Void in
-            
-            for obj in parents {
-                var parent = Parent(obj: obj as PFObject)
-                println("\(parent.firstName)")
-                self.parents.append(parent)
+        ParseClient.sharedInstance.findParentsWithCompletion() {
+            (parents:[Parent]?, error: NSError?) -> Void in
+            if error == nil {
+                self.parents = parents!
+                self.selectedCells = Array(count:self.parents.count, repeatedValue:false)
+                self.parentsTable.reloadData()
+            } else {
+                NSLog("ERROR getting parents data from Parse!")
             }
-            self.parentsTable.reloadData()
         }
     }
 
@@ -72,12 +73,29 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
 
         var parentNameLabel = cell.viewWithTag(101) as UILabel
         //var callButtonLabel = cell.viewWithTag(102) as UIButton
-        parentNameLabel.text = parents[indexPath.row].firstName
+        parentNameLabel.text = parents[indexPath.row].fullName
+        var studentNameLabel = cell.viewWithTag(103) as UILabel
+        studentNameLabel.text = parents[indexPath.row].student?.fullName
 
         return cell
     }
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (selectedCells[indexPath.row]) {
+            return CGFloat(rowHeight * 2.0)
+        } else {
+            return CGFloat(rowHeight)
+        }
+    }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        selectedCells[indexPath.row] = true
+        parentsTable.beginUpdates()
+        parentsTable.endUpdates()
+        
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {

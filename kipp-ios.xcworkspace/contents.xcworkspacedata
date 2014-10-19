@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:kipp-ios/ParseClient.swift">
-   </FileRef>
-   <FileRef
       location = "group:kipp-ios.xcodeproj">
    </FileRef>
    <FileRef

@@ -12,6 +12,7 @@ class Parent: NSObject {
     var firstName, lastName, phone: String!
     var studentId: Int!
     var parentId: Int!
+    var student: Student?
     
     
     init(obj: PFObject) {
@@ -20,6 +21,12 @@ class Parent: NSObject {
         self.studentId = obj["studentId"] as NSInteger
         self.phone = obj["phone"] as NSString
         self.parentId = obj["parentId"] as NSInteger
+        let studentobj = obj.objectForKey("Student") as PFObject
+        self.student = Student(obj: studentobj)
+    }
+    
+    var fullName: String {
+        return "\(self.firstName) \(self.lastName)"
     }
     
     class func parentsWithArray(array: NSArray) -> [Parent] {
