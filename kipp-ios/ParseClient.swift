@@ -84,7 +84,7 @@ class ParseClient: NSObject {
         }
     }
     
-    func getLatestCharacterScoreWithCompletion(studentId: Int, characterTrait: String, completion: (characterTrait: CharacterTrait?, error: NSError?) -> ()) {
+    func getLatestCharacterScoreForWeekWithCompletion(studentId: Int, characterTrait: String, completion: (characterTrait: CharacterTrait?, error: NSError?) -> ()) {
         var characterQuery = PFQuery(className: "CharacterTrait")
         characterQuery.whereKey("type", equalTo: characterTrait)
         characterQuery.whereKey("studentId", equalTo: studentId)
@@ -95,7 +95,7 @@ class ParseClient: NSObject {
                 completion(characterTrait: characterTrait, error: nil)
             } else {
                 completion(characterTrait: nil, error: error)
-            }
+            } // TODO filter by week
         })
     }
     

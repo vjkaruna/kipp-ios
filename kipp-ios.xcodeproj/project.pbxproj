@@ -19,6 +19,7 @@
 		54682D6E19EB27F200CCE795 /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6D19EB27F200CCE795 /* Classroom.swift */; };
 		54682D7019EB2FAF00CCE795 /* ClassroomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D6F19EB2FAF00CCE795 /* ClassroomTableViewCell.swift */; };
 		549937F519F3B7690026C7E4 /* CharacterTrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549937F419F3B7690026C7E4 /* CharacterTrait.swift */; };
+		549937F719F64E150026C7E4 /* CharacterTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549937F619F64E150026C7E4 /* CharacterTrackingViewController.swift */; };
 		54B3B0C619EE5BA500BC83B1 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54B3B0C519EE5BA500BC83B1 /* CharacterView.xib */; };
 		54B3B0C819EE613A00BC83B1 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B3B0C719EE613A00BC83B1 /* CharacterView.swift */; };
 		54B3B0CA19EFAD2F00BC83B1 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */; };
@@ -72,6 +73,7 @@
 		54682D6D19EB27F200CCE795 /* Classroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
 		54682D6F19EB2FAF00CCE795 /* ClassroomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassroomTableViewCell.swift; sourceTree = "<group>"; };
 		549937F419F3B7690026C7E4 /* CharacterTrait.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTrait.swift; sourceTree = "<group>"; };
+		549937F619F64E150026C7E4 /* CharacterTrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTrackingViewController.swift; sourceTree = "<group>"; };
 		54B3B0C519EE5BA500BC83B1 /* CharacterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterView.xib; sourceTree = "<group>"; };
 		54B3B0C719EE613A00BC83B1 /* CharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				54682D5819E9D06E00CCE795 /* RosterViewController.swift */,
 				54682D6619EA450E00CCE795 /* ProfileViewController.swift */,
 				541BF93719ED05C4007307C6 /* CharacterViewController.swift */,
+				549937F619F64E150026C7E4 /* CharacterTrackingViewController.swift */,
 				FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */,
 			);
 			name = "View Controllers";
@@ -420,6 +423,7 @@
 				FCA0872A19EE4A0900CF57FD /* TabBarViewController.swift in Sources */,
 				669ACAA719E75E12004C31ED /* LoginViewController.swift in Sources */,
 				54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */,
+				549937F719F64E150026C7E4 /* CharacterTrackingViewController.swift in Sources */,
 				549937F519F3B7690026C7E4 /* CharacterTrait.swift in Sources */,
 				54682D6119E9EC7D00CCE795 /* StudentTableViewCell.swift in Sources */,
 				54B3B0C819EE613A00BC83B1 /* CharacterView.swift in Sources */,
