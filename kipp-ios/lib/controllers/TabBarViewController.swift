@@ -32,10 +32,14 @@ class TabBarViewController: UIViewController {
             let parentCallsSB = UIStoryboard(name: "ParentCalls", bundle: nil)
             let callsNavController = parentCallsSB.instantiateViewControllerWithIdentifier("ParentCallsNC") as UIViewController
             
+            let attendanceSB = UIStoryboard(name: "Attendance", bundle: nil)
+            let attendanceNavController = attendanceSB.instantiateViewControllerWithIdentifier("AttendanceNC") as UIViewController
+
+            attendanceNavController.tabBarItem = UITabBarItem(title: "attendance", image: nil, tag: 1)
             rosterNavController.tabBarItem = UITabBarItem(title: "roster", image: nil, tag: 1)
             callsNavController.tabBarItem = UITabBarItem(title: "calls", image: nil, tag: 1)
             
-            self._viewControllers = [rosterNavController, callsNavController]
+            self._viewControllers = [attendanceNavController, rosterNavController, callsNavController]
         }
         return self._viewControllers!
     }
