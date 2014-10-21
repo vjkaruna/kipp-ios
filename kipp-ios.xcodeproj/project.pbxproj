@@ -104,7 +104,7 @@
 		A14388D02D42951654246507 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C4141796B4DD45A99734D2AC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = lib/controllers/TabBarViewController.swift; sourceTree = "<group>"; };
-		FCF1562F19F6167B0057617D /* Attendance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Attendance.storyboard; sourceTree = "<group>"; };
+		FCF1562F19F6167B0057617D /* Attendance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Attendance.storyboard; path = ../Attendance.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +175,7 @@
 		54682D6219E9EC8F00CCE795 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				FCF1562F19F6167B0057617D /* Attendance.storyboard */,
 				54682D5619E9D02300CCE795 /* ClassRoster.storyboard */,
 				6649802619EB37F80050ACB9 /* ParentCalls.storyboard */,
 				669ACAA819E75E12004C31ED /* Main.storyboard */,
@@ -197,7 +198,6 @@
 		669ACA9619E75E12004C31ED = {
 			isa = PBXGroup;
 			children = (
-				FCF1562F19F6167B0057617D /* Attendance.storyboard */,
 				669ACAA119E75E12004C31ED /* kipp-ios */,
 				669ACAB719E75E13004C31ED /* kipp-iosTests */,
 				669ACAA019E75E12004C31ED /* Products */,
