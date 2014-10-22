@@ -17,6 +17,10 @@ class CharacterViewController: UIViewController/*, UITableViewDataSource, UITabl
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
+    @IBOutlet weak var encourageButton: UIButton!
+    @IBOutlet weak var celebrateButton: UIButton!
+    @IBOutlet weak var callLaterButton: UIButton!
+    
     @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -29,7 +33,7 @@ class CharacterViewController: UIViewController/*, UITableViewDataSource, UITabl
     
     var viewControllers: [UIViewController] = [UIViewController]()
     
-    let MENU_COLLAPSED_HEIGHT: CGFloat = 35
+    let MENU_COLLAPSED_HEIGHT: CGFloat = 50
     let MENU_EXPANDED_HEIGHT: CGFloat = 255
     
     var activeViewController: UIViewController? {
