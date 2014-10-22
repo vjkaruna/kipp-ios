@@ -15,13 +15,26 @@ class CharacterViewController: UIViewController/*, UITableViewDataSource, UITabl
     
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    
+    @IBOutlet weak var encourageButton: UIButton!
+    @IBOutlet weak var celebrateButton: UIButton!
+    @IBOutlet weak var callLaterButton: UIButton!
+    
+    @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var loadedTraitValues: [Int]!
     
+    var expandedMenu = false
+    
     let views = ["This Week", "History"]
     
     var viewControllers: [UIViewController] = [UIViewController]()
+    
+    let MENU_COLLAPSED_HEIGHT: CGFloat = 50
+    let MENU_EXPANDED_HEIGHT: CGFloat = 255
     
     var activeViewController: UIViewController? {
         didSet(oldViewControllerOrNil) {
@@ -31,6 +44,11 @@ class CharacterViewController: UIViewController/*, UITableViewDataSource, UITabl
                 oldVC.removeFromParentViewController()
             }
             if let newVC = activeViewController {
+                if newVC == viewControllers.last {
+                    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: nil, action: "didTapCancel:")
+                } else {
+                    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save, target: nil, action: "didTapSave:")
+                }
                 self.addChildViewController(newVC)
                 newVC.view.autoresizingMask = .FlexibleHeight | .FlexibleWidth
                 newVC.view.frame = self.contentView.bounds
@@ -75,24 +93,6 @@ class CharacterViewController: UIViewController/*, UITableViewDataSource, UITabl
         self.activeViewController = viewControllers[sender.selectedSegmentIndex]
     }
     
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return student!.characterArray.count
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("characterCell") as CharacterTableViewCell
-//        let trait = student!.characterArray[indexPath.row]
-//        cell.characterTrait = trait
-//        cell.row = indexPath.row
-//        cell.score = trait.score
-//        cell.delegate = self
-//        return cell
-//    }
-//    
-//    func traitScoreDidUpdate(value: Int, forRow row: Int) {
-//        student!.characterArray[row].score = value
-//    }
-//    
     @IBAction func didTapSave(sender: UIBarButtonItem) {
         // Save to Parse
         if activeViewController == viewControllers.first {
@@ -100,24 +100,6 @@ class CharacterViewController: UIViewController/*, UITableViewDataSource, UITabl
             let traitVC = activeViewController! as CharacterTrackingViewController
             traitVC.saveToParse()
             
-//            var scoresToSave = [PFObject]()
-//            
-//            for index in 0..<student!.characterArray.count {
-//                let characterTrait = student!.characterArray[index]
-//                if characterTrait.score != loadedTraitValues[index] {
-//                    NSLog("Saving \(characterTrait.title) with value \(characterTrait.score) (Old value: \(loadedTraitValues[index]))")
-//                    var characterEntry = PFObject(className: "CharacterTrait")
-//                    
-//                    characterEntry["type"] = characterTrait.title
-//                    characterEntry["studentId"] = student!.studentId
-//                    characterEntry["score"] = characterTrait.score
-//                    scoresToSave.append(characterEntry)
-//                }
-//            }
-//            if scoresToSave.count > 0 {
-//                NSLog("Saving scores to parse: \(scoresToSave)")
-//                ParseClient.sharedInstance.saveArrayInBulk(scoresToSave)
-//            }
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -125,25 +107,62 @@ class CharacterViewController: UIViewController/*, UITableViewDataSource, UITabl
     @IBAction func didTapCancel(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-//
-//    func loadScores() {
-//        for index in 0..<student!.characterArray.count {
-//            let curCharacterTrait = student!.characterArray[index]
-//            
-//            ParseClient.sharedInstance.getLatestCharacterScoreForWeekWithCompletion(student!.studentId, characterTrait: curCharacterTrait.title) { (characterTrait, error) -> () in
-//                if characterTrait != nil {
-//                    NSLog("Found \(characterTrait!.title) with score \(characterTrait!.score)")
-//                    self.student!.characterArray[index].score = characterTrait!.score
-//                    self.loadedTraitValues[index] = characterTrait!.score
-//                } else {
-//                    self.loadedTraitValues[index] = 0
-//                }
-//                if index == self.student!.characterArray.count - 1 {
-//                    self.tableView.reloadData() // this is terrible, but don't know how to do a bulk query on this type of data...
-//                }
-//            }
-//        }
-//    }
+    
+    @IBAction func didPan(sender: UIPanGestureRecognizer) {
+        switch(sender.state) {
+        case .Began, .Changed:
+            let translation = sender.translationInView(self.view)
+            NSLog("Began/Changed: \(translation.y)")
+            // Swiping down
+            if translation.y > 0 && expandedMenu {
+                let resizeVal = self.MENU_EXPANDED_HEIGHT - translation.y
+                if resizeVal > self.MENU_COLLAPSED_HEIGHT {
+                    self.menuHeightConstraint.constant = resizeVal
+                } else {
+                    collapseMenu()
+                }
+            } else if translation.y < 0 && !expandedMenu {
+                let resizeVal = self.MENU_COLLAPSED_HEIGHT + (-translation.y)
+                if resizeVal < self.MENU_EXPANDED_HEIGHT {
+                    self.menuHeightConstraint.constant = resizeVal
+                } else {
+                    expandMenu()
+                }
+            }
+        case .Ended, .Cancelled:
+            NSLog("Cancelled")
+            let velocity = sender.velocityInView(self.view)
+            NSLog("Y Velocity: \(velocity.y)")
+            if velocity.y > 0 && expandedMenu {
+                // swipe down
+                collapseMenu()
+            } else if velocity.y < 0 && !expandedMenu {
+                // swiped up
+                expandMenu()
+            } else {
+                // no vertical swipe detected
+            }
+        default:
+            NSLog("event not handled")
+        }
+    }
+    
+    func expandMenu() {
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            self.menuHeightConstraint.constant = self.MENU_EXPANDED_HEIGHT
+            self.blurView.layoutIfNeeded()
+            }, completion: nil)
+        expandedMenu = true
+    }
+    
+    func collapseMenu() {
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            self.menuHeightConstraint.constant = self.MENU_COLLAPSED_HEIGHT
+
+            self.blurView.layoutIfNeeded()
+            }, completion: nil)
+        expandedMenu = false
+    }
     /*
     // MARK: - Navigation
 

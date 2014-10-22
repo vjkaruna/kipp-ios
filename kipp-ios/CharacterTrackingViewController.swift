@@ -45,6 +45,10 @@ class CharacterTrackingViewController: UIViewController, UITableViewDataSource, 
         return cell
     }
     
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView(frame: CGRectMake(0, 0, tableView.frame.width, 35))
+    }
+    
     func traitScoreDidUpdate(value: Int, forRow row: Int) {
         student!.characterArray[row].score = value
     }

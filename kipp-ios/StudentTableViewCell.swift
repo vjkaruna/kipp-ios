@@ -26,6 +26,7 @@ class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate, Studen
             if newStudent != nil {
                 newStudent!.delegate = self
                 self.displayName.text = "\(newStudent!.firstName) \(newStudent!.lastName)"
+                self.profilePic.image = UIImage(named: newStudent!.gender.profileImg())
                 newStudent!.fillAttendanceState() // If we want attendance for specific date, we can pass the date here
             }
         }

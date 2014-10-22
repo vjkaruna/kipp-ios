@@ -21,19 +21,19 @@ enum CharacterLabTraits: String {
     func getRoundAsset() -> String {
         switch self {
         case Curiosity:
-            return "character-curiosity"
+            return "character-curiosity2"
         case .Gratitude:
-            return "character-gratitude"
+            return "character-gratitude2"
         case .Grit:
-            return "character-grit"
+            return "character-grit2"
         case .Optimism:
-            return "character-optimism"
+            return "character-optimism2"
         case .SelfControl:
-            return "character-self-control"
+            return "character-self-control2"
         case .SocialIntelligence:
-            return "character-social-intelligence"
+            return "character-social-intelligence2"
         case .Zest:
-            return "character-zest"
+            return "character-zest2"
         }
     }
     
