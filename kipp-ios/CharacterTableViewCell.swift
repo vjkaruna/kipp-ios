@@ -16,8 +16,12 @@ class CharacterTableViewCell: UITableViewCell {
     
     var score: Int? {
         willSet {
-            scoreLabel.text = "\(newValue ?? 0)"
-            slider.value = Float(newValue ?? 0)
+            let value = newValue ?? 0
+            if value < 0 {
+                scoreLabel.textColor = UIColor(red: CGFloat(204.0/255.0), green: CGFloat(26.0/255.0), blue: CGFloat(20.0/255.0), alpha: CGFloat(1))
+            }
+            scoreLabel.text = "\(value)"
+            slider.value = Float(value)
         }
     }
     var row: Int!
