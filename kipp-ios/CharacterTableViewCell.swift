@@ -13,13 +13,12 @@ class CharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var characterImgView: UIImageView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var characterLabel: UILabel!
     
     var score: Int? {
         willSet {
             let value = newValue ?? 0
-            if value < 0 {
-                scoreLabel.textColor = UIColor(red: CGFloat(204.0/255.0), green: CGFloat(26.0/255.0), blue: CGFloat(20.0/255.0), alpha: CGFloat(1))
-            }
+            setColorForScore(value)
             scoreLabel.text = "\(value)"
             slider.value = Float(value)
         }
@@ -31,14 +30,24 @@ class CharacterTableViewCell: UITableViewCell {
     var characterTrait: CharacterTrait? {
         willSet {
             characterImgView.image = UIImage(named: newValue!.imgName)
+            characterLabel.text = newValue!.title
         }
     }
     @IBAction func sliderDidChange(sender: UISlider) {
         let sliderValue = Int(sender.value)
+        setColorForScore(sliderValue)
         scoreLabel.text = "\(sliderValue)"
         delegate?.traitScoreDidUpdate(sliderValue, forRow: row)
     }
 
+    func setColorForScore(score: Int) {
+        if score < 0 {
+            scoreLabel.textColor = UIColor.myRedColor()
+        } else {
+            scoreLabel.textColor = UIColor.whiteColor()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

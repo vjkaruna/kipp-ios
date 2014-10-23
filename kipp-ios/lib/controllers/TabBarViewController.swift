@@ -36,10 +36,13 @@ class TabBarViewController: UIViewController {
             let attendanceNavController = attendanceSB.instantiateViewControllerWithIdentifier("AttendanceNC") as UIViewController
 
             attendanceNavController.tabBarItem = UITabBarItem(title: "Attendance", image: UIImage(named: "attendance"), tag: 1)
-            rosterNavController.tabBarItem = UITabBarItem(title: "Roster", image: UIImage(named: "character"), tag: 1)
+            rosterNavController.tabBarItem = UITabBarItem(title: "Character", image: UIImage(named: "character"), tag: 1)
             callsNavController.tabBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "phone"), tag: 1)
             
             self._viewControllers = [attendanceNavController, rosterNavController, callsNavController]
+            
+            mainTabBarController.tabBar.tintColor = UIColor.greenTint()
+            mainTabBarController.tabBar.barStyle = .Black
         }
         return self._viewControllers!
     }

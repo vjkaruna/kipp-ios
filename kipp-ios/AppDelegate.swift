@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogin", name: userDidLoginNotification, object: nil)
@@ -21,6 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (ParseClient.sharedInstance.getCurrentUser() != nil) {
             userDidLogin()
         }
+        
+        UINavigationBar.appearance().barTintColor = UIColor.kippBlue()
+        UINavigationBar.appearance().barStyle = .Black
+        UINavigationBar.appearance().tintColor = UIColor.greenTint()
+        
+        let titleAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 17)]
+        UINavigationBar.appearance().titleTextAttributes = titleAttributes
+//        UILabel.appearance().textColor = UIColor.kippBlue()
+//        UILabel.appearance().font = UIFont(name: "HelveticaNeue-CondensedBold", size: 17)
         
         return true
     }

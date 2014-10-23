@@ -9,8 +9,19 @@
 import UIKit
 
 extension UIColor {
-    func myRedColor() -> UIColor {
-        // RGB:
-        return UIColor(red: CGFloat(204/255), green: CGFloat(26/255), blue: CGFloat(20/255), alpha: CGFloat(1))
+    class func myRedColor() -> UIColor {
+        return UIColor(red: CGFloat(204.0/255.0), green: CGFloat(26.0/255.0), blue: CGFloat(20.0/255.0), alpha: CGFloat(1))
+    }
+    
+    class func kippBlue() -> UIColor {
+        return UIColor(red: CGFloat(96.0/255.0), green: CGFloat(162.0/255.0), blue: CGFloat(215.0/255.0), alpha: CGFloat(1))
+    }
+    
+    class func greenTint() -> UIColor {
+        return UIColor(red: CGFloat(158.0/255.0), green: CGFloat(221.0/255.0), blue: CGFloat(168.0/255.0), alpha: CGFloat(1))
+    }
+    
+    class func darkBlue() -> UIColor {
+        return UIColor(red: CGFloat(61.0/255.0), green: CGFloat(112.0/255.0), blue: CGFloat(153.0/255.0), alpha: CGFloat(1))
     }
 }
