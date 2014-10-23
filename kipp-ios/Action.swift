@@ -31,8 +31,18 @@ class Action: NSObject {
     init(pfobj: PFObject) {
         self.type = ActionType.fromRaw(pfobj["type"] as String)
         self.reason = pfobj["reason"] as String
-        self.forDate = pfobj["forDate"] as NSDate
+        self.forDate = pfobj["dateForAction"] as NSDate
         self.dateCompleted = pfobj["dateCompleted"] as? NSDate
+    }
+    
+    class func actionsWithArray(objs: [PFObject]) -> [Action] {
+        var actions = [Action]()
+        
+        for pfobj in objs {
+            actions.append(Action(pfobj: pfobj))
+        }
+//        actions.sort({$0.forDate > $1.forDate})
+        return actions
     }
     
     func setComplete() {

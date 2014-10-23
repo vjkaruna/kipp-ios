@@ -64,6 +64,25 @@ class ParseClient: NSObject {
         })
     }
     
+    func findIncompleteActionsWithCompletion(actionType: ActionType?, completion: (actions: [Action]?, error: NSError?) -> ()) {
+        var actionQuery = PFQuery(className: "Action")
+        if actionType != nil {
+            actionQuery.whereKey("type", equalTo: actionType!.toRaw())
+        }
+        actionQuery.whereKeyDoesNotExist("dateComplete")
+        actionQuery.orderByDescending("dateForAction")
+        actionQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+            if error == nil {
+                let PFActions = objects as [PFObject]
+                let actions = Action.actionsWithArray(PFActions)
+                completion(actions: actions, error: nil)
+            } else {
+                NSLog("error: \(error)")
+                completion(actions: nil, error: error)
+            }
+        })
+    }
+    
     func saveCharacterValueWithCompletion(studentId: Int, characterTrait: CharacterTrait, forDate: NSDate, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
         var characterEntry = PFObject(className: "CharacterTrait")
         
