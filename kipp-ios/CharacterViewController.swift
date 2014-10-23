@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterViewController: UIViewController/*, UITableViewDataSource, UITableViewDelegate, CharacterTraitUpdatedDelegate */{
+class CharacterViewController: UIViewController {
     weak var student: Student?
     
     @IBOutlet weak var tableView: UITableView!
@@ -60,9 +60,6 @@ class CharacterViewController: UIViewController/*, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
-//        tableView.dataSource = self
-//        tableView.delegate = self
         
         for index in 0..<views.count {
             segmentedControl.setTitle(views[index], forSegmentAtIndex: index)
@@ -79,9 +76,6 @@ class CharacterViewController: UIViewController/*, UITableViewDataSource, UITabl
         viewControllers = [trackingVC, dummyVC]
         
         self.activeViewController = viewControllers.first
-        
-//        loadedTraitValues = [Int](count: student!.characterArray.count, repeatedValue: 0)
-//        loadScores()
     }
     
     override func didReceiveMemoryWarning() {
@@ -108,6 +102,31 @@ class CharacterViewController: UIViewController/*, UITableViewDataSource, UITabl
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func didTapAlert(sender: UIButton) {
+        if sender == encourageButton {
+            let action = Action(type: .Encourage, reason: "for testing encourage", forDate: 1.daysFromNow)
+            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.studentId, action: action) { (parseObj, error) -> () in
+                if error != nil {
+                    NSLog("Error saving to Parse")
+                }
+            }
+        } else if sender == celebrateButton {
+            let action = Action(type: .Celebrate, reason: "for testing celebrate", forDate: 2.daysFromNow)
+            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.studentId, action: action) { (parseObj, error) -> () in
+                if error != nil {
+                    NSLog("Error saving to Parse")
+                }
+            }
+        } else {
+            let action = Action(type: .Call, reason: "for testing call", forDate: 3.daysFromNow)
+            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.studentId, action: action) { (parseObj, error) -> () in
+                if error != nil {
+                    NSLog("Error saving to Parse")
+                }
+            }
+        }
+    }
+
     @IBAction func didPan(sender: UIPanGestureRecognizer) {
         switch(sender.state) {
         case .Began, .Changed:

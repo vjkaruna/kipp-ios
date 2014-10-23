@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		541BF93819ED05C4007307C6 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541BF93719ED05C4007307C6 /* CharacterViewController.swift */; };
+		545F717E19F8E7A6001634D3 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F717D19F8E7A6001634D3 /* Action.swift */; };
+		545F718019F8F4AB001634D3 /* Actions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545F717F19F8F4AB001634D3 /* Actions.storyboard */; };
 		54682D5719E9D02300CCE795 /* ClassRoster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5619E9D02300CCE795 /* ClassRoster.storyboard */; };
 		54682D5919E9D06E00CCE795 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D5819E9D06E00CCE795 /* RosterViewController.swift */; };
 		54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */; };
@@ -63,6 +65,8 @@
 /* Begin PBXFileReference section */
 		1630089EAA90EB80C652CE1E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		541BF93719ED05C4007307C6 /* CharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
+		545F717D19F8E7A6001634D3 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		545F717F19F8F4AB001634D3 /* Actions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Actions.storyboard; sourceTree = "<group>"; };
 		54682D5619E9D02300CCE795 /* ClassRoster.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClassRoster.storyboard; sourceTree = "<group>"; };
 		54682D5819E9D06E00CCE795 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassHeaderView.xib; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 				6649802C19EC37230050ACB9 /* Teacher.swift */,
 				54682D5E19E9EC2F00CCE795 /* Student.swift */,
 				54682D6D19EB27F200CCE795 /* Classroom.swift */,
+				545F717D19F8E7A6001634D3 /* Action.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				54682D5619E9D02300CCE795 /* ClassRoster.storyboard */,
 				6649802619EB37F80050ACB9 /* ParentCalls.storyboard */,
 				669ACAA819E75E12004C31ED /* Main.storyboard */,
+				545F717F19F8F4AB001634D3 /* Actions.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54B3B0C619EE5BA500BC83B1 /* CharacterView.xib in Resources */,
+				545F718019F8F4AB001634D3 /* Actions.storyboard in Resources */,
 				669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */,
 				54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */,
 				FCF1563019F6167B0057617D /* Attendance.storyboard in Resources */,
@@ -424,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA0872A19EE4A0900CF57FD /* TabBarViewController.swift in Sources */,
+				545F717E19F8E7A6001634D3 /* Action.swift in Sources */,
 				669ACAA719E75E12004C31ED /* LoginViewController.swift in Sources */,
 				54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */,
 				549937F719F64E150026C7E4 /* CharacterTrackingViewController.swift in Sources */,

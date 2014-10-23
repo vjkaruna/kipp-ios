@@ -137,6 +137,27 @@ class ParseClient: NSObject {
             }
         })
     }
+    
+    func saveActionObjectWithCompletion(studentId: Int, action: Action, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
+        var actionEntry = PFObject(className: "Action")
+        
+        actionEntry["type"] = action.type.toRaw()
+        actionEntry["reason"] = action.reason
+        actionEntry["dateForAction"] = action.forDate
+        if action.dateCompleted != nil {
+            actionEntry["dateCompleted"] = action.dateCompleted
+        }
+        actionEntry["studentId"] = studentId
+        
+        actionEntry.saveInBackgroundWithBlock { (saved, error) -> Void in
+            if saved {
+                completion(parseObj: actionEntry, error: nil)
+            } else {
+                NSLog("Failed to save action entry for student \(studentId)")
+                completion(parseObj: nil, error: error)
+            }
+        }
+    }
 }
 
 let calendar = NSCalendar(identifier: NSGregorianCalendar)
@@ -160,6 +181,15 @@ extension NSDate {
         dateComponents.minute = 59
         dateComponents.second = 59
         return calendar.dateFromComponents(dateComponents)!
+    }
+}
+
+extension Int {
+    var daysFromNow: NSDate {
+        let today = NSDate().beginningOfDay()
+        let dateComponents = NSDateComponents()
+        dateComponents.day = self
+        return calendar.dateByAddingComponents(dateComponents, toDate: today, options: nil)!
     }
 }
 

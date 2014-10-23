@@ -35,11 +35,15 @@ class TabBarViewController: UIViewController {
             let attendanceSB = UIStoryboard(name: "Attendance", bundle: nil)
             let attendanceNavController = attendanceSB.instantiateViewControllerWithIdentifier("AttendanceNC") as UIViewController
 
+            let actionSB = UIStoryboard(name: "Actions", bundle: nil)
+            let actionNavController = actionSB.instantiateViewControllerWithIdentifier("ActionNC") as UIViewController
+            
             attendanceNavController.tabBarItem = UITabBarItem(title: "Attendance", image: UIImage(named: "attendance"), tag: 1)
             rosterNavController.tabBarItem = UITabBarItem(title: "Character", image: UIImage(named: "character"), tag: 1)
+            actionNavController.tabBarItem = UITabBarItem(title: "Actions", image: UIImage(named: "phone"), tag: 1)
             callsNavController.tabBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "phone"), tag: 1)
             
-            self._viewControllers = [attendanceNavController, rosterNavController, callsNavController]
+            self._viewControllers = [attendanceNavController, rosterNavController, actionNavController, callsNavController]
             
             mainTabBarController.tabBar.tintColor = UIColor.greenTint()
             mainTabBarController.tabBar.barStyle = .Black
