@@ -49,7 +49,7 @@ class ParseClient: NSObject {
     
     func findClassroomsWithCompletion(completion: (classrooms: [Classroom]?, error: NSError?) -> ()) {
         var classroomQuery = PFQuery(className: "Classroom")
-        classroomQuery.whereKey("teacher", equalTo: PFUser.currentUser())
+        classroomQuery.whereKey("teacher2", equalTo: PFUser.currentUser())
         classroomQuery.includeKey("students")
         
         classroomQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
