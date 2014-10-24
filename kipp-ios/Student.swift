@@ -32,6 +32,7 @@ class Student: NSObject {
     var firstName, lastName: String!
     var studentId: Int!
     var gender: Gender!
+    var pfObj: PFObject!
     var delegate: StudentProfileChangedDelegate?
     
     var attendance: AttendanceType?
@@ -44,6 +45,7 @@ class Student: NSObject {
         self.studentId = obj["studentId"] as NSInteger
         let genderChar = obj["gender"] as NSString
         self.gender = Gender.fromRaw(genderChar)
+        self.pfObj = obj
     }
     
      var fullName: String {

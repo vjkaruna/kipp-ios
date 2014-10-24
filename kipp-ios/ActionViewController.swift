@@ -17,6 +17,8 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     
     var actions: [Action]?
     
+    let views = ["By Date", "By Action", "History"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,11 +26,19 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         
         ParseClient.sharedInstance.findIncompleteActionsWithCompletion(nil) { (actions, error) -> () in
-            self.actions = actions
-            self.tableView.reloadData()
+            if actions != nil {
+                self.actions = actions
+                self.tableView.reloadData()
+            } else {
+                NSLog("Error getting actions: \(error)")
+            }
         }
     }
 
+    @IBAction func didChangeControl(sender: UISegmentedControl) {
+        reloadTableView()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,4 +59,39 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         cell.actionTypeLabel.text = action.type.toRaw()
         return cell
     }
+    
+    func reloadTableView() {
+        switch views[segmentedControl.selectedSegmentIndex] {
+        case "By Date":
+            loadByDate()
+        case "By Action":
+            loadByAction()
+        case "History":
+            loadByHisotry()
+        default:
+            loadByDate()
+        }
+    }
+    
+    func loadByDate() {
+        NSLog("Date")
+    }
+    func loadByAction() {
+        NSLog("Action")
+    }
+    func loadByHisotry() {
+        NSLog("Histroy")
+    }
+    
+//    
+//    func didPostTweet(tweet: Tweet) {
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//        println(tweet.text)
+//        insertTweetAtTop(tweet)
+//    }
+//    
+//    func insertTweetAtTop(tweet: Tweet) {
+//        tweets?.insert(tweet, atIndex: 0)
+//        tableView.reloadData()
+//    }
 }

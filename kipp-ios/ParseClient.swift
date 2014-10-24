@@ -69,8 +69,13 @@ class ParseClient: NSObject {
         if actionType != nil {
             actionQuery.whereKey("type", equalTo: actionType!.toRaw())
         }
+        let userId = PFUser.currentUser().objectForKey("userId") as Int
+        NSLog("\(userId)")
+        actionQuery.whereKey("userId", equalTo: userId)
         actionQuery.whereKeyDoesNotExist("dateComplete")
         actionQuery.orderByDescending("dateForAction")
+//        actionQuery.includeKey("students")
+        
         actionQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             if error == nil {
                 let PFActions = objects as [PFObject]
@@ -157,7 +162,7 @@ class ParseClient: NSObject {
         })
     }
     
-    func saveActionObjectWithCompletion(studentId: Int, action: Action, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
+    func saveActionObjectWithCompletion(studentObj: PFObject, action: Action, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
         var actionEntry = PFObject(className: "Action")
         
         actionEntry["type"] = action.type.toRaw()
@@ -166,13 +171,14 @@ class ParseClient: NSObject {
         if action.dateCompleted != nil {
             actionEntry["dateCompleted"] = action.dateCompleted
         }
-        actionEntry["studentId"] = studentId
+        actionEntry["student"] = studentObj
+        actionEntry["userId"] = PFUser.currentUser().objectForKey("userId") as Int
         
         actionEntry.saveInBackgroundWithBlock { (saved, error) -> Void in
             if saved {
                 completion(parseObj: actionEntry, error: nil)
             } else {
-                NSLog("Failed to save action entry for student \(studentId)")
+                NSLog("Failed to save action entry for student \(studentObj)")
                 completion(parseObj: nil, error: error)
             }
         }

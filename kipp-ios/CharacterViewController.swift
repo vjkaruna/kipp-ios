@@ -105,23 +105,29 @@ class CharacterViewController: UIViewController {
     @IBAction func didTapAlert(sender: UIButton) {
         if sender == encourageButton {
             let action = Action(type: .Encourage, reason: "for testing encourage", forDate: 1.daysFromNow)
-            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.studentId, action: action) { (parseObj, error) -> () in
+            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
                 if error != nil {
                     NSLog("Error saving to Parse")
+                } else {
+                    NSLog("Saved to Parse")
                 }
             }
         } else if sender == celebrateButton {
             let action = Action(type: .Celebrate, reason: "for testing celebrate", forDate: 2.daysFromNow)
-            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.studentId, action: action) { (parseObj, error) -> () in
+            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
                 if error != nil {
                     NSLog("Error saving to Parse")
+                } else {
+                    NSLog("Saved to Parse")
                 }
             }
         } else {
             let action = Action(type: .Call, reason: "for testing call", forDate: 3.daysFromNow)
-            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.studentId, action: action) { (parseObj, error) -> () in
+            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
                 if error != nil {
                     NSLog("Error saving to Parse")
+                } else {
+                    NSLog("Saved to Parse")
                 }
             }
         }
