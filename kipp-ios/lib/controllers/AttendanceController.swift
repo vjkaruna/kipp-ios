@@ -55,35 +55,37 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
     func onCellDrag(panGestureRecognizer: UIPanGestureRecognizer) {
         let magicThreshold:CGFloat = 144
         let indexPath = attendanceTable.indexPathForRowAtPoint(panGestureRecognizer.locationInView(attendanceTable))
-        if panGestureRecognizer.state == UIGestureRecognizerState.Began {
-            self.draggedCell = (attendanceTable.cellForRowAtIndexPath(indexPath!)) as? AttendanceViewCell
-        } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
-            draggedCell?.moveCell(panGestureRecognizer.translationInView(attendanceTable).x)
-        } else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
-            var amount = panGestureRecognizer.translationInView(attendanceTable).x
-            if (abs(amount) < magicThreshold) {
-                self.draggedCell?.moveCell(0)
-                UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 10, options: UIViewAnimationOptions(), animations: { () -> Void in
-                    self.view.layoutIfNeeded()
-                    return Void()
-                    }, completion: nil)
-            } else {
-                
-                
-                let offScreenAmount = 3 * panGestureRecognizer.translationInView(attendanceTable).x
-                self.draggedCell?.moveCell(offScreenAmount)
-                UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: UIViewAnimationOptions(), animations: { () -> Void in
-                    self.view.layoutIfNeeded()
-                    return ()
-                    }, completion: { (bool:Bool) -> Void in
-                        if amount > magicThreshold {
-                            self.markStudent(indexPath!, type: AttendanceType.Present)
-                        } else {
-                            self.markStudent(indexPath!, type: AttendanceType.Absent)
-                        }
+        if indexPath != nil {
+            if panGestureRecognizer.state == UIGestureRecognizerState.Began {
+                self.draggedCell = (attendanceTable.cellForRowAtIndexPath(indexPath!)) as? AttendanceViewCell
+            } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
+                draggedCell?.moveCell(panGestureRecognizer.translationInView(attendanceTable).x)
+            } else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
+                var amount = panGestureRecognizer.translationInView(attendanceTable).x
+                if (abs(amount) < magicThreshold) {
+                    self.draggedCell?.moveCell(0)
+                    UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 10, options: UIViewAnimationOptions(), animations: { () -> Void in
+                        self.view.layoutIfNeeded()
+                        return Void()
+                        }, completion: nil)
+                } else {
+                    
+                    
+                    let offScreenAmount = 3 * panGestureRecognizer.translationInView(attendanceTable).x
+                    self.draggedCell?.moveCell(offScreenAmount)
+                    UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: UIViewAnimationOptions(), animations: { () -> Void in
+                        self.view.layoutIfNeeded()
                         return ()
-                })
-                
+                        }, completion: { (bool:Bool) -> Void in
+                            if amount > magicThreshold {
+                                self.markStudent(indexPath!, type: AttendanceType.Present)
+                            } else {
+                                self.markStudent(indexPath!, type: AttendanceType.Absent)
+                            }
+                            return ()
+                    })
+                    
+                }
             }
         }
     }
