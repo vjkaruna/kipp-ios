@@ -49,7 +49,7 @@ class ParseClient: NSObject {
     
     func findClassroomsWithCompletion(completion: (classrooms: [Classroom]?, error: NSError?) -> ()) {
         var classroomQuery = PFQuery(className: "Classroom")
-        classroomQuery.whereKey("teacher", equalTo: PFUser.currentUser())
+        classroomQuery.whereKey("teacher2", equalTo: PFUser.currentUser())
         classroomQuery.includeKey("students")
         
         classroomQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
@@ -60,6 +60,30 @@ class ParseClient: NSObject {
             } else {
                 NSLog("error: \(error)")
                 completion(classrooms: nil, error: error)
+            }
+        })
+    }
+    
+    func findIncompleteActionsWithCompletion(actionType: ActionType?, completion: (actions: [Action]?, error: NSError?) -> ()) {
+        var actionQuery = PFQuery(className: "Action")
+        if actionType != nil {
+            actionQuery.whereKey("type", equalTo: actionType!.toRaw())
+        }
+        let userId = PFUser.currentUser().objectForKey("userId") as Int
+        NSLog("\(userId)")
+        actionQuery.whereKey("userId", equalTo: userId)
+        actionQuery.whereKeyDoesNotExist("dateComplete")
+        actionQuery.orderByDescending("dateForAction")
+//        actionQuery.includeKey("students")
+        
+        actionQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+            if error == nil {
+                let PFActions = objects as [PFObject]
+                let actions = Action.actionsWithArray(PFActions)
+                completion(actions: actions, error: nil)
+            } else {
+                NSLog("error: \(error)")
+                completion(actions: nil, error: error)
             }
         })
     }
@@ -137,6 +161,28 @@ class ParseClient: NSObject {
             }
         })
     }
+    
+    func saveActionObjectWithCompletion(studentObj: PFObject, action: Action, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
+        var actionEntry = PFObject(className: "Action")
+        
+        actionEntry["type"] = action.type.toRaw()
+        actionEntry["reason"] = action.reason
+        actionEntry["dateForAction"] = action.forDate
+        if action.dateCompleted != nil {
+            actionEntry["dateCompleted"] = action.dateCompleted
+        }
+        actionEntry["student"] = studentObj
+        actionEntry["userId"] = PFUser.currentUser().objectForKey("userId") as Int
+        
+        actionEntry.saveInBackgroundWithBlock { (saved, error) -> Void in
+            if saved {
+                completion(parseObj: actionEntry, error: nil)
+            } else {
+                NSLog("Failed to save action entry for student \(studentObj)")
+                completion(parseObj: nil, error: error)
+            }
+        }
+    }
 }
 
 let calendar = NSCalendar(identifier: NSGregorianCalendar)
@@ -160,6 +206,15 @@ extension NSDate {
         dateComponents.minute = 59
         dateComponents.second = 59
         return calendar.dateFromComponents(dateComponents)!
+    }
+}
+
+extension Int {
+    var daysFromNow: NSDate {
+        let today = NSDate().beginningOfDay()
+        let dateComponents = NSDateComponents()
+        dateComponents.day = self
+        return calendar.dateByAddingComponents(dateComponents, toDate: today, options: nil)!
     }
 }
 
