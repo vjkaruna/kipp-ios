@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ProfileGraphViewController: UIViewController, GKLineGraphDataSource {
+//class ProfileGraphViewController: UIViewController, GKLineGraphDataSource {
+class ProfileGraphViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
