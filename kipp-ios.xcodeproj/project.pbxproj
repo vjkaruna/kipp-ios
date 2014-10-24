@@ -50,6 +50,8 @@
 		66D2DE2719E9B81700661E13 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D2DE1D19E9B81700661E13 /* StoreKit.framework */; };
 		66D2DE2819E9B81700661E13 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D2DE1E19E9B81700661E13 /* SystemConfiguration.framework */; };
 		849D0FC651104C3EA3891FEA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4141796B4DD45A99734D2AC /* libPods.a */; };
+		FC25F94B19FA24FA003949AE /* AttendanceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25F94A19FA24FA003949AE /* AttendanceViewCell.swift */; };
+		FC25F94D19FA251F003949AE /* AttendanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25F94C19FA251F003949AE /* AttendanceController.swift */; };
 		FCA0872A19EE4A0900CF57FD /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */; };
 		FCF1563019F6167B0057617D /* Attendance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF1562F19F6167B0057617D /* Attendance.storyboard */; };
 /* End PBXBuildFile section */
@@ -115,6 +117,8 @@
 		66D2DE2919E9B85000661E13 /* kipp-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kipp-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		A14388D02D42951654246507 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C4141796B4DD45A99734D2AC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC25F94A19FA24FA003949AE /* AttendanceViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttendanceViewCell.swift; path = lib/AttendanceViewCell.swift; sourceTree = "<group>"; };
+		FC25F94C19FA251F003949AE /* AttendanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttendanceController.swift; path = lib/controllers/AttendanceController.swift; sourceTree = "<group>"; };
 		FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = lib/controllers/TabBarViewController.swift; sourceTree = "<group>"; };
 		FCF1562F19F6167B0057617D /* Attendance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Attendance.storyboard; path = ../Attendance.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +187,7 @@
 				549937F619F64E150026C7E4 /* CharacterTrackingViewController.swift */,
 				545F718319F8F6C8001634D3 /* ActionViewController.swift */,
 				FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */,
+				FC25F94C19FA251F003949AE /* AttendanceController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */,
 				549937F819F77E420026C7E4 /* Colors.swift */,
 				545F718519F8FADF001634D3 /* ActionTableViewCell.swift */,
+				FC25F94A19FA24FA003949AE /* AttendanceViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 				549937F919F77E420026C7E4 /* Colors.swift in Sources */,
 				54682D5919E9D06E00CCE795 /* RosterViewController.swift in Sources */,
 				541BF93819ED05C4007307C6 /* CharacterViewController.swift in Sources */,
+				FC25F94B19FA24FA003949AE /* AttendanceViewCell.swift in Sources */,
 				54682D6E19EB27F200CCE795 /* Classroom.swift in Sources */,
 				54682D7019EB2FAF00CCE795 /* ClassroomTableViewCell.swift in Sources */,
 				54B3B0CA19EFAD2F00BC83B1 /* CharacterTableViewCell.swift in Sources */,
@@ -460,6 +467,7 @@
 				6649802D19EC37230050ACB9 /* Teacher.swift in Sources */,
 				6649802919EB38040050ACB9 /* ParentCallsController.swift in Sources */,
 				545F718419F8F6C8001634D3 /* ActionViewController.swift in Sources */,
+				FC25F94D19FA251F003949AE /* AttendanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
