@@ -78,9 +78,6 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.37647058820000001" green="0.63529411759999999" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <segue destination="9VN-Kk-Obo" kind="presentation" identifier="showProfile" id="VHz-ao-go7"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -91,6 +88,7 @@
                     <navigationItem key="navigationItem" id="eFx-ko-jAE"/>
                     <connections>
                         <outlet property="parentsTable" destination="sLx-vc-3Tp" id="inY-ki-ceS"/>
+                        <segue destination="9VN-Kk-Obo" kind="show" identifier="showProfile" id="IIk-1H-Dcw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94Z-87-N3U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,15 +107,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Performance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jl9-xJ-VOR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Student Performance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jl9-xJ-VOR">
                                 <rect key="frame" x="68" y="64" width="224" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AeB-pT-Zwy" customClass="GKLineGraph">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AeB-pT-Zwy" customClass="GKLineGraph">
                                 <rect key="frame" x="68" y="110" width="300" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="ZRo-M4-PDf"/>
+                                    <constraint firstAttribute="width" constant="300" id="lsh-cF-GJL"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>

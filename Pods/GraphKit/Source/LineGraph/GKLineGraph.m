@@ -129,8 +129,8 @@ static CGFloat kAxisMargin = 50.0;
         CGFloat startY = (self.height - labelHeight);
         
         UILabel *label = [self.titleLabels objectAtIndex:idx];
-        label.x = startX;
-        label.y = startY;
+        //label.x = startX;
+        //label.y = startY;
         
         [self addSubview:label];
 
@@ -162,7 +162,7 @@ static CGFloat kAxisMargin = 50.0;
         item.textColor = [UIColor lightGrayColor];
     
         CGFloat value = [self _minValue] + (idx * [self _stepValueLabelY]);
-        item.centerY = [self _positionYForLineValue:value];
+        //item.centerY = [self _positionYForLineValue:value];
         
         item.text = [@(ceil(value)) stringValue];
         

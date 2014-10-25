@@ -18,11 +18,13 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        var frame = CGRectMake(0, 40, 320, 200)
-        self.graph = GKLineGraph(frame: frame)
+        //var frame = CGRectMake(0, 40, 320, 200)
+        //self.graph = GKLineGraph(frame: frame)
         
         self.graph.dataSource = self
         self.graph.lineWidth = 3.0
+        self.graph.width = 300
+        self.graph.height = 300
         
         self.graph.draw()
     }
@@ -33,7 +35,7 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource {
     }
     
      func numberOfLines() -> Int {
-        return 2
+        return 1
     }
     
     func colorForLineAtIndex(index: Int) -> UIColor! {
@@ -45,12 +47,12 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource {
     }
     
     func valuesForLineAtIndex(index: Int) -> [AnyObject]! {
-        var data = [2,3,4,7,5,4,8,12,5,3,4,6,9]
+        var data = [2,30,40,70,50,40,80,120,50,3,40,60,90]
         return data
     }
     
     func animationDurationForLineAtIndex(index: Int) -> CFTimeInterval {
-        return CFTimeInterval(1.5)
+        return CFTimeInterval(3)
     }
     
     func titleForLineAtIndex(index: Int) -> String! {

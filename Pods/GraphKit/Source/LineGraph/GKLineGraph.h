@@ -38,6 +38,9 @@
 
 @property (nonatomic, assign) CGFloat margin;
 
+@property (nonatomic, assign) CGFloat height;
+@property (nonatomic, assign) CGFloat width;
+
 - (void)draw;
 - (void)reset;
 

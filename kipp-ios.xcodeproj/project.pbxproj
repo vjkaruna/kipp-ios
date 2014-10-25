@@ -24,6 +24,8 @@
 		54B3B0C619EE5BA500BC83B1 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54B3B0C519EE5BA500BC83B1 /* CharacterView.xib */; };
 		54B3B0C819EE613A00BC83B1 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B3B0C719EE613A00BC83B1 /* CharacterView.swift */; };
 		54B3B0CA19EFAD2F00BC83B1 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */; };
+		66147C3919FB5DCF0001CB6F /* libPods-GraphKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */; };
+		66147C3A19FB5DCF0001CB6F /* libPods-MKFoundationKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */; };
 		6615BEF119F3065200B7D8EC /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6615BEF019F3065200B7D8EC /* ParseClient.swift */; };
 		6649802719EB37F80050ACB9 /* ParentCalls.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6649802619EB37F80050ACB9 /* ParentCalls.storyboard */; };
 		6649802919EB38040050ACB9 /* ParentCallsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649802819EB38040050ACB9 /* ParentCallsController.swift */; };
@@ -46,7 +48,6 @@
 		66D2DE2619E9B81700661E13 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D2DE1C19E9B81700661E13 /* Security.framework */; };
 		66D2DE2719E9B81700661E13 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D2DE1D19E9B81700661E13 /* StoreKit.framework */; };
 		66D2DE2819E9B81700661E13 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D2DE1E19E9B81700661E13 /* SystemConfiguration.framework */; };
-		849D0FC651104C3EA3891FEA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4141796B4DD45A99734D2AC /* libPods.a */; };
 		FCA0872A19EE4A0900CF57FD /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */; };
 		FCF1563019F6167B0057617D /* Attendance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF1562F19F6167B0057617D /* Attendance.storyboard */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,8 @@
 		54B3B0C519EE5BA500BC83B1 /* CharacterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterView.xib; sourceTree = "<group>"; };
 		54B3B0C719EE613A00BC83B1 /* CharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-GraphKit.a"; path = "Pods/build/Debug-iphoneos/libPods-GraphKit.a"; sourceTree = "<group>"; };
+		66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MKFoundationKit.a"; path = "Pods/build/Debug-iphoneos/libPods-MKFoundationKit.a"; sourceTree = "<group>"; };
 		6615BEF019F3065200B7D8EC /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		6649802619EB37F80050ACB9 /* ParentCalls.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ParentCalls.storyboard; sourceTree = "<group>"; };
 		6649802819EB38040050ACB9 /* ParentCallsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentCallsController.swift; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66147C3919FB5DCF0001CB6F /* libPods-GraphKit.a in Frameworks */,
+				66147C3A19FB5DCF0001CB6F /* libPods-MKFoundationKit.a in Frameworks */,
 				66D2DE1F19E9B81700661E13 /* AudioToolbox.framework in Frameworks */,
 				66D2DE2019E9B81700661E13 /* CFNetwork.framework in Frameworks */,
 				66D2DE2119E9B81700661E13 /* CoreGraphics.framework in Frameworks */,
@@ -128,7 +133,6 @@
 				66D2DE2619E9B81700661E13 /* Security.framework in Frameworks */,
 				66D2DE2719E9B81700661E13 /* StoreKit.framework in Frameworks */,
 				66D2DE2819E9B81700661E13 /* SystemConfiguration.framework in Frameworks */,
-				849D0FC651104C3EA3891FEA /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +274,8 @@
 		6E19F020322F4F04B39D44D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */,
+				66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */,
 				66D2DE1519E9B81700661E13 /* AudioToolbox.framework */,
 				66D2DE1619E9B81700661E13 /* CFNetwork.framework */,
 				66D2DE1719E9B81700661E13 /* CoreGraphics.framework */,
@@ -580,6 +586,7 @@
 					"$(PROJECT_DIR)/Bolts.framework/Versions/A",
 					"$(PROJECT_DIR)/Parse.framework",
 					"$(PROJECT_DIR)/Parse.framework/Versions/A",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "kipp-ios-Bridging-Header.h";
@@ -601,6 +608,7 @@
 					"$(PROJECT_DIR)/Bolts.framework/Versions/A",
 					"$(PROJECT_DIR)/Parse.framework",
 					"$(PROJECT_DIR)/Parse.framework/Versions/A",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "kipp-ios-Bridging-Header.h";
