@@ -26,6 +26,7 @@
 		54B3B0CA19EFAD2F00BC83B1 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */; };
 		66147C3919FB5DCF0001CB6F /* libPods-GraphKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */; };
 		66147C3A19FB5DCF0001CB6F /* libPods-MKFoundationKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */; };
+		66147C3C19FB64C30001CB6F /* libPods-FrameAccessor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */; };
 		6615BEF119F3065200B7D8EC /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6615BEF019F3065200B7D8EC /* ParseClient.swift */; };
 		6649802719EB37F80050ACB9 /* ParentCalls.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6649802619EB37F80050ACB9 /* ParentCalls.storyboard */; };
 		6649802919EB38040050ACB9 /* ParentCallsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649802819EB38040050ACB9 /* ParentCallsController.swift */; };
@@ -83,6 +84,7 @@
 		54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-GraphKit.a"; path = "Pods/build/Debug-iphoneos/libPods-GraphKit.a"; sourceTree = "<group>"; };
 		66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MKFoundationKit.a"; path = "Pods/build/Debug-iphoneos/libPods-MKFoundationKit.a"; sourceTree = "<group>"; };
+		66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-FrameAccessor.a"; path = "Pods/build/Debug-iphoneos/libPods-FrameAccessor.a"; sourceTree = "<group>"; };
 		6615BEF019F3065200B7D8EC /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		6649802619EB37F80050ACB9 /* ParentCalls.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ParentCalls.storyboard; sourceTree = "<group>"; };
 		6649802819EB38040050ACB9 /* ParentCallsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentCallsController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66147C3C19FB64C30001CB6F /* libPods-FrameAccessor.a in Frameworks */,
 				66147C3919FB5DCF0001CB6F /* libPods-GraphKit.a in Frameworks */,
 				66147C3A19FB5DCF0001CB6F /* libPods-MKFoundationKit.a in Frameworks */,
 				66D2DE1F19E9B81700661E13 /* AudioToolbox.framework in Frameworks */,
@@ -274,6 +277,7 @@
 		6E19F020322F4F04B39D44D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */,
 				66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */,
 				66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */,
 				66D2DE1519E9B81700661E13 /* AudioToolbox.framework */,
