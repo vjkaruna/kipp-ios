@@ -70,11 +70,35 @@ class ParseClient: NSObject {
             actionQuery.whereKey("type", equalTo: actionType!.toRaw())
         }
         let userId = PFUser.currentUser().objectForKey("userId") as Int
-        NSLog("\(userId)")
+
         actionQuery.whereKey("userId", equalTo: userId)
         actionQuery.whereKeyDoesNotExist("dateComplete")
         actionQuery.orderByDescending("dateForAction")
 //        actionQuery.includeKey("students")
+        
+        actionQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+            if error == nil {
+                let PFActions = objects as [PFObject]
+                let actions = Action.actionsWithArray(PFActions)
+                completion(actions: actions, error: nil)
+            } else {
+                NSLog("error: \(error)")
+                completion(actions: nil, error: error)
+            }
+        })
+    }
+    
+    func findCompleteActionsWithCompletion(actionType: ActionType?, completion: (actions: [Action]?, error: NSError?) -> ()) {
+        var actionQuery = PFQuery(className: "Action")
+        if actionType != nil {
+            actionQuery.whereKey("type", equalTo: actionType!.toRaw())
+        }
+        let userId = PFUser.currentUser().objectForKey("userId") as Int
+
+        actionQuery.whereKey("userId", equalTo: userId)
+        actionQuery.whereKeyExists("dateComplete")
+        actionQuery.orderByDescending("dateForAction")
+        //        actionQuery.includeKey("students")
         
         actionQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             if error == nil {

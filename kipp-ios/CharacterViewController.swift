@@ -36,6 +36,8 @@ class CharacterViewController: UIViewController {
     let MENU_COLLAPSED_HEIGHT: CGFloat = 50
     let MENU_EXPANDED_HEIGHT: CGFloat = 255
     
+    let classRosterSB = UIStoryboard(name: "ClassRoster", bundle: nil)
+    
     var activeViewController: UIViewController? {
         didSet(oldViewControllerOrNil) {
             if let oldVC = oldViewControllerOrNil {
@@ -60,6 +62,8 @@ class CharacterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        modalPresentationStyle = UIModalPresentationStyle.CurrentContext
         
         for index in 0..<views.count {
             segmentedControl.setTitle(views[index], forSegmentAtIndex: index)
@@ -103,6 +107,8 @@ class CharacterViewController: UIViewController {
     }
     
     @IBAction func didTapAlert(sender: UIButton) {
+        // TODO bring up modal here
+        showReasonModal()
         if sender == encourageButton {
             let action = Action(type: .Encourage, reason: "for testing encourage", forDate: 1.daysFromNow)
             ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
@@ -133,6 +139,13 @@ class CharacterViewController: UIViewController {
         }
     }
 
+    func showReasonModal() {
+        let vc = classRosterSB.instantiateViewControllerWithIdentifier("reasonVC") as ReasonViewController
+        self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+//        vc.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
+        self.presentViewController(vc, animated: false, completion: nil)
+    }
+    
     @IBAction func didPan(sender: UIPanGestureRecognizer) {
         switch(sender.state) {
         case .Began, .Changed:

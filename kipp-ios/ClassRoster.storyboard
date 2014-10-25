@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -114,7 +114,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loI-8T-HlR">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="4oY-CG-Ph8">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="4oY-CG-Ph8">
                                                             <rect key="frame" x="15" y="10" width="45" height="45"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="45" id="LfB-bg-fE5"/>
@@ -593,7 +593,72 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRg-4F-znx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4410" y="1115"/>
+            <point key="canvasLocation" x="3790" y="1784"/>
+        </scene>
+        <!--Reason View Controller-->
+        <scene sceneID="V3j-Pd-uXR">
+            <objects>
+                <viewController storyboardIdentifier="reasonVC" id="rx3-xn-Eza" customClass="ReasonViewController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S4n-v4-Jmi"/>
+                        <viewControllerLayoutGuide type="bottom" id="sUO-py-6G8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Gn-OH-mJv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0t-Mo-8Zu">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Cip-Dq-fdF" appends="YES" id="2hi-ud-4jW"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfc-aw-BhA">
+                                <rect key="frame" x="150" y="120" width="300" height="146"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Reason text for alert" translatesAutoresizingMaskIntoConstraints="NO" id="adK-eY-rbw">
+                                        <rect key="frame" x="12" y="43" width="276" height="94.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tD7-1K-h1v">
+                                        <rect key="frame" x="12" y="15" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.88276675194225429" green="0.90326723921862995" blue="0.93594547193877553" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="tD7-1K-h1v" firstAttribute="top" secondItem="pfc-aw-BhA" secondAttribute="top" constant="15" id="AIK-Nt-37K"/>
+                                    <constraint firstAttribute="width" constant="300" id="QOR-f2-Byr"/>
+                                    <constraint firstAttribute="height" constant="146" id="R4o-0W-IWM"/>
+                                    <constraint firstItem="adK-eY-rbw" firstAttribute="top" secondItem="tD7-1K-h1v" secondAttribute="bottom" constant="8" id="XSy-i9-Pet"/>
+                                    <constraint firstAttribute="trailing" secondItem="adK-eY-rbw" secondAttribute="trailing" constant="12" id="bPa-gb-eVd"/>
+                                    <constraint firstAttribute="bottom" secondItem="adK-eY-rbw" secondAttribute="bottom" constant="8" id="e1b-DI-PTf"/>
+                                    <constraint firstItem="adK-eY-rbw" firstAttribute="leading" secondItem="pfc-aw-BhA" secondAttribute="leading" constant="12" id="iGx-d8-tBM"/>
+                                    <constraint firstItem="tD7-1K-h1v" firstAttribute="leading" secondItem="pfc-aw-BhA" secondAttribute="leading" constant="12" id="mG9-rt-zF8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="pfc-aw-BhA" secondAttribute="centerX" id="3qD-39-X0T"/>
+                            <constraint firstItem="pfc-aw-BhA" firstAttribute="top" secondItem="S4n-v4-Jmi" secondAttribute="bottom" constant="100" id="5rL-Bw-c7u"/>
+                            <constraint firstItem="sUO-py-6G8" firstAttribute="top" secondItem="n0t-Mo-8Zu" secondAttribute="bottom" id="CRG-D7-DNa"/>
+                            <constraint firstItem="n0t-Mo-8Zu" firstAttribute="leading" secondItem="0Gn-OH-mJv" secondAttribute="leading" id="cuJ-4a-PGv"/>
+                            <constraint firstItem="n0t-Mo-8Zu" firstAttribute="top" secondItem="0Gn-OH-mJv" secondAttribute="top" id="mUQ-mG-KdG"/>
+                            <constraint firstAttribute="trailing" secondItem="n0t-Mo-8Zu" secondAttribute="trailing" id="o86-Wi-x8i"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KIn-iG-b9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Cip-Dq-fdF"/>
+            </objects>
+            <point key="canvasLocation" x="4515" y="1115"/>
         </scene>
         <!--Item-->
         <scene sceneID="T2s-7f-VDw">
@@ -628,6 +693,6 @@
         <image name="character-self-control" width="139" height="186"/>
         <image name="character-social-intelligence" width="139" height="177"/>
         <image name="character-zest" width="139" height="178"/>
-        <image name="profile" width="600" height="600"/>
+        <image name="girl" width="250" height="250"/>
     </resources>
 </document>

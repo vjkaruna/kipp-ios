@@ -12,6 +12,9 @@
 		545F718019F8F4AB001634D3 /* Actions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545F717F19F8F4AB001634D3 /* Actions.storyboard */; };
 		545F718419F8F6C8001634D3 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F718319F8F6C8001634D3 /* ActionViewController.swift */; };
 		545F718619F8FADF001634D3 /* ActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F718519F8FADF001634D3 /* ActionTableViewCell.swift */; };
+		545F718819FB95F7001634D3 /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F718719FB95F7001634D3 /* EmptyDataView.swift */; };
+		545F718A19FB9671001634D3 /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 545F718919FB9671001634D3 /* EmptyDataView.xib */; };
+		545F718C19FC3CD7001634D3 /* ReasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F718B19FC3CD7001634D3 /* ReasonViewController.swift */; };
 		54682D5719E9D02300CCE795 /* ClassRoster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5619E9D02300CCE795 /* ClassRoster.storyboard */; };
 		54682D5919E9D06E00CCE795 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D5819E9D06E00CCE795 /* RosterViewController.swift */; };
 		54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */; };
@@ -73,6 +76,9 @@
 		545F717F19F8F4AB001634D3 /* Actions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Actions.storyboard; sourceTree = "<group>"; };
 		545F718319F8F6C8001634D3 /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		545F718519F8FADF001634D3 /* ActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTableViewCell.swift; sourceTree = "<group>"; };
+		545F718719FB95F7001634D3 /* EmptyDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
+		545F718919FB9671001634D3 /* EmptyDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyDataView.xib; sourceTree = "<group>"; };
+		545F718B19FC3CD7001634D3 /* ReasonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReasonViewController.swift; sourceTree = "<group>"; };
 		54682D5619E9D02300CCE795 /* ClassRoster.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClassRoster.storyboard; sourceTree = "<group>"; };
 		54682D5819E9D06E00CCE795 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassHeaderView.xib; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 				545F718319F8F6C8001634D3 /* ActionViewController.swift */,
 				FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */,
 				FC25F94C19FA251F003949AE /* AttendanceController.swift */,
+				545F718B19FC3CD7001634D3 /* ReasonViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -215,6 +222,8 @@
 				549937F819F77E420026C7E4 /* Colors.swift */,
 				545F718519F8FADF001634D3 /* ActionTableViewCell.swift */,
 				FC25F94A19FA24FA003949AE /* AttendanceViewCell.swift */,
+				545F718719FB95F7001634D3 /* EmptyDataView.swift */,
+				545F718919FB9671001634D3 /* EmptyDataView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -385,6 +394,7 @@
 			files = (
 				54B3B0C619EE5BA500BC83B1 /* CharacterView.xib in Resources */,
 				545F718019F8F4AB001634D3 /* Actions.storyboard in Resources */,
+				545F718A19FB9671001634D3 /* EmptyDataView.xib in Resources */,
 				669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */,
 				54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */,
 				FCF1563019F6167B0057617D /* Attendance.storyboard in Resources */,
@@ -462,12 +472,14 @@
 				54682D7019EB2FAF00CCE795 /* ClassroomTableViewCell.swift in Sources */,
 				54B3B0CA19EFAD2F00BC83B1 /* CharacterTableViewCell.swift in Sources */,
 				54682D6719EA450E00CCE795 /* ProfileViewController.swift in Sources */,
+				545F718C19FC3CD7001634D3 /* ReasonViewController.swift in Sources */,
 				54682D5F19E9EC2F00CCE795 /* Student.swift in Sources */,
 				54682D6A19EA469700CCE795 /* Protocols.swift in Sources */,
 				6649802D19EC37230050ACB9 /* Teacher.swift in Sources */,
 				6649802919EB38040050ACB9 /* ParentCallsController.swift in Sources */,
 				545F718419F8F6C8001634D3 /* ActionViewController.swift in Sources */,
 				FC25F94D19FA251F003949AE /* AttendanceController.swift in Sources */,
+				545F718819FB95F7001634D3 /* EmptyDataView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
