@@ -11,29 +11,38 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty Data Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usa-JD-1As">
-                    <rect key="frame" x="30" y="244.5" width="540" height="21.5"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="18"/>
+                    <rect key="frame" x="60" y="242" width="480" height="25"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
                     <color key="textColor" red="0.6176974221" green="0.86712771050000004" blue="0.65824437899999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOO-ag-NhB">
-                    <rect key="frame" x="30" y="274" width="540" height="18"/>
+                    <rect key="frame" x="60" y="292" width="480" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="qBy-qF-3qY">
+                    <rect key="frame" x="250" y="117" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="CqQ-oC-Oug"/>
+                        <constraint firstAttribute="height" constant="100" id="XZf-oh-Evd"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.23921568630000001" green="0.43921568630000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
             <color key="tintColor" red="0.6176974221" green="0.86712771050000004" blue="0.65824437899999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="FOO-ag-NhB" firstAttribute="top" secondItem="usa-JD-1As" secondAttribute="bottom" constant="8" id="0P4-wr-0q6"/>
-                <constraint firstAttribute="trailing" secondItem="usa-JD-1As" secondAttribute="trailing" constant="30" id="2Tp-l5-aQJ"/>
+                <constraint firstItem="FOO-ag-NhB" firstAttribute="top" secondItem="usa-JD-1As" secondAttribute="bottom" constant="25" id="0P4-wr-0q6"/>
+                <constraint firstAttribute="trailing" secondItem="usa-JD-1As" secondAttribute="trailing" constant="60" id="2Tp-l5-aQJ"/>
+                <constraint firstAttribute="centerX" secondItem="qBy-qF-3qY" secondAttribute="centerX" id="GmC-H6-QWt"/>
+                <constraint firstItem="usa-JD-1As" firstAttribute="top" secondItem="qBy-qF-3qY" secondAttribute="bottom" constant="25" id="K6u-xE-6sW"/>
                 <constraint firstAttribute="centerX" secondItem="usa-JD-1As" secondAttribute="centerX" id="PJW-C5-ZZH"/>
                 <constraint firstItem="FOO-ag-NhB" firstAttribute="centerX" secondItem="usa-JD-1As" secondAttribute="centerX" id="WWS-Mg-DGP"/>
-                <constraint firstAttribute="trailing" secondItem="FOO-ag-NhB" secondAttribute="trailing" constant="30" id="XhB-ac-lqT"/>
+                <constraint firstAttribute="trailing" secondItem="FOO-ag-NhB" secondAttribute="trailing" constant="60" id="XhB-ac-lqT"/>
                 <constraint firstAttribute="centerY" secondItem="usa-JD-1As" secondAttribute="centerY" constant="45" id="bFI-0m-vfS"/>
-                <constraint firstItem="FOO-ag-NhB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="gSS-9b-Jvz"/>
-                <constraint firstItem="usa-JD-1As" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="ypM-Sl-FkN"/>
+                <constraint firstItem="FOO-ag-NhB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="60" id="gSS-9b-Jvz"/>
+                <constraint firstItem="usa-JD-1As" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="60" id="ypM-Sl-FkN"/>
             </constraints>
             <connections>
                 <outlet property="descriptionLabel" destination="usa-JD-1As" id="XHm-BL-f4I"/>
@@ -41,4 +50,7 @@
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="checkmark" width="250" height="250"/>
+    </resources>
 </document>

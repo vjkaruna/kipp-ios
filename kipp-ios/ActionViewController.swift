@@ -147,15 +147,4 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-//    
-//    func didPostTweet(tweet: Tweet) {
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//        println(tweet.text)
-//        insertTweetAtTop(tweet)
-//    }
-//    
-//    func insertTweetAtTop(tweet: Tweet) {
-//        tweets?.insert(tweet, atIndex: 0)
-//        tableView.reloadData()
-//    }
 }

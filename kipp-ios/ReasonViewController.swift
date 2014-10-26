@@ -12,11 +12,13 @@ class ReasonViewController: UIViewController, UITextViewDelegate {
     var delegate: ReasonSubmittedDelegate?
     
     @IBOutlet weak var alertView: UIView!
-//    @IBOutlet weak var actionLabel: UILabel!
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var textField: UITextView!
     
-    @IBOutlet weak var buttonsView: UIView!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var createButton: UIButton!
+    
+    @IBOutlet weak var textView: UIView!
     
     var actionType: ActionType?
     
@@ -26,18 +28,15 @@ class ReasonViewController: UIViewController, UITextViewDelegate {
         alertView.layer.cornerRadius = 5
         alertView.layer.borderWidth = 1.0
         alertView.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).CGColor
-//        self.layer.cornerRadius = 5
-//        self.layer.borderWidth = 1.0
-//        self.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).CGColor
-        // Do any additional setup after loading the view.
-//        switch(self.actionType!){
-//        case .Celebrate:
-//            actionLabel.text = "Celebrate this student"
-//        case .Encourage:
-//            actionLabel.text = "Encourage this student"
-//        case .Call:
-//            actionLabel.text = "Call parents"
-//        }
+        
+        textView.layer.cornerRadius = 5
+        
+        cancelButton.layer.borderWidth = 2.0
+        cancelButton.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).CGColor
+        
+        createButton.layer.borderWidth = 2.0
+        createButton.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).CGColor
+        
         textField.delegate = self
     }
 

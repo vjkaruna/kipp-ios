@@ -653,7 +653,7 @@
                                     <outletCollection property="gestureRecognizers" destination="Cip-Dq-fdF" appends="YES" id="2hi-ud-4jW"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfc-aw-BhA">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfc-aw-BhA">
                                 <rect key="frame" x="150" y="100" width="300" height="146"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUq-6f-zwV">
@@ -676,7 +676,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lL-Df-Kte">
-                                        <rect key="frame" x="151" y="93" width="148" height="52"/>
+                                        <rect key="frame" x="151" y="94" width="148" height="52"/>
                                         <color key="backgroundColor" red="0.54146054030000002" green="0.76231664539999999" blue="0.58496981830000006" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Create Action">
@@ -688,7 +688,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cN1-fg-F4f">
-                                        <rect key="frame" x="1" y="93" width="148" height="52"/>
+                                        <rect key="frame" x="1" y="94" width="149" height="52"/>
                                         <color key="backgroundColor" red="0.54146054030000002" green="0.76231664539999999" blue="0.58496981830000006" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Cancel">
@@ -724,8 +724,11 @@
                     </view>
                     <connections>
                         <outlet property="alertView" destination="pfc-aw-BhA" id="gHA-n0-jDT"/>
+                        <outlet property="cancelButton" destination="cN1-fg-F4f" id="det-V8-FdK"/>
+                        <outlet property="createButton" destination="2lL-Df-Kte" id="Ogs-fk-iJV"/>
                         <outlet property="placeholderLabel" destination="FNa-V3-PgI" id="XOk-1c-lzd"/>
                         <outlet property="textField" destination="adK-eY-rbw" id="lhl-ZS-v1s"/>
+                        <outlet property="textView" destination="ZUq-6f-zwV" id="DRn-ty-Dbp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KIn-iG-b9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
