@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
+class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var attendanceTable: UITableView!
     var students: [Student]?
     
@@ -16,6 +16,28 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         getClassroom()
         installPanGestureRecognizer()
+    }
+    
+    @IBAction func onSelectClass(sender: AnyObject) {
+        selectClass()
+    }
+    func selectClass() {
+        var popoverContent = UIStoryboard(name: "ClassroomSelection", bundle: nil).instantiateViewControllerWithIdentifier("ClassroomSelection") as UIViewController
+        
+        var nav = UINavigationController(rootViewController: popoverContent)
+        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+        var popover = nav.popoverPresentationController
+        popoverContent.preferredContentSize = CGSizeMake(340,500)
+        popover?.delegate = self
+        popover?.sourceView = self.view
+        popover?.sourceRect = CGRectMake(20,70,0,0)
+        
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    func adaptivePresentationStyleForPresentationController(PC: UIPresentationController!) -> UIModalPresentationStyle {
+        // This *forces* a popover to be displayed on the iPhone
+        return .None
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
