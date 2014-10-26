@@ -34,7 +34,6 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerClass(ActionTableViewCell.self, forCellReuseIdentifier: "actionCell")
         
         emptyView = UINib(nibName: "EmptyDataView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as EmptyDataView
         emptyView.hidden = true
