@@ -208,9 +208,17 @@ class CharacterViewController: UIViewController, ReasonSubmittedDelegate {
         expandedMenu = false
     }
     
-    func didTapSubmitButton(reasonString: String) {
+    func didTapSubmitButton(reasonString: String, actionType: ActionType) {
         self.dismissViewControllerAnimated(false, completion: nil)
         NSLog("Submitted with reason \(reasonString)")
+        let action = Action(type: actionType, reason: reasonString, forDate: NSDate())
+        ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
+            if error != nil {
+                NSLog("Error saving to Parse")
+            } else {
+                NSLog("Saved action to Parse")
+            }
+        }
     }
     /*
     // MARK: - Navigation

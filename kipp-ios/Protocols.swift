@@ -21,5 +21,5 @@ protocol CharacterTraitUpdatedDelegate {
 }
 
 protocol ReasonSubmittedDelegate {
-    func didTapSubmitButton(reasonString: String)
+    func didTapSubmitButton(reasonString: String, actionType: ActionType)
 }
