@@ -20,7 +20,7 @@ class Action: NSObject {
     var reason: String!
     var forDate: NSDate!
     var dateCompleted: NSDate?
-    unowned var student: Student
+    var student: Student!
     
     init(type: ActionType, reason: String, forDate: NSDate, student: Student) {
         self.type = type
@@ -30,12 +30,11 @@ class Action: NSObject {
     }
     
     init(pfobj: PFObject) {
+        let studentObj = pfobj["student"] as PFObject
         self.type = ActionType.fromRaw(pfobj["type"] as String)
         self.reason = pfobj["reason"] as String
         self.forDate = pfobj["dateForAction"] as NSDate
         self.dateCompleted = pfobj["dateCompleted"] as? NSDate
-        
-        let studentObj = pfobj["student"] as PFObject
         self.student = Student(obj: studentObj)
     }
     

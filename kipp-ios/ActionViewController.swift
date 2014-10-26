@@ -28,21 +28,23 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     var emptyView: EmptyDataView!
     
     let views = ["Actions", "Completed"]
-//    let sectionHeaders = ["Today", "]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.registerClass(ActionTableViewCell.self, forCellReuseIdentifier: "actionCell")
         
         emptyView = UINib(nibName: "EmptyDataView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as EmptyDataView
         emptyView.hidden = true
         contentView.addSubview(emptyView)
         
         ParseClient.sharedInstance.findIncompleteActionsWithCompletion(nil) { (actions, error) -> () in
+            NSLog("Completion called")
             if actions != nil {
+                
                 self.actions = actions
-//                self.currentData = actions
                 if self.segmentedControl.selectedSegmentIndex == ActionViewMode.Action.toRaw() {
                     self.loadActionsToComplete()
                 }
@@ -54,7 +56,6 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         ParseClient.sharedInstance.findCompleteActionsWithCompletion(nil) { (actions, error) -> () in
             if actions != nil {
                 self.completed = actions
-//                self.currentData = actions
                 if self.segmentedControl.selectedSegmentIndex == ActionViewMode.Completed.toRaw() {
                     self.loadCompleted()
                 }
@@ -81,33 +82,17 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 3
-//    }
-//    
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        var headerView = UIView(frame: CGRect(x:0, y:0, width: tableView.frame.width, height: 50))
-//        headerView.backgroundColor = UIColor(white: 0.8, alpha: 0.9)
-//        //        headerView.backgroundColor = UIColor(red: CGFloat(218.0/255.0), green: 209.0/255.0, blue: CGFloat(215.0/255.0), alpha: 0.6)
-//        var headerLabel = UILabel(frame: CGRect(x: 28, y: 0, width: tableView.frame.width, height: 50))
-//        headerLabel.text = filterViewModel.getHeaderForSectionIdx(section)
-//        headerLabel.textColor = UIColor(white: 0.1, alpha: 0.7)
-//        headerLabel.font = UIFont(name: "Helvetica Bold", size: 16)
-//        headerView.addSubview(headerLabel)
-//        
-//        return headerView
-//    }
-    
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return filterViewModel.getNumRowsInSection(section)
-//    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("actionCell") as ActionTableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("actionCell") as ActionTableViewCell
         let action = currentData![indexPath.row]
-//        cell.descriptionLabel.text = action.reason
-//        cell.actionTypeLabel.text = action.type.toRaw()
-        cell.configureCell(action: action)
+        cell.descriptionLabel.text = action.reason
+        cell.actionTypeLabel.text = action.type.toRaw()
+//        cell.configureCell(action)
+        
+//        cell.setNeedsLayout()
+//        cell.setNeedsUpdateConstraints()
+//        cell.updateConstraintsIfNeeded()
+        NSLog("\(cell)")
         return cell
     }
     

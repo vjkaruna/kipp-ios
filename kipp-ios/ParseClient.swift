@@ -74,12 +74,14 @@ class ParseClient: NSObject {
         actionQuery.whereKey("userId", equalTo: userId)
         actionQuery.whereKeyDoesNotExist("dateComplete")
         actionQuery.orderByDescending("dateForAction")
-        actionQuery.includeKey("students")
-        
+        actionQuery.includeKey("student")
+
         actionQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+            NSLog("Found objects")
             if error == nil {
                 let PFActions = objects as [PFObject]
                 let actions = Action.actionsWithArray(PFActions)
+                NSLog("About to call completion handler")
                 completion(actions: actions, error: nil)
             } else {
                 NSLog("error: \(error)")
@@ -98,7 +100,7 @@ class ParseClient: NSObject {
         actionQuery.whereKey("userId", equalTo: userId)
         actionQuery.whereKeyExists("dateComplete")
         actionQuery.orderByDescending("dateForAction")
-        actionQuery.includeKey("students")
+        actionQuery.includeKey("student")
         
         actionQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             if error == nil {

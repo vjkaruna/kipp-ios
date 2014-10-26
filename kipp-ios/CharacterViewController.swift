@@ -108,38 +108,13 @@ class CharacterViewController: UIViewController, ReasonSubmittedDelegate {
     }
     
     @IBAction func didTapAlert(sender: UIButton) {
-        // TODO bring up modal here
         var actionType: ActionType
         if sender == encourageButton {
             actionType = .Encourage
-//            let action = Action(type: .Encourage, reason: "for testing encourage", forDate: 1.daysFromNow)
-//            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
-//                if error != nil {
-//                    NSLog("Error saving to Parse")
-//                } else {
-//                    NSLog("Saved to Parse")
-//                }
-//            }
         } else if sender == celebrateButton {
             actionType = .Celebrate
-//            let action = Action(type: .Celebrate, reason: "for testing celebrate", forDate: 2.daysFromNow)
-//            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
-//                if error != nil {
-//                    NSLog("Error saving to Parse")
-//                } else {
-//                    NSLog("Saved to Parse")
-//                }
-//            }
         } else {
             actionType = .Call
-//            let action = Action(type: .Call, reason: "for testing call", forDate: 3.daysFromNow)
-//            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
-//                if error != nil {
-//                    NSLog("Error saving to Parse")
-//                } else {
-//                    NSLog("Saved to Parse")
-//                }
-//            }
         }
         showReasonModal(actionType)
     }
@@ -211,7 +186,7 @@ class CharacterViewController: UIViewController, ReasonSubmittedDelegate {
     func didTapSubmitButton(reasonString: String, actionType: ActionType) {
         self.dismissViewControllerAnimated(false, completion: nil)
         NSLog("Submitted with reason \(reasonString)")
-        let action = Action(type: actionType, reason: reasonString, forDate: NSDate())
+        let action = Action(type: actionType, reason: reasonString, forDate: NSDate(), student: student!)
         ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
             if error != nil {
                 NSLog("Error saving to Parse")

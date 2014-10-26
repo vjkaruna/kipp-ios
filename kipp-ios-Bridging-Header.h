@@ -3,5 +3,3 @@
 //
 
 #import <Parse/Parse.h>
-#import <JASwipeCell/JASwipeCell.h>
-#import <JASwipeCell/JAActionButton.h>
