@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54124A1F19FCF09100D042C4 /* ActionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54124A1E19FCF09100D042C4 /* ActionCellView.xib */; };
+		54124A2119FCF36600D042C4 /* ActionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54124A2019FCF36600D042C4 /* ActionCellView.swift */; };
 		541BF93819ED05C4007307C6 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541BF93719ED05C4007307C6 /* CharacterViewController.swift */; };
 		545F717E19F8E7A6001634D3 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F717D19F8E7A6001634D3 /* Action.swift */; };
 		545F718019F8F4AB001634D3 /* Actions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545F717F19F8F4AB001634D3 /* Actions.storyboard */; };
@@ -75,6 +77,8 @@
 
 /* Begin PBXFileReference section */
 		1630089EAA90EB80C652CE1E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		54124A1E19FCF09100D042C4 /* ActionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCellView.xib; sourceTree = "<group>"; };
+		54124A2019FCF36600D042C4 /* ActionCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCellView.swift; sourceTree = "<group>"; };
 		541BF93719ED05C4007307C6 /* CharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		545F717D19F8E7A6001634D3 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		545F717F19F8F4AB001634D3 /* Actions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Actions.storyboard; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 				FC25F98019FC65A0003949AE /* ClassroomSelecitonCell.swift */,
 				FC25F95019FC5B8A003949AE /* ClassroomSelectionViewController.swift */,
 				FC25F98219FC6E14003949AE /* ClassroomCollectionViewCell.swift */,
+				54124A1E19FCF09100D042C4 /* ActionCellView.xib */,
+				54124A2019FCF36600D042C4 /* ActionCellView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -412,6 +418,7 @@
 				FCF1563019F6167B0057617D /* Attendance.storyboard in Resources */,
 				FC25F94F19FC5AB1003949AE /* ClassroomSelection.storyboard in Resources */,
 				669ACAAF19E75E12004C31ED /* LaunchScreen.xib in Resources */,
+				54124A1F19FCF09100D042C4 /* ActionCellView.xib in Resources */,
 				54682D5719E9D02300CCE795 /* ClassRoster.storyboard in Resources */,
 				6649802719EB37F80050ACB9 /* ParentCalls.storyboard in Resources */,
 				669ACAAC19E75E12004C31ED /* Images.xcassets in Resources */,
@@ -473,6 +480,7 @@
 				FC25F95119FC5B8A003949AE /* ClassroomSelectionViewController.swift in Sources */,
 				549937F719F64E150026C7E4 /* CharacterTrackingViewController.swift in Sources */,
 				545F718619F8FADF001634D3 /* ActionTableViewCell.swift in Sources */,
+				54124A2119FCF36600D042C4 /* ActionCellView.swift in Sources */,
 				549937F519F3B7690026C7E4 /* CharacterTrait.swift in Sources */,
 				54682D6119E9EC7D00CCE795 /* StudentTableViewCell.swift in Sources */,
 				54B3B0C819EE613A00BC83B1 /* CharacterView.swift in Sources */,

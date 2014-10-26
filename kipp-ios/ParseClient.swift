@@ -74,7 +74,7 @@ class ParseClient: NSObject {
         actionQuery.whereKey("userId", equalTo: userId)
         actionQuery.whereKeyDoesNotExist("dateComplete")
         actionQuery.orderByDescending("dateForAction")
-//        actionQuery.includeKey("students")
+        actionQuery.includeKey("students")
         
         actionQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             if error == nil {
@@ -98,7 +98,7 @@ class ParseClient: NSObject {
         actionQuery.whereKey("userId", equalTo: userId)
         actionQuery.whereKeyExists("dateComplete")
         actionQuery.orderByDescending("dateForAction")
-        //        actionQuery.includeKey("students")
+        actionQuery.includeKey("students")
         
         actionQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             if error == nil {

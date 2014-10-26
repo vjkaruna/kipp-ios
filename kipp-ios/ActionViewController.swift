@@ -105,8 +105,9 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("actionCell") as ActionTableViewCell
         let action = currentData![indexPath.row]
-        cell.descriptionLabel.text = action.reason
-        cell.actionTypeLabel.text = action.type.toRaw()
+//        cell.descriptionLabel.text = action.reason
+//        cell.actionTypeLabel.text = action.type.toRaw()
+        cell.configureCell(action: action)
         return cell
     }
     
