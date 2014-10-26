@@ -20,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="-561" y="179"/>
         </scene>
-        <!--Attendance Controller-->
+        <!--Attendance-->
         <scene sceneID="407-yX-zaq">
             <objects>
                 <viewController id="4Va-MJ-Dau" customClass="AttendanceController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -126,7 +126,13 @@
                             <constraint firstAttribute="bottom" secondItem="NRO-5m-hE7" secondAttribute="bottom" id="uF2-2C-5Mm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YOr-fU-3DU"/>
+                    <navigationItem key="navigationItem" title="Attendance" id="YOr-fU-3DU">
+                        <barButtonItem key="rightBarButtonItem" title="Class" id="56P-zr-JYc">
+                            <connections>
+                                <action selector="onSelectClass:" destination="4Va-MJ-Dau" id="lRR-J7-Ygg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="attendanceTable" destination="NRO-5m-hE7" id="e0z-25-vtu"/>
                     </connections>

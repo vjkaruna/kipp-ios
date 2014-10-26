@@ -55,6 +55,10 @@
 		849D0FC651104C3EA3891FEA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4141796B4DD45A99734D2AC /* libPods.a */; };
 		FC25F94B19FA24FA003949AE /* AttendanceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25F94A19FA24FA003949AE /* AttendanceViewCell.swift */; };
 		FC25F94D19FA251F003949AE /* AttendanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25F94C19FA251F003949AE /* AttendanceController.swift */; };
+		FC25F94F19FC5AB1003949AE /* ClassroomSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC25F94E19FC5AB1003949AE /* ClassroomSelection.storyboard */; };
+		FC25F95119FC5B8A003949AE /* ClassroomSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25F95019FC5B8A003949AE /* ClassroomSelectionViewController.swift */; };
+		FC25F98119FC65A0003949AE /* ClassroomSelecitonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25F98019FC65A0003949AE /* ClassroomSelecitonCell.swift */; };
+		FC25F98319FC6E14003949AE /* ClassroomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25F98219FC6E14003949AE /* ClassroomCollectionViewCell.swift */; };
 		FCA0872A19EE4A0900CF57FD /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */; };
 		FCF1563019F6167B0057617D /* Attendance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCF1562F19F6167B0057617D /* Attendance.storyboard */; };
 /* End PBXBuildFile section */
@@ -125,6 +129,10 @@
 		C4141796B4DD45A99734D2AC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC25F94A19FA24FA003949AE /* AttendanceViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttendanceViewCell.swift; path = lib/AttendanceViewCell.swift; sourceTree = "<group>"; };
 		FC25F94C19FA251F003949AE /* AttendanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttendanceController.swift; path = lib/controllers/AttendanceController.swift; sourceTree = "<group>"; };
+		FC25F94E19FC5AB1003949AE /* ClassroomSelection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClassroomSelection.storyboard; sourceTree = "<group>"; };
+		FC25F95019FC5B8A003949AE /* ClassroomSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassroomSelectionViewController.swift; path = lib/controllers/ClassroomSelectionViewController.swift; sourceTree = "<group>"; };
+		FC25F98019FC65A0003949AE /* ClassroomSelecitonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassroomSelecitonCell.swift; path = lib/ClassroomSelecitonCell.swift; sourceTree = "<group>"; };
+		FC25F98219FC6E14003949AE /* ClassroomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClassroomCollectionViewCell.swift; path = lib/ClassroomCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = lib/controllers/TabBarViewController.swift; sourceTree = "<group>"; };
 		FCF1562F19F6167B0057617D /* Attendance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Attendance.storyboard; path = ../Attendance.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,6 +232,10 @@
 				FC25F94A19FA24FA003949AE /* AttendanceViewCell.swift */,
 				545F718719FB95F7001634D3 /* EmptyDataView.swift */,
 				545F718919FB9671001634D3 /* EmptyDataView.xib */,
+				FC25F94E19FC5AB1003949AE /* ClassroomSelection.storyboard */,
+				FC25F98019FC65A0003949AE /* ClassroomSelecitonCell.swift */,
+				FC25F95019FC5B8A003949AE /* ClassroomSelectionViewController.swift */,
+				FC25F98219FC6E14003949AE /* ClassroomCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -398,6 +410,7 @@
 				669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */,
 				54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */,
 				FCF1563019F6167B0057617D /* Attendance.storyboard in Resources */,
+				FC25F94F19FC5AB1003949AE /* ClassroomSelection.storyboard in Resources */,
 				669ACAAF19E75E12004C31ED /* LaunchScreen.xib in Resources */,
 				54682D5719E9D02300CCE795 /* ClassRoster.storyboard in Resources */,
 				6649802719EB37F80050ACB9 /* ParentCalls.storyboard in Resources */,
@@ -452,10 +465,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC25F98319FC6E14003949AE /* ClassroomCollectionViewCell.swift in Sources */,
 				FCA0872A19EE4A0900CF57FD /* TabBarViewController.swift in Sources */,
 				545F717E19F8E7A6001634D3 /* Action.swift in Sources */,
 				669ACAA719E75E12004C31ED /* LoginViewController.swift in Sources */,
 				54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */,
+				FC25F95119FC5B8A003949AE /* ClassroomSelectionViewController.swift in Sources */,
 				549937F719F64E150026C7E4 /* CharacterTrackingViewController.swift in Sources */,
 				545F718619F8FADF001634D3 /* ActionTableViewCell.swift in Sources */,
 				549937F519F3B7690026C7E4 /* CharacterTrait.swift in Sources */,
@@ -467,6 +482,7 @@
 				549937F919F77E420026C7E4 /* Colors.swift in Sources */,
 				54682D5919E9D06E00CCE795 /* RosterViewController.swift in Sources */,
 				541BF93819ED05C4007307C6 /* CharacterViewController.swift in Sources */,
+				FC25F98119FC65A0003949AE /* ClassroomSelecitonCell.swift in Sources */,
 				FC25F94B19FA24FA003949AE /* AttendanceViewCell.swift in Sources */,
 				54682D6E19EB27F200CCE795 /* Classroom.swift in Sources */,
 				54682D7019EB2FAF00CCE795 /* ClassroomTableViewCell.swift in Sources */,
