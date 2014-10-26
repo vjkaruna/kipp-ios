@@ -40,7 +40,7 @@ class TabBarViewController: UIViewController {
             
             attendanceNavController.tabBarItem = UITabBarItem(title: "Attendance", image: UIImage(named: "attendance"), tag: 1)
             rosterNavController.tabBarItem = UITabBarItem(title: "Character", image: UIImage(named: "character"), tag: 1)
-            actionNavController.tabBarItem = UITabBarItem(title: "Actions", image: UIImage(named: "phone"), tag: 1)
+            actionNavController.tabBarItem = UITabBarItem(title: "Actions", image: UIImage(named: "alert"), tag: 1)
             callsNavController.tabBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "phone"), tag: 1)
             
             self._viewControllers = [attendanceNavController, rosterNavController, actionNavController, callsNavController]

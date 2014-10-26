@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterViewController: UIViewController {
+class CharacterViewController: UIViewController, ReasonSubmittedDelegate {
     weak var student: Student?
     
     @IBOutlet weak var tableView: UITableView!
@@ -33,8 +33,8 @@ class CharacterViewController: UIViewController {
     
     var viewControllers: [UIViewController] = [UIViewController]()
     
-    let MENU_COLLAPSED_HEIGHT: CGFloat = 50
-    let MENU_EXPANDED_HEIGHT: CGFloat = 255
+    let MENU_COLLAPSED_HEIGHT: CGFloat = 55
+    let MENU_EXPANDED_HEIGHT: CGFloat = 270
     
     let classRosterSB = UIStoryboard(name: "ClassRoster", bundle: nil)
     
@@ -80,6 +80,7 @@ class CharacterViewController: UIViewController {
         viewControllers = [trackingVC, dummyVC]
         
         self.activeViewController = viewControllers.first
+//        blurView.
     }
     
     override func didReceiveMemoryWarning() {
@@ -108,41 +109,46 @@ class CharacterViewController: UIViewController {
     
     @IBAction func didTapAlert(sender: UIButton) {
         // TODO bring up modal here
-        showReasonModal()
+        var actionType: ActionType
         if sender == encourageButton {
-            let action = Action(type: .Encourage, reason: "for testing encourage", forDate: 1.daysFromNow)
-            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
-                if error != nil {
-                    NSLog("Error saving to Parse")
-                } else {
-                    NSLog("Saved to Parse")
-                }
-            }
+            actionType = .Encourage
+//            let action = Action(type: .Encourage, reason: "for testing encourage", forDate: 1.daysFromNow)
+//            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
+//                if error != nil {
+//                    NSLog("Error saving to Parse")
+//                } else {
+//                    NSLog("Saved to Parse")
+//                }
+//            }
         } else if sender == celebrateButton {
-            let action = Action(type: .Celebrate, reason: "for testing celebrate", forDate: 2.daysFromNow)
-            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
-                if error != nil {
-                    NSLog("Error saving to Parse")
-                } else {
-                    NSLog("Saved to Parse")
-                }
-            }
+            actionType = .Celebrate
+//            let action = Action(type: .Celebrate, reason: "for testing celebrate", forDate: 2.daysFromNow)
+//            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
+//                if error != nil {
+//                    NSLog("Error saving to Parse")
+//                } else {
+//                    NSLog("Saved to Parse")
+//                }
+//            }
         } else {
-            let action = Action(type: .Call, reason: "for testing call", forDate: 3.daysFromNow)
-            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
-                if error != nil {
-                    NSLog("Error saving to Parse")
-                } else {
-                    NSLog("Saved to Parse")
-                }
-            }
+            actionType = .Call
+//            let action = Action(type: .Call, reason: "for testing call", forDate: 3.daysFromNow)
+//            ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
+//                if error != nil {
+//                    NSLog("Error saving to Parse")
+//                } else {
+//                    NSLog("Saved to Parse")
+//                }
+//            }
         }
+        showReasonModal(actionType)
     }
 
-    func showReasonModal() {
+    func showReasonModal(actionType: ActionType) {
         let vc = classRosterSB.instantiateViewControllerWithIdentifier("reasonVC") as ReasonViewController
-        self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-//        vc.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
+        vc.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        vc.delegate = self
+        vc.actionType = actionType
         self.presentViewController(vc, animated: false, completion: nil)
     }
     
@@ -200,6 +206,11 @@ class CharacterViewController: UIViewController {
             self.blurView.layoutIfNeeded()
             }, completion: nil)
         expandedMenu = false
+    }
+    
+    func didTapSubmitButton(reasonString: String) {
+        self.dismissViewControllerAnimated(false, completion: nil)
+        NSLog("Submitted with reason \(reasonString)")
     }
     /*
     // MARK: - Navigation

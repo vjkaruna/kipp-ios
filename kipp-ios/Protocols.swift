@@ -19,3 +19,7 @@ protocol StudentProfileChangedDelegate {
 protocol CharacterTraitUpdatedDelegate {
     func traitScoreDidUpdate(value: Int, forRow row: Int)
 }
+
+protocol ReasonSubmittedDelegate {
+    func didTapSubmitButton(reasonString: String)
+}

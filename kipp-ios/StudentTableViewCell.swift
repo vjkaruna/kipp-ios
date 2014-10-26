@@ -27,12 +27,12 @@ class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate, Studen
                 newStudent!.delegate = self
                 self.displayName.text = "\(newStudent!.firstName) \(newStudent!.lastName)"
                 self.profilePic.image = UIImage(named: newStudent!.gender.profileImg())
-                newStudent!.fillAttendanceState() // If we want attendance for specific date, we can pass the date here
+//                newStudent!.fillAttendanceState() // If we want attendance for specific date, we can pass the date here
             }
         }
-        didSet {
-            setCellForState()
-        }
+//        didSet {
+//            setCellForState()
+//        }
     }
     
     var xPanLocation: CGFloat = 0 {
