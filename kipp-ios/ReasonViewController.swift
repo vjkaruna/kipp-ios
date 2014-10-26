@@ -46,7 +46,7 @@ class ReasonViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func didTapSubmit(sender: UIButton) {
-        delegate?.didTapSubmitButton(textField.text)
+        delegate?.didTapSubmitButton(textField.text, actionType: actionType!)
     }
 
     @IBAction func didDismiss(sender: AnyObject) {
