@@ -11,19 +11,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty Data Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usa-JD-1As">
-                    <rect key="frame" x="60" y="242" width="480" height="25"/>
+                    <rect key="frame" x="60" y="287.5" width="480" height="25"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="21"/>
                     <color key="textColor" red="0.6176974221" green="0.86712771050000004" blue="0.65824437899999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOO-ag-NhB">
-                    <rect key="frame" x="60" y="292" width="480" height="18"/>
+                    <rect key="frame" x="60" y="337.5" width="480" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="qBy-qF-3qY">
-                    <rect key="frame" x="250" y="117" width="100" height="100"/>
+                    <rect key="frame" x="250" y="162.5" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="CqQ-oC-Oug"/>
                         <constraint firstAttribute="height" constant="100" id="XZf-oh-Evd"/>
@@ -40,12 +40,13 @@
                 <constraint firstAttribute="centerX" secondItem="usa-JD-1As" secondAttribute="centerX" id="PJW-C5-ZZH"/>
                 <constraint firstItem="FOO-ag-NhB" firstAttribute="centerX" secondItem="usa-JD-1As" secondAttribute="centerX" id="WWS-Mg-DGP"/>
                 <constraint firstAttribute="trailing" secondItem="FOO-ag-NhB" secondAttribute="trailing" constant="60" id="XhB-ac-lqT"/>
-                <constraint firstAttribute="centerY" secondItem="usa-JD-1As" secondAttribute="centerY" constant="45" id="bFI-0m-vfS"/>
+                <constraint firstAttribute="centerY" secondItem="usa-JD-1As" secondAttribute="centerY" id="bFI-0m-vfS"/>
                 <constraint firstItem="FOO-ag-NhB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="60" id="gSS-9b-Jvz"/>
                 <constraint firstItem="usa-JD-1As" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="60" id="ypM-Sl-FkN"/>
             </constraints>
             <connections>
                 <outlet property="descriptionLabel" destination="usa-JD-1As" id="XHm-BL-f4I"/>
+                <outlet property="imageview" destination="qBy-qF-3qY" id="dhe-39-A0S"/>
                 <outlet property="tipLabel" destination="FOO-ag-NhB" id="BNu-OY-jrU"/>
             </connections>
         </view>

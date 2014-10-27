@@ -11,8 +11,22 @@ import UIKit
 
 enum ActionType: String {
     case Celebrate = "Celebrate"
-    case Encourage = "Encourage"
+    case Encourage = "Needs Work"
     case Call = "Call"
+    case History = "History"
+    
+    func getIconName() -> String {
+        switch self {
+        case .Celebrate:
+            return "celebrate"
+        case .Encourage:
+            return "needs-work-white"
+        case .Call:
+            return "call"
+        default:
+            return "celebrate"
+        }
+    }
 }
 
 class Action: NSObject {
