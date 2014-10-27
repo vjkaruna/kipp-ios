@@ -13,10 +13,12 @@ class StudentTableViewCell: MGSwipeTableCell {
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var displayName: UILabel!
     
+    @IBOutlet weak var actionComments: UILabel!
+    
     var actionReason: String? {
         willSet {
             if newValue != nil {
-                
+                actionComments.text = actionReason
             }
         }
     }
@@ -32,7 +34,19 @@ class StudentTableViewCell: MGSwipeTableCell {
             }
         }
     }
-        
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.layoutIfNeeded()
+        self.actionComments.preferredMaxLayoutWidth = self.actionComments.frame.size.width
+    }
+//    - (void)layoutSubviews
+//    {
+//    [super layoutSubviews];
+//    [self.contentView layoutIfNeeded];
+//    self.myLabel.preferredMaxLayoutWidth = self.myLabel.frame.size.width;
+//    }
+//    
     @IBAction func didTapProfilePic(sender: AnyObject) {
         profileDelegate?.didTapProfileImg(student!)
     }

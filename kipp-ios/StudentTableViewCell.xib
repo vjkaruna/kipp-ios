@@ -6,14 +6,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studentCell" rowHeight="69" id="1Pf-2Y-kNc" customClass="StudentTableViewCell" customModule="kipp_ios" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studentCell" rowHeight="68" id="1Pf-2Y-kNc" customClass="StudentTableViewCell" customModule="kipp_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Pf-2Y-kNc" id="bfz-CZ-LMt">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekE-sT-Lnv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekE-sT-Lnv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="120.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="hKC-L8-9nN">
                                 <rect key="frame" x="15" y="10" width="45" height="45"/>
@@ -39,36 +39,58 @@
                                 <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTD-9s-XAe">
+                                <rect key="frame" x="8" y="69" width="584" height="43.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZR-fm-D2m">
+                                        <rect key="frame" x="8" y="8" width="568" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.37647058820000001" green="0.63529411759999999" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="OZR-fm-D2m" secondAttribute="trailing" constant="8" id="6xQ-Ea-h5P"/>
+                                    <constraint firstAttribute="bottom" secondItem="OZR-fm-D2m" secondAttribute="bottom" constant="8" id="E40-h8-Pwd"/>
+                                    <constraint firstItem="OZR-fm-D2m" firstAttribute="top" secondItem="LTD-9s-XAe" secondAttribute="top" constant="8" id="YqA-dJ-Fwc"/>
+                                    <constraint firstItem="OZR-fm-D2m" firstAttribute="leading" secondItem="LTD-9s-XAe" secondAttribute="leading" constant="8" id="a6A-YC-6Mr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="leading" secondItem="jH6-3X-Bkb" secondAttribute="leading" id="2kZ-Y8-hwe"/>
+                            <constraint firstAttribute="trailing" secondItem="LTD-9s-XAe" secondAttribute="trailing" constant="8" id="75y-Ds-FjP"/>
+                            <constraint firstItem="LTD-9s-XAe" firstAttribute="leading" secondItem="ekE-sT-Lnv" secondAttribute="leading" constant="8" id="8SY-a6-xqQ"/>
+                            <constraint firstItem="LTD-9s-XAe" firstAttribute="top" secondItem="ekE-sT-Lnv" secondAttribute="top" constant="69" id="Awe-xp-zGQ"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="leading" secondItem="ekE-sT-Lnv" secondAttribute="leading" constant="15" id="KJZ-dB-1cn"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="top" secondItem="jH6-3X-Bkb" secondAttribute="top" id="Mid-Du-fiP"/>
                             <constraint firstItem="rWG-24-pJh" firstAttribute="top" secondItem="ekE-sT-Lnv" secondAttribute="top" constant="24" id="TEx-aw-aLf"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="trailing" secondItem="jH6-3X-Bkb" secondAttribute="trailing" id="VSD-SQ-EQp"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="top" secondItem="ekE-sT-Lnv" secondAttribute="top" constant="10" id="hgJ-s6-bkF"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="bottom" secondItem="jH6-3X-Bkb" secondAttribute="bottom" id="iFD-q5-BM8"/>
+                            <constraint firstAttribute="bottom" secondItem="LTD-9s-XAe" secondAttribute="bottom" constant="8" id="riu-uL-vcH"/>
                             <constraint firstAttribute="trailing" secondItem="rWG-24-pJh" secondAttribute="trailing" constant="10" id="sS5-Pa-uXt"/>
                             <constraint firstItem="rWG-24-pJh" firstAttribute="leading" secondItem="jH6-3X-Bkb" secondAttribute="trailing" constant="15" id="v5g-cQ-cbl"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <gestureRecognizers/>
                 <constraints>
-                    <constraint firstItem="ekE-sT-Lnv" firstAttribute="leading" secondItem="bfz-CZ-LMt" secondAttribute="leading" id="1nI-Cr-icO"/>
-                    <constraint firstItem="ekE-sT-Lnv" firstAttribute="top" secondItem="bfz-CZ-LMt" secondAttribute="top" id="NcV-zD-sog"/>
-                    <constraint firstAttribute="bottom" secondItem="ekE-sT-Lnv" secondAttribute="bottom" id="paT-pJ-z3V"/>
-                    <constraint firstAttribute="trailing" secondItem="ekE-sT-Lnv" secondAttribute="trailing" id="tWd-pt-grk"/>
+                    <constraint firstItem="ekE-sT-Lnv" firstAttribute="leading" secondItem="bfz-CZ-LMt" secondAttribute="leading" id="2ze-y7-QKI"/>
+                    <constraint firstItem="ekE-sT-Lnv" firstAttribute="top" secondItem="bfz-CZ-LMt" secondAttribute="top" id="GIi-pK-Ae8"/>
+                    <constraint firstAttribute="trailing" secondItem="ekE-sT-Lnv" secondAttribute="trailing" id="ec2-16-ZSA"/>
                 </constraints>
             </tableViewCellContentView>
             <gestureRecognizers/>
             <connections>
+                <outlet property="actionComments" destination="OZR-fm-D2m" id="5Wk-41-6Ub"/>
                 <outlet property="displayName" destination="rWG-24-pJh" id="cAv-vz-wXL"/>
                 <outlet property="profilePic" destination="hKC-L8-9nN" id="OXg-un-Cbb"/>
             </connections>
-            <point key="canvasLocation" x="196" y="-115.5"/>
+            <point key="canvasLocation" x="196" y="-48"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -19,6 +19,8 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     
     var data: [Action]?
     
+    var selectedRow: Int?
+    
     var emptyView: EmptyDataView!
     
     override func viewDidLoad() {
@@ -77,19 +79,54 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if selectedRow == nil || selectedRow! != indexPath.row {
+            selectedRow = indexPath.row
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as? StudentTableViewCell
+            NSLog("Selected row \(indexPath.row); \(cell!.actionReason)")
+        } else if selectedRow! == indexPath.row {
+            selectedRow = nil
+            NSLog("Collapse row \(indexPath.row)")
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        tableView.beginUpdates()
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        tableView.endUpdates()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        let cell = tableView.cellForRowAtIndexPath(indexPath) as? StudentTableViewCell
+//        cell?.layoutIfNeeded()
+        
+        if selectedRow == nil || selectedRow != indexPath.row {
+            return 68
+        } else {
+//            if cell != nil {
+//                return 68 + cell!.actionComments.bounds.height + 8
+//            } else {
+            return 68 * 2
+//            }
+        }
+    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
         let action = data![indexPath.row]
         cell.actionReason = action.reason
         cell.student = action.student
 //        NSLog("\(cell)")
-        cell.delegate = self
-        cell.rightButtons = createRightButton()
-//        cell.leftButtons = []
-//        cell.leftSwipeSettings.transition = MGSwipeTransition.TransitionDrag
-        cell.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
-        cell.rightExpansion.buttonIndex = 0
-        cell.rightExpansion.fillOnTrigger = true
+        
+        if actionType! != .History {
+            cell.delegate = self
+            cell.rightButtons = createRightButton()
+    //        cell.leftButtons = []
+    //        cell.leftSwipeSettings.transition = MGSwipeTransition.TransitionDrag
+            cell.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
+            cell.rightExpansion.buttonIndex = 0
+            cell.rightExpansion.fillOnTrigger = true
+        }
+        cell.clipsToBounds = true
+        cell.layoutIfNeeded()
         return cell
     }
     
