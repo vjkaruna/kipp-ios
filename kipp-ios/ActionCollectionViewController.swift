@@ -19,6 +19,8 @@ class ActionCollectionViewController: UIViewController, UICollectionViewDelegate
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        navigationItem.title = "Actions"
     }
 
     override func didReceiveMemoryWarning() {

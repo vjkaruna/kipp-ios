@@ -17,6 +17,7 @@
 		545F718819FB95F7001634D3 /* EmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F718719FB95F7001634D3 /* EmptyDataView.swift */; };
 		545F718A19FB9671001634D3 /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 545F718919FB9671001634D3 /* EmptyDataView.xib */; };
 		545F718C19FC3CD7001634D3 /* ReasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F718B19FC3CD7001634D3 /* ReasonViewController.swift */; };
+		546328A919FE21240080AB27 /* ActionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546328A819FE21240080AB27 /* ActionMenuView.swift */; };
 		54682D5719E9D02300CCE795 /* ClassRoster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5619E9D02300CCE795 /* ClassRoster.storyboard */; };
 		54682D5919E9D06E00CCE795 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D5819E9D06E00CCE795 /* RosterViewController.swift */; };
 		54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */; };
@@ -89,6 +90,7 @@
 		545F718719FB95F7001634D3 /* EmptyDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyDataView.swift; sourceTree = "<group>"; };
 		545F718919FB9671001634D3 /* EmptyDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyDataView.xib; sourceTree = "<group>"; };
 		545F718B19FC3CD7001634D3 /* ReasonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReasonViewController.swift; sourceTree = "<group>"; };
+		546328A819FE21240080AB27 /* ActionMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionMenuView.swift; sourceTree = "<group>"; };
 		54682D5619E9D02300CCE795 /* ClassRoster.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClassRoster.storyboard; sourceTree = "<group>"; };
 		54682D5819E9D06E00CCE795 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassHeaderView.xib; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				54124A1E19FCF09100D042C4 /* ActionCellView.xib */,
 				54124A2019FCF36600D042C4 /* ActionCellView.swift */,
 				54991DD419FDA96B00389625 /* ActionCollectionViewCell.swift */,
+				546328A819FE21240080AB27 /* ActionMenuView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				545F717E19F8E7A6001634D3 /* Action.swift in Sources */,
 				669ACAA719E75E12004C31ED /* LoginViewController.swift in Sources */,
 				54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */,
+				546328A919FE21240080AB27 /* ActionMenuView.swift in Sources */,
 				FC25F95119FC5B8A003949AE /* ClassroomSelectionViewController.swift in Sources */,
 				549937F719F64E150026C7E4 /* CharacterTrackingViewController.swift in Sources */,
 				545F718619F8FADF001634D3 /* ActionTableViewCell.swift in Sources */,

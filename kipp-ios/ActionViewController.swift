@@ -108,16 +108,17 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func createRightButton() -> NSArray {
-        var anotherbutton = MGSwipeButton(title: "Done", backgroundColor: UIColor.greenTint()) { (cell) -> Bool in
+        var button = MGSwipeButton(title: "Done", backgroundColor: UIColor.greenTint()) { (cell) -> Bool in
             NSLog("Tapped Done for \(cell)")
-            return true
-        }
-        var button = MGSwipeButton(title: "Delete", backgroundColor: UIColor.myRedColor()) { (cell) -> Bool in
-            NSLog("Tapped delete for \(cell)")
             self.markActionComplete(self.tableView.indexPathForCell(cell)!)
             return true
         }
-        return [button, anotherbutton]
+//        var button = MGSwipeButton(title: "Delete", backgroundColor: UIColor.myRedColor()) { (cell) -> Bool in
+//            NSLog("Tapped delete for \(cell)")
+//            self.markActionComplete(self.tableView.indexPathForCell(cell)!)
+//            return true
+//        }
+        return [button]
     }
 
     func markActionComplete(indexPath: NSIndexPath) {
@@ -135,43 +136,4 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         
         loadDataOrEmptyState()
     }
-//    -(void) deleteMail:(NSIndexPath *) indexPath
-//    {
-//    [demoData removeObjectAtIndex:indexPath.row];
-//    [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-//    }
-//    -(NSArray *) createLeftButtons: (int) number
-//    {
-//    NSMutableArray * result = [NSMutableArray array];
-//    UIColor * colors[3] = {[UIColor greenColor],
-//    [UIColor colorWithRed:0 green:0x99/255.0 blue:0xcc/255.0 alpha:1.0],
-//    [UIColor colorWithRed:0.59 green:0.29 blue:0.08 alpha:1.0]};
-//    UIImage * icons[3] = {[UIImage imageNamed:@"check.png"], [UIImage imageNamed:@"fav.png"], [UIImage imageNamed:@"menu.png"]};
-//    for (int i = 0; i < number; ++i)
-//    {
-//    MGSwipeButton * button = [MGSwipeButton buttonWithTitle:@"" icon:icons[i] backgroundColor:colors[i] padding:15 callback:^BOOL(MGSwipeTableCell * sender){
-//    NSLog(@"Convenience callback received (left).");
-//    return YES;
-//    }];
-//    [result addObject:button];
-//    }
-//    return result;
-//    }
-//    
-//    
-//    -(NSArray *) createRightButtons: (int) number
-//    {
-//    NSMutableArray * result = [NSMutableArray array];
-//    NSString* titles[2] = {@"Delete", @"More"};
-//    UIColor * colors[2] = {[UIColor redColor], [UIColor lightGrayColor]};
-//    for (int i = 0; i < number; ++i)
-//    {
-//    MGSwipeButton * button = [MGSwipeButton buttonWithTitle:titles[i] backgroundColor:colors[i] callback:^BOOL(MGSwipeTableCell * sender){
-//    NSLog(@"Convenience callback received (right).");
-//    return YES;
-//    }];
-//    [result addObject:button];
-//    }
-//    return result;
-//    }
 }

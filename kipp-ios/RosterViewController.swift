@@ -8,9 +8,8 @@
 
 import UIKit
 
-class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, UIGestureRecognizerDelegate {
+class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate {
 
-    @IBOutlet var panGesture: UIPanGestureRecognizer!
     @IBOutlet weak var tableView: UITableView!
     
     var teacher: PFUser!
@@ -19,7 +18,6 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        panGesture.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -41,34 +39,37 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
         let student = classroom.students[indexPath.row]
         cell.student = student
+        cell.profileDelegate = self
         cell.delegate = self
-//        cell.setCellForState()
+        cell.rightButtons = createRightButtons()
+        //        cell.leftButtons = []
+        //        cell.leftSwipeSettings.transition = MGSwipeTransition.TransitionDrag
+        cell.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
+        cell.rightExpansion.fillOnTrigger = false
+
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let student = classroom.students[indexPath.row]
-//        self.performSegueWithIdentifier("optionsSegue", sender: student)
         self.performSegueWithIdentifier("characterSegue", sender: student)
     }
-    
-    @IBAction func didPanCell(sender: UIPanGestureRecognizer) {
-        let touchedLocation = sender.locationInView(tableView)
-        let touchedIndexPath = tableView.indexPathForRowAtPoint(touchedLocation)
-        if touchedIndexPath != nil {
-            let touchedCell = tableView.cellForRowAtIndexPath(touchedIndexPath!) as StudentTableViewCell
-            let velocity = sender.velocityInView(tableView)
-            let translation = sender.translationInView(tableView)
-            switch(sender.state) {
-            case .Began, .Changed, .Ended:
-                NSLog("v: \(velocity.x), t: \(translation.x)")
-                touchedCell.xPanLocation = translation.x
-            default:
-                NSLog("Unhandled state")
-            }
+
+    func createRightButtons() -> NSArray {
+        var button = MGSwipeButton(title: "Actions", backgroundColor: UIColor.darkBlue()) { (cell) -> Bool in
+            NSLog("Tapped actions for \(cell)")
+//            self.markActionComplete(self.tableView.indexPathForCell(cell)!)
+            return true
         }
+        //        var button = MGSwipeButton(title: "Delete", backgroundColor: UIColor.myRedColor()) { (cell) -> Bool in
+        //            NSLog("Tapped delete for \(cell)")
+        //            self.markActionComplete(self.tableView.indexPathForCell(cell)!)
+        //            return true
+        //        }
+        return [button]
     }
+    
     
     func didTapProfileImg(student: Student) {
         self.performSegueWithIdentifier("profileSegue", sender: student)
@@ -85,8 +86,4 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        // To let us scroll table and swipe cell
-        return true
-    }
 }
