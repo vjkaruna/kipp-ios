@@ -15,14 +15,6 @@ class StudentTableViewCell: MGSwipeTableCell {
     
     @IBOutlet weak var actionComments: UILabel!
     
-    var actionReason: String? {
-        willSet {
-            if newValue != nil {
-                actionComments.text = actionReason
-            }
-        }
-    }
-    
     var profileDelegate: ProfileImageTappedDelegate?
     
     weak var student: Student? {

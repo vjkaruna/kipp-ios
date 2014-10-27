@@ -82,14 +82,12 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if selectedRow == nil || selectedRow! != indexPath.row {
             selectedRow = indexPath.row
-            let cell = tableView.cellForRowAtIndexPath(indexPath) as? StudentTableViewCell
-            NSLog("Selected row \(indexPath.row); \(cell!.actionReason)")
         } else if selectedRow! == indexPath.row {
             selectedRow = nil
             NSLog("Collapse row \(indexPath.row)")
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+
         tableView.beginUpdates()
         tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         tableView.endUpdates()
@@ -98,21 +96,19 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 //        let cell = tableView.cellForRowAtIndexPath(indexPath) as? StudentTableViewCell
 //        cell?.layoutIfNeeded()
-        
+        NSLog("Selected \(indexPath.row)")
         if selectedRow == nil || selectedRow != indexPath.row {
             return 68
         } else {
-//            if cell != nil {
-//                return 68 + cell!.actionComments.bounds.height + 8
-//            } else {
-            return 68 * 2
-//            }
+//            let cell = tableView.cellForRowAtIndexPath(indexPath) as StudentTableViewCell
+//            cell.layoutIfNeeded()
+            return 120
         }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
         let action = data![indexPath.row]
-        cell.actionReason = action.reason
+        cell.actionComments.text = action.reason
         cell.student = action.student
 //        NSLog("\(cell)")
         
@@ -128,6 +124,10 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         cell.clipsToBounds = true
         cell.layoutIfNeeded()
         return cell
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
     func loadDataOrEmptyState() {
