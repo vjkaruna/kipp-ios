@@ -18,6 +18,8 @@
 		545F718A19FB9671001634D3 /* EmptyDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 545F718919FB9671001634D3 /* EmptyDataView.xib */; };
 		545F718C19FC3CD7001634D3 /* ReasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F718B19FC3CD7001634D3 /* ReasonViewController.swift */; };
 		546328A919FE21240080AB27 /* ActionMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546328A819FE21240080AB27 /* ActionMenuView.swift */; };
+		546328AB19FE22520080AB27 /* ActionMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546328AA19FE22520080AB27 /* ActionMenuView.xib */; };
+		546328AD19FE31FA0080AB27 /* StudentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 546328AC19FE31FA0080AB27 /* StudentTableViewCell.xib */; };
 		54682D5719E9D02300CCE795 /* ClassRoster.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5619E9D02300CCE795 /* ClassRoster.storyboard */; };
 		54682D5919E9D06E00CCE795 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54682D5819E9D06E00CCE795 /* RosterViewController.swift */; };
 		54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */; };
@@ -91,6 +93,8 @@
 		545F718919FB9671001634D3 /* EmptyDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyDataView.xib; sourceTree = "<group>"; };
 		545F718B19FC3CD7001634D3 /* ReasonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReasonViewController.swift; sourceTree = "<group>"; };
 		546328A819FE21240080AB27 /* ActionMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionMenuView.swift; sourceTree = "<group>"; };
+		546328AA19FE22520080AB27 /* ActionMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionMenuView.xib; sourceTree = "<group>"; };
+		546328AC19FE31FA0080AB27 /* StudentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentTableViewCell.xib; sourceTree = "<group>"; };
 		54682D5619E9D02300CCE795 /* ClassRoster.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClassRoster.storyboard; sourceTree = "<group>"; };
 		54682D5819E9D06E00CCE795 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		54682D5A19E9D45500CCE795 /* ClassHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassHeaderView.xib; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				54682D6019E9EC7D00CCE795 /* StudentTableViewCell.swift */,
+				546328AC19FE31FA0080AB27 /* StudentTableViewCell.xib */,
 				54682D6F19EB2FAF00CCE795 /* ClassroomTableViewCell.swift */,
 				54B3B0C519EE5BA500BC83B1 /* CharacterView.xib */,
 				54B3B0C719EE613A00BC83B1 /* CharacterView.swift */,
@@ -251,6 +256,7 @@
 				54124A2019FCF36600D042C4 /* ActionCellView.swift */,
 				54991DD419FDA96B00389625 /* ActionCollectionViewCell.swift */,
 				546328A819FE21240080AB27 /* ActionMenuView.swift */,
+				546328AA19FE22520080AB27 /* ActionMenuView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54B3B0C619EE5BA500BC83B1 /* CharacterView.xib in Resources */,
+				546328AB19FE22520080AB27 /* ActionMenuView.xib in Resources */,
 				545F718019F8F4AB001634D3 /* Actions.storyboard in Resources */,
 				545F718A19FB9671001634D3 /* EmptyDataView.xib in Resources */,
 				669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */,
@@ -427,6 +434,7 @@
 				FCF1563019F6167B0057617D /* Attendance.storyboard in Resources */,
 				FC25F94F19FC5AB1003949AE /* ClassroomSelection.storyboard in Resources */,
 				669ACAAF19E75E12004C31ED /* LaunchScreen.xib in Resources */,
+				546328AD19FE31FA0080AB27 /* StudentTableViewCell.xib in Resources */,
 				54124A1F19FCF09100D042C4 /* ActionCellView.xib in Resources */,
 				54682D5719E9D02300CCE795 /* ClassRoster.storyboard in Resources */,
 				6649802719EB37F80050ACB9 /* ParentCalls.storyboard in Resources */,

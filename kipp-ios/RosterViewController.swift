@@ -23,6 +23,9 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         self.tableView.reloadData()
         
+        var nib = UINib(nibName: "StudentTableViewCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "studentCell")
+        
         navigationItem.title = "Period \(classroom.period)"
     }
 
@@ -78,7 +81,7 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "profileSegue") {
             var profileVC = segue.destinationViewController as ProfileViewController
-            profileVC.student = sender as Student
+            profileVC.student = sender as? Student
         } else if (segue.identifier == "characterSegue") {
             var characterVC = segue.destinationViewController as CharacterViewController
             characterVC.student = sender as? Student

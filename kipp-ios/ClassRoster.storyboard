@@ -83,70 +83,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="studentCell" rowHeight="69" id="0Vm-Tl-HGh" customClass="StudentTableViewCell" customModule="kipp_ios" customModuleProvider="target">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Vm-Tl-HGh" id="PN7-cv-6jl">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loI-8T-HlR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="4oY-CG-Ph8">
-                                                            <rect key="frame" x="15" y="10" width="45" height="45"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="45" id="LfB-bg-fE5"/>
-                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="T91-gw-ahk"/>
-                                                                <constraint firstAttribute="height" constant="45" id="au7-hI-SZn"/>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="ymC-gP-Yha"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N84-dq-JPO">
-                                                            <rect key="frame" x="15" y="10" width="45" height="45"/>
-                                                            <state key="normal">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="didTapProfilePic:" destination="0Vm-Tl-HGh" eventType="touchDown" id="mil-uf-fb8"/>
-                                                            </connections>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sx-v0-85e">
-                                                            <rect key="frame" x="75" y="24" width="515" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="deviceRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstItem="4oY-CG-Ph8" firstAttribute="leading" secondItem="loI-8T-HlR" secondAttribute="leading" constant="15" id="8ec-JM-eIH"/>
-                                                        <constraint firstItem="4oY-CG-Ph8" firstAttribute="trailing" secondItem="N84-dq-JPO" secondAttribute="trailing" id="Ex5-BY-MxL"/>
-                                                        <constraint firstItem="4oY-CG-Ph8" firstAttribute="top" secondItem="N84-dq-JPO" secondAttribute="top" id="LZn-63-k9R"/>
-                                                        <constraint firstItem="4oY-CG-Ph8" firstAttribute="leading" secondItem="N84-dq-JPO" secondAttribute="leading" id="XYT-jl-Tzm"/>
-                                                        <constraint firstItem="4oY-CG-Ph8" firstAttribute="top" secondItem="loI-8T-HlR" secondAttribute="top" constant="10" id="jE4-r6-eEe"/>
-                                                        <constraint firstItem="6sx-v0-85e" firstAttribute="leading" secondItem="N84-dq-JPO" secondAttribute="trailing" constant="15" id="jz4-yG-Ljf"/>
-                                                        <constraint firstAttribute="centerY" secondItem="6sx-v0-85e" secondAttribute="centerY" id="ogR-Ys-qjb"/>
-                                                        <constraint firstAttribute="trailing" secondItem="6sx-v0-85e" secondAttribute="trailing" constant="10" id="qca-F7-Vpr"/>
-                                                        <constraint firstItem="4oY-CG-Ph8" firstAttribute="bottom" secondItem="N84-dq-JPO" secondAttribute="bottom" id="zoO-Qn-SXL"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.85393415179999999" green="0.82060482020000003" blue="0.84188205569999996" alpha="1" colorSpace="calibratedRGB"/>
-                                            <gestureRecognizers/>
-                                            <constraints>
-                                                <constraint firstItem="loI-8T-HlR" firstAttribute="top" secondItem="PN7-cv-6jl" secondAttribute="top" id="6Wn-Yq-aNX"/>
-                                                <constraint firstAttribute="bottom" secondItem="loI-8T-HlR" secondAttribute="bottom" id="E3V-gu-Wzo"/>
-                                                <constraint firstItem="loI-8T-HlR" firstAttribute="leading" secondItem="PN7-cv-6jl" secondAttribute="leading" id="Nv7-uT-hkz"/>
-                                                <constraint firstAttribute="trailing" secondItem="loI-8T-HlR" secondAttribute="trailing" id="bD4-MX-li7"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <gestureRecognizers/>
-                                        <connections>
-                                            <outlet property="displayName" destination="6sx-v0-85e" id="kRP-e5-o8p"/>
-                                            <outlet property="profilePic" destination="4oY-CG-Ph8" id="BoS-vH-ERn"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -747,7 +683,6 @@
         <image name="character-social-intelligence" width="139" height="177"/>
         <image name="character-zest" width="139" height="178"/>
         <image name="classroom" width="22" height="22"/>
-        <image name="girl" width="175" height="175"/>
         <image name="needs-work-white" width="60" height="60"/>
     </resources>
 </document>

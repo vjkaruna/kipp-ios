@@ -10,14 +10,14 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    var student: Student!
+    weak var student: Student?
     
     @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = "\(student.firstName)'s Profile Page!"
+        titleLabel.text = "\(student!.firstName)'s Profile Page!"
         // Do any additional setup after loading the view.
     }
 

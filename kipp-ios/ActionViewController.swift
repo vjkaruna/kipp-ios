@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MGSwipeTableCellDelegate {
+class ActionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MGSwipeTableCellDelegate, ProfileImageTappedDelegate {
 // TODO: Need to pull out current class context into User model so we can query students
 // Should this be an agenda view instead??
     
@@ -29,6 +29,9 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
+        var nib = UINib(nibName: "StudentTableViewCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "studentCell")
+        
         emptyView = UINib(nibName: "EmptyDataView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as EmptyDataView
         emptyView.hidden = true
         contentView.addSubview(emptyView)
@@ -38,6 +41,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
                 NSLog("Completion called for action type \(self.actionType!.toRaw())")
                 if actions != nil {
                     self.data = actions
+                    self.tableView.reloadData()
                     self.loadDataOrEmptyState()
                 } else {
                     NSLog("Error getting actions: \(error)")
@@ -47,6 +51,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
             ParseClient.sharedInstance.findCompleteActionsWithCompletion(nil) { (actions, error) -> () in
                 if actions != nil {
                     self.data = actions
+                    self.tableView.reloadData()
                     self.loadDataOrEmptyState()
                 } else {
                     NSLog("Error getting actions: \(error)")
@@ -73,10 +78,10 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("actionCell") as ActionTableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
         let action = data![indexPath.row]
-        cell.descriptionLabel.text = action.reason
-        cell.actionTypeLabel.text = action.type.toRaw()
+        cell.actionReason = action.reason
+        cell.student = action.student
 //        NSLog("\(cell)")
         cell.delegate = self
         cell.rightButtons = createRightButton()
@@ -88,12 +93,10 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    
     func loadDataOrEmptyState() {
         if data!.count > 0 {
             tableView.hidden = false
             emptyView.hidden = true
-            tableView.reloadData()
         } else {
             emptyView.hidden = false
             tableView.hidden = true
@@ -110,7 +113,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     func createRightButton() -> NSArray {
         var button = MGSwipeButton(title: "Done", backgroundColor: UIColor.greenTint()) { (cell) -> Bool in
             NSLog("Tapped Done for \(cell)")
-            self.markActionComplete(self.tableView.indexPathForCell(cell)!)
+            self.markActionComplete(cell)
             return true
         }
 //        var button = MGSwipeButton(title: "Delete", backgroundColor: UIColor.myRedColor()) { (cell) -> Bool in
@@ -121,7 +124,8 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         return [button]
     }
 
-    func markActionComplete(indexPath: NSIndexPath) {
+    func markActionComplete(cell: UITableViewCell) {
+        let indexPath = self.tableView.indexPathForCell(cell)!
         let action = data![indexPath.row]
         ParseClient.sharedInstance.markActionAsComplete(action) { (success, error) -> () in
             NSLog("Updated object in Parse")
@@ -131,9 +135,13 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         data!.removeAtIndex(indexPath.row)
         
         tableView.beginUpdates()
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         tableView.endUpdates()
         
         loadDataOrEmptyState()
+    }
+    
+    func didTapProfileImg(student: Student) {
+        NSLog("Tapped profile")
     }
 }

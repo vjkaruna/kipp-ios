@@ -13,6 +13,13 @@ class StudentTableViewCell: MGSwipeTableCell {
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var displayName: UILabel!
     
+    var actionReason: String? {
+        willSet {
+            if newValue != nil {
+                
+            }
+        }
+    }
     
     var profileDelegate: ProfileImageTappedDelegate?
     
