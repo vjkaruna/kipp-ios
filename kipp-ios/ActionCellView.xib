@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ActionCellView" customModule="kipp_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xoi-8e-9iu">
+                    <rect key="frame" x="20" y="10" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="4BA-R9-rpc"/>
+                        <constraint firstAttribute="height" constant="45" id="a5F-Pm-osp"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reason" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oir-5f-9K7">
+                    <rect key="frame" x="88" y="38" width="49" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qau-7b-59k">
+                    <rect key="frame" x="88" y="10" width="110.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Qau-7b-59k" firstAttribute="leading" secondItem="Xoi-8e-9iu" secondAttribute="trailing" constant="23" id="33w-fH-4uR"/>
+                <constraint firstItem="oir-5f-9K7" firstAttribute="top" secondItem="Qau-7b-59k" secondAttribute="bottom" constant="8" id="4zz-pg-ySJ"/>
+                <constraint firstItem="Qau-7b-59k" firstAttribute="top" secondItem="Xoi-8e-9iu" secondAttribute="top" id="B4c-Ch-B0g"/>
+                <constraint firstItem="Xoi-8e-9iu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="D91-yV-YtB"/>
+                <constraint firstItem="Qau-7b-59k" firstAttribute="leading" secondItem="oir-5f-9K7" secondAttribute="leading" id="Iwu-D3-IsK"/>
+                <constraint firstItem="Xoi-8e-9iu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="fJw-nd-jrQ"/>
+            </constraints>
+            <connections>
+                <outlet property="profileImg" destination="Xoi-8e-9iu" id="FxB-z4-Kl4"/>
+                <outlet property="reasonLabel" destination="oir-5f-9K7" id="hsI-Uc-kkC"/>
+                <outlet property="studentName" destination="Qau-7b-59k" id="M0z-JY-wAj"/>
+            </connections>
+        </view>
+    </objects>
+</document>

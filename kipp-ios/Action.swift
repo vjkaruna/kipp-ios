@@ -11,8 +11,22 @@ import UIKit
 
 enum ActionType: String {
     case Celebrate = "Celebrate"
-    case Encourage = "Encourage"
+    case Encourage = "Needs Work"
     case Call = "Call"
+    case History = "History"
+    
+    func getIconName() -> String {
+        switch self {
+        case .Celebrate:
+            return "celebrate"
+        case .Encourage:
+            return "needs-work-white"
+        case .Call:
+            return "call"
+        default:
+            return "celebrate"
+        }
+    }
 }
 
 class Action: NSObject {
@@ -20,19 +34,22 @@ class Action: NSObject {
     var reason: String!
     var forDate: NSDate!
     var dateCompleted: NSDate?
-    // unowned student: Student! ???
+    var student: Student!
     
-    init(type: ActionType, reason: String, forDate: NSDate) {
+    init(type: ActionType, reason: String, forDate: NSDate, student: Student) {
         self.type = type
         self.reason = reason
         self.forDate = forDate
+        self.student = student
     }
     
     init(pfobj: PFObject) {
+        let studentObj = pfobj["student"] as PFObject
         self.type = ActionType.fromRaw(pfobj["type"] as String)
         self.reason = pfobj["reason"] as String
         self.forDate = pfobj["dateForAction"] as NSDate
         self.dateCompleted = pfobj["dateCompleted"] as? NSDate
+        self.student = Student(obj: studentObj)
     }
     
     class func actionsWithArray(objs: [PFObject]) -> [Action] {
