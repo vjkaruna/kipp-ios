@@ -35,6 +35,7 @@ class Action: NSObject {
     var forDate: NSDate!
     var dateCompleted: NSDate?
     var student: Student!
+    var pfobj: PFObject?
     
     init(type: ActionType, reason: String, forDate: NSDate, student: Student) {
         self.type = type
@@ -50,6 +51,7 @@ class Action: NSObject {
         self.forDate = pfobj["dateForAction"] as NSDate
         self.dateCompleted = pfobj["dateCompleted"] as? NSDate
         self.student = Student(obj: studentObj)
+        self.pfobj = pfobj
     }
     
     class func actionsWithArray(objs: [PFObject]) -> [Action] {

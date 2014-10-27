@@ -114,6 +114,20 @@ class ParseClient: NSObject {
         })
     }
     
+    func markActionAsComplete(action: Action, completion: (success: Bool, error: NSError?) -> ()) {
+        var actionToUpdate = action.pfobj!
+        actionToUpdate["dateComplete"] = NSDate()
+        
+        actionToUpdate.saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                completion(success: true, error: nil)
+            } else {
+                completion(success: false, error: error)
+            }
+        }
+    }
+
+    
     func saveCharacterValueWithCompletion(studentId: Int, characterTrait: CharacterTrait, forDate: NSDate, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
         var characterEntry = PFObject(className: "CharacterTrait")
         

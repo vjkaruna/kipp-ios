@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActionTableViewCell: UITableViewCell {
+class ActionTableViewCell: MGSwipeTableCell {
 
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var actionTypeLabel: UILabel!

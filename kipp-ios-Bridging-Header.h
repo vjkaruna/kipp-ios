@@ -3,3 +3,5 @@
 //
 
 #import <Parse/Parse.h>
+#import <MGSwipeTableCell/MGSwipeTableCell.h>
+#import <MGSwipeTableCell/MGSwipeButton.h>

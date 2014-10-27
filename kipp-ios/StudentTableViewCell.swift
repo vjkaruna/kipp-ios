@@ -50,7 +50,7 @@ class StudentTableViewCell: UITableViewCell, UIGestureRecognizerDelegate, Studen
                 NSLog("Pan left?? New x constraint \(newConstraintVal)")
             }
             if newConstraintVal > 60 { // animate color change only when change is required
-                self.contentView.backgroundColor = UIColor.redColor()
+                self.contentView.backgroundColor = UIColor.myRedColor()
                 self.contentView.alpha = 0.4
             } else if newConstraintVal != 0 {
                 self.contentView.backgroundColor = UIColor.yellowColor()
