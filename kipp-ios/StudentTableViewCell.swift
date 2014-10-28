@@ -34,7 +34,10 @@ class StudentTableViewCell: MGSwipeTableCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.contentView.layoutIfNeeded()
+        self.labelView.layoutIfNeeded()
+        
         self.actionComments.preferredMaxLayoutWidth = self.actionComments.frame.size.width
+        super.layoutSubviews()
     }
 //    - (void)layoutSubviews
 //    {

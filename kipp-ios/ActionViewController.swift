@@ -120,9 +120,11 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
             cell.rightExpansion.buttonIndex = 0
             cell.rightExpansion.fillOnTrigger = true
         }
-        cell.clipsToBounds = true
+
         cell.layoutIfNeeded()
         labelHeights![indexPath.row] = cell.actionComments.bounds.size.height
+        NSLog("actionComment height: \(cell.actionComments.bounds.size.height) for cell \(indexPath.row)")
+        cell.clipsToBounds = true
         return cell
     }
     
