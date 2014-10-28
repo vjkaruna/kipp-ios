@@ -93,6 +93,7 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         selectedCells[indexPath.row] = true
         parentsTable.beginUpdates()
         parentsTable.endUpdates()
+        self.performSegueWithIdentifier("showProfile", sender: nil)
         
     }
     
