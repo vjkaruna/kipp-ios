@@ -23,6 +23,8 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     
     var emptyView: EmptyDataView!
     
+    var labelHeights: [CGFloat]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -43,6 +45,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
                 NSLog("Completion called for action type \(self.actionType!.toRaw())")
                 if actions != nil {
                     self.data = actions
+                    self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
                     self.tableView.reloadData()
                     self.loadDataOrEmptyState()
                 } else {
@@ -53,6 +56,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
             ParseClient.sharedInstance.findCompleteActionsWithCompletion(nil) { (actions, error) -> () in
                 if actions != nil {
                     self.data = actions
+                    self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
                     self.tableView.reloadData()
                     self.loadDataOrEmptyState()
                 } else {
@@ -94,15 +98,10 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        let cell = tableView.cellForRowAtIndexPath(indexPath) as? StudentTableViewCell
-//        cell?.layoutIfNeeded()
-        NSLog("Selected \(indexPath.row)")
         if selectedRow == nil || selectedRow != indexPath.row {
             return 68
         } else {
-//            let cell = tableView.cellForRowAtIndexPath(indexPath) as StudentTableViewCell
-//            cell.layoutIfNeeded()
-            return 120
+            return labelHeights![indexPath.row] + 68.0 + 20.0
         }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -123,6 +122,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         }
         cell.clipsToBounds = true
         cell.layoutIfNeeded()
+        labelHeights![indexPath.row] = cell.actionComments.bounds.size.height
         return cell
     }
     

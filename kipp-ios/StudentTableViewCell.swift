@@ -13,6 +13,7 @@ class StudentTableViewCell: MGSwipeTableCell {
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var displayName: UILabel!
     
+    @IBOutlet weak var labelView: UIView!
     @IBOutlet weak var actionComments: UILabel!
     
     var profileDelegate: ProfileImageTappedDelegate?
@@ -22,6 +23,9 @@ class StudentTableViewCell: MGSwipeTableCell {
             if newStudent != nil {
                 self.displayName.text = "\(newStudent!.firstName) \(newStudent!.lastName)"
                 self.profilePic.image = UIImage(named: newStudent!.gender.profileImg())
+                self.labelView.layer.cornerRadius = 5
+                self.labelView.layer.borderWidth = 1.0
+                self.labelView.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).CGColor
 //                newStudent!.fillAttendanceState() // If we want attendance for specific date, we can pass the date here
             }
         }
