@@ -18,33 +18,33 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadClassroom()
+        
         tableView.delegate = self
         tableView.dataSource = self
-
-            Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
-                if classroom != nil {
-                    self.classroom = classroom
-                    self.tableView.reloadData()
-                    
-                    NSLog(classroom?.title ?? "nil")
-                }
-                else {
-                    NSLog("error getting classroom data from Parse")
-                }
-            }
-        self.tableView.reloadData()
         
         var nib = UINib(nibName: "StudentTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "studentCell")
         
-        if classroom != nil {
-            navigationItem.title = "Period \(classroom.period)"
-        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loadClassroom() {
+        Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
+            if classroom != nil {
+                self.classroom = classroom
+                self.tableView.reloadData()
+                self.navigationItem.title = "Period \(classroom!.period)"
+                NSLog(classroom?.title ?? "nil")
+            }
+            else {
+                NSLog("error getting classroom data from Parse")
+            }
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

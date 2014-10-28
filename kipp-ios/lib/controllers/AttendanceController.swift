@@ -8,54 +8,28 @@
 
 import UIKit
 
-class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
+class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate {
     @IBOutlet weak var attendanceTable: UITableView!
     var students: [Student]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getClassroom()
-        installPanGestureRecognizer()
-    }
-    
-    @IBAction func onSelectClass(sender: AnyObject) {
-        selectClass()
-    }
-    func selectClass() {
-        var popoverContent = UIStoryboard(name: "ClassroomSelection", bundle: nil).instantiateViewControllerWithIdentifier("ClassroomSelection") as UIViewController
+        loadClassroom()
         
-        var nav = UINavigationController(rootViewController: popoverContent)
-        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-        var popover = nav.popoverPresentationController
-        popoverContent.preferredContentSize = CGSizeMake(340,500)
-        popover?.delegate = self
-        popover?.sourceView = self.view
-        popover?.sourceRect = CGRectMake(20,70,0,0)
+        attendanceTable.delegate = self
+        attendanceTable.dataSource = self
         
-        self.presentViewController(nav, animated: true, completion: nil)
+        var nib = UINib(nibName: "StudentTableViewCell", bundle: nil)
+        attendanceTable.registerNib(nib, forCellReuseIdentifier: "studentCell")
     }
     
-    func adaptivePresentationStyleForPresentationController(PC: UIPresentationController!) -> UIModalPresentationStyle {
-        // This *forces* a popover to be displayed on the iPhone
-        return .None
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = attendanceTable.dequeueReusableCellWithIdentifier("attendanceCell") as AttendanceViewCell
-        cell.studentNameLabel.text = students?[indexPath.row].firstName
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return students?.count ?? 0
-    }
-    
-    func getClassroom() {
+    func loadClassroom() {
         Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
             if classroom != nil {
-                self.students = classroom?.students
+                self.students = classroom!.students
+                self.navigationItem.title = "Period \(classroom!.period)"
                 self.attendanceTable.reloadData()
-            
+                
                 NSLog(classroom?.title ?? "nil")
             }
             else {
@@ -64,58 +38,61 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
+        let student = students![indexPath.row]
+        cell.student = student
+        cell.profileDelegate = self
+        cell.delegate = self
+        cell.rightButtons = createRightButtons()
+        cell.leftButtons = createLeftButtons()
+        
+        cell.leftSwipeSettings.transition = MGSwipeTransition.TransitionBorder
+        cell.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
+        
+        cell.leftExpansion.fillOnTrigger = true
+        cell.rightExpansion.fillOnTrigger = true
+        cell.rightExpansion.buttonIndex = 0
+        cell.leftExpansion.buttonIndex = 0
+        
+        return cell
     }
     
-    func installPanGestureRecognizer() {
-        var panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "onCellDrag:")
-        attendanceTable.addGestureRecognizer(panGestureRecognizer)
-        panGestureRecognizer.delegate = self
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return students?.count ?? 0
     }
     
-    var draggedCell: AttendanceViewCell?
-    
-    func onCellDrag(panGestureRecognizer: UIPanGestureRecognizer) {
-        let magicThreshold:CGFloat = 144
-        let indexPath = attendanceTable.indexPathForRowAtPoint(panGestureRecognizer.locationInView(attendanceTable))
-        if indexPath != nil {
-            if panGestureRecognizer.state == UIGestureRecognizerState.Began {
-                self.draggedCell = (attendanceTable.cellForRowAtIndexPath(indexPath!)) as? AttendanceViewCell
-            } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
-                draggedCell?.moveCell(panGestureRecognizer.translationInView(attendanceTable).x)
-            } else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
-                var amount = panGestureRecognizer.translationInView(attendanceTable).x
-                if (abs(amount) < magicThreshold) {
-                    self.draggedCell?.moveCell(0)
-                    UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 10, options: UIViewAnimationOptions(), animations: { () -> Void in
-                        self.view.layoutIfNeeded()
-                        return Void()
-                        }, completion: nil)
-                } else {
-                    
-                    
-                    let offScreenAmount = 3 * panGestureRecognizer.translationInView(attendanceTable).x
-                    self.draggedCell?.moveCell(offScreenAmount)
-                    UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: UIViewAnimationOptions(), animations: { () -> Void in
-                        self.view.layoutIfNeeded()
-                        return ()
-                        }, completion: { (bool:Bool) -> Void in
-                            if amount > magicThreshold {
-                                self.markStudent(indexPath!, type: AttendanceType.Present)
-                            } else {
-                                self.markStudent(indexPath!, type: AttendanceType.Absent)
-                            }
-                            return ()
-                    })
-                    
-                }
-            }
+    func createRightButtons() -> NSArray {
+        var absentButton = MGSwipeButton(title: "", icon: UIImage(named: "x"), backgroundColor: UIColor.myRedColor()) { (cell) -> Bool in
+            NSLog("Tapped absent for \(cell)")
+            self.markStudent(cell, type: .Absent)
+            return true
         }
+        absentButton.setPadding(CGFloat(25))
+        var lateButton = MGSwipeButton(title: "", icon: UIImage(named: "alarm"), backgroundColor: UIColor.myYellow()) { (cell) -> Bool in
+            NSLog("Tapped late for \(cell)")
+            self.markStudent(cell, type: .Tardy)
+            return true
+        }
+        return [absentButton, lateButton]
     }
     
-    func markStudent(indexPath: NSIndexPath, type: AttendanceType) {
+    func createLeftButtons() -> NSArray {
+        let button = MGSwipeButton(title: "", icon: UIImage(named: "checkmark-green"), backgroundColor: UIColor.greenTint()) { (cell) -> Bool in
+            NSLog("Tapped present for \(cell)")
+            self.markStudent(cell, type: .Present)
+            return true
+        }
+        return [button]
+    }
+    
+    func didTapProfileImg(student: Student) {
+        NSLog("Tapped profile")
+    }
+    
+    func markStudent(cell: UITableViewCell, type: AttendanceType) {
         // Actually Mark the student
+        let indexPath = attendanceTable.indexPathForCell(cell)!
         var student = students?.removeAtIndex(indexPath.row)
         student?.markAttendanceForType(type)
         self.attendanceTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
