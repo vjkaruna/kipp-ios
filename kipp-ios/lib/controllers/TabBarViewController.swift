@@ -68,10 +68,10 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
             rosterNavController.tabBarItem = UITabBarItem(title: "Character", image: UIImage(named: "character"), tag: 1)
             actionNavController.tabBarItem = UITabBarItem(title: "Actions", image: UIImage(named: "alert"), tag: 1)
             callsNavController.tabBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "phone"), tag: 1)
-            classroomsController.tabBarItem = UITabBarItem(title: "Classes", image: UIImage(named: "phone"), tag: 1)
+            classroomsController.tabBarItem = UITabBarItem(title: "Classes", image: UIImage(named: "classroom"), tag: 1)
 
             
-            self._viewControllers = [attendanceNavController, rosterNavController, actionNavController, callsNavController, classroomsController]
+            self._viewControllers = [classroomsController, attendanceNavController, rosterNavController, actionNavController, callsNavController]
             
             mainTabBarController.tabBar.tintColor = UIColor.greenTint()
             mainTabBarController.tabBar.barStyle = .Black
