@@ -32,14 +32,16 @@
 @property (nonatomic, assign) BOOL animated;
 @property (nonatomic, assign) CFTimeInterval animationDuration;
 
-@property (nonatomic, assign) id<GKLineGraphDataSource> dataSource;
+@property (nonatomic, weak) IBOutlet id<GKLineGraphDataSource> dataSource;
 
 @property (nonatomic, assign) CGFloat lineWidth;
-
 @property (nonatomic, assign) CGFloat margin;
 
-@property (nonatomic, assign) CGFloat height;
-@property (nonatomic, assign) CGFloat width;
+@property (nonatomic, assign) NSInteger valueLabelCount;
+//@property (nonatomic, strong) NSNumber *maxValue;
+
+@property (nonatomic, assign) CGFloat *minValue;
+@property (nonatomic, assign) BOOL startFromZero;
 
 - (void)draw;
 - (void)reset;

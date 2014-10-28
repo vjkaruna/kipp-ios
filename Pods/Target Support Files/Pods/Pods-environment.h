@@ -21,8 +21,8 @@
 // GraphKit
 #define COCOAPODS_POD_AVAILABLE_GraphKit
 #define COCOAPODS_VERSION_MAJOR_GraphKit 1
-#define COCOAPODS_VERSION_MINOR_GraphKit 0
-#define COCOAPODS_VERSION_PATCH_GraphKit 0
+#define COCOAPODS_VERSION_MINOR_GraphKit 1
+#define COCOAPODS_VERSION_PATCH_GraphKit 1
 
 // MGSwipeTableCell
 #define COCOAPODS_POD_AVAILABLE_MGSwipeTableCell

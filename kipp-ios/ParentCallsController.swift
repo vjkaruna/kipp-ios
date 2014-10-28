@@ -93,7 +93,7 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         selectedCells[indexPath.row] = true
         parentsTable.beginUpdates()
         parentsTable.endUpdates()
-        self.performSegueWithIdentifier("showProfile", sender: nil)
+        self.performSegueWithIdentifier("showProfile", sender: parents[indexPath.row].student?)
         
     }
     
@@ -145,6 +145,13 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
     func dialNumber(phonestr: String) {
         let telstr = "telprompt://\(phonestr)"
         UIApplication.sharedApplication().openURL(NSURL(string:telstr))
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "showProfile") {
+            var profileVC = segue.destinationViewController as ProfileGraphViewController
+            profileVC.student = sender as? Student
+        }
     }
 
 }

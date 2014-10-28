@@ -11,8 +11,10 @@ import UIKit
 class ProfileGraphViewController: UIViewController, GKLineGraphDataSource {
 //class ProfileGraphViewController: UIViewController {
 
+    var student: Student?
 
     @IBOutlet weak var graph: GKLineGraph!
+    @IBOutlet weak var studentLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +25,17 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource {
         
         self.graph.dataSource = self
         self.graph.lineWidth = 3.0
-        self.graph.width = 300
-        self.graph.height = 300
         
+
+        //self.graph.height = self.graph.frame.height
+        //self.graph.width = self.graph.frame.width
+        
+        println("h: \(self.graph.height) w: \(self.graph.width)")
         self.graph.draw()
+        
+        if (student != nil) {
+            studentLabel.text = student!.fullName
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +44,7 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource {
     }
     
      func numberOfLines() -> Int {
-        return 1
+        return 2
     }
     
     func colorForLineAtIndex(index: Int) -> UIColor! {
@@ -47,8 +56,13 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource {
     }
     
     func valuesForLineAtIndex(index: Int) -> [AnyObject]! {
-        var data = [2,30,40,70,50,40,80,120,50,3,40,60,90]
-        return data
+        if (index == 0) {
+          var data = [2,30,40,70,50,40,80,120,50,3,40,60,90]
+          return data
+        } else {
+          var data = [12,36,62,91,84,75,79,96,57,47,39,56,75]
+          return data
+        }
     }
     
     func animationDurationForLineAtIndex(index: Int) -> CFTimeInterval {
@@ -56,7 +70,7 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource {
     }
     
     func titleForLineAtIndex(index: Int) -> String! {
-        return "Math"
+        return "\(index)"
     }
     
     /*

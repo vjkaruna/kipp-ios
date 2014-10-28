@@ -32,7 +32,7 @@
 @property (nonatomic, assign) BOOL animated;
 @property (nonatomic, assign) CFTimeInterval animationDuration;
 
-@property (nonatomic, assign) id<GKBarGraphDataSource> dataSource;
+@property (nonatomic, weak) IBOutlet id<GKBarGraphDataSource> dataSource;
 
 @property (nonatomic, strong) NSArray *bars;
 @property (nonatomic, strong) NSArray *labels;
@@ -54,6 +54,7 @@
 
 @optional
 - (UIColor *)colorForBarAtIndex:(NSInteger)index;
+- (UIColor *)colorForBarBackgroundAtIndex:(NSInteger)index;
 - (CFTimeInterval)animationDurationForBarAtIndex:(NSInteger)index;
 
 - (NSString *)titleForBarAtIndex:(NSInteger)index;

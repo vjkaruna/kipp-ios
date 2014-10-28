@@ -1,11 +1,11 @@
 # GraphKit
 
+[![License MIT](https://img.shields.io/badge/contact-@MichalKonturek-blue.svg?style=flat)](http://twitter.com/michalkonturek)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/michalkonturek/GraphKit/blob/master/LICENSE)
 [![CocoaPods](https://img.shields.io/cocoapods/v/GraphKit.svg?style=flat)](https://github.com/michalkonturek/GraphKit)
-[![License MIT](https://img.shields.io/badge/contact-@MichalKonturek-blue.svg?style=flat)](http://twitter.com/michalkonturek)
 
 
-A lightweight library of animated charts for iOS.
+A lightweight library of animated charts for iOS. 
 
 
 ## License
@@ -17,6 +17,8 @@ Source code of this project is available under the standard MIT license. Please 
 
 
 ## Usage
+
+To see a quick demo, simply type `pod try GraphKit`.
 
 ### Bar Graph
 
@@ -56,6 +58,7 @@ Please see [example][BAR].
 
 @optional
 - (UIColor *)colorForBarAtIndex:(NSInteger)index;
+- (UIColor *)colorForBarBackgroundAtIndex:(NSInteger)index;
 - (CFTimeInterval)animationDurationForBarAtIndex:(NSInteger)index;
 - (NSString *)titleForBarAtIndex:(NSInteger)index;
 ```
@@ -93,5 +96,11 @@ Please see [example][LINE].
 - (NSString *)titleForLineAtIndex:(NSInteger)index;
 ```
 
-<!--[@MichalKonturek](https://twitter.com/MichalKonturek)-->
+## Contributing
+
+1. Fork it.
+2. Create your feature branch (`git checkout -b new-feature`).
+3. Commit your changes (`git commit -am 'Added new-feature'`).
+4. Push to the branch (`git push origin new-feature`).
+5. Create new Pull Request.
 
