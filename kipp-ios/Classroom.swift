@@ -7,6 +7,7 @@
 //
 
 import UIKit
+var _currentClassroomId: String?
 
 class Classroom: NSObject {
     var students: [Student]!
@@ -25,6 +26,30 @@ class Classroom: NSObject {
         termEnd = obj["termEndDate"] as NSDate?
         title = obj["title"] as? String
         parseId = obj.objectId
+    }
+    
+    class func setCurrentClass(classroom: Classroom) {
+        _currentClassroomId = classroom.parseId
+    }
+    
+    class func currentClassId() -> String? {
+        return _currentClassroomId;
+    }
+    
+    class func currentClassWithCompletion(completion: ((classroom: Classroom?, error: NSError?) -> ())) {
+        ParseClient.sharedInstance.findClassroomsWithCompletion() { (classrooms: [Classroom]?, error: NSError?) -> Void in
+            if classrooms != nil && classrooms?.count > 0 {
+                var currentClassroom: Classroom?
+                for classroom in classrooms! {
+                    if classroom.parseId == self.currentClassId() {
+                        currentClassroom = classroom
+                    }
+                }
+                
+                completion(classroom: (currentClassroom ?? classrooms?[0]), error: error)
+                return ()
+            }
+        }
     }
     
     class func classroomsWithArray(objs: [PFObject]) -> [Classroom] {

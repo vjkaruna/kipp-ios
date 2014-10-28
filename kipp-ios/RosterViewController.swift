@@ -21,12 +21,25 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
 
+            Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
+                if classroom != nil {
+                    self.classroom = classroom
+                    self.tableView.reloadData()
+                    
+                    NSLog(classroom?.title ?? "nil")
+                }
+                else {
+                    NSLog("error getting classroom data from Parse")
+                }
+            }
         self.tableView.reloadData()
         
         var nib = UINib(nibName: "StudentTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "studentCell")
         
-        navigationItem.title = "Period \(classroom.period)"
+        if classroom != nil {
+            navigationItem.title = "Period \(classroom.period)"
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +48,7 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classroom.students.count
+        return classroom?.students?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -51,10 +51,12 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func getClassroom() {
-        ParseClient.sharedInstance.findClassroomsWithCompletion() { (classrooms: [Classroom]?, error: NSError?) -> Void in
-            if classrooms != nil && classrooms?.count > 0 {
-                self.students = classrooms![0].students
+        Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
+            if classroom != nil {
+                self.students = classroom?.students
                 self.attendanceTable.reloadData()
+            
+                NSLog(classroom?.title ?? "nil")
             }
             else {
                 NSLog("error getting classroom data from Parse")

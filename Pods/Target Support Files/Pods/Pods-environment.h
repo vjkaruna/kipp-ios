@@ -12,11 +12,29 @@
 #define COCOAPODS_VERSION_MINOR_Bolts 1
 #define COCOAPODS_VERSION_PATCH_Bolts 3
 
+// FrameAccessor
+#define COCOAPODS_POD_AVAILABLE_FrameAccessor
+#define COCOAPODS_VERSION_MAJOR_FrameAccessor 1
+#define COCOAPODS_VERSION_MINOR_FrameAccessor 3
+#define COCOAPODS_VERSION_PATCH_FrameAccessor 2
+
+// GraphKit
+#define COCOAPODS_POD_AVAILABLE_GraphKit
+#define COCOAPODS_VERSION_MAJOR_GraphKit 1
+#define COCOAPODS_VERSION_MINOR_GraphKit 1
+#define COCOAPODS_VERSION_PATCH_GraphKit 1
+
 // MGSwipeTableCell
 #define COCOAPODS_POD_AVAILABLE_MGSwipeTableCell
 #define COCOAPODS_VERSION_MAJOR_MGSwipeTableCell 1
 #define COCOAPODS_VERSION_MINOR_MGSwipeTableCell 2
 #define COCOAPODS_VERSION_PATCH_MGSwipeTableCell 0
+
+// MKFoundationKit/NSArray
+#define COCOAPODS_POD_AVAILABLE_MKFoundationKit_NSArray
+#define COCOAPODS_VERSION_MAJOR_MKFoundationKit_NSArray 1
+#define COCOAPODS_VERSION_MINOR_MKFoundationKit_NSArray 2
+#define COCOAPODS_VERSION_PATCH_MKFoundationKit_NSArray 3
 
 // Parse
 #define COCOAPODS_POD_AVAILABLE_Parse
