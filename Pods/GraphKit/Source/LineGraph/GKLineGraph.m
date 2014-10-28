@@ -28,7 +28,7 @@
 #import <FrameAccessor/FrameAccessor.h>
 #import <MKFoundationKit/NSArray+MK.h>
 
-static CGFloat kDefaultLabelWidth = 40.0;
+static CGFloat kDefaultLabelWidth = 20.0;
 static CGFloat kDefaultLabelHeight = 12.0;
 static NSInteger kDefaultValueLabelCount = 5;
 
@@ -36,7 +36,7 @@ static CGFloat kDefaultLineWidth = 3.0;
 static CGFloat kDefaultMargin = 10.0;
 static CGFloat kDefaultMarginBottom = 20.0;
 
-static CGFloat kAxisMargin = 50.0;
+static CGFloat kAxisMargin = 20.0;
 
 @interface GKLineGraph ()
 
@@ -207,7 +207,7 @@ static CGFloat kAxisMargin = 50.0;
 }
 
 - (CGFloat)_plotWidth {
-    return (self.width - (2 * self.margin) - kAxisMargin);
+    return (self.width - (2 * self.margin) - kAxisMargin)/2;
 }
 
 - (CGFloat)_plotHeight {
