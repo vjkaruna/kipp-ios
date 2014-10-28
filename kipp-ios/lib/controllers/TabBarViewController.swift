@@ -8,20 +8,42 @@
 
 import UIKit
 
-class TabBarViewController: UIViewController {
+class TabBarViewController: UIViewController, UITabBarControllerDelegate {
 
     var _viewControllers: [UIViewController]?
     let mainTabBarController = UITabBarController()
+    var classroomsController: ClassroomSelectionViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mainTabBarController.viewControllers = viewControllers()
     }
     
+//    - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+//    {
+//    return viewController != self.sellTab;
+//    }
+    
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        return viewController != self.classroomsController
+    }
+    
+//    - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+//    {
+//    if (item == self.sellTab.tabBarItem) {
+//    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[[PostAdViewController alloc] init]] animated:YES completion:nil];
+//    }
+//    }
+    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        if (viewController == self.classroomsController) {
+            self.presentViewController(self.classroomsController!, animated: true, completion: nil)
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
         mainTabBarController.viewControllers = viewControllers()
         self.presentViewController(mainTabBarController, animated: false, completion: nil)
-
     }
     
     func viewControllers() -> [UIViewController] {
@@ -38,12 +60,18 @@ class TabBarViewController: UIViewController {
             let actionSB = UIStoryboard(name: "Actions", bundle: nil)
             let actionNavController = actionSB.instantiateViewControllerWithIdentifier("ActionNC") as UIViewController
             
+            let classroomSB = UIStoryboard(name: "ClassroomSelection", bundle: nil)
+            let classroomsController = classroomSB.instantiateViewControllerWithIdentifier("ClassroomSelection") as ClassroomSelectionViewController
+            self.classroomsController = classroomsController
+            
             attendanceNavController.tabBarItem = UITabBarItem(title: "Attendance", image: UIImage(named: "attendance"), tag: 1)
             rosterNavController.tabBarItem = UITabBarItem(title: "Character", image: UIImage(named: "character"), tag: 1)
             actionNavController.tabBarItem = UITabBarItem(title: "Actions", image: UIImage(named: "alert"), tag: 1)
             callsNavController.tabBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "phone"), tag: 1)
+            classroomsController.tabBarItem = UITabBarItem(title: "Classes", image: UIImage(named: "classroom"), tag: 1)
+
             
-            self._viewControllers = [attendanceNavController, rosterNavController, actionNavController, callsNavController]
+            self._viewControllers = [classroomsController, attendanceNavController, rosterNavController, actionNavController, callsNavController]
             
             mainTabBarController.tabBar.tintColor = UIColor.greenTint()
             mainTabBarController.tabBar.barStyle = .Black
