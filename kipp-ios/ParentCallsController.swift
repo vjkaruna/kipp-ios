@@ -43,7 +43,8 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         var cell = callbutton.superview?.superview as UITableViewCell
         var indexPath = self.parentsTable.indexPathForCell(cell) as NSIndexPath!
         var parent = parents[indexPath.row]
-        
+        parent.lastCalledDate = NSDate()
+        parentsTable.reloadData()
         self.dialNumber(parent.phone)
         
     }
@@ -106,7 +107,7 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (selectedCells[indexPath.row]) {
-            return CGFloat(rowHeight * 2.0)
+            return CGFloat(rowHeight + 70.0)
         } else {
             return CGFloat(rowHeight)
         }

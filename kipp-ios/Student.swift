@@ -36,6 +36,7 @@ class Student: NSObject {
     var delegate: StudentProfileChangedDelegate?
     
     var attendance: AttendanceType?
+    var weeklyProgress: [Progress]?
     
     var characterArray: [CharacterTrait] = CharacterTrait.defaultCharacterTraitArray()
     
@@ -80,6 +81,17 @@ class Student: NSObject {
             })
         } else {
             NSLog("Attendance state for \(self.firstName) is \(self.attendance!.rawValue)")
+        }
+    }
+    
+    func fillWeeklyProgress() {
+        if weeklyProgress == nil {
+            ParseClient.sharedInstance.getProgressWithCompletion(self.studentId, completion: { (progressArray, error) -> () in
+                self.weeklyProgress = progressArray
+                self.delegate?.weeklyProgressDidChange()
+            })
+        } else {
+            NSLog("Already filled progress")
         }
     }
 }
