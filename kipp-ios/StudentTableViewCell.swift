@@ -8,8 +8,9 @@
 
 import UIKit
 
-class StudentTableViewCell: MGSwipeTableCell {
+class StudentTableViewCell: MGSwipeTableCell, StudentProfileChangedDelegate {
     
+    @IBOutlet weak var attendanceImageView: UIImageView!
     @IBOutlet weak var dateCompleteLabel: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var displayName: UILabel!
@@ -19,17 +20,28 @@ class StudentTableViewCell: MGSwipeTableCell {
     
     var profileDelegate: ProfileImageTappedDelegate?
     
-    
+    var showAttendanceState: Bool = false
+
     weak var student: Student? {
         willSet(newStudent) {
             if newStudent != nil {
+                newStudent!.delegate = self
                 self.displayName.text = "\(newStudent!.firstName) \(newStudent!.lastName)"
                 self.profilePic.image = UIImage(named: newStudent!.gender.profileImg())
                 self.labelView.layer.cornerRadius = 5
                 self.labelView.layer.borderWidth = 1.0
                 self.labelView.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).CGColor
                 self.dateCompleteLabel.text = ""
-//                newStudent!.fillAttendanceState() // If we want attendance for specific date, we can pass the date here
+                if self.showAttendanceState {
+                    if newStudent!.attendance == nil {
+                        newStudent!.fillAttendanceState() // If we want attendance for specific date, we can pass the date here
+                    } else {
+                        self.attendanceImageView.image = UIImage(named: newStudent!.attendance!.getIcon())
+                        self.attendanceImageView.hidden = false
+                    }
+                } else {
+                    self.attendanceImageView.hidden = true
+                }
             }
         }
     }
@@ -53,6 +65,10 @@ class StudentTableViewCell: MGSwipeTableCell {
         profileDelegate?.didTapProfileImg(student!)
     }
     
+    func attendanceDidChange() {
+        self.attendanceImageView.image = UIImage(named: student!.attendance!.getIcon())
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

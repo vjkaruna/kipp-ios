@@ -12,9 +12,9 @@ protocol ProfileImageTappedDelegate {
     func didTapProfileImg(student: Student)
 }
 
-protocol StudentProfileChangedDelegate {
+@objc protocol StudentProfileChangedDelegate {
     func attendanceDidChange()
-    func weeklyProgressDidChange()
+    optional func weeklyProgressDidChange()
 }
 
 protocol CharacterTraitUpdatedDelegate {

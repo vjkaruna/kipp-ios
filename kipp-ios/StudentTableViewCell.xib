@@ -63,6 +63,13 @@
                                 <color key="textColor" red="0.56006855867346939" green="0.56006855867346939" blue="0.56006855867346939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark2" translatesAutoresizingMaskIntoConstraints="NO" id="m01-NC-58n">
+                                <rect key="frame" x="550" y="22" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="2g8-dz-26U"/>
+                                    <constraint firstAttribute="width" constant="25" id="4UK-Cd-ufg"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -72,9 +79,12 @@
                             <constraint firstItem="LTD-9s-XAe" firstAttribute="top" secondItem="ekE-sT-Lnv" secondAttribute="top" constant="69" id="Awe-xp-zGQ"/>
                             <constraint firstItem="pdy-L4-K4U" firstAttribute="top" secondItem="ekE-sT-Lnv" secondAttribute="top" constant="26" id="Dw9-K3-la0"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="leading" secondItem="ekE-sT-Lnv" secondAttribute="leading" constant="15" id="KJZ-dB-1cn"/>
+                            <constraint firstItem="m01-NC-58n" firstAttribute="top" secondItem="ekE-sT-Lnv" secondAttribute="top" constant="22" id="LAA-Fa-cHa"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="top" secondItem="jH6-3X-Bkb" secondAttribute="top" id="Mid-Du-fiP"/>
                             <constraint firstItem="rWG-24-pJh" firstAttribute="top" secondItem="ekE-sT-Lnv" secondAttribute="top" constant="24" id="TEx-aw-aLf"/>
+                            <constraint firstItem="LTD-9s-XAe" firstAttribute="top" secondItem="m01-NC-58n" secondAttribute="bottom" constant="22" id="VHy-uN-ErF"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="trailing" secondItem="jH6-3X-Bkb" secondAttribute="trailing" id="VSD-SQ-EQp"/>
+                            <constraint firstAttribute="trailing" secondItem="m01-NC-58n" secondAttribute="trailing" constant="25" id="XS3-GV-5Pp"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="top" secondItem="ekE-sT-Lnv" secondAttribute="top" constant="10" id="hgJ-s6-bkF"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="bottom" secondItem="jH6-3X-Bkb" secondAttribute="bottom" id="iFD-q5-BM8"/>
                             <constraint firstItem="pdy-L4-K4U" firstAttribute="leading" secondItem="rWG-24-pJh" secondAttribute="trailing" constant="5" id="icB-HM-SML"/>
@@ -96,6 +106,7 @@
             <gestureRecognizers/>
             <connections>
                 <outlet property="actionComments" destination="OZR-fm-D2m" id="5Wk-41-6Ub"/>
+                <outlet property="attendanceImageView" destination="m01-NC-58n" id="yqh-aG-HdK"/>
                 <outlet property="dateCompleteLabel" destination="pdy-L4-K4U" id="MdH-2t-I8d"/>
                 <outlet property="displayName" destination="rWG-24-pJh" id="cAv-vz-wXL"/>
                 <outlet property="labelView" destination="LTD-9s-XAe" id="6ju-Ky-ckN"/>
@@ -105,6 +116,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="checkmark2" width="24" height="24"/>
         <image name="girl" width="175" height="175"/>
     </resources>
 </document>
