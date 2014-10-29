@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func userDidLogin() {
         window?.rootViewController = TabBarViewController()
+        Classroom.currentClass()    // sets the current class asynchronously -- defaulting to the first period
     }
     
     func userDidLogout() {

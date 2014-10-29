@@ -39,6 +39,11 @@ class ClassroomsViewController: UIViewController, UITableViewDelegate, UITableVi
         var cell = tableView.dequeueReusableCellWithIdentifier("classroomCell") as ClassroomTableViewCell
         let classroom = classes![indexPath.row] as Classroom
         cell.classLabel.text = "Period \(classroom.period): \(classroom.subject)"
+        if classroom.parseId == Classroom.currentClass()!.parseId {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+        }
         return cell
     }
     
@@ -55,10 +60,8 @@ class ClassroomsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        let vc = storyboard!.instantiateViewControllerWithIdentifier("RosterViewController") as RosterViewController
-//        vc.classroom = classes![indexPath.row] as Classroom
         Classroom.setCurrentClass(classes![indexPath.row] as Classroom)
-//        self.navigationController?.pushViewController(vc, animated: true)
+        tableView.reloadData()
     }
     
     // MARK: - Navigation

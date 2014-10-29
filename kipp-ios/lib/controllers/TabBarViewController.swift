@@ -37,7 +37,8 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
     
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         if (viewController == self.classroomsController) {
-            self.presentViewController(self.classroomsController!, animated: true, completion: nil)
+            self.classroomsController!.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+            mainTabBarController.selectedViewController?.presentViewController(self.classroomsController!, animated: true, completion: nil)
         }
     }
     

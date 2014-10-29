@@ -187,7 +187,7 @@ class CharacterViewController: UIViewController, ReasonSubmittedDelegate {
         self.dismissViewControllerAnimated(false, completion: nil)
         NSLog("Submitted with reason \(reasonString)")
         let action = Action(type: actionType, reason: reasonString, forDate: NSDate(), student: student!)
-        ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action) { (parseObj, error) -> () in
+        ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action, classroom: Classroom.currentClass()!) { (parseObj, error) -> () in
             if error != nil {
                 NSLog("Error saving to Parse")
             } else {

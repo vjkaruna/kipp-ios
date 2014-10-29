@@ -17,6 +17,7 @@ class Classroom: NSObject {
     var title: String?      // used if teacher wants to rename display name of class
     var termStart, termEnd: NSDate!
     var parseId: String!
+    var pfobj: PFObject!
     
     init(obj: PFObject) {
         period = obj["period"] as Int
@@ -27,6 +28,7 @@ class Classroom: NSObject {
         termEnd = obj["termEndDate"] as NSDate?
         title = obj["title"] as? String
         parseId = obj.objectId
+        pfobj = obj
     }
     
     class func setCurrentClass(classroom: Classroom) {
