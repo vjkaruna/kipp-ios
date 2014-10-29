@@ -100,7 +100,7 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func didTapProfileImg(student: Student) {
-        self.performSegueWithIdentifier("profileSegue", sender: student)
+//        self.performSegueWithIdentifier("profileSegue", sender: student)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
