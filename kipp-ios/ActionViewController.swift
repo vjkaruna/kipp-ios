@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MGSwipeTableCellDelegate {
+class ActionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MGSwipeTableCellDelegate, ProfileImageTappedDelegate {
 // TODO: Need to pull out current class context into User model so we can query students
 // Should this be an agenda view instead??
     
@@ -19,7 +19,11 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     
     var data: [Action]?
     
+    var selectedRow: Int?
+    
     var emptyView: EmptyDataView!
+    
+    var labelHeights: [CGFloat]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +32,9 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        var nib = UINib(nibName: "StudentTableViewCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "studentCell")
         
         emptyView = UINib(nibName: "EmptyDataView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as EmptyDataView
         emptyView.hidden = true
@@ -38,6 +45,8 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
                 NSLog("Completion called for action type \(self.actionType!.rawValue)")
                 if actions != nil {
                     self.data = actions
+                    self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
+                    self.tableView.reloadData()
                     self.loadDataOrEmptyState()
                 } else {
                     NSLog("Error getting actions: \(error)")
@@ -47,6 +56,8 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
             ParseClient.sharedInstance.findCompleteActionsWithCompletion(nil) { (actions, error) -> () in
                 if actions != nil {
                     self.data = actions
+                    self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
+                    self.tableView.reloadData()
                     self.loadDataOrEmptyState()
                 } else {
                     NSLog("Error getting actions: \(error)")
@@ -72,28 +83,59 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if selectedRow == nil || selectedRow! != indexPath.row {
+            selectedRow = indexPath.row
+        } else if selectedRow! == indexPath.row {
+            selectedRow = nil
+            NSLog("Collapse row \(indexPath.row)")
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+        tableView.beginUpdates()
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        tableView.endUpdates()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if selectedRow == nil || selectedRow != indexPath.row {
+            return 68
+        } else {
+            return labelHeights![indexPath.row] + 68.0 + 20.0
+        }
+    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("actionCell") as ActionTableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
         let action = data![indexPath.row]
-        cell.descriptionLabel.text = action.reason
-        cell.actionTypeLabel.text = action.type.rawValue
+        cell.actionComments.text = action.reason
+        cell.student = action.student
 //        NSLog("\(cell)")
-        cell.delegate = self
-        cell.rightButtons = createRightButton()
-//        cell.leftButtons = []
-//        cell.leftSwipeSettings.transition = MGSwipeTransition.TransitionDrag
-        cell.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
-        cell.rightExpansion.buttonIndex = 0
-        cell.rightExpansion.fillOnTrigger = true
+        
+        if actionType! != .History {
+            cell.delegate = self
+            cell.rightButtons = createRightButton()
+    //        cell.leftButtons = []
+    //        cell.leftSwipeSettings.transition = MGSwipeTransition.TransitionDrag
+            cell.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
+            cell.rightExpansion.buttonIndex = 0
+            cell.rightExpansion.fillOnTrigger = true
+        }
+
+        cell.layoutIfNeeded()
+        labelHeights![indexPath.row] = cell.actionComments.bounds.size.height
+        NSLog("actionComment height: \(cell.actionComments.bounds.size.height) for cell \(indexPath.row)")
+        cell.clipsToBounds = true
         return cell
     }
     
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
     
     func loadDataOrEmptyState() {
         if data!.count > 0 {
             tableView.hidden = false
             emptyView.hidden = true
-            tableView.reloadData()
         } else {
             emptyView.hidden = false
             tableView.hidden = true
@@ -108,19 +150,21 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func createRightButton() -> NSArray {
-        var anotherbutton = MGSwipeButton(title: "Done", backgroundColor: UIColor.greenTint()) { (cell) -> Bool in
+        var button = MGSwipeButton(title: "Done", backgroundColor: UIColor.greenTint()) { (cell) -> Bool in
             NSLog("Tapped Done for \(cell)")
+            self.markActionComplete(cell)
             return true
         }
-        var button = MGSwipeButton(title: "Delete", backgroundColor: UIColor.myRedColor()) { (cell) -> Bool in
-            NSLog("Tapped delete for \(cell)")
-            self.markActionComplete(self.tableView.indexPathForCell(cell)!)
-            return true
-        }
-        return [button, anotherbutton]
+//        var button = MGSwipeButton(title: "Delete", backgroundColor: UIColor.myRedColor()) { (cell) -> Bool in
+//            NSLog("Tapped delete for \(cell)")
+//            self.markActionComplete(self.tableView.indexPathForCell(cell)!)
+//            return true
+//        }
+        return [button]
     }
 
-    func markActionComplete(indexPath: NSIndexPath) {
+    func markActionComplete(cell: UITableViewCell) {
+        let indexPath = self.tableView.indexPathForCell(cell)!
         let action = data![indexPath.row]
         ParseClient.sharedInstance.markActionAsComplete(action) { (success, error) -> () in
             NSLog("Updated object in Parse")
@@ -130,48 +174,13 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         data!.removeAtIndex(indexPath.row)
         
         tableView.beginUpdates()
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Bottom)
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         tableView.endUpdates()
         
         loadDataOrEmptyState()
     }
-//    -(void) deleteMail:(NSIndexPath *) indexPath
-//    {
-//    [demoData removeObjectAtIndex:indexPath.row];
-//    [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-//    }
-//    -(NSArray *) createLeftButtons: (int) number
-//    {
-//    NSMutableArray * result = [NSMutableArray array];
-//    UIColor * colors[3] = {[UIColor greenColor],
-//    [UIColor colorWithRed:0 green:0x99/255.0 blue:0xcc/255.0 alpha:1.0],
-//    [UIColor colorWithRed:0.59 green:0.29 blue:0.08 alpha:1.0]};
-//    UIImage * icons[3] = {[UIImage imageNamed:@"check.png"], [UIImage imageNamed:@"fav.png"], [UIImage imageNamed:@"menu.png"]};
-//    for (int i = 0; i < number; ++i)
-//    {
-//    MGSwipeButton * button = [MGSwipeButton buttonWithTitle:@"" icon:icons[i] backgroundColor:colors[i] padding:15 callback:^BOOL(MGSwipeTableCell * sender){
-//    NSLog(@"Convenience callback received (left).");
-//    return YES;
-//    }];
-//    [result addObject:button];
-//    }
-//    return result;
-//    }
-//    
-//    
-//    -(NSArray *) createRightButtons: (int) number
-//    {
-//    NSMutableArray * result = [NSMutableArray array];
-//    NSString* titles[2] = {@"Delete", @"More"};
-//    UIColor * colors[2] = {[UIColor redColor], [UIColor lightGrayColor]};
-//    for (int i = 0; i < number; ++i)
-//    {
-//    MGSwipeButton * button = [MGSwipeButton buttonWithTitle:titles[i] backgroundColor:colors[i] callback:^BOOL(MGSwipeTableCell * sender){
-//    NSLog(@"Convenience callback received (right).");
-//    return YES;
-//    }];
-//    [result addObject:button];
-//    }
-//    return result;
-//    }
+    
+    func didTapProfileImg(student: Student) {
+        NSLog("Tapped profile")
+    }
 }

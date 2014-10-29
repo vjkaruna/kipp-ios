@@ -51,6 +51,7 @@ class ParseClient: NSObject {
         var classroomQuery = PFQuery(className: "Classroom")
         classroomQuery.whereKey("teacher2", equalTo: PFUser.currentUser())
         classroomQuery.includeKey("students")
+        classroomQuery.orderByAscending("period")
         
         classroomQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
             if error == nil {

@@ -23,8 +23,8 @@ enum ActionType: String {
             return "needs-work-white"
         case .Call:
             return "call"
-        default:
-            return "celebrate"
+        case .History:
+            return "history"
         }
     }
 }
