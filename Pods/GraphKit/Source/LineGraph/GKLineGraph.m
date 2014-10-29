@@ -201,13 +201,13 @@ static CGFloat kAxisMargin = 20.0;
 
 - (void)_removeValueLabels {
     [self.valueLabels mk_each:^(id item) {
-        [item removeFromSuperview];
+        //[item removeFromSuperview];
     }];
     self.valueLabels = nil;
 }
 
 - (CGFloat)_plotWidth {
-    return (self.width - (2 * self.margin) - kAxisMargin)/2;
+    return (self.width - (2 * self.margin) - kAxisMargin);
 }
 
 - (CGFloat)_plotHeight {

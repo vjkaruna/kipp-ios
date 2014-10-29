@@ -89,9 +89,11 @@ class Student: NSObject {
             ParseClient.sharedInstance.getProgressWithCompletion(self.studentId, completion: { (progressArray, error) -> () in
                 self.weeklyProgress = progressArray
                 self.delegate?.weeklyProgressDidChange()
+                
             })
         } else {
             NSLog("Already filled progress")
+            self.delegate?.weeklyProgressDidChange()
         }
     }
 }
