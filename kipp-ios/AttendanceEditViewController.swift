@@ -1,34 +1,31 @@
 //
-//  AttendanceController.swift
+//  AttendanceEditViewController.swift
 //  kipp-ios
 //
-//  Created by dylan on 10/23/14.
+//  Created by vli on 10/29/14.
 //  Copyright (c) 2014 vjkaruna. All rights reserved.
 //
 
 import UIKit
 
-class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate {
-    @IBOutlet weak var attendanceTable: UITableView!
-
-    @IBOutlet weak var contentView: UIView!
+class AttendanceEditViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate {
+    @IBOutlet weak var tableView: UITableView!
+    
     var students: [Student]?
     var emptyView: EmptyDataView!
-    
-    var attendanceComplete: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        attendanceTable.delegate = self
-        attendanceTable.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         
         var nib = UINib(nibName: "StudentTableViewCell", bundle: nil)
-        attendanceTable.registerNib(nib, forCellReuseIdentifier: "studentCell")
+        tableView.registerNib(nib, forCellReuseIdentifier: "studentCell")
         
-        emptyView = UINib(nibName: "EmptyDataView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as EmptyDataView
-        emptyView.hidden = true
-        contentView.addSubview(emptyView)
+//        emptyView = UINib(nibName: "EmptyDataView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as EmptyDataView
+//        emptyView.hidden = true
+//        contentView.addSubview(emptyView)
         
         loadClassroom()
     }
@@ -38,21 +35,20 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
         loadClassroom()
     }
     
+    @IBAction func tappedDone(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func loadDataOrEmptyState() {
-        if attendanceComplete || students!.count == 0 {
-            emptyView.hidden = false
-            attendanceTable.hidden = true
-            emptyView.type = .Attendance
+        if students!.count > 0 {
+            tableView.hidden = false
+//            emptyView.hidden = true
+            tableView.reloadData()
         } else {
-            attendanceTable.hidden = false
-            emptyView.hidden = true
-//            attendanceTable.reloadData()
-        }
-//        else {
 //            emptyView.hidden = false
-//            attendanceTable.hidden = true
+            tableView.hidden = true
 //            emptyView.type = .Attendance
-//        }
+        }
     }
     
     func loadClassroom() {
@@ -62,9 +58,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
                 if classroom != nil {
                     self.students = classroom?.students
                     self.loadDataOrEmptyState()
-                    self.navigationItem.title = "Period \(classroom!.period): Attendance"
                     NSLog(classroom?.title ?? "nil")
-//                    self.attendanceTable.reloadData()
                 }
                 else {
                     NSLog("error getting classroom data from Parse")
@@ -73,28 +67,14 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             self.students = classroom?.students
             loadDataOrEmptyState()
-            self.navigationItem.title = "Period \(classroom!.period): Attendance"
-            self.attendanceTable.reloadData()
         }
-//        Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
-//            if classroom != nil {
-//                self.students = classroom!.students
-//                self.navigationItem.title = "Period \(classroom!.period)"
-//                self.attendanceTable.reloadData()
-//                
-//                NSLog(classroom?.title ?? "nil")
-//            }
-//            else {
-//                NSLog("error getting classroom data from Parse")
-//            }
-//        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
         let student = students![indexPath.row]
         cell.student = student
-        cell.showAttendanceState = false
+        cell.showAttendanceState = true
         cell.profileDelegate = self
         cell.delegate = self
         cell.rightButtons = createRightButtons()
@@ -118,15 +98,13 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
     func createRightButtons() -> NSArray {
         var absentButton = MGSwipeButton(title: "", icon: UIImage(named: "x"), backgroundColor: UIColor.myRedColor()) { (cell) -> Bool in
             NSLog("Tapped absent for \(cell)")
-            let indexPath = self.attendanceTable.indexPathForCell(cell)!
-            self.markStudent(indexPath, cell: cell as StudentTableViewCell, type: .Absent)
+            self.markStudent(cell, type: .Absent)
             return true
         }
         absentButton.setPadding(CGFloat(25))
         var lateButton = MGSwipeButton(title: "", icon: UIImage(named: "alarm"), backgroundColor: UIColor.myYellow()) { (cell) -> Bool in
             NSLog("Tapped late for \(cell)")
-            let indexPath = self.attendanceTable.indexPathForCell(cell)!
-            self.markStudent(indexPath, cell: cell as StudentTableViewCell, type: .Tardy)
+            self.markStudent(cell, type: .Tardy)
             return true
         }
         return [absentButton, lateButton]
@@ -135,8 +113,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
     func createLeftButtons() -> NSArray {
         let button = MGSwipeButton(title: "", icon: UIImage(named: "checkmark-green"), backgroundColor: UIColor.greenTint()) { (cell) -> Bool in
             NSLog("Tapped present for \(cell)")
-            let indexPath = self.attendanceTable.indexPathForCell(cell)!
-            self.markStudent(indexPath, cell: cell as StudentTableViewCell, type: .Present)
+            self.markStudent(cell, type: .Present)
             return true
         }
         button.setPadding(CGFloat(25))
@@ -147,21 +124,13 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
         NSLog("Tapped profile")
     }
     
-    func markStudent(indexPath: NSIndexPath, cell: StudentTableViewCell, type: AttendanceType) {
+    func markStudent(cell: UITableViewCell, type: AttendanceType) {
         // Actually Mark the student
-//        let indexPath = attendanceTable.indexPathForCell(cell)!
-        var student = students?.removeAtIndex(indexPath.row)
+        let indexPath = tableView.indexPathForCell(cell)!
+//        var student = students?.removeAtIndex(indexPath.row)
+        let student = students?[indexPath.row]
         student?.markAttendanceForType(type)
-        cell.attendanceDidChange()
-        
-        attendanceTable.beginUpdates()
-        attendanceTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        attendanceTable.endUpdates()
-        
-        if students!.count == 0 {
-            attendanceComplete = true
-        }
-        
-        loadDataOrEmptyState()
+//        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+//        loadDataOrEmptyState()
     }
 }

@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="125" y="179"/>
         </scene>
-        <!--View Controller-->
+        <!--Attendance Edit View Controller-->
         <scene sceneID="cG8-Vo-uE0">
             <objects>
-                <viewController id="Y9J-8i-tOh" sceneMemberID="viewController">
+                <viewController id="Y9J-8i-tOh" customClass="AttendanceEditViewController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="au1-YD-KQK"/>
                         <viewControllerLayoutGuide type="bottom" id="Q2e-lE-tbl"/>
@@ -92,7 +92,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uB4-8x-Y0w">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9g-sg-Mod">
@@ -105,29 +105,22 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ceb-JG-8MG">
-                                        <rect key="frame" x="548" y="26" width="37" height="30"/>
+                                        <rect key="frame" x="553" y="26" width="37" height="30"/>
                                         <state key="normal" title="Done">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RQ-6h-xhf">
-                                        <rect key="frame" x="15" y="26" width="48" height="30"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                        <connections>
+                                            <action selector="tappedDone:" destination="Y9J-8i-tOh" eventType="touchUpInside" id="XuE-Kj-xaN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.37647058820000001" green="0.63529411759999999" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="6RQ-6h-xhf" secondAttribute="bottom" constant="8" id="4tc-VC-3Zk"/>
-                                    <constraint firstItem="6RQ-6h-xhf" firstAttribute="top" secondItem="Z9g-sg-Mod" secondAttribute="top" constant="26" id="FDV-Pz-MJe"/>
                                     <constraint firstAttribute="height" constant="64" id="Gnk-nC-kxF"/>
                                     <constraint firstItem="Ceb-JG-8MG" firstAttribute="top" secondItem="Z9g-sg-Mod" secondAttribute="top" constant="26" id="HrX-TI-rY4"/>
                                     <constraint firstAttribute="centerY" secondItem="T2l-7P-oXK" secondAttribute="centerY" constant="-8.5" id="M9u-2k-QdI"/>
-                                    <constraint firstItem="6RQ-6h-xhf" firstAttribute="leading" secondItem="Z9g-sg-Mod" secondAttribute="leading" constant="15" id="W4k-79-41p"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ceb-JG-8MG" secondAttribute="trailing" constant="15" id="fjY-QY-WGO"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ceb-JG-8MG" secondAttribute="trailing" constant="10" id="fjY-QY-WGO"/>
                                     <constraint firstAttribute="bottom" secondItem="Ceb-JG-8MG" secondAttribute="bottom" constant="8" id="hso-JG-e85"/>
                                     <constraint firstAttribute="centerX" secondItem="T2l-7P-oXK" secondAttribute="centerX" id="vxe-Mq-dRv"/>
                                 </constraints>
@@ -138,12 +131,15 @@
                             <constraint firstItem="uB4-8x-Y0w" firstAttribute="leading" secondItem="aZu-fu-5Jf" secondAttribute="leading" id="D6U-zQ-UBa"/>
                             <constraint firstItem="Z9g-sg-Mod" firstAttribute="top" secondItem="aZu-fu-5Jf" secondAttribute="topMargin" id="FN6-Xr-RHd"/>
                             <constraint firstAttribute="trailing" secondItem="Z9g-sg-Mod" secondAttribute="trailing" id="MBD-3g-T2E"/>
+                            <constraint firstItem="uB4-8x-Y0w" firstAttribute="top" secondItem="Z9g-sg-Mod" secondAttribute="bottom" id="Mqe-bz-I64"/>
                             <constraint firstAttribute="trailing" secondItem="uB4-8x-Y0w" secondAttribute="trailing" id="chv-yi-1Hq"/>
                             <constraint firstItem="Q2e-lE-tbl" firstAttribute="top" secondItem="uB4-8x-Y0w" secondAttribute="bottom" id="fIe-L5-iAe"/>
                             <constraint firstItem="Z9g-sg-Mod" firstAttribute="leading" secondItem="aZu-fu-5Jf" secondAttribute="leading" id="m96-hz-4JR"/>
-                            <constraint firstItem="uB4-8x-Y0w" firstAttribute="top" secondItem="aZu-fu-5Jf" secondAttribute="top" id="xgL-hk-VXA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="uB4-8x-Y0w" id="MJl-Gz-1cN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AeH-cL-LlG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
