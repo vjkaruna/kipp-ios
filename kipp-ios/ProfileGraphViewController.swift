@@ -30,8 +30,7 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
             self.student!.fillWeeklyProgress()
         }
         
-        self.graph.dataSource = self
-        self.graph.lineWidth = 4.0
+
         
 
         //self.graph.height = self.graph.frame.height
@@ -56,6 +55,8 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     }
     func weeklyProgressDidChange() {
         //self.graph.reset()
+        self.graph.dataSource = self
+        self.graph.lineWidth = 4.0
         self.graph.draw()
         if self.student != nil && self.student?.weeklyProgress? != nil && self.student?.weeklyProgress?.count > 0 {
             self.topicLabel.text = "Current Topic: \(self.student!.weeklyProgress![self.student!.weeklyProgress!.count-1].topic)"
