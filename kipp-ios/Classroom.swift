@@ -8,6 +8,7 @@
 
 import UIKit
 var _currentClassroomId: String?
+var _currentClasroom: Classroom?
 
 class Classroom: NSObject {
     var students: [Student]!
@@ -30,10 +31,15 @@ class Classroom: NSObject {
     
     class func setCurrentClass(classroom: Classroom) {
         _currentClassroomId = classroom.parseId
+        _currentClasroom = classroom
     }
     
     class func currentClassId() -> String? {
         return _currentClassroomId;
+    }
+    
+    class func currentClass() -> Classroom {
+        return _currentClasroom!
     }
     
     class func currentClassWithCompletion(completion: ((classroom: Classroom?, error: NSError?) -> ())) {
@@ -43,6 +49,7 @@ class Classroom: NSObject {
                 for classroom in classrooms! {
                     if classroom.parseId == self.currentClassId() {
                         currentClassroom = classroom
+                        self.setCurrentClass(classroom)
                     }
                 }
                 
