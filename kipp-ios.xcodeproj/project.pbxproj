@@ -40,6 +40,7 @@
 		66147C3C19FB64C30001CB6F /* libPods-FrameAccessor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */; };
 		66147C3E19FC26440001CB6F /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66147C3D19FC26430001CB6F /* Progress.swift */; };
 		6615BEF119F3065200B7D8EC /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6615BEF019F3065200B7D8EC /* ParseClient.swift */; };
+		662F2B5D1A007310009CAB2D /* StudentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 662F2B5C1A007310009CAB2D /* StudentTableViewCell.xib */; };
 		6649802719EB37F80050ACB9 /* ParentCalls.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6649802619EB37F80050ACB9 /* ParentCalls.storyboard */; };
 		6649802919EB38040050ACB9 /* ParentCallsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649802819EB38040050ACB9 /* ParentCallsController.swift */; };
 		6649802B19EB38230050ACB9 /* Parent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649802A19EB38230050ACB9 /* Parent.swift */; };
@@ -117,6 +118,7 @@
 		66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-FrameAccessor.a"; path = "Pods/build/Debug-iphoneos/libPods-FrameAccessor.a"; sourceTree = "<group>"; };
 		66147C3D19FC26430001CB6F /* Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		6615BEF019F3065200B7D8EC /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		662F2B5C1A007310009CAB2D /* StudentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentTableViewCell.xib; sourceTree = "<group>"; };
 		6649802619EB37F80050ACB9 /* ParentCalls.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ParentCalls.storyboard; sourceTree = "<group>"; };
 		6649802819EB38040050ACB9 /* ParentCallsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentCallsController.swift; sourceTree = "<group>"; };
 		6649802A19EB38230050ACB9 /* Parent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parent.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		54682D6519EA3FCF00CCE795 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				662F2B5C1A007310009CAB2D /* StudentTableViewCell.xib */,
 				54682D6019E9EC7D00CCE795 /* StudentTableViewCell.swift */,
 				54682D6F19EB2FAF00CCE795 /* ClassroomTableViewCell.swift */,
 				54B3B0C519EE5BA500BC83B1 /* CharacterView.xib */,
@@ -438,6 +441,7 @@
 				545F718019F8F4AB001634D3 /* Actions.storyboard in Resources */,
 				545F718A19FB9671001634D3 /* EmptyDataView.xib in Resources */,
 				669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */,
+				662F2B5D1A007310009CAB2D /* StudentTableViewCell.xib in Resources */,
 				54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */,
 				FCF1563019F6167B0057617D /* Attendance.storyboard in Resources */,
 				FC25F94F19FC5AB1003949AE /* ClassroomSelection.storyboard in Resources */,
