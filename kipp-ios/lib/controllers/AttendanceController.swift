@@ -85,6 +85,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
         var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
         let student = students![indexPath.row]
         cell.student = student
+        cell.showAttendanceState = false
         cell.profileDelegate = self
         cell.delegate = self
         cell.rightButtons = createRightButtons()

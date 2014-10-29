@@ -10,6 +10,17 @@ import UIKit
 
 enum AttendanceType: Int {
     case Absent = 1, Tardy, Present
+    
+    func getIcon() -> String {
+        switch self {
+        case .Absent:
+            return "x2"
+        case .Tardy:
+            return "alarm2"
+        case .Present:
+            return "checkmark2"
+        }
+    }
 }
 
 enum Gender: String {
@@ -88,12 +99,12 @@ class Student: NSObject {
         if weeklyProgress == nil {
             ParseClient.sharedInstance.getProgressWithCompletion(self.studentId, completion: { (progressArray, error) -> () in
                 self.weeklyProgress = progressArray
-                self.delegate?.weeklyProgressDidChange()
+                self.delegate?.weeklyProgressDidChange!()
                 
             })
         } else {
             NSLog("Already filled progress")
-            self.delegate?.weeklyProgressDidChange()
+            self.delegate?.weeklyProgressDidChange!()
         }
     }
 }
