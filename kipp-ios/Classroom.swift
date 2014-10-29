@@ -24,7 +24,7 @@ class Classroom: NSObject {
         subject = obj["subject"] as String
         let studentsArray = obj.objectForKey("students") as NSArray
         students = Student.studentsWithArray(studentsArray)
-        termStart = obj["termStartDate"] as NSDate
+        //termStart = obj["termStartDate"] as NSDate
         termEnd = obj["termEndDate"] as NSDate?
         title = obj["title"] as? String
         parseId = obj.objectId
