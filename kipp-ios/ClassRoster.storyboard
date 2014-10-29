@@ -682,6 +682,10 @@
         <image name="character-self-control" width="139" height="186"/>
         <image name="character-social-intelligence" width="139" height="177"/>
         <image name="character-zest" width="139" height="178"/>
+        <image name="classroom" width="22" height="22"/>
         <image name="needs-work-white" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oTS-dE-lHG"/>
+    </inferredMetricsTieBreakers>
 </document>

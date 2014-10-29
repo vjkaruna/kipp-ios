@@ -169,6 +169,7 @@
                     </view>
                     <connections>
                         <outlet property="graph" destination="AeB-pT-Zwy" id="ndX-Hp-EUd"/>
+                        <outlet property="legendLabel" destination="WvX-Qj-Dkj" id="dDJ-85-PLR"/>
                         <outlet property="studentLabel" destination="jl9-xJ-VOR" id="4Ea-r2-7Y0"/>
                     </connections>
                 </viewController>
