@@ -13,6 +13,7 @@ class Parent: NSObject {
     var studentId: Int!
     var parentId: Int!
     var student: Student?
+    var lastCalledDate: NSDate!
     
     
     init(obj: PFObject) {
@@ -23,6 +24,7 @@ class Parent: NSObject {
         self.parentId = obj["parentId"] as NSInteger
         let studentobj = obj.objectForKey("Student") as PFObject
         self.student = Student(obj: studentobj)
+        self.lastCalledDate = obj.updatedAt
     }
     
     var fullName: String {
