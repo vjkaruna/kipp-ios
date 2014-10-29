@@ -13,34 +13,37 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
     var _viewControllers: [UIViewController]?
     let mainTabBarController = UITabBarController()
     var classroomsController: ClassroomsViewController?
+    var presentingModal: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainTabBarController.delegate = self
         mainTabBarController.viewControllers = viewControllers()
     }
     
-//    - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
-//    {
-//    return viewController != self.sellTab;
-//    }
-    
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        if self.presentingModal {
+            mainTabBarController.selectedViewController?.dismissViewControllerAnimated(true, completion: nil)
+            self.presentingModal = false
+        } else if (viewController == self.classroomsController) {
+            let classroomSB = UIStoryboard(name: "ClassroomSelection", bundle: nil)
+            let classroomsController = classroomSB.instantiateViewControllerWithIdentifier("classroomsVC") as ClassroomsViewController
+            classroomsController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        
+            mainTabBarController.selectedViewController?.presentViewController(classroomsController, animated: true, completion: nil)
+            self.presentingModal = true
+        }
         return viewController != self.classroomsController
     }
     
-//    - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
-//    {
-//    if (item == self.sellTab.tabBarItem) {
-//    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[[PostAdViewController alloc] init]] animated:YES completion:nil];
+//    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+//
+//        if (viewController == self.classroomsController) {
+//            println("hello")
+//            self.classroomsController!.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+//            mainTabBarController.selectedViewController?.presentViewController(self.classroomsController!, animated: true, completion: nil)
+//        }
 //    }
-//    }
-    
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        if (viewController == self.classroomsController) {
-            self.classroomsController!.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-            mainTabBarController.selectedViewController?.presentViewController(self.classroomsController!, animated: true, completion: nil)
-        }
-    }
     
     override func viewDidAppear(animated: Bool) {
         mainTabBarController.viewControllers = viewControllers()
