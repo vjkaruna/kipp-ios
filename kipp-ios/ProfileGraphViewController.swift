@@ -16,6 +16,7 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     @IBOutlet weak var graph: GKLineGraph!
     @IBOutlet weak var studentLabel: UILabel!
     @IBOutlet weak var legendLabel: UILabel!
+    @IBOutlet weak var topicLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +45,8 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
             let minutesAttributes = [NSForegroundColorAttributeName: UIColor.magentaColor()]
             let weeklyAttributes = [NSForegroundColorAttributeName: UIColor.greenColor()]
             let descText = NSMutableAttributedString()
-            descText.appendAttributedString(NSAttributedString(string: "- minutes studied  ",attributes:minutesAttributes))
-            descText.appendAttributedString(NSAttributedString(string: "- weekly progress",attributes:weeklyAttributes))
+            descText.appendAttributedString(NSAttributedString(string: "minutes studied -  ",attributes:minutesAttributes))
+            descText.appendAttributedString(NSAttributedString(string: "weekly progress - ",attributes:weeklyAttributes))
             legendLabel.attributedText = descText
         }
     }
@@ -56,6 +57,9 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     func weeklyProgressDidChange() {
         //self.graph.reset()
         self.graph.draw()
+        if self.student != nil && self.student?.weeklyProgress? != nil && self.student?.weeklyProgress?.count > 0 {
+            self.topicLabel.text = "Current Topic: \(self.student!.weeklyProgress![self.student!.weeklyProgress!.count-1].topic)"
+        }
     }
     
     override func didReceiveMemoryWarning() {

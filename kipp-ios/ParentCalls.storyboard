@@ -153,12 +153,20 @@
                                 <color key="textColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Topic: Addition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQ5-vA-g4P">
+                                <rect key="frame" x="36" y="444" width="177" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="jl9-xJ-VOR" firstAttribute="top" secondItem="Im0-QN-pU2" secondAttribute="bottom" constant="44" id="0uI-zV-uia"/>
+                            <constraint firstItem="tQ5-vA-g4P" firstAttribute="top" secondItem="WvX-Qj-Dkj" secondAttribute="bottom" constant="8" id="5xx-KS-NPx"/>
                             <constraint firstItem="jl9-xJ-VOR" firstAttribute="leading" secondItem="NrD-gV-vtC" secondAttribute="leadingMargin" constant="20" id="8X7-lQ-e2m"/>
                             <constraint firstItem="WvX-Qj-Dkj" firstAttribute="top" secondItem="AuV-Kv-aG6" secondAttribute="bottom" constant="8" id="DDu-F1-VAK"/>
+                            <constraint firstItem="tQ5-vA-g4P" firstAttribute="leading" secondItem="WvX-Qj-Dkj" secondAttribute="leading" id="PvM-MA-gyA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AeB-pT-Zwy" secondAttribute="trailing" constant="4" id="W2t-Ze-ev9"/>
                             <constraint firstItem="AeB-pT-Zwy" firstAttribute="top" secondItem="jl9-xJ-VOR" secondAttribute="bottom" constant="20" id="cqu-2H-lck"/>
                             <constraint firstItem="WvX-Qj-Dkj" firstAttribute="leading" secondItem="AuV-Kv-aG6" secondAttribute="leading" id="mSJ-ze-iNE"/>
@@ -171,6 +179,7 @@
                         <outlet property="graph" destination="AeB-pT-Zwy" id="ndX-Hp-EUd"/>
                         <outlet property="legendLabel" destination="WvX-Qj-Dkj" id="dDJ-85-PLR"/>
                         <outlet property="studentLabel" destination="jl9-xJ-VOR" id="4Ea-r2-7Y0"/>
+                        <outlet property="topicLabel" destination="tQ5-vA-g4P" id="xBy-PF-2eS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0XC-zT-3zL" userLabel="First Responder" sceneMemberID="firstResponder"/>
