@@ -83,6 +83,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
             self.markStudent(cell, type: .Present)
             return true
         }
+        button.setPadding(CGFloat(25))
         return [button]
     }
     
