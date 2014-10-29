@@ -24,6 +24,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         loadClassroom()
     }
     

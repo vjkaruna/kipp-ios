@@ -43,6 +43,7 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         mainTabBarController.viewControllers = viewControllers()
         self.presentViewController(mainTabBarController, animated: false, completion: nil)
     }
