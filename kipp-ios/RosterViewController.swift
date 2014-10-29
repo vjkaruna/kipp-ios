@@ -28,22 +28,33 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
 
+    override func viewDidAppear(animated: Bool) {
+        loadClassroom()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func loadClassroom() {
-        Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
-            if classroom != nil {
-                self.classroom = classroom
-                self.tableView.reloadData()
-                self.navigationItem.title = "Period \(classroom!.period)"
-                NSLog(classroom?.title ?? "nil")
+        var classroom = Classroom.currentClass()
+        if classroom == nil {
+            Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
+                if classroom != nil {
+                    self.classroom = classroom
+                    self.tableView.reloadData()
+                    self.navigationItem.title = "Period \(classroom!.period)"
+                    NSLog(classroom?.title ?? "nil")
+                }
+                else {
+                    NSLog("error getting classroom data from Parse")
+                }
             }
-            else {
-                NSLog("error getting classroom data from Parse")
-            }
+        } else {
+            self.classroom = classroom
+            self.tableView.reloadData()
+            self.navigationItem.title = "Period \(classroom!.period)"
         }
     }
     

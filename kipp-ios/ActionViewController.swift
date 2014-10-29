@@ -109,13 +109,10 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         let action = data![indexPath.row]
         cell.actionComments.text = action.reason
         cell.student = action.student
-//        NSLog("\(cell)")
         
         if actionType! != .History {
             cell.delegate = self
             cell.rightButtons = createRightButton()
-    //        cell.leftButtons = []
-    //        cell.leftSwipeSettings.transition = MGSwipeTransition.TransitionDrag
             cell.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
             cell.rightExpansion.buttonIndex = 0
             cell.rightExpansion.fillOnTrigger = true
@@ -155,11 +152,6 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
             self.markActionComplete(cell)
             return true
         }
-//        var button = MGSwipeButton(title: "Delete", backgroundColor: UIColor.myRedColor()) { (cell) -> Bool in
-//            NSLog("Tapped delete for \(cell)")
-//            self.markActionComplete(self.tableView.indexPathForCell(cell)!)
-//            return true
-//        }
         return [button]
     }
 

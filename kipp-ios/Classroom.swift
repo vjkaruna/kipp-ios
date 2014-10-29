@@ -38,8 +38,18 @@ class Classroom: NSObject {
         return _currentClassroomId;
     }
     
-    class func currentClass() -> Classroom {
-        return _currentClasroom!
+    class func currentClass() -> Classroom? {
+        if _currentClasroom == nil {
+            ParseClient.sharedInstance.findClassroomsWithCompletion({ (classrooms, error) -> () in
+                if classrooms != nil {
+                    self.setCurrentClass(classrooms![0])
+                } else {
+                    NSLog("Error getting classrooms from Parse: \(error)")
+                }
+            })
+        }
+        
+        return _currentClasroom
     }
     
     class func currentClassWithCompletion(completion: ((classroom: Classroom?, error: NSError?) -> ())) {
@@ -49,11 +59,18 @@ class Classroom: NSObject {
                 for classroom in classrooms! {
                     if classroom.parseId == self.currentClassId() {
                         currentClassroom = classroom
-                        self.setCurrentClass(classroom)
                     }
                 }
                 
+                if let zerothClassroom = classrooms?[0] {
+                    self.setCurrentClass(currentClassroom ?? zerothClassroom)
+                }
+
+                
                 completion(classroom: (currentClassroom ?? classrooms?[0]), error: error)
+                return ()
+            } else {
+                completion(classroom: nil, error: error)
                 return ()
             }
         }
