@@ -45,7 +45,7 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if classroom != nil {
                     self.classroom = classroom
                     self.tableView.reloadData()
-                    self.navigationItem.title = "Period \(classroom!.period)"
+                    self.navigationItem.title = "Period \(classroom!.period): Character"
                     NSLog(classroom?.title ?? "nil")
                 }
                 else {
@@ -55,7 +55,7 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             self.classroom = classroom
             self.tableView.reloadData()
-            self.navigationItem.title = "Period \(classroom!.period)"
+            self.navigationItem.title = "Period \(classroom!.period): Character"
         }
     }
     

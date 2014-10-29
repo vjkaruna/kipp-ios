@@ -35,7 +35,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
                 if classroom != nil {
                     self.students = classroom?.students
                     self.attendanceTable.reloadData()
-                    self.navigationItem.title = "Period \(classroom!.period)"
+                    self.navigationItem.title = "Period \(classroom!.period): Attendance"
                     NSLog(classroom?.title ?? "nil")
                 }
                 else {
@@ -45,7 +45,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             self.students = classroom?.students
             self.attendanceTable.reloadData()
-            self.navigationItem.title = "Period \(classroom!.period)"
+            self.navigationItem.title = "Period \(classroom!.period): Attendance"
         }
 //        Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
 //            if classroom != nil {

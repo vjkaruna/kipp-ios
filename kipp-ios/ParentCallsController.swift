@@ -24,6 +24,7 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         parentsTable.delegate = self
         parentsTable.dataSource = self
         
+        navigationItem.title = "Phone Directory"
         println("performing a Parse query")
         
         ParseClient.sharedInstance.findParentsWithCompletion() {
