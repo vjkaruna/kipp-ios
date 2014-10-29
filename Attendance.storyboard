@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -32,29 +33,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NRO-5m-hE7">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCA-rl-zCM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NRO-5m-hE7">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="4Va-MJ-Dau" id="3Kq-3e-g5E"/>
+                                            <outlet property="delegate" destination="4Va-MJ-Dau" id="bCR-tE-KFi"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="4Va-MJ-Dau" id="3Kq-3e-g5E"/>
-                                    <outlet property="delegate" destination="4Va-MJ-Dau" id="bCR-tE-KFi"/>
-                                </connections>
-                            </tableView>
+                                <constraints>
+                                    <constraint firstItem="NRO-5m-hE7" firstAttribute="leading" secondItem="KCA-rl-zCM" secondAttribute="leading" id="ahg-BU-8tf"/>
+                                    <constraint firstAttribute="bottom" secondItem="NRO-5m-hE7" secondAttribute="bottom" id="eH8-RB-lWz"/>
+                                    <constraint firstAttribute="trailing" secondItem="NRO-5m-hE7" secondAttribute="trailing" id="mHc-ke-nzT"/>
+                                    <constraint firstItem="NRO-5m-hE7" firstAttribute="top" secondItem="KCA-rl-zCM" secondAttribute="top" id="sTp-Pr-8xu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NRO-5m-hE7" firstAttribute="top" secondItem="Bl1-7u-vo2" secondAttribute="top" id="Uds-Ug-mpk"/>
-                            <constraint firstAttribute="trailing" secondItem="NRO-5m-hE7" secondAttribute="trailing" id="d7B-Hx-lOy"/>
-                            <constraint firstItem="NRO-5m-hE7" firstAttribute="leading" secondItem="Bl1-7u-vo2" secondAttribute="leading" id="oJy-rr-42V"/>
-                            <constraint firstAttribute="bottom" secondItem="NRO-5m-hE7" secondAttribute="bottom" id="uF2-2C-5Mm"/>
+                            <constraint firstAttribute="bottom" secondItem="KCA-rl-zCM" secondAttribute="bottom" id="HLi-6C-yuO"/>
+                            <constraint firstItem="KCA-rl-zCM" firstAttribute="top" secondItem="Bl1-7u-vo2" secondAttribute="topMargin" id="Uqs-Bk-3q1"/>
+                            <constraint firstAttribute="trailing" secondItem="KCA-rl-zCM" secondAttribute="trailing" id="Yar-rz-Qta"/>
+                            <constraint firstItem="KCA-rl-zCM" firstAttribute="leading" secondItem="Bl1-7u-vo2" secondAttribute="leading" id="gHh-NG-wrp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Attendance" id="YOr-fU-3DU">
-                        <barButtonItem key="rightBarButtonItem" title="Class" id="56P-zr-JYc"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="56P-zr-JYc"/>
                     </navigationItem>
                     <connections>
                         <outlet property="attendanceTable" destination="NRO-5m-hE7" id="e0z-25-vtu"/>
+                        <outlet property="contentView" destination="KCA-rl-zCM" id="0k5-Tm-0En"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eEJ-Ow-uvz" userLabel="First Responder" sceneMemberID="firstResponder"/>

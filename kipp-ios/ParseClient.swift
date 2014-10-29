@@ -107,7 +107,7 @@ class ParseClient: NSObject {
         actionQuery.whereKey("userId", equalTo: userId)
         actionQuery.whereKey("classroom", equalTo: classroom.pfobj)
         actionQuery.whereKeyExists("dateComplete")
-        actionQuery.orderByDescending("dateForAction")
+        actionQuery.orderByDescending("dateComplete")
         actionQuery.includeKey("student")
         
         actionQuery.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
@@ -252,6 +252,9 @@ class ParseClient: NSObject {
 }
 
 let calendar = NSCalendar(identifier: NSGregorianCalendar)!
+let secondsInMin: NSTimeInterval = 60
+let minInHours: NSTimeInterval = 60
+let hoursInDay: NSTimeInterval = 24
 
 extension NSDate {
     func isSameDay(date: NSDate) -> Bool {
@@ -272,6 +275,29 @@ extension NSDate {
         dateComponents.minute = 59
         dateComponents.second = 59
         return calendar.dateFromComponents(dateComponents)!
+    }
+    func toPrettyString(simple: Bool = true) -> String {
+        if simple {
+            let pastInSeconds = -(self.timeIntervalSinceNow)
+            
+            if pastInSeconds < secondsInMin {
+                return "\(Int(pastInSeconds))s ago"
+            } else if pastInSeconds < secondsInMin * minInHours {
+                let minutes = Int(pastInSeconds / secondsInMin)
+                return "\(minutes)m ago"
+            } else if pastInSeconds < secondsInMin * minInHours * hoursInDay {
+                let hours = Int(pastInSeconds / (secondsInMin * minInHours))
+                return "\(hours)h ago"
+            } else {
+                let formatter = NSDateFormatter()
+                formatter.dateFormat = "MMM dd"
+                return formatter.stringFromDate(self)
+            }
+        } else {
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "MMM dd, YYYY - h:mm a"
+            return formatter.stringFromDate(self)
+        }
     }
 }
 

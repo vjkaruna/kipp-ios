@@ -32,6 +32,9 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     
         navigationItem.title = actionType?.rawValue
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120.0
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -117,7 +120,11 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         if selectedRow == nil || selectedRow != indexPath.row {
             return 68
         } else {
-            return labelHeights![indexPath.row] + 68.0 + 20.0
+            if labelHeights![indexPath.row] == CGFloat(0.0) {
+                return 68
+            } else {
+                return labelHeights![indexPath.row] + 68.0 + 20.0
+            }
         }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -125,7 +132,10 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         let action = data![indexPath.row]
         cell.actionComments.text = action.reason
         cell.student = action.student
-        
+        if action.dateCompleted != nil {
+            NSLog("date completed: \(action.dateCompleted); prettyString: \(action.dateCompleted!.toPrettyString())")
+            cell.dateCompleteLabel.text = ("\(action.type.getPastTenseName()) \(action.dateCompleted!.toPrettyString())")
+        }
         if actionType! != .History {
             cell.delegate = self
             cell.rightButtons = createRightButton()
@@ -136,7 +146,6 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
 
         cell.layoutIfNeeded()
         labelHeights![indexPath.row] = cell.actionComments.bounds.size.height
-        NSLog("actionComment height: \(cell.actionComments.bounds.size.height) for cell \(indexPath.row)")
         cell.clipsToBounds = true
         return cell
     }

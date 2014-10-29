@@ -10,22 +10,42 @@ import UIKit
 
 class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate {
     @IBOutlet weak var attendanceTable: UITableView!
+
+    @IBOutlet weak var contentView: UIView!
     var students: [Student]?
+    var emptyView: EmptyDataView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadClassroom()
         
         attendanceTable.delegate = self
         attendanceTable.dataSource = self
         
         var nib = UINib(nibName: "StudentTableViewCell", bundle: nil)
         attendanceTable.registerNib(nib, forCellReuseIdentifier: "studentCell")
+        
+        emptyView = UINib(nibName: "EmptyDataView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as EmptyDataView
+        emptyView.hidden = true
+        contentView.addSubview(emptyView)
+        
+        loadClassroom()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         loadClassroom()
+    }
+    
+    func loadDataOrEmptyState() {
+        if students!.count > 0 {
+            attendanceTable.hidden = false
+            emptyView.hidden = true
+            attendanceTable.reloadData()
+        } else {
+            emptyView.hidden = false
+            attendanceTable.hidden = true
+            emptyView.type = .Attendance
+        }
     }
     
     func loadClassroom() {
@@ -34,7 +54,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
             Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
                 if classroom != nil {
                     self.students = classroom?.students
-                    self.attendanceTable.reloadData()
+                    self.loadDataOrEmptyState()
                     self.navigationItem.title = "Period \(classroom!.period): Attendance"
                     NSLog(classroom?.title ?? "nil")
                 }
@@ -44,7 +64,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         } else {
             self.students = classroom?.students
-            self.attendanceTable.reloadData()
+            loadDataOrEmptyState()
             self.navigationItem.title = "Period \(classroom!.period): Attendance"
         }
 //        Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
@@ -120,5 +140,6 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
         var student = students?.removeAtIndex(indexPath.row)
         student?.markAttendanceForType(type)
         self.attendanceTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        loadDataOrEmptyState()
     }
 }

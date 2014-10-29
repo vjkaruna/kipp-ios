@@ -27,6 +27,19 @@ enum ActionType: String {
             return "history"
         }
     }
+    
+    func getPastTenseName() -> String {
+        switch self {
+        case .Celebrate:
+            return "Celebrated"
+        case .Encourage:
+            return "Encouraged"
+        case .Call:
+            return "Called"
+        default:
+            return ""
+        }
+    }
 }
 
 class Action: NSObject {
@@ -49,9 +62,10 @@ class Action: NSObject {
         self.type = ActionType(rawValue: pfobj["type"] as String)
         self.reason = pfobj["reason"] as String
         self.forDate = pfobj["dateForAction"] as NSDate
-        self.dateCompleted = pfobj["dateCompleted"] as? NSDate
+        self.dateCompleted = pfobj["dateComplete"] as? NSDate
         self.student = Student(obj: studentObj)
         self.pfobj = pfobj
+        NSLog("\(pfobj)")
     }
     
     class func actionsWithArray(objs: [PFObject]) -> [Action] {

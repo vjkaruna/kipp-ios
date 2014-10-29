@@ -10,6 +10,7 @@ import UIKit
 
 class StudentTableViewCell: MGSwipeTableCell {
     
+    @IBOutlet weak var dateCompleteLabel: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var displayName: UILabel!
     
@@ -17,6 +18,7 @@ class StudentTableViewCell: MGSwipeTableCell {
     @IBOutlet weak var actionComments: UILabel!
     
     var profileDelegate: ProfileImageTappedDelegate?
+    
     
     weak var student: Student? {
         willSet(newStudent) {
@@ -26,6 +28,7 @@ class StudentTableViewCell: MGSwipeTableCell {
                 self.labelView.layer.cornerRadius = 5
                 self.labelView.layer.borderWidth = 1.0
                 self.labelView.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).CGColor
+                self.dateCompleteLabel.text = ""
 //                newStudent!.fillAttendanceState() // If we want attendance for specific date, we can pass the date here
             }
         }
