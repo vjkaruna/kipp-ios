@@ -17,6 +17,7 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     @IBOutlet weak var studentLabel: UILabel!
     @IBOutlet weak var legendLabel: UILabel!
     @IBOutlet weak var topicLabel: UILabel!
+    @IBOutlet weak var avatarButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,9 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
         }
     }
 
+    @IBAction func avatarTouch(sender: AnyObject) {
+    }
+    
     func attendanceDidChange() {
         
     }

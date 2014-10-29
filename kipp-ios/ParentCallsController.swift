@@ -12,7 +12,7 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
     
     var parents = [Parent]()
     var selectedCells = [Bool]()
-    var rowHeight = 80.0
+    var rowHeight = 64.0
 
     @IBOutlet var parentsTable: UITableView!
     
