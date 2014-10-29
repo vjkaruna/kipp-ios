@@ -12,7 +12,7 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
 
     var _viewControllers: [UIViewController]?
     let mainTabBarController = UITabBarController()
-    var classroomsController: ClassroomSelectionViewController?
+    var classroomsController: ClassroomsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
             let actionNavController = actionSB.instantiateViewControllerWithIdentifier("ActionNC") as UIViewController
             
             let classroomSB = UIStoryboard(name: "ClassroomSelection", bundle: nil)
-            let classroomsController = classroomSB.instantiateViewControllerWithIdentifier("ClassroomSelection") as ClassroomSelectionViewController
+            let classroomsController = classroomSB.instantiateViewControllerWithIdentifier("classroomsVC") as ClassroomsViewController
             self.classroomsController = classroomsController
             
             attendanceNavController.tabBarItem = UITabBarItem(title: "Attendance", image: UIImage(named: "attendance"), tag: 1)
@@ -71,7 +71,7 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
             classroomsController.tabBarItem = UITabBarItem(title: "Classes", image: UIImage(named: "classroom"), tag: 1)
 
             
-            self._viewControllers = [classroomsController, attendanceNavController, rosterNavController, actionNavController, callsNavController]
+            self._viewControllers = [actionNavController, attendanceNavController, classroomsController, rosterNavController, callsNavController]
             
             mainTabBarController.tabBar.tintColor = UIColor.greenTint()
             mainTabBarController.tabBar.barStyle = .Black
