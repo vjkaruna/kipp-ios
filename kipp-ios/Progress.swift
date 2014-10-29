@@ -23,7 +23,7 @@ class Progress: NSObject {
 
         self.minutes = obj["minutes"] as NSInteger
         self.week = obj["week"] as NSInteger
-        self.weeklyProgress = obj["weeklyProgress"] as NSNumber
+        self.weeklyProgress = obj["weeklyProgress"] as Float
         self.topic = obj["topic"] as NSString
     }
 

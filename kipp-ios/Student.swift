@@ -44,7 +44,7 @@ class Student: NSObject {
         self.lastName = obj["lastName"] as NSString
         self.studentId = obj["studentId"] as NSInteger
         let genderChar = obj["gender"] as NSString
-        self.gender = Gender.fromRaw(genderChar)
+        self.gender = Gender(rawValue:genderChar)
         self.pfObj = obj
     }
     
@@ -62,13 +62,13 @@ class Student: NSObject {
         return students
     }
     
-    func markAttendanceForType(type: AttendanceType, forDate: NSDate = NSDate.date()) {
+    func markAttendanceForType(type: AttendanceType, forDate: NSDate = NSDate()) {
         ParseClient.sharedInstance.markAttendance(self.studentId, attendance: type, forDate: forDate)
         self.attendance = type
         self.delegate?.attendanceDidChange()
     }
     
-    func fillAttendanceState(forDate: NSDate = NSDate.date()) {
+    func fillAttendanceState(forDate: NSDate = NSDate()) {
         if attendance == nil {
             ParseClient.sharedInstance.getAttendanceForDateWithCompletion(self.studentId, forDate: forDate, completion: { (attendanceType, error) -> () in
                 if attendanceType != nil {
@@ -79,7 +79,7 @@ class Student: NSObject {
                 }
             })
         } else {
-            NSLog("Attendance state for \(self.firstName) is \(self.attendance!.toRaw())")
+            NSLog("Attendance state for \(self.firstName) is \(self.attendance!.rawValue)")
         }
     }
 }

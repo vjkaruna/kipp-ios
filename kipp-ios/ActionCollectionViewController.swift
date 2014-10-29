@@ -37,7 +37,7 @@ class ActionCollectionViewController: UIViewController, UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("actionTypeCell", forIndexPath: indexPath) as ActionCollectionViewCell
         let action = actions[indexPath.row]
-        cell.tileLabel.text = action.toRaw()
+        cell.tileLabel.text = action.rawValue
         cell.iconImagView.image = UIImage(named: action.getIconName())
         return cell
     }

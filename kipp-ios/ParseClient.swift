@@ -67,7 +67,7 @@ class ParseClient: NSObject {
     func findIncompleteActionsWithCompletion(actionType: ActionType?, completion: (actions: [Action]?, error: NSError?) -> ()) {
         var actionQuery = PFQuery(className: "Action")
         if actionType != nil {
-            actionQuery.whereKey("type", equalTo: actionType!.toRaw())
+            actionQuery.whereKey("type", equalTo: actionType!.rawValue)
         }
         let userId = PFUser.currentUser().objectForKey("userId") as Int
 
@@ -93,7 +93,7 @@ class ParseClient: NSObject {
     func findCompleteActionsWithCompletion(actionType: ActionType?, completion: (actions: [Action]?, error: NSError?) -> ()) {
         var actionQuery = PFQuery(className: "Action")
         if actionType != nil {
-            actionQuery.whereKey("type", equalTo: actionType!.toRaw())
+            actionQuery.whereKey("type", equalTo: actionType!.rawValue)
         }
         let userId = PFUser.currentUser().objectForKey("userId") as Int
 
@@ -171,7 +171,7 @@ class ParseClient: NSObject {
     func markAttendance(studentId: Int, attendance: AttendanceType, forDate: NSDate) {
         var absentEntry = PFObject(className: "Attendance")
         
-        absentEntry["type"] = attendance.toRaw()
+        absentEntry["type"] = attendance.rawValue
         absentEntry["date"] = forDate.beginningOfDay()
         absentEntry["studentId"] = studentId
         absentEntry.saveInBackground() // or save eventually?
@@ -188,7 +188,7 @@ class ParseClient: NSObject {
                 if results.count > 0 {
                     let result = results[0] as PFObject
                     let rawAttendanceType = result["type"] as Int
-                    attendanceType = AttendanceType.fromRaw(rawAttendanceType)!
+                    attendanceType = AttendanceType(rawValue: rawAttendanceType)!
                     
                     NSLog("Found entry for student \(studentId)")
                 } else {
@@ -205,7 +205,7 @@ class ParseClient: NSObject {
     func saveActionObjectWithCompletion(studentObj: PFObject, action: Action, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
         var actionEntry = PFObject(className: "Action")
         
-        actionEntry["type"] = action.type.toRaw()
+        actionEntry["type"] = action.type.rawValue
         actionEntry["reason"] = action.reason
         actionEntry["dateForAction"] = action.forDate
         if action.dateCompleted != nil {
@@ -225,7 +225,7 @@ class ParseClient: NSObject {
     }
 }
 
-let calendar = NSCalendar(identifier: NSGregorianCalendar)
+let calendar = NSCalendar(identifier: NSGregorianCalendar)!
 
 extension NSDate {
     func isSameDay(date: NSDate) -> Bool {

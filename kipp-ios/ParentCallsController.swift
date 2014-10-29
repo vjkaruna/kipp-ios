@@ -144,7 +144,7 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
     
     func dialNumber(phonestr: String) {
         let telstr = "telprompt://\(phonestr)"
-        UIApplication.sharedApplication().openURL(NSURL(string:telstr))
+        UIApplication.sharedApplication().openURL(NSURL(string:telstr)!)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barStyle = .Black
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
-        let titleAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 17)]
+        let titleAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 17)!]
         UINavigationBar.appearance().titleTextAttributes = titleAttributes
 //        UILabel.appearance().textColor = UIColor.kippBlue()
 //        UILabel.appearance().font = UIFont(name: "HelveticaNeue-CondensedBold", size: 17)

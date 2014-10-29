@@ -55,13 +55,13 @@ class CharacterTrait: NSObject {
     init(pfobj: PFObject) {
         self.title = pfobj["type"] as String
         self.score = pfobj["score"] as Int
-        self.imgName = CharacterLabTraits.fromRaw(self.title)!.getRoundAsset()
+        self.imgName = CharacterLabTraits(rawValue: self.title)!.getRoundAsset()
     }
     
     class func defaultCharacterTraitArray() -> [CharacterTrait] {
         var characterArray = [CharacterTrait]()
         for trait in CharacterLabTraits.all {
-            characterArray.append(CharacterTrait(title: trait.toRaw(), imgName: trait.getRoundAsset()))
+            characterArray.append(CharacterTrait(title: trait.rawValue, imgName: trait.getRoundAsset()))
         }
         return characterArray
     }

@@ -24,7 +24,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        navigationItem.title = actionType?.toRaw()
+        navigationItem.title = actionType?.rawValue
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -35,7 +35,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         
         if actionType! != ActionType.History {
             ParseClient.sharedInstance.findIncompleteActionsWithCompletion(actionType!) { (actions, error) -> () in
-                NSLog("Completion called for action type \(self.actionType!.toRaw())")
+                NSLog("Completion called for action type \(self.actionType!.rawValue)")
                 if actions != nil {
                     self.data = actions
                     self.loadDataOrEmptyState()
@@ -76,7 +76,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         var cell = tableView.dequeueReusableCellWithIdentifier("actionCell") as ActionTableViewCell
         let action = data![indexPath.row]
         cell.descriptionLabel.text = action.reason
-        cell.actionTypeLabel.text = action.type.toRaw()
+        cell.actionTypeLabel.text = action.type.rawValue
 //        NSLog("\(cell)")
         cell.delegate = self
         cell.rightButtons = createRightButton()
