@@ -65,7 +65,8 @@ class ParseClient: NSObject {
         })
     }
     
-    func findIncompleteActionsWithCompletion(actionType: ActionType?, completion: (actions: [Action]?, error: NSError?) -> ()) {
+    func findIncompleteActionsWithCompletion(actionType: ActionType?, classroom: Classroom!, completion: (actions: [Action]?, error: NSError?) -> ()) {
+        NSLog("finding incomplete actions with completion")
         var actionQuery = PFQuery(className: "Action")
         if actionType != nil {
             actionQuery.whereKey("type", equalTo: actionType!.rawValue)
@@ -73,6 +74,7 @@ class ParseClient: NSObject {
         let userId = PFUser.currentUser().objectForKey("userId") as Int
 
         actionQuery.whereKey("userId", equalTo: userId)
+        actionQuery.whereKey("classroom", equalTo: classroom.pfobj)
         actionQuery.whereKeyDoesNotExist("dateComplete")
         actionQuery.orderByDescending("dateForAction")
         actionQuery.includeKey("student")
@@ -91,7 +93,7 @@ class ParseClient: NSObject {
         })
     }
     
-    func findCompleteActionsWithCompletion(actionType: ActionType?, completion: (actions: [Action]?, error: NSError?) -> ()) {
+    func findCompleteActionsWithCompletion(actionType: ActionType?, classroom: Classroom!, completion: (actions: [Action]?, error: NSError?) -> ()) {
         var actionQuery = PFQuery(className: "Action")
         if actionType != nil {
             actionQuery.whereKey("type", equalTo: actionType!.rawValue)
@@ -99,6 +101,7 @@ class ParseClient: NSObject {
         let userId = PFUser.currentUser().objectForKey("userId") as Int
 
         actionQuery.whereKey("userId", equalTo: userId)
+        actionQuery.whereKey("classroom", equalTo: classroom.pfobj)
         actionQuery.whereKeyExists("dateComplete")
         actionQuery.orderByDescending("dateForAction")
         actionQuery.includeKey("student")
@@ -219,8 +222,8 @@ class ParseClient: NSObject {
         }
         
     }
-    
-    func saveActionObjectWithCompletion(studentObj: PFObject, action: Action, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
+
+    func saveActionObjectWithCompletion(studentObj: PFObject, action: Action, classroom: Classroom, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
         var actionEntry = PFObject(className: "Action")
         
         actionEntry["type"] = action.type.rawValue
@@ -230,6 +233,7 @@ class ParseClient: NSObject {
             actionEntry["dateCompleted"] = action.dateCompleted
         }
         actionEntry["student"] = studentObj
+        actionEntry["classroom"] = classroom.pfobj
         actionEntry["userId"] = PFUser.currentUser().objectForKey("userId") as Int
         
         actionEntry.saveInBackgroundWithBlock { (saved, error) -> Void in

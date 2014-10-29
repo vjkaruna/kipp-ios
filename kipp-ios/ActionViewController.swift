@@ -25,6 +25,8 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     
     var labelHeights: [CGFloat]?
     
+    weak var currentClass: Classroom?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -39,33 +41,47 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         emptyView = UINib(nibName: "EmptyDataView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as EmptyDataView
         emptyView.hidden = true
         contentView.addSubview(emptyView)
-        
-        if actionType! != ActionType.History {
-            ParseClient.sharedInstance.findIncompleteActionsWithCompletion(actionType!) { (actions, error) -> () in
-                NSLog("Completion called for action type \(self.actionType!.rawValue)")
-                if actions != nil {
-                    self.data = actions
-                    self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
-                    self.tableView.reloadData()
-                    self.loadDataOrEmptyState()
-                } else {
-                    NSLog("Error getting actions: \(error)")
+
+        loadCurrentClass() {
+            if self.actionType! != ActionType.History {
+                ParseClient.sharedInstance.findIncompleteActionsWithCompletion(self.actionType!, classroom: self.currentClass) { (actions, error) -> () in
+                    NSLog("Completion called for action type \(self.actionType!.rawValue)")
+                    if actions != nil {
+                        self.data = actions
+                        self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
+                        self.tableView.reloadData()
+                        self.loadDataOrEmptyState()
+                    } else {
+                        NSLog("Error getting actions: \(error)")
+                    }
                 }
-            }
-        } else {
-            ParseClient.sharedInstance.findCompleteActionsWithCompletion(nil) { (actions, error) -> () in
-                if actions != nil {
-                    self.data = actions
-                    self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
-                    self.tableView.reloadData()
-                    self.loadDataOrEmptyState()
-                } else {
-                    NSLog("Error getting actions: \(error)")
-                }
+            } else {
+                ParseClient.sharedInstance.findCompleteActionsWithCompletion(nil, classroom: self.currentClass, completion: { (actions, error) -> () in
+                    if actions != nil {
+                        self.data = actions
+                        self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
+                        self.tableView.reloadData()
+                        self.loadDataOrEmptyState()
+                    } else {
+                        NSLog("Error getting actions: \(error)")
+                    }
+                })
             }
         }
     }
 
+    func loadCurrentClass(completion: (() -> ())) {
+        if currentClass == nil {
+            Classroom.currentClassWithCompletion() {
+                (classroom: Classroom?, error: NSError?) -> () in
+                self.currentClass = classroom
+                completion()
+            }
+        } else {
+            completion()
+        }
+    }
+    
     @IBAction func didChangeControl(sender: UISegmentedControl) {
 //        reloadTableView()
     }

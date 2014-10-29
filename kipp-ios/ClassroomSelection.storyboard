@@ -35,17 +35,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-8Z-3Pe">
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vo6-E8-hcb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-8Z-3Pe">
+                                <rect key="frame" x="0.0" y="100" width="600" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.37647058820000001" green="0.63529411759999999" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="classroomCell" rowHeight="68" id="q0M-cc-esf" customClass="ClassroomTableViewCell" customModule="kipp_ios" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="classroomCell" rowHeight="68" id="q0M-cc-esf" customClass="ClassroomTableViewCell" customModule="kipp_ios" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q0M-cc-esf" id="Mro-Iy-Rfe">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPf-tg-yfQ">
-                                                    <rect key="frame" x="28" y="18" width="544" height="32"/>
+                                                    <rect key="frame" x="28" y="18" width="505" height="32"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.37647058820000001" green="0.63529411759999999" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -58,6 +63,7 @@
                                                 <constraint firstItem="dPf-tg-yfQ" firstAttribute="leading" secondItem="Mro-Iy-Rfe" secondAttribute="leadingMargin" constant="20" id="s5E-eL-hIY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" red="0.37647058820000001" green="0.63529411759999999" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="classLabel" destination="dPf-tg-yfQ" id="DUY-dA-Ycz"/>
                                         </connections>
@@ -65,12 +71,16 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ehe-8Z-3Pe" secondAttribute="trailing" id="2gK-Eu-S3j"/>
                             <constraint firstItem="ehe-8Z-3Pe" firstAttribute="leading" secondItem="XVf-Xp-dwH" secondAttribute="leading" id="84k-mP-z4G"/>
-                            <constraint firstItem="ehe-8Z-3Pe" firstAttribute="top" secondItem="XVf-Xp-dwH" secondAttribute="topMargin" id="ebw-NO-X13"/>
+                            <constraint firstItem="vo6-E8-hcb" firstAttribute="leading" secondItem="XVf-Xp-dwH" secondAttribute="leading" id="J0H-O0-JYq"/>
+                            <constraint firstItem="ehe-8Z-3Pe" firstAttribute="top" secondItem="XVf-Xp-dwH" secondAttribute="topMargin" constant="100" id="ebw-NO-X13"/>
                             <constraint firstItem="F6C-39-bR1" firstAttribute="top" secondItem="ehe-8Z-3Pe" secondAttribute="bottom" id="msT-HX-Il8"/>
+                            <constraint firstItem="F6C-39-bR1" firstAttribute="top" secondItem="vo6-E8-hcb" secondAttribute="bottom" id="onP-03-7Ni"/>
+                            <constraint firstAttribute="trailing" secondItem="vo6-E8-hcb" secondAttribute="trailing" id="qX4-N5-DhL"/>
+                            <constraint firstItem="vo6-E8-hcb" firstAttribute="top" secondItem="XVf-Xp-dwH" secondAttribute="top" id="rRI-CM-8fU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ctt-aE-1W4">
