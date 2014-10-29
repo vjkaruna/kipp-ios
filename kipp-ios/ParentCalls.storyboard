@@ -30,12 +30,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" tag="102" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibb-32-TKR" userLabel="Call">
-                                            <rect key="frame" x="516" y="18" width="60" height="60"/>
+                                            <rect key="frame" x="524" y="18" width="60" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="6s9-Tb-8tR"/>
                                                 <constraint firstAttribute="height" constant="60" id="g2g-7O-SAa"/>
                                             </constraints>
-                                            <state key="normal" image="sample-1004-voicemail">
+                                            <state key="normal" image="phone">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -48,15 +48,28 @@
                                             <color key="textColor" red="0.37647058820000001" green="0.63529411759999999" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Called Tuesday 6:30 PM" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joW-Iu-Wto">
-                                            <rect key="frame" x="28" y="75" width="224" height="100"/>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="201" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Called Tuesday 6:30 PM" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joW-Iu-Wto">
+                                            <rect key="frame" x="28" y="75" width="224" height="60"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="Pwv-lE-dKi"/>
+                                                <constraint firstAttribute="height" constant="60" id="Pwv-lE-dKi"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" tag="102" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="942-YN-8ag" userLabel="Call">
+                                            <rect key="frame" x="464" y="18" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="m0E-Qq-CQE"/>
+                                                <constraint firstAttribute="height" constant="60" id="tDc-fM-GTP"/>
+                                            </constraints>
+                                            <state key="normal" image="sample-1067-enter-fullscreen">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="expandTouched:" destination="I73-gt-eeu" eventType="touchUpInside" id="vWB-an-5Ll"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -64,12 +77,14 @@
                                         <constraint firstItem="mAr-ko-muE" firstAttribute="top" secondItem="JlZ-qI-Yr7" secondAttribute="topMargin" constant="10" id="1qQ-25-TwD"/>
                                         <constraint firstItem="joW-Iu-Wto" firstAttribute="top" secondItem="BJu-cL-rL0" secondAttribute="bottom" constant="8" id="68v-go-rxL"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="joW-Iu-Wto" secondAttribute="trailing" constant="20" id="73P-QC-EXu"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Ibb-32-TKR" secondAttribute="trailing" constant="16" id="K4d-c5-eNu"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ibb-32-TKR" secondAttribute="trailing" constant="8" id="K4d-c5-eNu"/>
                                         <constraint firstItem="BJu-cL-rL0" firstAttribute="top" secondItem="mAr-ko-muE" secondAttribute="bottom" constant="8" id="KGQ-oG-wyy"/>
                                         <constraint firstItem="mAr-ko-muE" firstAttribute="top" secondItem="Ibb-32-TKR" secondAttribute="top" id="MT8-Xk-lw0"/>
+                                        <constraint firstItem="Ibb-32-TKR" firstAttribute="top" secondItem="942-YN-8ag" secondAttribute="top" id="Wc1-Ws-XlP"/>
                                         <constraint firstItem="BJu-cL-rL0" firstAttribute="leading" secondItem="joW-Iu-Wto" secondAttribute="leading" id="aKr-0w-E9Z"/>
                                         <constraint firstItem="BJu-cL-rL0" firstAttribute="leading" secondItem="mAr-ko-muE" secondAttribute="leading" id="cYd-13-NBT"/>
                                         <constraint firstItem="mAr-ko-muE" firstAttribute="leading" secondItem="JlZ-qI-Yr7" secondAttribute="leadingMargin" constant="20" id="hq9-26-p4l"/>
+                                        <constraint firstItem="Ibb-32-TKR" firstAttribute="leading" secondItem="942-YN-8ag" secondAttribute="trailing" id="m0I-cu-8K3"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
@@ -182,6 +197,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sample-1004-voicemail" width="28" height="12"/>
+        <image name="phone" width="30" height="30"/>
+        <image name="sample-1067-enter-fullscreen" width="28" height="28"/>
     </resources>
 </document>

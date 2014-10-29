@@ -43,8 +43,28 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         var cell = callbutton.superview?.superview as UITableViewCell
         var indexPath = self.parentsTable.indexPathForCell(cell) as NSIndexPath!
         var parent = parents[indexPath.row]
-        
+        parent.lastCalledDate = NSDate()
+        parentsTable.reloadData()
         self.dialNumber(parent.phone)
+        
+    }
+    
+    @IBAction func expandTouched(sender: AnyObject) {
+        var expbutton = sender as UIButton
+        var cell = expbutton.superview?.superview as UITableViewCell
+        var indexPath = self.parentsTable.indexPathForCell(cell) as NSIndexPath!
+        var lastCallLabel = cell.viewWithTag(201) as UILabel
+        if (selectedCells[indexPath.row] == false) {
+          selectedCells[indexPath.row] = true
+          lastCallLabel.hidden = false
+          parentsTable.beginUpdates()
+          parentsTable.endUpdates()
+        } else {
+            selectedCells[indexPath.row] = false
+            lastCallLabel.hidden = true
+            parentsTable.beginUpdates()
+            parentsTable.endUpdates()
+        }
         
     }
     
@@ -76,13 +96,18 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
         parentNameLabel.text = parents[indexPath.row].fullName
         var studentNameLabel = cell.viewWithTag(103) as UILabel
         studentNameLabel.text = parents[indexPath.row].student?.fullName
+        
+        var lastCallLabel = cell.viewWithTag(201) as UILabel
+        var dateFormat = NSDateFormatter()
+        dateFormat.dateFormat = "MMM d, h:mm a"
+        lastCallLabel.text = "Last Called  \(dateFormat.stringFromDate(parents[indexPath.row].lastCalledDate))"
 
         return cell
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (selectedCells[indexPath.row]) {
-            return CGFloat(rowHeight * 2.0)
+            return CGFloat(rowHeight + 70.0)
         } else {
             return CGFloat(rowHeight)
         }
@@ -90,9 +115,6 @@ class ParentCallsController: UITableViewController, UITableViewDataSource, UITab
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath)
-        selectedCells[indexPath.row] = true
-        parentsTable.beginUpdates()
-        parentsTable.endUpdates()
         self.performSegueWithIdentifier("showProfile", sender: parents[indexPath.row].student?)
         
     }

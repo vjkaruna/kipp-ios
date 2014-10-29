@@ -1,10 +1,72 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A386a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Classrooms View Controller-->
+        <scene sceneID="a2i-fi-TNA">
+            <objects>
+                <viewController id="KUm-nH-Twn" customClass="ClassroomsViewController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MOj-TR-7Y2"/>
+                        <viewControllerLayoutGuide type="bottom" id="zke-fF-gwN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WFq-Wh-Jj7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kUd-q9-OjF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="classroomCell" rowHeight="68" id="7vh-wy-NDm" customClass="ClassroomTableViewCell" customModule="kipp_ios" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7vh-wy-NDm" id="FJs-rF-7nS">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Class Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9U0-tH-dAn">
+                                                    <rect key="frame" x="28" y="18" width="544" height="32"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.37647058820000001" green="0.63529411759999999" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="9U0-tH-dAn" secondAttribute="bottom" constant="10" id="5Xr-va-W9k"/>
+                                                <constraint firstItem="9U0-tH-dAn" firstAttribute="leading" secondItem="FJs-rF-7nS" secondAttribute="leadingMargin" constant="20" id="DpE-OT-w29"/>
+                                                <constraint firstItem="9U0-tH-dAn" firstAttribute="top" secondItem="FJs-rF-7nS" secondAttribute="topMargin" constant="10" id="EVR-Fh-1qg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9U0-tH-dAn" secondAttribute="trailing" constant="20" id="GW4-Qq-I9U"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="classLabel" destination="9U0-tH-dAn" id="b9r-MG-yNz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kUd-q9-OjF" firstAttribute="leading" secondItem="WFq-Wh-Jj7" secondAttribute="leading" id="0bt-sa-23O"/>
+                            <constraint firstItem="zke-fF-gwN" firstAttribute="top" secondItem="kUd-q9-OjF" secondAttribute="bottom" id="1h4-01-q0G"/>
+                            <constraint firstItem="kUd-q9-OjF" firstAttribute="top" secondItem="WFq-Wh-Jj7" secondAttribute="topMargin" id="jel-Ji-TeA"/>
+                            <constraint firstAttribute="trailing" secondItem="kUd-q9-OjF" secondAttribute="trailing" id="uCS-qS-FHp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="x4m-xO-kBj">
+                        <barButtonItem key="leftBarButtonItem" image="classroom" id="yqU-6P-e31"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="kUd-q9-OjF" id="6Bl-Ut-HMz"/>
+                        <segue destination="Xcm-yw-tRd" kind="show" identifier="rosterSegue" id="oTS-dE-lHG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZj-IN-xHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3096" y="404"/>
+        </scene>
         <!--Roster View Controller-->
         <scene sceneID="KDg-cn-ooh">
             <objects>
@@ -71,7 +133,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="G3p-x6-4Wp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awx-wJ-aVh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awx-wJ-aVh">
                                                     <rect key="frame" x="544" y="29" width="34" height="35"/>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

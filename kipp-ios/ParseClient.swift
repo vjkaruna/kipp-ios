@@ -206,6 +206,23 @@ class ParseClient: NSObject {
         })
     }
     
+    func getProgressWithCompletion(studentId: Int, completion: (progressArray: [Progress], error: NSError?) -> ()) {
+        var parentQuery = PFQuery(className: "Progress")
+        parentQuery.whereKey("studentId", equalTo: studentId)
+        
+        parentQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                let PFProgress = objects as [PFObject]
+                let progressArray = Progress.progressWithArray(PFProgress)
+                completion(progressArray: progressArray, error: nil)
+            } else {
+                NSLog("error: \(error)")
+                completion(progressArray: [Progress](), error: error)
+            }
+        }
+        
+    }
+
     func saveActionObjectWithCompletion(studentObj: PFObject, action: Action, classroom: Classroom, completion: (parseObj: PFObject?, error: NSError?) -> ()) {
         var actionEntry = PFObject(className: "Action")
         

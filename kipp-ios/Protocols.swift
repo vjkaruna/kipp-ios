@@ -14,6 +14,7 @@ protocol ProfileImageTappedDelegate {
 
 protocol StudentProfileChangedDelegate {
     func attendanceDidChange()
+    func weeklyProgressDidChange()
 }
 
 protocol CharacterTraitUpdatedDelegate {
