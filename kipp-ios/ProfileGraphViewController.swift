@@ -29,14 +29,14 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
         }
         
         self.graph.dataSource = self
-        self.graph.lineWidth = 3.0
+        self.graph.lineWidth = 4.0
         
 
         //self.graph.height = self.graph.frame.height
         //self.graph.width = self.graph.frame.width
         
-        println("h: \(self.graph.height) w: \(self.graph.width)")
-        self.graph.draw()
+        //println("h: \(self.graph.height) w: \(self.graph.width)")
+        //self.graph.draw()
         
         if (student != nil) {
             studentLabel.text = student!.fullName
@@ -47,7 +47,7 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
         
     }
     func weeklyProgressDidChange() {
-        self.graph.reset()
+        //self.graph.reset()
         self.graph.draw()
     }
     
@@ -63,7 +63,6 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     func colorForLineAtIndex(index: Int) -> UIColor! {
         var mcolors = [UIColor]()
         mcolors.append(UIColor.magentaColor())
-        mcolors.append(UIColor.redColor())
         mcolors.append(UIColor.greenColor())
         return mcolors[index] as UIColor!
     }
@@ -71,7 +70,7 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     func valuesForLineAtIndex(index: Int) -> [AnyObject]! {
         var data = [Int]()
 
-        if (self.student != nil && self.student!.weeklyProgress != nil) {
+        if (self.student != nil && self.student!.weeklyProgress != nil && self.student!.weeklyProgress?.count > 0 ) {
             for progress in self.student!.weeklyProgress! {
                 if index == 0 {
                     data.append(progress.minutes)
