@@ -8,6 +8,7 @@
 
 import UIKit
 var _currentClassroomId: String?
+var _currentClasroom: Classroom?
 
 class Classroom: NSObject {
     var students: [Student]!
@@ -30,10 +31,25 @@ class Classroom: NSObject {
     
     class func setCurrentClass(classroom: Classroom) {
         _currentClassroomId = classroom.parseId
+        _currentClasroom = classroom
     }
     
     class func currentClassId() -> String? {
         return _currentClassroomId;
+    }
+    
+    class func currentClass() -> Classroom? {
+        if _currentClasroom == nil {
+            ParseClient.sharedInstance.findClassroomsWithCompletion({ (classrooms, error) -> () in
+                if classrooms != nil {
+                    self.setCurrentClass(classrooms![0])
+                } else {
+                    NSLog("Error getting classrooms from Parse: \(error)")
+                }
+            })
+        }
+        
+        return _currentClasroom
     }
     
     class func currentClassWithCompletion(completion: ((classroom: Classroom?, error: NSError?) -> ())) {
@@ -46,7 +62,15 @@ class Classroom: NSObject {
                     }
                 }
                 
+                if let zerothClassroom = classrooms?[0] {
+                    self.setCurrentClass(currentClassroom ?? zerothClassroom)
+                }
+
+                
                 completion(classroom: (currentClassroom ?? classrooms?[0]), error: error)
+                return ()
+            } else {
+                completion(classroom: nil, error: error)
                 return ()
             }
         }

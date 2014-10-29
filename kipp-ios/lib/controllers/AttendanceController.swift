@@ -23,19 +23,41 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
         attendanceTable.registerNib(nib, forCellReuseIdentifier: "studentCell")
     }
     
+    override func viewDidAppear(animated: Bool) {
+        loadClassroom()
+    }
+    
     func loadClassroom() {
-        Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
-            if classroom != nil {
-                self.students = classroom!.students
-                self.navigationItem.title = "Period \(classroom!.period)"
-                self.attendanceTable.reloadData()
-                
-                NSLog(classroom?.title ?? "nil")
+        var classroom = Classroom.currentClass()
+        if classroom == nil {
+            Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
+                if classroom != nil {
+                    self.students = classroom?.students
+                    self.attendanceTable.reloadData()
+                    self.navigationItem.title = "Period \(classroom!.period)"
+                    NSLog(classroom?.title ?? "nil")
+                }
+                else {
+                    NSLog("error getting classroom data from Parse")
+                }
             }
-            else {
-                NSLog("error getting classroom data from Parse")
-            }
+        } else {
+            self.students = classroom?.students
+            self.attendanceTable.reloadData()
+            self.navigationItem.title = "Period \(classroom!.period)"
         }
+//        Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
+//            if classroom != nil {
+//                self.students = classroom!.students
+//                self.navigationItem.title = "Period \(classroom!.period)"
+//                self.attendanceTable.reloadData()
+//                
+//                NSLog(classroom?.title ?? "nil")
+//            }
+//            else {
+//                NSLog("error getting classroom data from Parse")
+//            }
+//        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

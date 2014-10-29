@@ -662,12 +662,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="KUm-nH-Twn" kind="relationship" relationship="rootViewController" id="N92-au-RrE"/>
+                        <segue destination="Xcm-yw-tRd" kind="relationship" relationship="rootViewController" id="CJX-aO-2qz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Smr-Wr-K1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2431" y="404"/>
+            <point key="canvasLocation" x="3144" y="403"/>
         </scene>
     </scenes>
     <resources>
@@ -682,7 +682,6 @@
         <image name="character-self-control" width="139" height="186"/>
         <image name="character-social-intelligence" width="139" height="177"/>
         <image name="character-zest" width="139" height="178"/>
-        <image name="classroom" width="22" height="22"/>
         <image name="needs-work-white" width="60" height="60"/>
     </resources>
 </document>
