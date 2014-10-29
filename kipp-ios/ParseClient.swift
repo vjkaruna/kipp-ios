@@ -47,6 +47,10 @@ class ParseClient: NSObject {
         }
     }
     
+    func logout() {
+        PFUser.logOut()
+    }
+    
     func findClassroomsWithCompletion(completion: (classrooms: [Classroom]?, error: NSError?) -> ()) {
         var classroomQuery = PFQuery(className: "Classroom")
         classroomQuery.whereKey("teacher2", equalTo: PFUser.currentUser())
