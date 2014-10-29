@@ -15,6 +15,7 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
 
     @IBOutlet weak var graph: GKLineGraph!
     @IBOutlet weak var studentLabel: UILabel!
+    @IBOutlet weak var legendLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,12 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
         
         if (student != nil) {
             studentLabel.text = student!.fullName
+            let minutesAttributes = [NSForegroundColorAttributeName: UIColor.magentaColor()]
+            let weeklyAttributes = [NSForegroundColorAttributeName: UIColor.greenColor()]
+            let descText = NSMutableAttributedString()
+            descText.appendAttributedString(NSAttributedString(string: "- minutes studied  ",attributes:minutesAttributes))
+            descText.appendAttributedString(NSAttributedString(string: "- weekly progress",attributes:weeklyAttributes))
+            legendLabel.attributedText = descText
         }
     }
 
