@@ -93,7 +93,7 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
             }
 
             
-            self._viewControllers = [actionNavController, attendanceNavController, classroomsController, rosterNavController, callsNavController]
+            self._viewControllers = [attendanceNavController, rosterNavController, classroomsController, actionNavController, callsNavController]
             
             mainTabBarController.tabBar.tintColor = UIColor.greenTint()
             mainTabBarController.tabBar.barStyle = .Black
