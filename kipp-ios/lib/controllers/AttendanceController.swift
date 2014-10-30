@@ -37,7 +37,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func loadDataOrEmptyState() {
-        if students!.count > 0 {
+        if students != nil && students?.count > 0 {
             attendanceTable.hidden = false
             emptyView.hidden = true
             attendanceTable.reloadData()
