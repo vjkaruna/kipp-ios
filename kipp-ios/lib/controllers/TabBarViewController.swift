@@ -13,34 +13,39 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
     var _viewControllers: [UIViewController]?
     let mainTabBarController = UITabBarController()
     var classroomsController: ClassroomsViewController?
+    var presentingModal: Bool = false
+    var reloadClassroom: (() -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainTabBarController.delegate = self
         mainTabBarController.viewControllers = viewControllers()
     }
     
-//    - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
-//    {
-//    return viewController != self.sellTab;
-//    }
-    
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        if self.presentingModal {
+            mainTabBarController.selectedViewController?.dismissViewControllerAnimated(true, completion: nil)
+                self.reloadClassroom?()
+            self.presentingModal = false
+        } else if (viewController == self.classroomsController) {
+            let classroomSB = UIStoryboard(name: "ClassroomSelection", bundle: nil)
+            let classroomsController = classroomSB.instantiateViewControllerWithIdentifier("classroomsVC") as ClassroomsViewController
+            classroomsController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        
+            mainTabBarController.selectedViewController?.presentViewController(classroomsController, animated: true, completion: nil)
+            self.presentingModal = true
+        }
         return viewController != self.classroomsController
     }
     
-//    - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
-//    {
-//    if (item == self.sellTab.tabBarItem) {
-//    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[[PostAdViewController alloc] init]] animated:YES completion:nil];
+//    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+//
+//        if (viewController == self.classroomsController) {
+//            println("hello")
+//            self.classroomsController!.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+//            mainTabBarController.selectedViewController?.presentViewController(self.classroomsController!, animated: true, completion: nil)
+//        }
 //    }
-//    }
-    
-    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        if (viewController == self.classroomsController) {
-            self.classroomsController!.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-            mainTabBarController.selectedViewController?.presentViewController(self.classroomsController!, animated: true, completion: nil)
-        }
-    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -65,12 +70,27 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
             let classroomSB = UIStoryboard(name: "ClassroomSelection", bundle: nil)
             let classroomsController = classroomSB.instantiateViewControllerWithIdentifier("classroomsVC") as ClassroomsViewController
             self.classroomsController = classroomsController
+            self.classroomsController?.onClose = {() -> () in
+                self.mainTabBarController.selectedViewController?.dismissViewControllerAnimated(true, completion: nil)
+                self.reloadClassroom?()
+                self.presentingModal = false
+            }
             
             attendanceNavController.tabBarItem = UITabBarItem(title: "Attendance", image: UIImage(named: "attendance"), tag: 1)
             rosterNavController.tabBarItem = UITabBarItem(title: "Character", image: UIImage(named: "character"), tag: 1)
             actionNavController.tabBarItem = UITabBarItem(title: "Actions", image: UIImage(named: "alert"), tag: 1)
             callsNavController.tabBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "phone"), tag: 1)
             classroomsController.tabBarItem = UITabBarItem(title: "Classes", image: UIImage(named: "classroom"), tag: 1)
+            
+            self.reloadClassroom = {() -> () in
+                if (attendanceNavController as UINavigationController).viewControllers.count > 0 {
+                    ((attendanceNavController as UINavigationController).viewControllers[0] as AttendanceController).loadClassroom()
+                }
+                (attendanceNavController as UINavigationController).popToRootViewControllerAnimated(true)
+                (rosterNavController as UINavigationController).popToRootViewControllerAnimated(true)
+                (actionNavController as UINavigationController).popToRootViewControllerAnimated(true)
+                return ()
+            }
 
             
             self._viewControllers = [actionNavController, attendanceNavController, classroomsController, rosterNavController, callsNavController]
@@ -86,7 +106,6 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

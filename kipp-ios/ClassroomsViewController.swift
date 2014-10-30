@@ -12,6 +12,7 @@ class ClassroomsViewController: UIViewController, UITableViewDelegate, UITableVi
 
     @IBOutlet weak var tableView: UITableView!
     var classes: [Classroom]?
+    var onClose: (() -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,7 @@ class ClassroomsViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         Classroom.setCurrentClass(classes![indexPath.row] as Classroom)
         tableView.reloadData()
+        self.onClose?()
     }
     
     // MARK: - Navigation
