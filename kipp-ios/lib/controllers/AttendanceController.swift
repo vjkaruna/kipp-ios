@@ -46,8 +46,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             emptyView.hidden = false
             attendanceTable.hidden = true
-            emptyView.type = .Attendance
-        } 
+        }
     }
     
     func loadClassroom() {

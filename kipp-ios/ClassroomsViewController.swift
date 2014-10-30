@@ -32,11 +32,8 @@ class ClassroomsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     @IBAction func logoutTap(sender: AnyObject) {
-        ParseClient.sharedInstance.logout()
-        let parentSB = UIStoryboard(name: "Main", bundle: nil)
-        let profileVC = parentSB.instantiateViewControllerWithIdentifier("LoginScreen") as LoginViewController
-        
-        self.navigationController?.pushViewController(profileVC, animated: true)
+        NSNotificationCenter.defaultCenter().postNotificationName(userDidLogoutNotification, object: nil)
+
     }
     
     override func didReceiveMemoryWarning() {

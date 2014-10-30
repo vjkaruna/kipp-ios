@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func userDidLogout() {
+        ParseClient.sharedInstance.logout()
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("LoginScreen") as UIViewController
         self.window?.rootViewController = vc
