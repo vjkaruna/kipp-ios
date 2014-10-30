@@ -145,6 +145,11 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func didTapProfileImg(student: Student) {
         NSLog("Tapped profile")
+        let parentSB = UIStoryboard(name: "ParentCalls", bundle: nil)
+        let profileVC = parentSB.instantiateViewControllerWithIdentifier("studentProfileC") as ProfileGraphViewController
+        
+        profileVC.student = student
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
     
     func markStudent(indexPath: NSIndexPath, cell: StudentTableViewCell, type: AttendanceType) {

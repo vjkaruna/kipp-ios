@@ -113,7 +113,7 @@
         <!--Profile Graph View Controller-->
         <scene sceneID="bQE-lv-CX9">
             <objects>
-                <viewController id="9VN-Kk-Obo" customClass="ProfileGraphViewController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="studentProfileC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9VN-Kk-Obo" customClass="ProfileGraphViewController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Im0-QN-pU2"/>
                         <viewControllerLayoutGuide type="bottom" id="WU9-un-fzI"/>
@@ -129,7 +129,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AeB-pT-Zwy" customClass="GKLineGraph">
-                                <rect key="frame" x="20" y="162" width="560" height="200"/>
+                                <rect key="frame" x="20" y="192" width="560" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="ZRo-M4-PDf"/>
@@ -142,19 +142,19 @@
                                 </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Couture ST Math by Week" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuV-Kv-aG6">
-                                <rect key="frame" x="24" y="391" width="202" height="21"/>
+                                <rect key="frame" x="24" y="421" width="202" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutes Spent, Weekly Progress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvX-Qj-Dkj">
-                                <rect key="frame" x="24" y="420" width="248" height="21"/>
+                                <rect key="frame" x="24" y="450" width="248" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Topic: Addition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQ5-vA-g4P">
-                                <rect key="frame" x="24" y="449" width="177" height="21"/>
+                                <rect key="frame" x="24" y="479" width="177" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -173,7 +173,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skM-Jc-ezY">
-                                <rect key="frame" x="4" y="167" width="160" height="21"/>
+                                <rect key="frame" x="69" y="163" width="30" height="21"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="3mm-10-4gb"/>
@@ -181,6 +181,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3mm-10-4gb"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -188,13 +193,15 @@
                             <constraint firstItem="jl9-xJ-VOR" firstAttribute="top" secondItem="Im0-QN-pU2" secondAttribute="bottom" constant="44" id="0uI-zV-uia"/>
                             <constraint firstItem="tQ5-vA-g4P" firstAttribute="top" secondItem="WvX-Qj-Dkj" secondAttribute="bottom" constant="8" id="5xx-KS-NPx"/>
                             <constraint firstItem="jJp-Fo-gQf" firstAttribute="centerY" secondItem="jl9-xJ-VOR" secondAttribute="centerY" id="7Qj-kH-xmK"/>
+                            <constraint firstItem="AeB-pT-Zwy" firstAttribute="leading" secondItem="jJp-Fo-gQf" secondAttribute="trailing" constant="8" symbolic="YES" id="7eu-eM-0MB"/>
                             <constraint firstItem="jl9-xJ-VOR" firstAttribute="leading" secondItem="NrD-gV-vtC" secondAttribute="leadingMargin" constant="20" id="8X7-lQ-e2m"/>
                             <constraint firstItem="WvX-Qj-Dkj" firstAttribute="top" secondItem="AuV-Kv-aG6" secondAttribute="bottom" constant="8" id="DDu-F1-VAK"/>
                             <constraint firstItem="tQ5-vA-g4P" firstAttribute="leading" secondItem="WvX-Qj-Dkj" secondAttribute="leading" id="PvM-MA-gyA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AeB-pT-Zwy" secondAttribute="trailing" constant="4" id="W2t-Ze-ev9"/>
                             <constraint firstItem="skM-Jc-ezY" firstAttribute="centerX" secondItem="jJp-Fo-gQf" secondAttribute="centerX" id="abK-qS-OgG"/>
+                            <constraint firstItem="AeB-pT-Zwy" firstAttribute="top" secondItem="jJp-Fo-gQf" secondAttribute="bottom" constant="4" id="cgB-bt-cTf"/>
                             <constraint firstItem="AeB-pT-Zwy" firstAttribute="top" secondItem="jl9-xJ-VOR" secondAttribute="bottom" constant="20" id="cqu-2H-lck"/>
-                            <constraint firstItem="skM-Jc-ezY" firstAttribute="top" secondItem="jJp-Fo-gQf" secondAttribute="bottom" constant="-21" id="e2g-ZC-WAH"/>
+                            <constraint firstItem="skM-Jc-ezY" firstAttribute="top" secondItem="jJp-Fo-gQf" secondAttribute="bottom" constant="-25" id="e2g-ZC-WAH"/>
                             <constraint firstItem="jl9-xJ-VOR" firstAttribute="leading" secondItem="jJp-Fo-gQf" secondAttribute="trailing" constant="10" id="iSK-nL-uJ0"/>
                             <constraint firstItem="jJp-Fo-gQf" firstAttribute="leading" secondItem="NrD-gV-vtC" secondAttribute="leadingMargin" constant="8" id="kBe-Jn-N6K"/>
                             <constraint firstItem="AuV-Kv-aG6" firstAttribute="leading" secondItem="jJp-Fo-gQf" secondAttribute="leading" id="kbI-rN-fZd"/>
@@ -209,6 +216,8 @@
                                 <exclude reference="0uI-zV-uia"/>
                                 <exclude reference="8X7-lQ-e2m"/>
                                 <exclude reference="ty1-NA-ILa"/>
+                                <exclude reference="7eu-eM-0MB"/>
+                                <exclude reference="cqu-2H-lck"/>
                             </mask>
                         </variation>
                     </view>

@@ -55,6 +55,8 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
             descText.appendAttributedString(NSAttributedString(string: "weekly progress - ",attributes:weeklyAttributes))
             legendLabel.attributedText = descText
             self.avatarButton.setImage(student!.profileImage, forState: .Normal)
+            self.avatarButton.layer.cornerRadius = self.avatarButton.frame.size.width / 2
+            self.avatarButton.clipsToBounds = true
         }
     }
 
@@ -74,8 +76,12 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
         picker.dismissViewControllerAnimated(true, completion: { () -> Void in
         
         })
-        UIGraphicsBeginImageContext(CGSizeMake(160, 240))
-        image .drawInRect(CGRectMake(0, 0, 160, 240))
+        var finalsize = CGSizeMake(160, 160)
+        UIGraphicsBeginImageContext(finalsize)
+        var scale = max(finalsize.width/image.size.width, finalsize.height/image.size.height)
+        var width = image.size.width * scale
+        var height = image.size.height * scale
+        image.drawInRect(CGRectMake((finalsize.width - width)/2, (finalsize.height - height)/2, width, height))
         var smallImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         

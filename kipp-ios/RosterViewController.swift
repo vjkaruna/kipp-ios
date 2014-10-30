@@ -101,6 +101,11 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func didTapProfileImg(student: Student) {
 //        self.performSegueWithIdentifier("profileSegue", sender: student)
+        let parentSB = UIStoryboard(name: "ParentCalls", bundle: nil)
+        let profileVC = parentSB.instantiateViewControllerWithIdentifier("studentProfileC") as ProfileGraphViewController
+        
+        profileVC.student = student
+        self.navigationController?.pushViewController(profileVC, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

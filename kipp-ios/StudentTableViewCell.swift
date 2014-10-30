@@ -28,6 +28,8 @@ class StudentTableViewCell: MGSwipeTableCell, StudentProfileChangedDelegate {
                 newStudent!.delegate = self
                 self.displayName.text = "\(newStudent!.firstName) \(newStudent!.lastName)"
                 self.profilePic.image = newStudent!.profileImage
+                self.profilePic.layer.cornerRadius = self.profilePic.frame.size.width / 2
+                self.profilePic.clipsToBounds = true
                 self.labelView.layer.cornerRadius = 5
                 self.labelView.layer.borderWidth = 1.0
                 self.labelView.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).CGColor
