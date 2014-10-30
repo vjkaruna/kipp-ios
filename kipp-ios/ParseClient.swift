@@ -51,6 +51,22 @@ class ParseClient: NSObject {
         PFUser.logOut()
     }
     
+    func uploadImage(imageData: NSData, student: PFObject, completion: (profilePic: UIImage?, error:NSError?) -> ()) {
+        var pfile = PFFile(name: "Image.jpg", data: imageData)
+        student["profilePic"] = pfile
+        
+        
+        student.saveInBackgroundWithBlock { (succeeded, error) -> Void in
+            if (error == nil) {
+                var profilePic = UIImage(data:pfile.getData())
+                completion(profilePic: profilePic, error: error)
+            } else {
+                NSLog("Error: \(error)")
+                completion(profilePic: nil, error: error)
+            }
+        }
+    }
+    
     func findClassroomsWithCompletion(completion: (classrooms: [Classroom]?, error: NSError?) -> ()) {
         var classroomQuery = PFQuery(className: "Classroom")
         classroomQuery.whereKey("teacher2", equalTo: PFUser.currentUser())

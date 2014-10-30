@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, StudentProfileChangedDelegate {
+class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, StudentProfileChangedDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate, UINavigationControllerDelegate  {
 //class ProfileGraphViewController: UIViewController {
 
     var student: Student?
@@ -18,6 +18,13 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     @IBOutlet weak var legendLabel: UILabel!
     @IBOutlet weak var topicLabel: UILabel!
     @IBOutlet weak var avatarButton: UIButton!
+    
+    var HUD: MBProgressHUD?
+    var refreshHUD: MBProgressHUD?
+    
+    func hudWasHidden(hud: MBProgressHUD) {
+       hud.removeFromSuperview()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +38,6 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
             self.student!.fillWeeklyProgress()
         }
         
-
         
 
         //self.graph.height = self.graph.frame.height
@@ -48,11 +54,39 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
             descText.appendAttributedString(NSAttributedString(string: "minutes studied -  ",attributes:minutesAttributes))
             descText.appendAttributedString(NSAttributedString(string: "weekly progress - ",attributes:weeklyAttributes))
             legendLabel.attributedText = descText
+            self.avatarButton.setImage(student!.profileImage, forState: .Normal)
         }
     }
 
     @IBAction func avatarTouch(sender: AnyObject) {
+        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)) {
+            var imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .Camera
+            imagePicker.delegate = self
+            self.presentViewController(imagePicker, animated: true, completion: { () -> Void in
+                
+            })
+        }
     }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        var image = info["UIImagePickerControllerOriginalImage"] as UIImage
+        picker.dismissViewControllerAnimated(true, completion: { () -> Void in
+        
+        })
+        UIGraphicsBeginImageContext(CGSizeMake(160, 240))
+        image .drawInRect(CGRectMake(0, 0, 160, 240))
+        var smallImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        var imageData = UIImageJPEGRepresentation(smallImage, 0.1)
+        ParseClient.sharedInstance.uploadImage(imageData, student: self.student!.pfObj, completion: { (profilePic, error) -> () in
+            self.student!.profileImage = profilePic
+            self.avatarButton.setImage(profilePic, forState: .Normal)
+        })
+
+    }
+    
     
     func attendanceDidChange() {
         

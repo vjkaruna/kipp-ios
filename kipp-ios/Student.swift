@@ -48,6 +48,7 @@ class Student: NSObject {
     
     var attendance: AttendanceType?
     var weeklyProgress: [Progress]?
+    var profileImage: UIImage?
     
     var characterArray: [CharacterTrait] = CharacterTrait.defaultCharacterTraitArray()
     
@@ -58,11 +59,18 @@ class Student: NSObject {
         let genderChar = obj["gender"] as NSString
         self.gender = Gender(rawValue:genderChar)
         self.pfObj = obj
+        if (obj["profilePic"] != nil) {
+            var ppic = obj["profilePic"] as PFFile
+            profileImage = UIImage(data:ppic.getData())
+        } else {
+            profileImage = UIImage(named: self.gender.profileImg())
+        }
     }
     
      var fullName: String {
         return "\(self.firstName) \(self.lastName)"
     }
+    
     
     class func studentsWithArray(array: NSArray) -> [Student] {
         var students = [Student]()
