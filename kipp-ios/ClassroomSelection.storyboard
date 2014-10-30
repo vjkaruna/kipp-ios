@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A386a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -35,12 +35,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vo6-E8-hcb">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-8Z-3Pe">
-                                <rect key="frame" x="0.0" y="100" width="600" height="456"/>
+                                <rect key="frame" x="0.0" y="100" width="600" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.37647058820000001" green="0.63529411759999999" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Lhy-gc-ajz">
@@ -75,6 +71,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vo6-E8-hcb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL1-H9-slw">
+                                        <rect key="frame" x="276" y="526" width="49" height="30"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutTap:" destination="A44-jF-inf" eventType="touchUpInside" id="5N9-WK-YZ9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="kL1-H9-slw" secondAttribute="centerY" constant="-277" id="IGe-FX-pds"/>
+                                    <constraint firstAttribute="centerX" secondItem="kL1-H9-slw" secondAttribute="centerX" id="fz2-Re-9z5"/>
+                                    <constraint firstAttribute="bottom" secondItem="kL1-H9-slw" secondAttribute="bottom" constant="44" id="pXX-K4-Lel"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="IGe-FX-pds"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -82,7 +103,7 @@
                             <constraint firstItem="ehe-8Z-3Pe" firstAttribute="leading" secondItem="XVf-Xp-dwH" secondAttribute="leading" id="84k-mP-z4G"/>
                             <constraint firstItem="vo6-E8-hcb" firstAttribute="leading" secondItem="XVf-Xp-dwH" secondAttribute="leading" id="J0H-O0-JYq"/>
                             <constraint firstItem="ehe-8Z-3Pe" firstAttribute="top" secondItem="XVf-Xp-dwH" secondAttribute="topMargin" constant="100" id="ebw-NO-X13"/>
-                            <constraint firstItem="F6C-39-bR1" firstAttribute="top" secondItem="ehe-8Z-3Pe" secondAttribute="bottom" constant="44" id="msT-HX-Il8"/>
+                            <constraint firstItem="F6C-39-bR1" firstAttribute="top" secondItem="ehe-8Z-3Pe" secondAttribute="bottom" constant="80" id="msT-HX-Il8"/>
                             <constraint firstItem="F6C-39-bR1" firstAttribute="top" secondItem="vo6-E8-hcb" secondAttribute="bottom" id="onP-03-7Ni"/>
                             <constraint firstAttribute="trailing" secondItem="vo6-E8-hcb" secondAttribute="trailing" id="qX4-N5-DhL"/>
                             <constraint firstItem="vo6-E8-hcb" firstAttribute="top" secondItem="XVf-Xp-dwH" secondAttribute="top" id="rRI-CM-8fU"/>

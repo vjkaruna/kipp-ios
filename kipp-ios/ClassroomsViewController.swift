@@ -31,6 +31,14 @@ class ClassroomsViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
 
+    @IBAction func logoutTap(sender: AnyObject) {
+        ParseClient.sharedInstance.logout()
+        let parentSB = UIStoryboard(name: "Main", bundle: nil)
+        let profileVC = parentSB.instantiateViewControllerWithIdentifier("LoginScreen") as LoginViewController
+        
+        self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
