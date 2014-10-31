@@ -45,6 +45,7 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
             attendanceTable.reloadData()
         } else {
             emptyView.hidden = false
+            emptyView.type = .Attendance
             attendanceTable.hidden = true
         }
     }
