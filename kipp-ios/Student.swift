@@ -65,6 +65,7 @@ class Student: NSObject {
             var ppic = obj["profilePic"] as PFFile
             ppic.getDataInBackgroundWithBlock { (result, error) in
                self.profileImage = UIImage(data: result)
+                self.delegate?.profilePicDidChange!()
             }
         } else {
             profileImage = UIImage(named: self.gender.profileImg())

@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseClassroomViewController: UIViewController {
-    var classroom: Classroom!
+    weak var classroom: Classroom!
     
     func loadClassroom() {
         var classroom = Classroom.currentClass()

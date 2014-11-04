@@ -37,6 +37,7 @@
 		54B3B0CA19EFAD2F00BC83B1 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */; };
 		54CB96E71A018A02000B1156 /* AttendanceEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96E61A018A02000B1156 /* AttendanceEditViewController.swift */; };
 		54CB96E91A087702000B1156 /* BaseClassroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96E81A087702000B1156 /* BaseClassroomViewController.swift */; };
+		54CB96EB1A088040000B1156 /* ClassroomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96EA1A088040000B1156 /* ClassroomButton.swift */; };
 		66147C3919FB5DCF0001CB6F /* libPods-GraphKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */; };
 		66147C3A19FB5DCF0001CB6F /* libPods-MKFoundationKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */; };
 		66147C3C19FB64C30001CB6F /* libPods-FrameAccessor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */; };
@@ -117,6 +118,7 @@
 		54B3B0C919EFAD2F00BC83B1 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		54CB96E61A018A02000B1156 /* AttendanceEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceEditViewController.swift; sourceTree = "<group>"; };
 		54CB96E81A087702000B1156 /* BaseClassroomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseClassroomViewController.swift; sourceTree = "<group>"; };
+		54CB96EA1A088040000B1156 /* ClassroomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassroomButton.swift; sourceTree = "<group>"; };
 		66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-GraphKit.a"; path = "Pods/build/Debug-iphoneos/libPods-GraphKit.a"; sourceTree = "<group>"; };
 		66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MKFoundationKit.a"; path = "Pods/build/Debug-iphoneos/libPods-MKFoundationKit.a"; sourceTree = "<group>"; };
 		66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-FrameAccessor.a"; path = "Pods/build/Debug-iphoneos/libPods-FrameAccessor.a"; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				54124A1E19FCF09100D042C4 /* ActionCellView.xib */,
 				54124A2019FCF36600D042C4 /* ActionCellView.swift */,
 				54991DD419FDA96B00389625 /* ActionCollectionViewCell.swift */,
+				54CB96EA1A088040000B1156 /* ClassroomButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				6649802B19EB38230050ACB9 /* Parent.swift in Sources */,
 				66147C3E19FC26440001CB6F /* Progress.swift in Sources */,
 				669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */,
+				54CB96EB1A088040000B1156 /* ClassroomButton.swift in Sources */,
 				54CB96E91A087702000B1156 /* BaseClassroomViewController.swift in Sources */,
 				6615BEF119F3065200B7D8EC /* ParseClient.swift in Sources */,
 				549937F919F77E420026C7E4 /* Colors.swift in Sources */,

@@ -70,6 +70,10 @@ class StudentTableViewCell: MGSwipeTableCell, StudentProfileChangedDelegate {
     func attendanceDidChange() {
         self.attendanceImageView.image = UIImage(named: student!.attendance!.getIcon())
     }
+    
+    func profilePicDidChange() {
+        self.profilePic.image = student!.profileImage
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
