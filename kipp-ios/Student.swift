@@ -53,6 +53,8 @@ class Student: NSObject {
     var characterArray: [CharacterTrait] = CharacterTrait.defaultCharacterTraitArray()
     
     init(obj: PFObject) {
+        super.init()
+        
         self.firstName = obj["firstName"] as NSString
         self.lastName = obj["lastName"] as NSString
         self.studentId = obj["studentId"] as NSInteger
@@ -61,7 +63,9 @@ class Student: NSObject {
         self.pfObj = obj
         if (obj["profilePic"] != nil) {
             var ppic = obj["profilePic"] as PFFile
-            profileImage = UIImage(data:ppic.getData())
+            ppic.getDataInBackgroundWithBlock { (result, error) in
+               self.profileImage = UIImage(data: result)
+            }
         } else {
             profileImage = UIImage(named: self.gender.profileImg())
         }

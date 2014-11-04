@@ -58,8 +58,13 @@ class ParseClient: NSObject {
         
         student.saveInBackgroundWithBlock { (succeeded, error) -> Void in
             if (error == nil) {
-                var profilePic = UIImage(data:pfile.getData())
+                var profilePic = UIImage(data: pfile.getData())
                 completion(profilePic: profilePic, error: error)
+                // VJ can you double check this works below? 
+//                ppic.getDataInBackgroundWithBlock { (result, error) in
+//                    let profilePic = UIImage(data: result)
+//                    completion(profilePic: profilePic, error: error)
+//                }
             } else {
                 NSLog("Error: \(error)")
                 completion(profilePic: nil, error: error)
