@@ -8,11 +8,13 @@
 
 import UIKit
 
-class TabBarViewController: UIViewController, UITabBarControllerDelegate {
+class TabBarViewController: UIViewController, UITabBarControllerDelegate, ClassroomSelectionDelegrate {
 
     var _viewControllers: [UIViewController]?
     let mainTabBarController = UITabBarController()
     var classroomsController: ClassroomsViewController?
+    var presentingController: UIViewController?
+
     var presentingModal: Bool = false
     var reloadClassroom: (() -> ())?
     
@@ -24,15 +26,17 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
     
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         if self.presentingModal {
-            mainTabBarController.selectedViewController?.dismissViewControllerAnimated(true, completion: nil)
-                self.reloadClassroom?()
+            mainTabBarController.selectedViewController?.dismissViewControllerAnimated(false, completion: nil)
+//            self.reloadClassroom?()
             self.presentingModal = false
         } else if (viewController == self.classroomsController) {
             let classroomSB = UIStoryboard(name: "ClassroomSelection", bundle: nil)
             let classroomsController = classroomSB.instantiateViewControllerWithIdentifier("classroomsVC") as ClassroomsViewController
+//            let classroomsController = _viewControllers![2]
             classroomsController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        
-            mainTabBarController.selectedViewController?.presentViewController(classroomsController, animated: true, completion: nil)
+            classroomsController.delegate = self
+            self.presentingController = mainTabBarController.selectedViewController
+            mainTabBarController.selectedViewController?.presentViewController(classroomsController, animated: false, completion: nil)
             self.presentingModal = true
         }
         return viewController != self.classroomsController
@@ -70,11 +74,7 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
             let classroomSB = UIStoryboard(name: "ClassroomSelection", bundle: nil)
             let classroomsController = classroomSB.instantiateViewControllerWithIdentifier("classroomsVC") as ClassroomsViewController
             self.classroomsController = classroomsController
-            self.classroomsController?.onClose = {() -> () in
-                self.mainTabBarController.selectedViewController?.dismissViewControllerAnimated(true, completion: nil)
-                self.reloadClassroom?()
-                self.presentingModal = false
-            }
+            self.classroomsController?.delegate = self
             
             attendanceNavController.tabBarItem = UITabBarItem(title: "Attendance", image: UIImage(named: "attendance"), tag: 1)
             rosterNavController.tabBarItem = UITabBarItem(title: "Character", image: UIImage(named: "character"), tag: 1)
@@ -106,6 +106,16 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func didSelectClassroom(classroom: Classroom) {
+        NSLog("Did selected classroom: \(classroom)")
+        mainTabBarController.selectedViewController?.dismissViewControllerAnimated(false, completion: nil)
+        if mainTabBarController.selectedIndex != 3 && mainTabBarController.selectedIndex != 5 {
+            let classroomVC = (mainTabBarController.selectedViewController! as UINavigationController).viewControllers[0] as BaseClassroomViewController
+            classroomVC.loadClassroom()
+        }
+//        self.reloadClassroom?()
+        self.presentingModal = false
+    }
     /*
     // MARK: - Navigation
 

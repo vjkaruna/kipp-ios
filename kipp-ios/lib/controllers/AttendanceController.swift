@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate {
+class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate {
     @IBOutlet weak var attendanceTable: UITableView!
 
     @IBOutlet weak var contentView: UIView!
@@ -39,51 +39,49 @@ class AttendanceController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func loadDataOrEmptyState() {
-        if students != nil && students?.count > 0 {
-            attendanceTable.hidden = false
-            emptyView.hidden = true
-            attendanceTable.reloadData()
-        } else {
-            emptyView.hidden = false
-            emptyView.type = .Attendance
-            attendanceTable.hidden = true
+        if students != nil {
+            if attendanceComplete || students!.count == 0 {
+                emptyView.hidden = false
+                attendanceTable.hidden = true
+                emptyView.type = .Attendance
+            } else {
+                attendanceTable.hidden = false
+                emptyView.hidden = true
+                //            attendanceTable.reloadData()
+            }
         }
     }
     
-    func loadClassroom() {
-        var classroom = Classroom.currentClass()
-        if classroom == nil {
-            Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
-                if classroom != nil {
-                    self.students = classroom?.students
-                    self.loadDataOrEmptyState()
-                    self.navigationItem.title = "Period \(classroom!.period): Attendance"
-                    NSLog(classroom?.title ?? "nil")
-//                    self.attendanceTable.reloadData()
-                }
-                else {
-                    NSLog("error getting classroom data from Parse")
-                }
-            }
-        } else {
-            self.students = classroom?.students
-            loadDataOrEmptyState()
-            self.navigationItem.title = "Period \(classroom!.period): Attendance"
-            self.attendanceTable.reloadData()
-        }
-//        Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
-//            if classroom != nil {
-//                self.students = classroom!.students
-//                self.navigationItem.title = "Period \(classroom!.period)"
-//                self.attendanceTable.reloadData()
-//                
-//                NSLog(classroom?.title ?? "nil")
-//            }
-//            else {
-//                NSLog("error getting classroom data from Parse")
-//            }
-//        }
+    override func classroomLoaded() {
+        students = classroom.students
+        loadDataOrEmptyState()
+        navigationItem.title = "Period \(classroom!.period): Attendance"
+//        NSLog(classroom?.title ?? "nil")
+        attendanceTable.reloadData()
     }
+    
+//    func loadClassroom() {
+//        var classroom = Classroom.currentClass()
+//        if classroom == nil {
+//            Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
+//                if classroom != nil {
+//                    self.students = classroom?.students
+//                    self.loadDataOrEmptyState()
+//                    self.navigationItem.title = "Period \(classroom!.period): Attendance"
+//                    NSLog(classroom?.title ?? "nil")
+//                    self.attendanceTable.reloadData()
+//                }
+//                else {
+//                    NSLog("error getting classroom data from Parse")
+//                }
+//            }
+//        } else {
+//            self.students = classroom?.students
+//            loadDataOrEmptyState()
+//            self.navigationItem.title = "Period \(classroom!.period): Attendance"
+//            self.attendanceTable.reloadData()
+//        }
+//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell

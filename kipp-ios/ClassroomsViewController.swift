@@ -14,6 +14,8 @@ class ClassroomsViewController: UIViewController, UITableViewDelegate, UITableVi
     var classes: [Classroom]?
     var onClose: (() -> ())?
     
+    var delegate: ClassroomSelectionDelegrate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,7 +70,8 @@ class ClassroomsViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         Classroom.setCurrentClass(classes![indexPath.row] as Classroom)
         tableView.reloadData()
-        self.onClose?()
+//        self.onClose?()
+        delegate?.didSelectClassroom(classes![indexPath.row])
     }
     
     // MARK: - Navigation

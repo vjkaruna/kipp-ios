@@ -24,3 +24,7 @@ protocol CharacterTraitUpdatedDelegate {
 protocol ReasonSubmittedDelegate {
     func didTapSubmitButton(reasonString: String, actionType: ActionType)
 }
+
+protocol ClassroomSelectionDelegrate {
+    func didSelectClassroom(classroom: Classroom)
+}

@@ -8,12 +8,12 @@
 
 import UIKit
 
-class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate {
+class RosterViewController: BaseClassroomViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var teacher: PFUser!
-    var classroom: Classroom!
+//    var classroom: Classroom!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,26 +37,31 @@ class RosterViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+//    
+//    func loadClassroom() {
+//        var classroom = Classroom.currentClass()
+//        if classroom == nil {
+//            Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
+//                if classroom != nil {
+//                    self.classroom = classroom
+//                    self.tableView.reloadData()
+//                    self.navigationItem.title = "Period \(classroom!.period): Character"
+//                    NSLog(classroom?.title ?? "nil")
+//                }
+//                else {
+//                    NSLog("error getting classroom data from Parse")
+//                }
+//            }
+//        } else {
+//            self.classroom = classroom
+//            self.tableView.reloadData()
+//            self.navigationItem.title = "Period \(classroom!.period): Character"
+//        }
+//    }
     
-    func loadClassroom() {
-        var classroom = Classroom.currentClass()
-        if classroom == nil {
-            Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
-                if classroom != nil {
-                    self.classroom = classroom
-                    self.tableView.reloadData()
-                    self.navigationItem.title = "Period \(classroom!.period): Character"
-                    NSLog(classroom?.title ?? "nil")
-                }
-                else {
-                    NSLog("error getting classroom data from Parse")
-                }
-            }
-        } else {
-            self.classroom = classroom
-            self.tableView.reloadData()
-            self.navigationItem.title = "Period \(classroom!.period): Character"
-        }
+    override func classroomLoaded() {
+        self.tableView.reloadData()
+        self.navigationItem.title = "Period \(classroom!.period): Character"
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
