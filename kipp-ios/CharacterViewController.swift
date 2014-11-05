@@ -23,8 +23,6 @@ class CharacterViewController: UIViewController, ReasonSubmittedDelegate {
     
     @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
     var loadedTraitValues: [Int]!
     
     var expandedMenu = false
@@ -64,12 +62,6 @@ class CharacterViewController: UIViewController, ReasonSubmittedDelegate {
         super.viewDidLoad()
         
         modalPresentationStyle = UIModalPresentationStyle.CurrentContext
-        
-        for index in 0..<views.count {
-            segmentedControl.setTitle(views[index], forSegmentAtIndex: index)
-        }
-        
-        segmentedControl.selectedSegmentIndex = 0
         
         let trackingVC = self.storyboard!.instantiateViewControllerWithIdentifier("CharacterTrackingVC") as CharacterTrackingViewController
         trackingVC.student = student

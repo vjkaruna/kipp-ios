@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <visualEffectView opaque="NO" alpha="0.94999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWL-cw-jLb">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="58P-6n-z9R">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aG-i6-Smn">
+                        <rect key="frame" x="100" y="57" width="145" height="30"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                        <state key="normal" title="Needs Improvement">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx6-CN-HQY">
+                        <rect key="frame" x="100" y="121" width="70" height="30"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                        <state key="normal" title="Celebrate">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="needs-work-white" translatesAutoresizingMaskIntoConstraints="NO" id="2wO-d6-kql">
+                        <rect key="frame" x="48" y="50" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="2Zt-YE-Drk"/>
+                            <constraint firstAttribute="height" constant="44" id="DaR-kb-WuN"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="celebrate" translatesAutoresizingMaskIntoConstraints="NO" id="b6C-NN-7zR">
+                        <rect key="frame" x="48" y="114" width="44" height="44"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call" translatesAutoresizingMaskIntoConstraints="NO" id="52o-Ca-Bmk">
+                        <rect key="frame" x="48" y="178" width="44" height="44"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWd-z6-6em">
+                        <rect key="frame" x="100" y="185" width="69" height="30"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                        <state key="normal" title="Call Later">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <gestureRecognizers/>
+                <constraints>
+                    <constraint firstItem="52o-Ca-Bmk" firstAttribute="top" secondItem="b6C-NN-7zR" secondAttribute="bottom" constant="20" id="0dt-cB-g1R"/>
+                    <constraint firstItem="b6C-NN-7zR" firstAttribute="leading" secondItem="2wO-d6-kql" secondAttribute="leading" id="3EO-a6-Bfd"/>
+                    <constraint firstItem="52o-Ca-Bmk" firstAttribute="top" secondItem="b6C-NN-7zR" secondAttribute="bottom" constant="8" symbolic="YES" id="6Ig-hN-okA"/>
+                    <constraint firstItem="b6C-NN-7zR" firstAttribute="centerY" secondItem="Lx6-CN-HQY" secondAttribute="centerY" id="9g8-Hm-15l"/>
+                    <constraint firstItem="52o-Ca-Bmk" firstAttribute="leading" secondItem="2wO-d6-kql" secondAttribute="leading" id="BRO-yw-b2L"/>
+                    <constraint firstItem="b6C-NN-7zR" firstAttribute="width" secondItem="2wO-d6-kql" secondAttribute="width" id="C9P-Dh-Xti"/>
+                    <constraint firstItem="b6C-NN-7zR" firstAttribute="centerY" secondItem="Lx6-CN-HQY" secondAttribute="centerY" id="I9h-PH-AHa"/>
+                    <constraint firstItem="2aG-i6-Smn" firstAttribute="leading" secondItem="2wO-d6-kql" secondAttribute="trailing" constant="8" id="QWV-m8-p8a"/>
+                    <constraint firstItem="52o-Ca-Bmk" firstAttribute="centerX" secondItem="b6C-NN-7zR" secondAttribute="centerX" id="RH8-eE-GH2"/>
+                    <constraint firstItem="2wO-d6-kql" firstAttribute="leading" secondItem="58P-6n-z9R" secondAttribute="leading" constant="48" id="W7h-dG-eLE"/>
+                    <constraint firstItem="52o-Ca-Bmk" firstAttribute="centerY" secondItem="JWd-z6-6em" secondAttribute="centerY" id="YCm-LW-6cs"/>
+                    <constraint firstItem="Lx6-CN-HQY" firstAttribute="leading" secondItem="JWd-z6-6em" secondAttribute="leading" id="chw-a4-hFX"/>
+                    <constraint firstItem="b6C-NN-7zR" firstAttribute="leading" secondItem="2wO-d6-kql" secondAttribute="leading" id="dKm-hT-GmB"/>
+                    <constraint firstItem="b6C-NN-7zR" firstAttribute="top" secondItem="2wO-d6-kql" secondAttribute="bottom" constant="8" symbolic="YES" id="e57-Tr-zPB"/>
+                    <constraint firstItem="2aG-i6-Smn" firstAttribute="leading" secondItem="Lx6-CN-HQY" secondAttribute="leading" id="fn3-xM-qJN"/>
+                    <constraint firstItem="b6C-NN-7zR" firstAttribute="height" secondItem="2wO-d6-kql" secondAttribute="height" id="fn9-Tg-4bS"/>
+                    <constraint firstItem="2wO-d6-kql" firstAttribute="centerY" secondItem="2aG-i6-Smn" secondAttribute="centerY" id="k7X-I8-7DK"/>
+                    <constraint firstItem="b6C-NN-7zR" firstAttribute="top" secondItem="2wO-d6-kql" secondAttribute="bottom" constant="20" id="n8e-pg-K88"/>
+                    <constraint firstItem="52o-Ca-Bmk" firstAttribute="height" secondItem="b6C-NN-7zR" secondAttribute="height" id="t0x-pw-11C"/>
+                    <constraint firstItem="52o-Ca-Bmk" firstAttribute="width" secondItem="b6C-NN-7zR" secondAttribute="width" id="xXp-8I-tf7"/>
+                    <constraint firstItem="2wO-d6-kql" firstAttribute="top" secondItem="58P-6n-z9R" secondAttribute="top" constant="50" id="y9D-6p-jN3"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="9g8-Hm-15l"/>
+                        <exclude reference="dKm-hT-GmB"/>
+                        <exclude reference="e57-Tr-zPB"/>
+                        <exclude reference="6Ig-hN-okA"/>
+                    </mask>
+                </variation>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="height" constant="50" id="EbD-al-Ekj"/>
+            </constraints>
+            <blurEffect style="light"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="EbD-al-Ekj"/>
+                </mask>
+            </variation>
+        </visualEffectView>
+    </objects>
+    <resources>
+        <image name="call" width="60" height="60"/>
+        <image name="celebrate" width="60" height="60"/>
+        <image name="needs-work-white" width="60" height="60"/>
+    </resources>
+</document>

@@ -38,6 +38,7 @@
 		54CB96E71A018A02000B1156 /* AttendanceEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96E61A018A02000B1156 /* AttendanceEditViewController.swift */; };
 		54CB96E91A087702000B1156 /* BaseClassroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96E81A087702000B1156 /* BaseClassroomViewController.swift */; };
 		54CB96EB1A088040000B1156 /* ClassroomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96EA1A088040000B1156 /* ClassroomButton.swift */; };
+		54CB96EF1A09FCA6000B1156 /* ActionMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CB96EE1A09FCA6000B1156 /* ActionMenu.xib */; };
 		66147C3919FB5DCF0001CB6F /* libPods-GraphKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */; };
 		66147C3A19FB5DCF0001CB6F /* libPods-MKFoundationKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */; };
 		66147C3C19FB64C30001CB6F /* libPods-FrameAccessor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */; };
@@ -119,6 +120,7 @@
 		54CB96E61A018A02000B1156 /* AttendanceEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceEditViewController.swift; sourceTree = "<group>"; };
 		54CB96E81A087702000B1156 /* BaseClassroomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseClassroomViewController.swift; sourceTree = "<group>"; };
 		54CB96EA1A088040000B1156 /* ClassroomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassroomButton.swift; sourceTree = "<group>"; };
+		54CB96EE1A09FCA6000B1156 /* ActionMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionMenu.xib; sourceTree = "<group>"; };
 		66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-GraphKit.a"; path = "Pods/build/Debug-iphoneos/libPods-GraphKit.a"; sourceTree = "<group>"; };
 		66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MKFoundationKit.a"; path = "Pods/build/Debug-iphoneos/libPods-MKFoundationKit.a"; sourceTree = "<group>"; };
 		66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-FrameAccessor.a"; path = "Pods/build/Debug-iphoneos/libPods-FrameAccessor.a"; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				54124A2019FCF36600D042C4 /* ActionCellView.swift */,
 				54991DD419FDA96B00389625 /* ActionCollectionViewCell.swift */,
 				54CB96EA1A088040000B1156 /* ClassroomButton.swift */,
+				54CB96EE1A09FCA6000B1156 /* ActionMenu.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				545F718019F8F4AB001634D3 /* Actions.storyboard in Resources */,
 				545F718A19FB9671001634D3 /* EmptyDataView.xib in Resources */,
 				669ACAAA19E75E12004C31ED /* Main.storyboard in Resources */,
+				54CB96EF1A09FCA6000B1156 /* ActionMenu.xib in Resources */,
 				662F2B5D1A007310009CAB2D /* StudentTableViewCell.xib in Resources */,
 				54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */,
 				FCF1563019F6167B0057617D /* Attendance.storyboard in Resources */,
