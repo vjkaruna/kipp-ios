@@ -13,19 +13,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekE-sT-Lnv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="121"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="120.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="hKC-L8-9nN">
-                                <rect key="frame" x="15" y="10" width="45" height="45"/>
+                                <rect key="frame" x="15" y="10" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="MR9-qp-U05"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="mng-mO-Qdr"/>
-                                    <constraint firstAttribute="width" constant="45" id="nul-2F-ZGt"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="tyB-4M-9uJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="MR9-qp-U05"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="mng-mO-Qdr"/>
+                                    <constraint firstAttribute="width" constant="50" id="nul-2F-ZGt"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="tyB-4M-9uJ"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jH6-3X-Bkb">
-                                <rect key="frame" x="15" y="10" width="45" height="45"/>
+                                <rect key="frame" x="15" y="10" width="50" height="50"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -34,16 +34,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWG-24-pJh">
-                                <rect key="frame" x="75" y="24" width="111" height="21"/>
+                                <rect key="frame" x="80" y="24" width="110.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.43137254899999999" green="0.43137254899999999" blue="0.43137254899999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTD-9s-XAe">
-                                <rect key="frame" x="8" y="69" width="584" height="44"/>
+                                <rect key="frame" x="8" y="69" width="584" height="43.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZR-fm-D2m">
-                                        <rect key="frame" x="8" y="8" width="568" height="28"/>
+                                        <rect key="frame" x="8" y="8" width="568" height="27.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Completed" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdy-L4-K4U">
-                                <rect key="frame" x="190" y="26" width="402" height="21"/>
+                                <rect key="frame" x="195" y="26" width="396.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.56006855867346939" green="0.56006855867346939" blue="0.56006855867346939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

@@ -39,6 +39,8 @@
 		54CB96E91A087702000B1156 /* BaseClassroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96E81A087702000B1156 /* BaseClassroomViewController.swift */; };
 		54CB96EB1A088040000B1156 /* ClassroomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96EA1A088040000B1156 /* ClassroomButton.swift */; };
 		54CB96EF1A09FCA6000B1156 /* ActionMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CB96EE1A09FCA6000B1156 /* ActionMenu.xib */; };
+		54CB96F51A0B63AA000B1156 /* BTSpiderPlotterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96F41A0B63AA000B1156 /* BTSpiderPlotterView.m */; };
+		54CB96F71A0B661C000B1156 /* SpiderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96F61A0B661C000B1156 /* SpiderViewController.swift */; };
 		66147C3919FB5DCF0001CB6F /* libPods-GraphKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */; };
 		66147C3A19FB5DCF0001CB6F /* libPods-MKFoundationKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */; };
 		66147C3C19FB64C30001CB6F /* libPods-FrameAccessor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */; };
@@ -121,6 +123,9 @@
 		54CB96E81A087702000B1156 /* BaseClassroomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseClassroomViewController.swift; sourceTree = "<group>"; };
 		54CB96EA1A088040000B1156 /* ClassroomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassroomButton.swift; sourceTree = "<group>"; };
 		54CB96EE1A09FCA6000B1156 /* ActionMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionMenu.xib; sourceTree = "<group>"; };
+		54CB96F31A0B63AA000B1156 /* BTSpiderPlotterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSpiderPlotterView.h; sourceTree = "<group>"; };
+		54CB96F41A0B63AA000B1156 /* BTSpiderPlotterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSpiderPlotterView.m; sourceTree = "<group>"; };
+		54CB96F61A0B661C000B1156 /* SpiderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpiderViewController.swift; sourceTree = "<group>"; };
 		66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-GraphKit.a"; path = "Pods/build/Debug-iphoneos/libPods-GraphKit.a"; sourceTree = "<group>"; };
 		66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MKFoundationKit.a"; path = "Pods/build/Debug-iphoneos/libPods-MKFoundationKit.a"; sourceTree = "<group>"; };
 		66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-FrameAccessor.a"; path = "Pods/build/Debug-iphoneos/libPods-FrameAccessor.a"; sourceTree = "<group>"; };
@@ -239,6 +244,7 @@
 				FC25F94C19FA251F003949AE /* AttendanceController.swift */,
 				54CB96E61A018A02000B1156 /* AttendanceEditViewController.swift */,
 				54CB96E81A087702000B1156 /* BaseClassroomViewController.swift */,
+				54CB96F61A0B661C000B1156 /* SpiderViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -282,6 +288,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		54CB96F21A0B6386000B1156 /* Spider Plot */ = {
+			isa = PBXGroup;
+			children = (
+				54CB96F31A0B63AA000B1156 /* BTSpiderPlotterView.h */,
+				54CB96F41A0B63AA000B1156 /* BTSpiderPlotterView.m */,
+			);
+			name = "Spider Plot";
+			sourceTree = "<group>";
+		};
 		669ACA9619E75E12004C31ED = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +321,7 @@
 		669ACAA119E75E12004C31ED /* kipp-ios */ = {
 			isa = PBXGroup;
 			children = (
+				54CB96F21A0B6386000B1156 /* Spider Plot */,
 				54682D6519EA3FCF00CCE795 /* Views */,
 				54682D6219E9EC8F00CCE795 /* Storyboards */,
 				54682D5D19E9EC1000CCE795 /* View Controllers */,
@@ -518,6 +534,7 @@
 				545F717E19F8E7A6001634D3 /* Action.swift in Sources */,
 				669ACAA719E75E12004C31ED /* LoginViewController.swift in Sources */,
 				54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */,
+				54CB96F71A0B661C000B1156 /* SpiderViewController.swift in Sources */,
 				FC25F95119FC5B8A003949AE /* ClassroomSelectionViewController.swift in Sources */,
 				549937F719F64E150026C7E4 /* CharacterTrackingViewController.swift in Sources */,
 				545F718619F8FADF001634D3 /* ActionTableViewCell.swift in Sources */,
@@ -539,6 +556,7 @@
 				FC25F98119FC65A0003949AE /* ClassroomSelecitonCell.swift in Sources */,
 				FC25F94B19FA24FA003949AE /* AttendanceViewCell.swift in Sources */,
 				54682D6E19EB27F200CCE795 /* Classroom.swift in Sources */,
+				54CB96F51A0B63AA000B1156 /* BTSpiderPlotterView.m in Sources */,
 				54682D7019EB2FAF00CCE795 /* ClassroomTableViewCell.swift in Sources */,
 				54B3B0CA19EFAD2F00BC83B1 /* CharacterTableViewCell.swift in Sources */,
 				54682D6719EA450E00CCE795 /* ProfileViewController.swift in Sources */,

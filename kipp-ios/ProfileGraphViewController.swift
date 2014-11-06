@@ -9,10 +9,10 @@
 import UIKit
 
 class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, StudentProfileChangedDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate, UINavigationControllerDelegate  {
-//class ProfileGraphViewController: UIViewController {
 
     var student: Student?
 
+    @IBOutlet weak var avatarFrame: UIView!
     @IBOutlet weak var graph: GKLineGraph!
     @IBOutlet weak var studentLabel: UILabel!
     @IBOutlet weak var legendLabel: UILabel!
@@ -49,14 +49,18 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
         if (student != nil) {
             studentLabel.text = student!.fullName
             let minutesAttributes = [NSForegroundColorAttributeName: UIColor.magentaColor()]
-            let weeklyAttributes = [NSForegroundColorAttributeName: UIColor.greenColor()]
+            let weeklyAttributes = [NSForegroundColorAttributeName: UIColor.greenTint()]
             let descText = NSMutableAttributedString()
             descText.appendAttributedString(NSAttributedString(string: "minutes studied -  ",attributes:minutesAttributes))
             descText.appendAttributedString(NSAttributedString(string: "weekly progress - ",attributes:weeklyAttributes))
             legendLabel.attributedText = descText
+            
             self.avatarButton.setImage(student!.profileImage, forState: .Normal)
             self.avatarButton.layer.cornerRadius = self.avatarButton.frame.size.width / 2
             self.avatarButton.clipsToBounds = true
+            
+            self.avatarFrame.layer.cornerRadius = self.avatarFrame.frame.size.width / 2
+            self.avatarFrame.clipsToBounds = true
         }
     }
 
@@ -119,7 +123,7 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     func colorForLineAtIndex(index: Int) -> UIColor! {
         var mcolors = [UIColor]()
         mcolors.append(UIColor.magentaColor())
-        mcolors.append(UIColor.greenColor())
+        mcolors.append(UIColor.greenTint())
         return mcolors[index] as UIColor!
     }
     

@@ -8,7 +8,6 @@
         <!--Classrooms View Controller-->
         <scene sceneID="a2i-fi-TNA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lZj-IN-xHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="KUm-nH-Twn" customClass="ClassroomsViewController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MOj-TR-7Y2"/>
@@ -57,13 +56,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="x4m-xO-kBj">
-                        <barButtonItem key="leftBarButtonItem" image="D61FFD07-C037-4524-A4A6-8CEF97641AAA" id="yqU-6P-e31"/>
+                        <barButtonItem key="leftBarButtonItem" image="FBD9FDE9-90E5-4AC1-B518-DD5F1E51FBAA" id="yqU-6P-e31"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="kUd-q9-OjF" id="6Bl-Ut-HMz"/>
                         <segue destination="Xcm-yw-tRd" kind="show" identifier="rosterSegue" id="oTS-dE-lHG"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZj-IN-xHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3096" y="404"/>
         </scene>
@@ -242,10 +242,10 @@
                                 <rect key="frame" x="0.0" y="65" width="600" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <visualEffectView opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Y9-X7-rsb">
-                                <rect key="frame" x="0.0" y="565" width="600" height="50"/>
+                            <visualEffectView opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Y9-X7-rsb">
+                                <rect key="frame" x="0.0" y="321" width="600" height="294"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bFi-vF-GeY">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="294"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="S7N-dH-keJ">
@@ -651,7 +651,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="D61FFD07-C037-4524-A4A6-8CEF97641AAA" width="22" height="22">
+        <image name="FBD9FDE9-90E5-4AC1-B518-DD5F1E51FBAA" width="22" height="22">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

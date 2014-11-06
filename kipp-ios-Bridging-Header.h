@@ -12,3 +12,4 @@
 #import "Pods/FrameAccessor/FrameAccessor/ScrollViewFrameAccessor.h"
 #import "Pods/FrameAccessor/FrameAccessor/ViewFrameAccessor.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "BTSpiderPlotterView.h"
