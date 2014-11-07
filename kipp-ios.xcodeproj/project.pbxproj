@@ -433,10 +433,11 @@
 				TargetAttributes = {
 					669ACA9E19E75E12004C31ED = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = W547A4H69V;
+						DevelopmentTeam = ZBY49BL7XL;
 					};
 					669ACAB319E75E13004C31ED = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = ZBY49BL7XL;
 						TestTargetID = 669ACA9E19E75E12004C31ED;
 					};
 				};

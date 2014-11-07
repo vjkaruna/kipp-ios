@@ -159,14 +159,16 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
         return "\(index)"
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "plotSegue") {
+            var plotVC = segue.destinationViewController as SpiderViewController
+            plotVC.studentId = student!.studentId
+        }
     }
-    */
+
 
 }

@@ -221,7 +221,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="7sR-9a-vjx" kind="show" id="2xh-NM-716"/>
+                                            <segue destination="7sR-9a-vjx" kind="show" identifier="plotSegue" id="2xh-NM-716"/>
                                         </connections>
                                     </button>
                                 </subviews>
