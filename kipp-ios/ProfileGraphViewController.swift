@@ -8,16 +8,22 @@
 
 import UIKit
 
-class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, StudentProfileChangedDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate, UINavigationControllerDelegate  {
+class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, StudentProfileChangedDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate, UINavigationControllerDelegate, UIScrollViewDelegate  {
 
     var student: Student?
 
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var avatarFrame: UIView!
-    @IBOutlet weak var graph: GKLineGraph!
     @IBOutlet weak var studentLabel: UILabel!
-    @IBOutlet weak var legendLabel: UILabel!
-    @IBOutlet weak var topicLabel: UILabel!
+//    @IBOutlet weak var legendLabel: UILabel!
+//    @IBOutlet weak var topicLabel: UILabel!
     @IBOutlet weak var avatarButton: UIButton!
+    
+    var mathGraph: GKLineGraph!
+    var characterPlot: CharacterPlotView!
+    
+    var metricViews: [UIView] = [UIView]()
     
     var HUD: MBProgressHUD?
     var refreshHUD: MBProgressHUD?
@@ -37,9 +43,6 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
             self.student!.delegate = self
             self.student!.fillWeeklyProgress()
         }
-        
-        
-
         //self.graph.height = self.graph.frame.height
         //self.graph.width = self.graph.frame.width
         
@@ -53,7 +56,7 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
             let descText = NSMutableAttributedString()
             descText.appendAttributedString(NSAttributedString(string: "minutes studied -  ",attributes:minutesAttributes))
             descText.appendAttributedString(NSAttributedString(string: "weekly progress - ",attributes:weeklyAttributes))
-            legendLabel.attributedText = descText
+//            legendLabel.attributedText = descText
             
             self.avatarButton.setImage(student!.profileImage, forState: .Normal)
             self.avatarButton.layer.cornerRadius = self.avatarButton.frame.size.width / 2
@@ -62,8 +65,33 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
             self.avatarFrame.layer.cornerRadius = self.avatarFrame.frame.size.width / 2
             self.avatarFrame.clipsToBounds = true
         }
+        
+        scrollView.delegate = self
+        scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width-10, scrollView.frame.size.height)
+        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * 3, scrollView.frame.size.height)
+        println("scrollview frame width: \(scrollView.frame.size.width), frame: \(self.view.frame.size.width)")
+        
+        mathGraph = GKLineGraph(frame: scrollView.frame)
+        scrollView.addSubview(mathGraph)
+        metricViews.append(mathGraph)
+        
+        characterPlot = CharacterPlotView(frame: scrollView.frame, studentId: student!.studentId)
+        characterPlot.frame.origin.x += scrollView.frame.size.width
+        scrollView.addSubview(characterPlot)
+        metricViews.append(characterPlot)
+        
+        var characterPlot2 = CharacterPlotView(frame: scrollView.frame, studentId: student!.studentId)
+        characterPlot2.frame.origin.x += scrollView.frame.size.width * 2
+        scrollView.addSubview(characterPlot2)
+        metricViews.append(characterPlot2)
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        mathGraph.dataSource = self
+        mathGraph.draw()
+    }
+    
     @IBAction func avatarTouch(sender: AnyObject) {
         if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)) {
             var imagePicker = UIImagePickerController()
@@ -103,11 +131,11 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     }
     func weeklyProgressDidChange() {
         //self.graph.reset()
-        self.graph.dataSource = self
-        self.graph.lineWidth = 4.0
-        self.graph.draw()
+        self.mathGraph.dataSource = self
+        self.mathGraph.lineWidth = 4.0
+        self.mathGraph.draw()
         if self.student != nil && self.student?.weeklyProgress? != nil && self.student?.weeklyProgress?.count > 0 {
-            self.topicLabel.text = "Current Topic: \(self.student!.weeklyProgress![self.student!.weeklyProgress!.count-1].topic)"
+//            self.topicLabel.text = "Current Topic: \(self.student!.weeklyProgress![self.student!.weeklyProgress!.count-1].topic)"
         }
     }
     
@@ -159,7 +187,17 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
         return "\(index)"
     }
     
-    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        var pageWidth: CGFloat = self.scrollView.frame.size.width
+        var page = Int(floor((self.scrollView.contentOffset.x - pageWidth / 2.0) / pageWidth)) + 1
+        if (self.pageControl.currentPage != page) {
+            self.pageControl.currentPage = page
+            if metricViews[page] == characterPlot {
+                NSLog("Calling plotGraph()")
+                characterPlot.plotGraph()
+            }
+        }
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

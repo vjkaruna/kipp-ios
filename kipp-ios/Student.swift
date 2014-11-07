@@ -117,7 +117,7 @@ class Student: NSObject {
             })
         } else {
             NSLog("Already filled progress")
-            self.delegate?.weeklyProgressDidChange!()
+//            self.delegate?.weeklyProgressDidChange!()
         }
     }
 }

@@ -110,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="1962" y="372"/>
         </scene>
-        <!--Profile Graph View Controller-->
+        <!--Student Metrics-->
         <scene sceneID="bQE-lv-CX9">
             <objects>
                 <viewController storyboardIdentifier="studentProfileC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9VN-Kk-Obo" customClass="ProfileGraphViewController" customModule="kipp_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -122,38 +122,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Couture ST Math by Week" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AuV-Kv-aG6">
-                                <rect key="frame" x="24" y="421" width="201.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Minutes Spent, Weekly Progress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvX-Qj-Dkj">
-                                <rect key="frame" x="24" y="449" width="248" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Current Topic: Addition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQ5-vA-g4P">
-                                <rect key="frame" x="24" y="479" width="177" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.33725490200000002" green="0.5568627451" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AeB-pT-Zwy" customClass="GKLineGraph">
-                                <rect key="frame" x="10" y="324" width="580" height="266"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="ZRo-M4-PDf"/>
-                                    <constraint firstAttribute="width" constant="300" id="lsh-cF-GJL"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="ZRo-M4-PDf"/>
-                                        <exclude reference="lsh-cF-GJL"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wg1-59-6Yw">
                                 <rect key="frame" x="0.0" y="64" width="600" height="250"/>
                                 <subviews>
@@ -240,39 +208,41 @@
                                     <constraint firstItem="jl9-xJ-VOR" firstAttribute="top" secondItem="Dei-Xw-yu6" secondAttribute="bottom" constant="15" id="xkH-0j-Frb"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYA-t3-F8o">
+                                <rect key="frame" x="5" y="319" width="590" height="244"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="zs1-HT-gPc">
+                                <rect key="frame" x="281" y="558" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.4182676977" green="0.4182676977" blue="0.4182676977" alpha="0.73999999999999999" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.6176974221" green="0.86712771050000004" blue="0.65824437899999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="tQ5-vA-g4P" firstAttribute="top" secondItem="WvX-Qj-Dkj" secondAttribute="bottom" constant="8" id="5xx-KS-NPx"/>
-                            <constraint firstItem="WvX-Qj-Dkj" firstAttribute="top" secondItem="AuV-Kv-aG6" secondAttribute="bottom" constant="8" id="DDu-F1-VAK"/>
-                            <constraint firstAttribute="trailing" secondItem="AeB-pT-Zwy" secondAttribute="trailing" constant="10" id="PbC-SW-OhN"/>
-                            <constraint firstItem="tQ5-vA-g4P" firstAttribute="leading" secondItem="WvX-Qj-Dkj" secondAttribute="leading" id="PvM-MA-gyA"/>
+                            <constraint firstItem="WU9-un-fzI" firstAttribute="top" secondItem="kYA-t3-F8o" secondAttribute="bottom" constant="37" id="Egf-1D-qpg"/>
                             <constraint firstItem="wg1-59-6Yw" firstAttribute="leading" secondItem="NrD-gV-vtC" secondAttribute="leading" id="UVu-HA-i4A"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="AeB-pT-Zwy" secondAttribute="trailing" constant="4" id="W2t-Ze-ev9"/>
-                            <constraint firstItem="WU9-un-fzI" firstAttribute="top" secondItem="AeB-pT-Zwy" secondAttribute="bottom" constant="10" id="WXR-KV-GFq"/>
+                            <constraint firstAttribute="centerX" secondItem="zs1-HT-gPc" secondAttribute="centerX" id="YGN-gc-3hq"/>
+                            <constraint firstItem="WU9-un-fzI" firstAttribute="top" secondItem="zs1-HT-gPc" secondAttribute="bottom" constant="5" id="bt0-4L-DLz"/>
                             <constraint firstItem="wg1-59-6Yw" firstAttribute="top" secondItem="Im0-QN-pU2" secondAttribute="bottom" id="d42-Ma-Q1R"/>
-                            <constraint firstItem="AeB-pT-Zwy" firstAttribute="top" secondItem="wg1-59-6Yw" secondAttribute="bottom" constant="10" id="fWf-mQ-o0G"/>
-                            <constraint firstItem="WvX-Qj-Dkj" firstAttribute="leading" secondItem="AuV-Kv-aG6" secondAttribute="leading" id="mSJ-ze-iNE"/>
+                            <constraint firstItem="kYA-t3-F8o" firstAttribute="leading" secondItem="NrD-gV-vtC" secondAttribute="leading" constant="5" id="j7r-Iz-LVJ"/>
+                            <constraint firstAttribute="trailing" secondItem="kYA-t3-F8o" secondAttribute="trailing" constant="5" id="m1c-md-uQT"/>
                             <constraint firstAttribute="trailing" secondItem="wg1-59-6Yw" secondAttribute="trailing" id="nA5-nb-fS7"/>
-                            <constraint firstItem="AeB-pT-Zwy" firstAttribute="leading" secondItem="NrD-gV-vtC" secondAttribute="leadingMargin" constant="4" id="nkR-qE-W4E"/>
-                            <constraint firstItem="AeB-pT-Zwy" firstAttribute="leading" secondItem="NrD-gV-vtC" secondAttribute="leading" constant="10" id="tjM-Gb-TKZ"/>
-                            <constraint firstItem="AuV-Kv-aG6" firstAttribute="top" secondItem="AeB-pT-Zwy" secondAttribute="bottom" constant="29" id="whe-bb-dEG"/>
+                            <constraint firstItem="kYA-t3-F8o" firstAttribute="top" secondItem="wg1-59-6Yw" secondAttribute="bottom" constant="5" id="nFO-SF-fxY"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="W2t-Ze-ev9"/>
-                                <exclude reference="nkR-qE-W4E"/>
-                                <exclude reference="whe-bb-dEG"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Student Metrics" id="gYa-97-aAP">
+                        <barButtonItem key="rightBarButtonItem" image="phone" id="sRW-va-s0x">
+                            <color key="tintColor" red="0.6176974221" green="0.86712771050000004" blue="0.65824437899999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="avatarButton" destination="jJp-Fo-gQf" id="2Rd-q3-V1T"/>
                         <outlet property="avatarFrame" destination="Dei-Xw-yu6" id="qZb-hA-oSR"/>
-                        <outlet property="graph" destination="AeB-pT-Zwy" id="ndX-Hp-EUd"/>
-                        <outlet property="legendLabel" destination="WvX-Qj-Dkj" id="dDJ-85-PLR"/>
+                        <outlet property="pageControl" destination="zs1-HT-gPc" id="Icw-61-hgq"/>
+                        <outlet property="scrollView" destination="kYA-t3-F8o" id="9co-9H-DZt"/>
                         <outlet property="studentLabel" destination="jl9-xJ-VOR" id="4Ea-r2-7Y0"/>
-                        <outlet property="topicLabel" destination="tQ5-vA-g4P" id="xBy-PF-2eS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0XC-zT-3zL" userLabel="First Responder" sceneMemberID="firstResponder"/>
