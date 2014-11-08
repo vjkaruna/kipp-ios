@@ -13,6 +13,8 @@ class CharacterTrackingViewController: UIViewController, UITableViewDataSource, 
     
     @IBOutlet weak var tableView: UITableView!
     
+    var delegate: CharacterTrackerDelegate?
+    
     var loadedTraitValues: [Int]!
     
     override func viewDidLoad() {
@@ -57,6 +59,15 @@ class CharacterTrackingViewController: UIViewController, UITableViewDataSource, 
         // Save to Parse
         var scoresToSave = [PFObject]()
         
+        var charArray = student!.characterArray
+        
+        charArray.sort({$0.score < $1.score})
+        let weakestTrait = charArray.first
+        let strongestTrait = charArray.last
+        
+        var weakestChanged = false
+        var strongestChanged = false
+        
         for index in 0..<student!.characterArray.count {
             let characterTrait = student!.characterArray[index]
             if characterTrait.score != loadedTraitValues[index] {
@@ -67,26 +78,33 @@ class CharacterTrackingViewController: UIViewController, UITableViewDataSource, 
                 characterEntry["studentId"] = student!.studentId
                 characterEntry["score"] = characterTrait.score
                 scoresToSave.append(characterEntry)
+                if characterTrait.title == weakestTrait!.title {
+                    weakestChanged = true
+                } else if characterTrait.title == strongestTrait!.title {
+                    strongestChanged = true
+                }
             }
         }
         if scoresToSave.count > 0 {
             NSLog("Saving scores to parse: \(scoresToSave)")
             ParseClient.sharedInstance.saveArrayInBulk(scoresToSave)
         }
+        delegate?.didSaveCharacterTraits(student!.studentId, newStrength: strongestChanged ? strongestTrait : nil, newWeakness: weakestChanged ? weakestTrait : nil)
     }
+    
     @IBAction func didTapSave(sender: UIBarButtonItem) {
         saveToParse()
     }
     
     @IBAction func didTapCancel(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        delegate?.didSaveCharacterTraits(student!.studentId, newStrength: nil, newWeakness: nil)
     }
     
     func loadScores() {
         for index in 0..<student!.characterArray.count {
             let curCharacterTrait = student!.characterArray[index]
             
-            ParseClient.sharedInstance.getLatestCharacterScoreForWeekWithCompletion(student!.studentId, characterTrait: curCharacterTrait.title) { (characterTrait, error) -> () in
+            ParseClient.sharedInstance.getLatestCharacterScoreWithCompletion(student!.studentId, characterTrait: curCharacterTrait.title, numDays: -7) { (characterTrait, error) -> () in
                 if characterTrait != nil {
                     NSLog("Found \(characterTrait!.title) with score \(characterTrait!.score)")
                     self.student!.characterArray[index].score = characterTrait!.score

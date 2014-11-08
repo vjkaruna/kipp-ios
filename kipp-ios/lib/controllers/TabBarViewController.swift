@@ -27,12 +27,10 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         if self.presentingModal {
             mainTabBarController.selectedViewController?.dismissViewControllerAnimated(false, completion: nil)
-//            self.reloadClassroom?()
             self.presentingModal = false
         } else if (viewController == self.classroomsController) {
             let classroomSB = UIStoryboard(name: "ClassroomSelection", bundle: nil)
             let classroomsController = classroomSB.instantiateViewControllerWithIdentifier("classroomsVC") as ClassroomsViewController
-//            let classroomsController = _viewControllers![2]
             classroomsController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
             classroomsController.delegate = self
             self.presentingController = mainTabBarController.selectedViewController
@@ -41,15 +39,6 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
         }
         return viewController != self.classroomsController
     }
-    
-//    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-//
-//        if (viewController == self.classroomsController) {
-//            println("hello")
-//            self.classroomsController!.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-//            mainTabBarController.selectedViewController?.presentViewController(self.classroomsController!, animated: true, completion: nil)
-//        }
-//    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -84,7 +73,10 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
             
             self.reloadClassroom = {() -> () in
                 if (attendanceNavController as UINavigationController).viewControllers.count > 0 {
-                    ((attendanceNavController as UINavigationController).viewControllers[0] as AttendanceController).loadClassroom()
+                    ((attendanceNavController as UINavigationController).viewControllers[0] as BaseClassroomViewController).loadClassroom()
+                }
+                if (rosterNavController as UINavigationController).viewControllers.count > 0 {
+                    ((rosterNavController as UINavigationController).viewControllers[0] as BaseClassroomViewController).loadClassroom()
                 }
                 (attendanceNavController as UINavigationController).popToRootViewControllerAnimated(true)
                 (rosterNavController as UINavigationController).popToRootViewControllerAnimated(true)
@@ -109,21 +101,11 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
     func didSelectClassroom(classroom: Classroom) {
         NSLog("Did selected classroom: \(classroom)")
         mainTabBarController.selectedViewController?.dismissViewControllerAnimated(false, completion: nil)
-        if mainTabBarController.selectedIndex != 3 && mainTabBarController.selectedIndex != 5 {
-            let classroomVC = (mainTabBarController.selectedViewController! as UINavigationController).viewControllers[0] as BaseClassroomViewController
-            classroomVC.loadClassroom()
-        }
-//        self.reloadClassroom?()
+//        if mainTabBarController.selectedIndex != 3 && mainTabBarController.selectedIndex != 5 {
+//            let classroomVC = (mainTabBarController.selectedViewController! as UINavigationController).viewControllers[0] as BaseClassroomViewController
+//            classroomVC.loadClassroom()
+//        }
+        self.reloadClassroom?()
         self.presentingModal = false
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

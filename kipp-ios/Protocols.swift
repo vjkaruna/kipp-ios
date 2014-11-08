@@ -29,3 +29,7 @@ protocol ReasonSubmittedDelegate {
 protocol ClassroomSelectionDelegrate {
     func didSelectClassroom(classroom: Classroom)
 }
+
+protocol CharacterTrackerDelegate {
+    func didSaveCharacterTraits(studentId: Int, newStrength: CharacterTrait?, newWeakness: CharacterTrait?)
+}

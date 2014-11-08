@@ -23,7 +23,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     
     var emptyView: EmptyDataView!
     
-    var labelHeights: [CGFloat]?
+//    var labelHeights: [CGFloat]?
     
     weak var currentClass: Classroom?
     
@@ -33,7 +33,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         navigationItem.title = actionType?.rawValue
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 120.0
+//        tableView.estimatedRowHeight = 120.0
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -51,7 +51,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
                     NSLog("Completion called for action type \(self.actionType!.rawValue)")
                     if actions != nil {
                         self.data = actions
-                        self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
+//                        self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
                         self.tableView.reloadData()
                         self.loadDataOrEmptyState()
                     } else {
@@ -62,7 +62,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
                 ParseClient.sharedInstance.findCompleteActionsWithCompletion(nil, classroom: self.currentClass, completion: { (actions, error) -> () in
                     if actions != nil {
                         self.data = actions
-                        self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
+//                        self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
                         self.tableView.reloadData()
                         self.loadDataOrEmptyState()
                     } else {
@@ -102,35 +102,35 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if selectedRow == nil || selectedRow! != indexPath.row {
-            selectedRow = indexPath.row
-        } else if selectedRow! == indexPath.row {
-            selectedRow = nil
-            NSLog("Collapse row \(indexPath.row)")
-        }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
-        tableView.beginUpdates()
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-        tableView.endUpdates()
-    }
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        if selectedRow == nil || selectedRow! != indexPath.row {
+//            selectedRow = indexPath.row
+//        } else if selectedRow! == indexPath.row {
+//            selectedRow = nil
+//            NSLog("Collapse row \(indexPath.row)")
+//        }
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//
+//        tableView.beginUpdates()
+//        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+//        tableView.endUpdates()
+//    }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if selectedRow == nil || selectedRow != indexPath.row {
-            return 68
-        } else {
-            if labelHeights![indexPath.row] == CGFloat(0.0) {
-                return 68
-            } else {
-                return labelHeights![indexPath.row] + 68.0 + 20.0
-            }
-        }
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        if selectedRow == nil || selectedRow != indexPath.row {
+//            return 68
+//        } else {
+//            if labelHeights![indexPath.row] == CGFloat(0.0) {
+//                return 68
+//            } else {
+//                return labelHeights![indexPath.row] + 68.0 + 20.0
+//            }
+//        }
+//    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
         let action = data![indexPath.row]
-        cell.actionComments.text = action.reason
+        cell.metadataLabel.text = action.reason
         cell.student = action.student
         if action.dateCompleted != nil {
             NSLog("date completed: \(action.dateCompleted); prettyString: \(action.dateCompleted!.toPrettyString())")
@@ -144,9 +144,9 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
             cell.rightExpansion.fillOnTrigger = true
         }
 
-        cell.layoutIfNeeded()
-        labelHeights![indexPath.row] = cell.actionComments.bounds.size.height
-        cell.clipsToBounds = true
+//        cell.layoutIfNeeded()
+//        labelHeights![indexPath.row] = cell.actionComments.bounds.size.height
+//        cell.clipsToBounds = true
         return cell
     }
     

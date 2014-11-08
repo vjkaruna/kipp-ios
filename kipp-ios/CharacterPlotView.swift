@@ -65,7 +65,7 @@ class CharacterPlotView: BTSpiderPlotterView {
             for index in 0..<characterTraits.count {
                 let curCharacterTrait = characterTraits[index]
                 
-                ParseClient.sharedInstance.getLatestCharacterScoreForWeekWithCompletion(studentId, characterTrait: curCharacterTrait.title) { (characterTrait, error) -> () in
+                ParseClient.sharedInstance.getLatestCharacterScoreWithCompletion(studentId, characterTrait: curCharacterTrait.title, numDays: nil) { (characterTrait, error) -> () in
                     if characterTrait != nil {
                         NSLog("Found \(characterTrait!.title) with score \(characterTrait!.score)")
                         self.loadedTraitValues[index] = characterTrait!.score

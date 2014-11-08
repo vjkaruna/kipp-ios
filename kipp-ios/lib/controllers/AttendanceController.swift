@@ -30,6 +30,8 @@ class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UI
         emptyView.hidden = true
         contentView.addSubview(emptyView)
         
+        attendanceTable.estimatedRowHeight = 100
+        attendanceTable.rowHeight = UITableViewAutomaticDimension
         loadClassroom()
     }
     
@@ -101,9 +103,14 @@ class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UI
         cell.rightExpansion.buttonIndex = 0
         cell.leftExpansion.buttonIndex = 0
         
+        cell.setNeedsDisplay()
+        cell.layoutIfNeeded()
         return cell
     }
     
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return students?.count ?? 0
     }

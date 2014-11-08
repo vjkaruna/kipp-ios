@@ -8,12 +8,13 @@
 
 import UIKit
 
-class RosterViewController: BaseClassroomViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate {
+class RosterViewController: BaseClassroomViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate, CharacterTrackerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var teacher: PFUser!
-//    var classroom: Classroom!
+    var weakTraits = [Int: CharacterTrait]()
+    var strongTraits = [Int: CharacterTrait]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +27,19 @@ class RosterViewController: BaseClassroomViewController, UITableViewDelegate, UI
         var nib = UINib(nibName: "StudentTableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "studentCell")
         
+        tableView.separatorInset = UIEdgeInsetsZero
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        loadClassroom()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if classroomReloadNeeded {
+            _loadClassroom()
+        } else {
+            tableView.reloadData()
+        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-//    
 //    func loadClassroom() {
 //        var classroom = Classroom.currentClass()
 //        if classroom == nil {
@@ -60,8 +62,42 @@ class RosterViewController: BaseClassroomViewController, UITableViewDelegate, UI
 //    }
     
     override func classroomLoaded() {
-        self.tableView.reloadData()
+        super.classroomLoaded()
         self.navigationItem.title = "Period \(classroom!.period): Character"
+        loadStudentData()
+    }
+    
+    func loadStudentData() {
+        for student in classroom.students {
+            ParseClient.sharedInstance.getGreatestScoreForWeekWithCompletion(student.studentId) { (characterTrait, error) -> () in
+                if characterTrait != nil {
+                    NSLog("\(characterTrait!.title) with score \(characterTrait!.score)")
+                    self.strongTraits[student.studentId] = characterTrait!
+                } else {
+                    NSLog("No strong character trait for student \(student.studentId)")
+                    self.strongTraits[student.studentId] = nil
+                }
+//                if self.weakTraits.count == self.classroom.students.count && self.strongTraits.count == self.classroom.students.count {
+                self.studentDataLoaded()
+//                }
+            }
+            ParseClient.sharedInstance.getWeakestScoreForWeekWithCompletion(student.studentId) { (characterTrait, error) -> () in
+                if characterTrait != nil {
+                    NSLog("\(characterTrait!.title) with score \(characterTrait!.score)")
+                    self.weakTraits[student.studentId] = characterTrait!
+                } else {
+                    NSLog("No weak character trait for student \(student.studentId): \(self.weakTraits.count)")
+                    self.weakTraits[student.studentId] = nil
+                }
+//                if self.weakTraits.count == self.classroom.students.count && self.strongTraits.count == self.classroom.students.count {
+                self.studentDataLoaded()
+//                }
+            }
+        }
+    }
+    
+    func studentDataLoaded() {
+        self.tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,6 +111,39 @@ class RosterViewController: BaseClassroomViewController, UITableViewDelegate, UI
         cell.profileDelegate = self
         cell.delegate = self
         cell.rightButtons = createRightButtons()
+        
+        let weaknessAttributes = [NSForegroundColorAttributeName: UIColor.myRedColor()]
+        let strengthAttributes = [NSForegroundColorAttributeName: UIColor.greenTint()]
+        let neutralAttributes = [NSForegroundColorAttributeName: UIColor.grayColor()]
+        let charText = NSMutableAttributedString()
+        
+        let strongTrait = strongTraits[student.studentId]
+        let weakTrait = weakTraits[student.studentId]
+        
+        if strongTrait != nil {
+            if weakTrait != nil {
+                if weakTrait!.title != strongTrait!.title {
+                    charText.appendAttributedString(NSAttributedString(string: "\(strongTrait!.title): \(strongTrait!.score)", attributes: strengthAttributes))
+                    charText.appendAttributedString(NSAttributedString(string: "\n\(weakTrait!.title): \(weakTrait!.score)", attributes: weaknessAttributes))
+                } else {
+                    if weakTrait!.score < 0 {
+                        charText.appendAttributedString(NSAttributedString(string: "\n\(weakTrait!.title): \(weakTrait!.score)", attributes: weaknessAttributes))
+                    } else if weakTrait!.score > 0 {
+                        charText.appendAttributedString(NSAttributedString(string: "\(strongTrait!.title): \(strongTrait!.score)", attributes: strengthAttributes))
+                    }
+                }
+            } else {
+                charText.appendAttributedString(NSAttributedString(string: "\(strongTrait!.title): \(strongTrait!.score)", attributes: strengthAttributes))
+            }
+        }
+        if charText.length == 0 && weakTrait != nil {
+            charText.appendAttributedString(NSAttributedString(string: "\(weakTrait!.title): \(weakTrait!.score)", attributes: weaknessAttributes))
+        }
+        if charText.length == 0 {
+            charText.appendAttributedString(NSAttributedString(string: "No scores recorded this week", attributes: neutralAttributes))
+        }
+        
+        cell.metadataLabel.attributedText = charText
         //        cell.leftButtons = []
         //        cell.leftSwipeSettings.transition = MGSwipeTransition.TransitionDrag
         cell.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
@@ -95,11 +164,6 @@ class RosterViewController: BaseClassroomViewController, UITableViewDelegate, UI
 //            self.markActionComplete(self.tableView.indexPathForCell(cell)!)
             return true
         }
-        //        var button = MGSwipeButton(title: "Delete", backgroundColor: UIColor.myRedColor()) { (cell) -> Bool in
-        //            NSLog("Tapped delete for \(cell)")
-        //            self.markActionComplete(self.tableView.indexPathForCell(cell)!)
-        //            return true
-        //        }
         return [button]
     }
     
@@ -118,10 +182,57 @@ class RosterViewController: BaseClassroomViewController, UITableViewDelegate, UI
             var profileVC = segue.destinationViewController as ProfileViewController
             profileVC.student = sender as? Student
         } else if (segue.identifier == "characterSegue") {
-            var characterVC = segue.destinationViewController as CharacterViewController
+            var characterVC = segue.destinationViewController as CharacterTrackingViewController
             characterVC.student = sender as? Student
+            characterVC.delegate = self
         }
-        
     }
     
+    func getScoreMetadataText(studentId: Int) -> NSAttributedString {
+        let weaknessAttributes = [NSForegroundColorAttributeName: UIColor.myRedColor()]
+        let strengthAttributes = [NSForegroundColorAttributeName: UIColor.greenTint()]
+        let neutralAttributes = [NSForegroundColorAttributeName: UIColor.grayColor()]
+        let charText = NSMutableAttributedString()
+        
+        let strongTrait = strongTraits[studentId]
+        let weakTrait = weakTraits[studentId]
+        
+        if strongTrait != nil {
+            if weakTrait != nil  {
+                if weakTrait!.title != strongTrait!.title && weakTrait!.score <= 0 {
+                    charText.appendAttributedString(NSAttributedString(string: "\(strongTrait!.title): \(strongTrait!.score)", attributes: strengthAttributes))
+                    charText.appendAttributedString(NSAttributedString(string: "\n\(weakTrait!.title): \(weakTrait!.score)", attributes: weaknessAttributes))
+                } else {
+                    if weakTrait!.score < 0 {
+                        charText.appendAttributedString(NSAttributedString(string: "\n\(weakTrait!.title): \(weakTrait!.score)", attributes: weaknessAttributes))
+                    } else if weakTrait!.score > 0 {
+                        charText.appendAttributedString(NSAttributedString(string: "\(strongTrait!.title): \(strongTrait!.score)", attributes: strengthAttributes))
+                    }
+                }
+            } else {
+                charText.appendAttributedString(NSAttributedString(string: "\(strongTrait!.title): \(strongTrait!.score)", attributes: strengthAttributes))
+            }
+        }
+        if charText.length == 0 && weakTrait != nil && weakTrait!.score <= 0 {
+            charText.appendAttributedString(NSAttributedString(string: "\(weakTrait!.title): \(weakTrait!.score)", attributes: weaknessAttributes))
+        }
+        if charText.length == 0 {
+            charText.appendAttributedString(NSAttributedString(string: "No scores recorded this week", attributes: neutralAttributes))
+        }
+        return charText
+    }
+    
+    func didSaveCharacterTraits(studentId: Int, newStrength: CharacterTrait?, newWeakness: CharacterTrait?) {
+        classroomReloadNeeded = false
+        if newStrength != nil {
+            NSLog("updating \(newStrength!.title) trait for student \(studentId)")
+            strongTraits[studentId] = newStrength
+        }
+        if newWeakness != nil {
+            NSLog("updating \(newWeakness!.title) trait for student \(studentId)")
+            weakTraits[studentId] = newWeakness
+        }
+//        tableView.reloadData()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }

@@ -177,10 +177,13 @@ class ParseClient: NSObject {
         }
     }
     
-    func getLatestCharacterScoreForWeekWithCompletion(studentId: Int, characterTrait: String, completion: (characterTrait: CharacterTrait?, error: NSError?) -> ()) {
+    func getLatestCharacterScoreWithCompletion(studentId: Int, characterTrait: String, numDays: Int?, completion: (characterTrait: CharacterTrait?, error: NSError?) -> ()) {
         var characterQuery = PFQuery(className: "CharacterTrait")
         characterQuery.whereKey("type", equalTo: characterTrait)
         characterQuery.whereKey("studentId", equalTo: studentId)
+        if numDays != nil {
+            characterQuery.whereKey("createdAt", greaterThanOrEqualTo: numDays!.daysFromNow)    // Score for the past week
+        }
         characterQuery.orderByDescending("createdAt")
         characterQuery.getFirstObjectInBackgroundWithBlock({ (pfobject, error) -> Void in
             if pfobject != nil {
@@ -192,6 +195,36 @@ class ParseClient: NSObject {
         })
     }
     
+    func getGreatestScoreForWeekWithCompletion(studentId: Int, completion: (characterTrait: CharacterTrait?, error: NSError?) -> ()) {
+        var characterQuery = PFQuery(className: "CharacterTrait")
+        characterQuery.whereKey("studentId", equalTo: studentId)
+        characterQuery.whereKey("createdAt", greaterThanOrEqualTo: (-7).daysFromNow)    // Score for the past week
+        characterQuery.orderByDescending("score")
+        characterQuery.getFirstObjectInBackgroundWithBlock({ (pfobject, error) -> Void in
+            if pfobject != nil {
+                let characterTrait = CharacterTrait(pfobj: pfobject)
+                completion(characterTrait: characterTrait, error: nil)
+            } else {
+                completion(characterTrait: nil, error: error)
+            }
+        })
+    }
+    
+    func getWeakestScoreForWeekWithCompletion(studentId: Int, completion: (characterTrait: CharacterTrait?, error: NSError?) -> ()) {
+        var characterQuery = PFQuery(className: "CharacterTrait")
+        characterQuery.whereKey("studentId", equalTo: studentId)
+        characterQuery.whereKey("createdAt", greaterThanOrEqualTo: (-7).daysFromNow)    // Score for the past week
+        characterQuery.orderByAscending("score")
+        characterQuery.getFirstObjectInBackgroundWithBlock({ (pfobject, error) -> Void in
+            if pfobject != nil {
+                let characterTrait = CharacterTrait(pfobj: pfobject)
+                completion(characterTrait: characterTrait, error: nil)
+            } else {
+                completion(characterTrait: nil, error: error)
+            }
+        })
+    }
+
     func saveArrayInBulk(array: NSArray) {
 //        PFObject.saveAllInBackground(array, target: AnyObject!, selector: <#Selector#>)
         PFObject.saveAllInBackground(array)

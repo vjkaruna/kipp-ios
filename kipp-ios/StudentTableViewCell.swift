@@ -8,16 +8,19 @@
 
 import UIKit
 
+enum StudentCellType: Int {
+    case Attendance = 1, Character, Action
+}
+
 class StudentTableViewCell: MGSwipeTableCell, StudentProfileChangedDelegate {
     
     @IBOutlet weak var attendanceImageView: UIImageView!
     @IBOutlet weak var dateCompleteLabel: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var displayName: UILabel!
+    @IBOutlet weak var metadataLabel: UILabel!
     
-    @IBOutlet weak var labelView: UIView!
-    @IBOutlet weak var actionComments: UILabel!
-    
+
     var profileDelegate: ProfileImageTappedDelegate?
     
     var showAttendanceState: Bool = false
@@ -33,9 +36,9 @@ class StudentTableViewCell: MGSwipeTableCell, StudentProfileChangedDelegate {
                 self.profilePic.layer.borderColor = UIColor(red: CGFloat(96.0/255.0), green: CGFloat(162.0/255.0), blue: CGFloat(215.0/255.0), alpha: CGFloat(0.9)).CGColor
                 self.profilePic.clipsToBounds = true
                 
-                self.labelView.layer.cornerRadius = 5
-                self.labelView.layer.borderWidth = 1.0
-                self.labelView.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).CGColor
+//                self.labelView.layer.cornerRadius = 5
+//                self.labelView.layer.borderWidth = 1.0
+//                self.labelView.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).CGColor
                 self.dateCompleteLabel.text = ""
                 if self.showAttendanceState {
                     if newStudent!.attendance == nil {
@@ -51,14 +54,14 @@ class StudentTableViewCell: MGSwipeTableCell, StudentProfileChangedDelegate {
         }
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.contentView.layoutIfNeeded()
-        self.labelView.layoutIfNeeded()
-        
-        self.actionComments.preferredMaxLayoutWidth = self.actionComments.frame.size.width
-        super.layoutSubviews()
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        self.contentView.layoutIfNeeded()
+//        self.labelView.layoutIfNeeded()
+//        
+//        self.actionComments.preferredMaxLayoutWidth = self.actionComments.frame.size.width
+//        super.layoutSubviews()
+//    }
 //    - (void)layoutSubviews
 //    {
 //    [super layoutSubviews];
