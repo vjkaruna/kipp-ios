@@ -97,7 +97,10 @@ class RosterViewController: BaseClassroomViewController, UITableViewDelegate, UI
     }
     
     func studentDataLoaded() {
-        self.tableView.reloadData()
+        if (self.tableView != nil) {
+          self.tableView.reloadData()
+        }
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
