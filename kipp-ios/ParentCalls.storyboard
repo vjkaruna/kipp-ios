@@ -176,6 +176,9 @@
                                         <state key="normal" image="celebrate-button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didTapActionButton:" destination="9VN-Kk-Obo" eventType="touchDown" id="Lxv-LL-zuU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAM-da-pW2">
                                         <rect key="frame" x="421" y="200" width="164" height="40"/>
@@ -187,7 +190,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="7sR-9a-vjx" kind="show" identifier="plotSegue" id="2xh-NM-716"/>
+                                            <action selector="didTapActionButton:" destination="9VN-Kk-Obo" eventType="touchDown" id="C4X-FS-OVk"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -206,11 +209,11 @@
                                     <constraint firstItem="jl9-xJ-VOR" firstAttribute="top" secondItem="Dei-Xw-yu6" secondAttribute="bottom" constant="15" id="xkH-0j-Frb"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYA-t3-F8o">
-                                <rect key="frame" x="5" y="319" width="590" height="244"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYA-t3-F8o">
+                                <rect key="frame" x="5" y="319" width="590" height="200"/>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="zs1-HT-gPc">
-                                <rect key="frame" x="281" y="558" width="39" height="37"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="zs1-HT-gPc">
+                                <rect key="frame" x="281" y="514" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" red="0.4182676977" green="0.4182676977" blue="0.4182676977" alpha="0.73999999999999999" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.6176974221" green="0.86712771050000004" blue="0.65824437899999999" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
@@ -238,6 +241,8 @@
                     <connections>
                         <outlet property="avatarButton" destination="jJp-Fo-gQf" id="2Rd-q3-V1T"/>
                         <outlet property="avatarFrame" destination="Dei-Xw-yu6" id="qZb-hA-oSR"/>
+                        <outlet property="celebrateButton" destination="KXl-LF-rr9" id="7Bd-qC-IJe"/>
+                        <outlet property="encourageButton" destination="DAM-da-pW2" id="4uu-Ou-7XF"/>
                         <outlet property="pageControl" destination="zs1-HT-gPc" id="Icw-61-hgq"/>
                         <outlet property="scrollView" destination="kYA-t3-F8o" id="9co-9H-DZt"/>
                         <outlet property="studentLabel" destination="jl9-xJ-VOR" id="4Ea-r2-7Y0"/>

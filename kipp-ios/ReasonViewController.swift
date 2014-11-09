@@ -11,6 +11,8 @@ import UIKit
 class ReasonViewController: UIViewController, UITextViewDelegate {
     var delegate: ReasonSubmittedDelegate?
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var textField: UITextView!
@@ -36,6 +38,12 @@ class ReasonViewController: UIViewController, UITextViewDelegate {
         
         createButton.layer.borderWidth = 2.0
         createButton.layer.borderColor = UIColor(white: 0.7, alpha: 0.7).CGColor
+        
+        if actionType == ActionType.Celebrate {
+            titleLabel.text = "Celebrate"
+        } else if actionType == ActionType.Encourage {
+            titleLabel.text = "Encourage"
+        }
         
         textField.delegate = self
     }

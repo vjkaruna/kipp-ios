@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, StudentProfileChangedDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate, UINavigationControllerDelegate, UIScrollViewDelegate  {
+class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, StudentProfileChangedDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, ReasonSubmittedDelegate  {
 
     var student: Student?
 
@@ -16,10 +16,10 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var avatarFrame: UIView!
     @IBOutlet weak var studentLabel: UILabel!
-//    @IBOutlet weak var legendLabel: UILabel!
-//    @IBOutlet weak var topicLabel: UILabel!
     @IBOutlet weak var avatarButton: UIButton!
     
+    @IBOutlet weak var encourageButton: UIButton!
+    @IBOutlet weak var celebrateButton: UIButton!
     var mathGraph: GKLineGraph!
     var characterPlot: CharacterPlotView!
     
@@ -30,6 +30,40 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     
     func hudWasHidden(hud: MBProgressHUD) {
        hud.removeFromSuperview()
+    }
+    
+    @IBAction func didTapActionButton(sender: UIButton) {
+        var actionType: ActionType
+        if sender == encourageButton {
+            actionType = .Encourage
+        } else if sender == celebrateButton {
+            actionType = .Celebrate
+        } else {
+            actionType = .Call
+        }
+        showReasonModal(actionType)
+    }
+    
+    func showReasonModal(actionType: ActionType) {
+        let classRosterSB = UIStoryboard(name: "ClassRoster", bundle: nil)
+        let vc = classRosterSB.instantiateViewControllerWithIdentifier("reasonVC") as ReasonViewController
+        vc.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        vc.delegate = self
+        vc.actionType = actionType
+        self.presentViewController(vc, animated: false, completion: nil)
+    }
+    
+    func didTapSubmitButton(reasonString: String, actionType: ActionType) {
+        self.dismissViewControllerAnimated(false, completion: nil)
+        NSLog("Submitted with reason \(reasonString)")
+        let action = Action(type: actionType, reason: reasonString, forDate: NSDate(), student: student!)
+        ParseClient.sharedInstance.saveActionObjectWithCompletion(student!.pfObj, action: action, classroom: Classroom.currentClass()!) { (parseObj, error) -> () in
+            if error != nil {
+                NSLog("Error saving to Parse")
+            } else {
+                NSLog("Saved action to Parse")
+            }
+        }
     }
     
     override func viewDidLoad() {
