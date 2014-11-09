@@ -66,7 +66,7 @@
                     <navigationItem key="navigationItem" title="Attendance" id="YOr-fU-3DU">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="56P-zr-JYc">
                             <connections>
-                                <segue destination="Y9J-8i-tOh" kind="presentation" modalTransitionStyle="flipHorizontal" id="16Q-je-oAL"/>
+                                <segue destination="Y9J-8i-tOh" kind="presentation" identifier="editAttendanceSegue" modalTransitionStyle="flipHorizontal" id="16Q-je-oAL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

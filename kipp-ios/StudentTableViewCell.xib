@@ -53,14 +53,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark2" translatesAutoresizingMaskIntoConstraints="NO" id="m01-NC-58n">
-                                <rect key="frame" x="550" y="22" width="25" height="25"/>
+                                <rect key="frame" x="550" y="27.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="2g8-dz-26U"/>
                                     <constraint firstAttribute="width" constant="25" id="4UK-Cd-ufg"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Student Metadata " lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5O-1f-thi">
-                                <rect key="frame" x="90" y="48.5" width="502" height="16"/>
+                                <rect key="frame" x="90" y="48" width="502" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.56006855870000005" green="0.56006855870000005" blue="0.56006855870000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -71,7 +71,6 @@
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="leading" secondItem="jH6-3X-Bkb" secondAttribute="leading" id="2kZ-Y8-hwe"/>
                             <constraint firstItem="pdy-L4-K4U" firstAttribute="top" secondItem="ekE-sT-Lnv" secondAttribute="top" constant="26" id="Dw9-K3-la0"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="leading" secondItem="ekE-sT-Lnv" secondAttribute="leading" constant="15" id="KJZ-dB-1cn"/>
-                            <constraint firstItem="m01-NC-58n" firstAttribute="top" secondItem="ekE-sT-Lnv" secondAttribute="top" constant="22" id="LAA-Fa-cHa"/>
                             <constraint firstItem="hKC-L8-9nN" firstAttribute="top" secondItem="jH6-3X-Bkb" secondAttribute="top" id="Mid-Du-fiP"/>
                             <constraint firstItem="rWG-24-pJh" firstAttribute="top" secondItem="ekE-sT-Lnv" secondAttribute="top" constant="13" id="TEx-aw-aLf"/>
                             <constraint firstItem="rWG-24-pJh" firstAttribute="leading" secondItem="N5O-1f-thi" secondAttribute="leading" id="V1G-SY-WBV"/>
@@ -85,6 +84,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="N5O-1f-thi" secondAttribute="trailing" id="ruQ-O6-mZE"/>
                             <constraint firstItem="rWG-24-pJh" firstAttribute="leading" secondItem="jH6-3X-Bkb" secondAttribute="trailing" constant="15" id="v5g-cQ-cbl"/>
                             <constraint firstItem="N5O-1f-thi" firstAttribute="top" secondItem="rWG-24-pJh" secondAttribute="bottom" constant="5.5" id="w0b-3a-Bmt"/>
+                            <constraint firstAttribute="centerY" secondItem="m01-NC-58n" secondAttribute="centerY" id="yT7-go-ceH"/>
                         </constraints>
                     </view>
                 </subviews>

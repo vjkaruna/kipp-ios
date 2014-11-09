@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate {
+class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UITableViewDataSource, ProfileImageTappedDelegate, MGSwipeTableCellDelegate, StudentProfileChangedDelegate {
     @IBOutlet weak var attendanceTable: UITableView!
 
     @IBOutlet weak var contentView: UIView!
@@ -16,6 +16,9 @@ class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UI
     var emptyView: EmptyDataView!
     
     var attendanceComplete: Bool = false
+    
+    var tardyCounts = [Int: Int]()
+    var absentCounts = [Int: Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,35 +58,65 @@ class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UI
     }
     
     override func classroomLoaded() {
-        students = classroom.students
-        loadDataOrEmptyState()
         navigationItem.title = "Period \(classroom!.period): Attendance"
-//        NSLog(classroom?.title ?? "nil")
-        attendanceTable.reloadData()
+        for student in classroom.students {
+            student.delegate = self
+            student.fillAttendanceState()
+        }
+//        loadDataOrEmptyState()
+//        attendanceTable.reloadData()
+    }
+
+    func attendanceCountsDidChange(studentId: Int, absentCount: Int, tardyCount: Int) {
+        absentCounts[studentId] = absentCount
+        tardyCounts[studentId] = tardyCount
+        NSLog("Attendance count changed: \(absentCounts.count), \(tardyCounts.count) / \(classroom.students.count)")
+        if absentCounts.count == classroom.students.count && tardyCounts.count == classroom.students.count {
+            if students == nil {
+                for student in classroom.students {
+                    if student.attendance == nil {
+                        students?.append(student)
+                    }
+                }
+                if students == nil {
+                    students = []
+                }
+                loadDataOrEmptyState()
+                attendanceTable.reloadData()
+            }
+        }
     }
     
-//    func loadClassroom() {
-//        var classroom = Classroom.currentClass()
-//        if classroom == nil {
-//            Classroom.currentClassWithCompletion() { (classroom: Classroom?, error: NSError?) -> Void in
-//                if classroom != nil {
-//                    self.students = classroom?.students
-//                    self.loadDataOrEmptyState()
-//                    self.navigationItem.title = "Period \(classroom!.period): Attendance"
-//                    NSLog(classroom?.title ?? "nil")
-//                    self.attendanceTable.reloadData()
-//                }
-//                else {
-//                    NSLog("error getting classroom data from Parse")
-//                }
-//            }
-//        } else {
-//            self.students = classroom?.students
-//            loadDataOrEmptyState()
-//            self.navigationItem.title = "Period \(classroom!.period): Attendance"
-//            self.attendanceTable.reloadData()
-//        }
-//    }
+    func attendanceDidChange() {
+        
+    }
+    
+    func getAttendanceMetadataText(studentId: Int) -> NSAttributedString {
+        let tardyAttributes = [NSForegroundColorAttributeName: UIColor.myRedColor()]
+        let absentAttributes = [NSForegroundColorAttributeName: UIColor.greenTint()]
+        let neutralAttributes = [NSForegroundColorAttributeName: UIColor.grayColor()]
+        let charText = NSMutableAttributedString()
+        
+        let tardyCount = tardyCounts[studentId]!
+        let absentCount = absentCounts[studentId]!
+        
+        if tardyCount == 0 && absentCount == 0 {
+            return NSAttributedString(string: "Perfect attendance this week!", attributes: neutralAttributes)
+        }
+        
+        if tardyCount > 0 {
+            charText.appendAttributedString(NSAttributedString(string: "\(tardyCount) tardies", attributes: tardyAttributes))
+        }
+        if absentCount > 0 {
+            if charText.length > 0 {
+                charText.appendAttributedString(NSAttributedString(string: "\n\(absentCount) absences", attributes: absentAttributes))
+            } else {
+                charText.appendAttributedString(NSAttributedString(string: "\(absentCount) absences", attributes: absentAttributes))
+            }
+        }
+        
+        return charText
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
@@ -102,6 +135,8 @@ class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UI
         cell.rightExpansion.fillOnTrigger = true
         cell.rightExpansion.buttonIndex = 0
         cell.leftExpansion.buttonIndex = 0
+        
+        cell.metadataLabel.attributedText = getAttendanceMetadataText(student.studentId)
         
         cell.setNeedsDisplay()
         cell.layoutIfNeeded()
@@ -157,6 +192,12 @@ class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UI
 //        let indexPath = attendanceTable.indexPathForCell(cell)!
         var student = students?.removeAtIndex(indexPath.row)
         student?.markAttendanceForType(type)
+        if type == AttendanceType.Absent {
+            absentCounts[student!.studentId] = absentCounts[student!.studentId]! + 1
+        } else if type == AttendanceType.Tardy {
+            tardyCounts[student!.studentId] = tardyCounts[student!.studentId]! + 1
+        }
+        
         cell.attendanceDidChange()
         
         attendanceTable.beginUpdates()
@@ -168,5 +209,13 @@ class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UI
         }
         
         loadDataOrEmptyState()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "editAttendanceSegue") {
+            var editVC = segue.destinationViewController as AttendanceEditViewController
+            editVC.tardyCounts = self.tardyCounts
+            editVC.absentCounts = self.absentCounts
+        }
     }
 }

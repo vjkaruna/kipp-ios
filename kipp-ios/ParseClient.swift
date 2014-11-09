@@ -191,10 +191,11 @@ class ParseClient: NSObject {
                 completion(characterTrait: characterTrait, error: nil)
             } else {
                 completion(characterTrait: nil, error: error)
-            } // TODO filter by week
+            }
         })
     }
     
+    // TODO: these only pull the max/min values, but not necessarily the most recent ones
     func getGreatestScoreForWeekWithCompletion(studentId: Int, completion: (characterTrait: CharacterTrait?, error: NSError?) -> ()) {
         var characterQuery = PFQuery(className: "CharacterTrait")
         characterQuery.whereKey("studentId", equalTo: studentId)
@@ -245,6 +246,7 @@ class ParseClient: NSObject {
         var isAbsentQ = PFQuery(className: "Attendance")
         isAbsentQ.whereKey("studentId", equalTo: studentId)
         isAbsentQ.whereKey("date", equalTo: forDate.beginningOfDay())
+        isAbsentQ.orderByDescending("createdAt")
         isAbsentQ.findObjectsInBackgroundWithBlock({ (results, error) -> Void in
             if error == nil {
                 if results.count > 0 {
@@ -252,7 +254,7 @@ class ParseClient: NSObject {
                     let rawAttendanceType = result["type"] as Int
                     attendanceType = AttendanceType(rawValue: rawAttendanceType)!
                     
-                    NSLog("Found entry for student \(studentId)")
+                    NSLog("Found \(rawAttendanceType) entry for student \(studentId)")
                 } else {
                     NSLog("\(studentId) present")
                 }
@@ -260,6 +262,31 @@ class ParseClient: NSObject {
             } else {
                 NSLog("error: \(error)")
                 completion(attendanceType: nil, error: error)
+            }
+        })
+    }
+    func getAttendanceCountsForRange(studentId: Int, startDate: NSDate, endDate: NSDate, completion: (counts: [AttendanceType: Int]?, error: NSError?) -> ()) {
+        var countQ = PFQuery(className: "Attendance")
+        countQ.whereKey("studentId", equalTo: studentId)
+        countQ.whereKey("date", greaterThanOrEqualTo: startDate.beginningOfDay())
+        countQ.whereKey("date", lessThanOrEqualTo: endDate.beginningOfDay())
+        countQ.findObjectsInBackgroundWithBlock({ (results, error) -> Void in
+            if error == nil {
+                var absentCount = 0
+                var tardyCount = 0
+                var datesSeen = [NSDate]()
+                for result in results as [PFObject] {
+                    let rawAttendanceType = result["type"] as Int
+                    let attendanceType = AttendanceType(rawValue: rawAttendanceType)!
+                    if attendanceType == AttendanceType.Absent {
+                        absentCount += 1
+                    } else if attendanceType == AttendanceType.Tardy {
+                        tardyCount += 1
+                    }
+                }
+                completion(counts: [AttendanceType.Tardy: tardyCount, AttendanceType.Absent: absentCount], error: nil)
+            } else {
+                completion(counts: nil, error: error)
             }
         })
     }

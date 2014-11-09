@@ -14,6 +14,7 @@ protocol ProfileImageTappedDelegate {
 
 @objc protocol StudentProfileChangedDelegate {
     func attendanceDidChange()
+    optional func attendanceCountsDidChange(studentId: Int, absentCount: Int, tardyCount: Int)
     optional func weeklyProgressDidChange()
     optional func profilePicDidChange()
 }

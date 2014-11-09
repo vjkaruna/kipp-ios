@@ -230,7 +230,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Student Metrics" id="gYa-97-aAP">
-                        <barButtonItem key="rightBarButtonItem" image="phone" id="sRW-va-s0x">
+                        <barButtonItem key="rightBarButtonItem" title="Call" id="sRW-va-s0x">
                             <color key="tintColor" red="0.6176974221" green="0.86712771050000004" blue="0.65824437899999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>

@@ -14,6 +14,9 @@ class AttendanceEditViewController: UIViewController, UITableViewDelegate, UITab
     var students: [Student]?
     var emptyView: EmptyDataView!
     
+    var tardyCounts: [Int: Int]!
+    var absentCounts: [Int: Int]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +29,8 @@ class AttendanceEditViewController: UIViewController, UITableViewDelegate, UITab
 //        emptyView = UINib(nibName: "EmptyDataView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as EmptyDataView
 //        emptyView.hidden = true
 //        contentView.addSubview(emptyView)
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         loadClassroom()
     }
@@ -82,13 +87,41 @@ class AttendanceEditViewController: UIViewController, UITableViewDelegate, UITab
         
         cell.leftSwipeSettings.transition = MGSwipeTransition.TransitionBorder
         cell.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
-        
+        cell.metadataLabel.text = ""
         cell.leftExpansion.fillOnTrigger = true
         cell.rightExpansion.fillOnTrigger = true
         cell.rightExpansion.buttonIndex = 0
         cell.leftExpansion.buttonIndex = 0
         
+        cell.metadataLabel.attributedText = getAttendanceMetadataText(student.studentId)
         return cell
+    }
+    
+    func getAttendanceMetadataText(studentId: Int) -> NSAttributedString {
+        let tardyAttributes = [NSForegroundColorAttributeName: UIColor.myRedColor()]
+        let absentAttributes = [NSForegroundColorAttributeName: UIColor.greenTint()]
+        let neutralAttributes = [NSForegroundColorAttributeName: UIColor.grayColor()]
+        let charText = NSMutableAttributedString()
+        
+        let tardyCount = tardyCounts[studentId]!
+        let absentCount = absentCounts[studentId]!
+        
+        if tardyCount == 0 && absentCount == 0 {
+            return NSAttributedString(string: "Perfect attendance this week!", attributes: neutralAttributes)
+        }
+        
+        if tardyCount > 0 {
+            charText.appendAttributedString(NSAttributedString(string: "\(tardyCount) tardies", attributes: tardyAttributes))
+        }
+        if absentCount > 0 {
+            if charText.length > 0 {
+                charText.appendAttributedString(NSAttributedString(string: "\n\(absentCount) absences", attributes: absentAttributes))
+            } else {
+                charText.appendAttributedString(NSAttributedString(string: "\(absentCount) absences", attributes: absentAttributes))
+            }
+        }
+        
+        return charText
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -132,10 +165,24 @@ class AttendanceEditViewController: UIViewController, UITableViewDelegate, UITab
     func markStudent(cell: UITableViewCell, type: AttendanceType) {
         // Actually Mark the student
         let indexPath = tableView.indexPathForCell(cell)!
-//        var student = students?.removeAtIndex(indexPath.row)
         let student = students?[indexPath.row]
+        
+        // Add to attendance count; if we are updating the attendance type, subtract one from the previous type
+        if type == AttendanceType.Absent {
+            absentCounts[student!.studentId] = absentCounts[student!.studentId]! + 1
+            
+            if student!.attendance? == AttendanceType.Tardy {
+                tardyCounts[student!.studentId] = tardyCounts[student!.studentId]! - 1
+            }
+        } else if type == AttendanceType.Tardy {
+            tardyCounts[student!.studentId] = tardyCounts[student!.studentId]! + 1
+            
+            if student!.attendance? == AttendanceType.Absent {
+                absentCounts[student!.studentId] = absentCounts[student!.studentId]! - 1
+            }
+        }
+        
         student?.markAttendanceForType(type)
-//        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-//        loadDataOrEmptyState()
+        tableView.reloadData()
     }
 }

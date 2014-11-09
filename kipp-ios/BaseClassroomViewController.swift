@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseClassroomViewController: UIViewController {
-    weak var classroom: Classroom!
+    var classroom: Classroom!
     var classroomReloadNeeded = true
     
     func loadClassroom() {

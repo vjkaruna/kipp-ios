@@ -44,11 +44,14 @@ class Student: NSObject {
     var studentId: Int!
     var gender: Gender!
     var pfObj: PFObject!
-    var delegate: StudentProfileChangedDelegate?
+    weak var delegate: StudentProfileChangedDelegate?
     
     var attendance: AttendanceType?
     var weeklyProgress: [Progress]?
     var profileImage: UIImage?
+    
+    var pastWeekTardyCount: Int?
+    var pastWeekAbsentCount: Int?
     
     var characterArray: [CharacterTrait] = CharacterTrait.defaultCharacterTraitArray()
     
@@ -105,6 +108,15 @@ class Student: NSObject {
             })
         } else {
             NSLog("Attendance state for \(self.firstName) is \(self.attendance!.rawValue)")
+        }
+        if pastWeekAbsentCount == nil {
+            ParseClient.sharedInstance.getAttendanceCountsForRange(self.studentId, startDate: (-7).daysFromNow, endDate: NSDate()) { (counts, error) -> () in
+                if error == nil {
+                    self.pastWeekAbsentCount = counts![AttendanceType.Absent]
+                    self.pastWeekTardyCount = counts![AttendanceType.Tardy]
+                    self.delegate?.attendanceCountsDidChange!(self.studentId, absentCount: counts![AttendanceType.Absent]!, tardyCount: counts![AttendanceType.Tardy]!)
+                }
+            }
         }
     }
     
