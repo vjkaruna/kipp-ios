@@ -98,8 +98,8 @@ class AttendanceEditViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func getAttendanceMetadataText(studentId: Int) -> NSAttributedString {
-        let tardyAttributes = [NSForegroundColorAttributeName: UIColor.myRedColor()]
-        let absentAttributes = [NSForegroundColorAttributeName: UIColor.greenTint()]
+        let tardyAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
+        let absentAttributes = [NSForegroundColorAttributeName: UIColor.myRedColor()]
         let neutralAttributes = [NSForegroundColorAttributeName: UIColor.grayColor()]
         let charText = NSMutableAttributedString()
         

@@ -43,6 +43,8 @@ class ReasonViewController: UIViewController, UITextViewDelegate {
             titleLabel.text = "Celebrate"
         } else if actionType == ActionType.Encourage {
             titleLabel.text = "Encourage"
+        } else {
+            titleLabel.text = "Call Later"
         }
         
         textField.delegate = self

@@ -42,6 +42,8 @@
 		54CB96F51A0B63AA000B1156 /* BTSpiderPlotterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96F41A0B63AA000B1156 /* BTSpiderPlotterView.m */; };
 		54CB96F71A0B661C000B1156 /* SpiderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB96F61A0B661C000B1156 /* SpiderViewController.swift */; };
 		54CB97271A0CC476000B1156 /* CharacterPlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB97261A0CC476000B1156 /* CharacterPlotView.swift */; };
+		54CB972A1A0F603A000B1156 /* CallMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CB97281A0F603A000B1156 /* CallMenuViewController.swift */; };
+		54CB972B1A0F603A000B1156 /* CallMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CB97291A0F603A000B1156 /* CallMenuViewController.xib */; };
 		66147C3919FB5DCF0001CB6F /* libPods-GraphKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */; };
 		66147C3A19FB5DCF0001CB6F /* libPods-MKFoundationKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */; };
 		66147C3C19FB64C30001CB6F /* libPods-FrameAccessor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */; };
@@ -128,6 +130,8 @@
 		54CB96F41A0B63AA000B1156 /* BTSpiderPlotterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSpiderPlotterView.m; sourceTree = "<group>"; };
 		54CB96F61A0B661C000B1156 /* SpiderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpiderViewController.swift; sourceTree = "<group>"; };
 		54CB97261A0CC476000B1156 /* CharacterPlotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterPlotView.swift; sourceTree = "<group>"; };
+		54CB97281A0F603A000B1156 /* CallMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallMenuViewController.swift; sourceTree = "<group>"; };
+		54CB97291A0F603A000B1156 /* CallMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallMenuViewController.xib; sourceTree = "<group>"; };
 		66147C3719FB5DCF0001CB6F /* libPods-GraphKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-GraphKit.a"; path = "Pods/build/Debug-iphoneos/libPods-GraphKit.a"; sourceTree = "<group>"; };
 		66147C3819FB5DCF0001CB6F /* libPods-MKFoundationKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MKFoundationKit.a"; path = "Pods/build/Debug-iphoneos/libPods-MKFoundationKit.a"; sourceTree = "<group>"; };
 		66147C3B19FB64C30001CB6F /* libPods-FrameAccessor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-FrameAccessor.a"; path = "Pods/build/Debug-iphoneos/libPods-FrameAccessor.a"; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 				FCA0872919EE4A0900CF57FD /* TabBarViewController.swift */,
 				545F718B19FC3CD7001634D3 /* ReasonViewController.swift */,
 				54991DD819FDA9E900389625 /* ActionCollectionViewController.swift */,
+				54CB97281A0F603A000B1156 /* CallMenuViewController.swift */,
 				6671B0C019F9E49200D29578 /* ProfileGraphViewController.swift */,
 				FC25F94C19FA251F003949AE /* AttendanceController.swift */,
 				54CB96E61A018A02000B1156 /* AttendanceEditViewController.swift */,
@@ -287,6 +292,7 @@
 				54CB96EA1A088040000B1156 /* ClassroomButton.swift */,
 				54CB96EE1A09FCA6000B1156 /* ActionMenu.xib */,
 				54CB97261A0CC476000B1156 /* CharacterPlotView.swift */,
+				54CB97291A0F603A000B1156 /* CallMenuViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -476,6 +482,7 @@
 				54CB96EF1A09FCA6000B1156 /* ActionMenu.xib in Resources */,
 				662F2B5D1A007310009CAB2D /* StudentTableViewCell.xib in Resources */,
 				54682D5B19E9D45500CCE795 /* ClassHeaderView.xib in Resources */,
+				54CB972B1A0F603A000B1156 /* CallMenuViewController.xib in Resources */,
 				FCF1563019F6167B0057617D /* Attendance.storyboard in Resources */,
 				FC25F94F19FC5AB1003949AE /* ClassroomSelection.storyboard in Resources */,
 				669ACAAF19E75E12004C31ED /* LaunchScreen.xib in Resources */,
@@ -548,6 +555,7 @@
 				54682D6119E9EC7D00CCE795 /* StudentTableViewCell.swift in Sources */,
 				6671B0C119F9E49200D29578 /* ProfileGraphViewController.swift in Sources */,
 				54B3B0C819EE613A00BC83B1 /* CharacterView.swift in Sources */,
+				54CB972A1A0F603A000B1156 /* CallMenuViewController.swift in Sources */,
 				6649802B19EB38230050ACB9 /* Parent.swift in Sources */,
 				66147C3E19FC26440001CB6F /* Progress.swift in Sources */,
 				669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */,

@@ -34,3 +34,8 @@ protocol ClassroomSelectionDelegrate {
 protocol CharacterTrackerDelegate {
     func didSaveCharacterTraits(studentId: Int, newStrength: CharacterTrait?, newWeakness: CharacterTrait?)
 }
+
+protocol CallMenuDelegate {
+    func didTapCallLater()
+    func didTapCallNow()
+}

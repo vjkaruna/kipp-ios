@@ -72,18 +72,9 @@ class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UI
         tardyCounts[studentId] = tardyCount
         NSLog("Attendance count changed: \(absentCounts.count), \(tardyCounts.count) / \(classroom.students.count)")
         if absentCounts.count == classroom.students.count && tardyCounts.count == classroom.students.count {
-            if students == nil {
-                for student in classroom.students {
-                    if student.attendance == nil {
-                        students?.append(student)
-                    }
-                }
-                if students == nil {
-                    students = []
-                }
-                loadDataOrEmptyState()
-                attendanceTable.reloadData()
-            }
+            students = classroom.students
+            loadDataOrEmptyState()
+            attendanceTable.reloadData()
         }
     }
     
@@ -92,8 +83,8 @@ class AttendanceController: BaseClassroomViewController, UITableViewDelegate, UI
     }
     
     func getAttendanceMetadataText(studentId: Int) -> NSAttributedString {
-        let tardyAttributes = [NSForegroundColorAttributeName: UIColor.myRedColor()]
-        let absentAttributes = [NSForegroundColorAttributeName: UIColor.greenTint()]
+        let tardyAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
+        let absentAttributes = [NSForegroundColorAttributeName: UIColor.myRedColor()]
         let neutralAttributes = [NSForegroundColorAttributeName: UIColor.grayColor()]
         let charText = NSMutableAttributedString()
         

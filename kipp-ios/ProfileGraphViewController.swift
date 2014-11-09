@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, StudentProfileChangedDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, ReasonSubmittedDelegate  {
+class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, StudentProfileChangedDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, ReasonSubmittedDelegate, UIPopoverPresentationControllerDelegate, CallMenuDelegate {
 
     var student: Student?
 
@@ -25,6 +25,8 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     
     var metricViews: [UIView] = [UIView]()
     
+    var graphViewsPlotted = [UIView: Bool]()
+    
     var HUD: MBProgressHUD?
     var refreshHUD: MBProgressHUD?
     
@@ -32,14 +34,43 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
        hud.removeFromSuperview()
     }
     
+    @IBAction func didTapCallButton(sender: UIBarButtonItem) {
+        let menuVC = UINib(nibName: "CallMenuViewController", bundle: nil).instantiateWithOwner(self, options: nil)[0] as CallMenuViewController
+        menuVC.modalPresentationStyle = UIModalPresentationStyle.Popover
+        menuVC.preferredContentSize = CGSizeMake(200, 95)
+        menuVC.delegate = self
+        
+        var popover = menuVC.popoverPresentationController
+        popover?.barButtonItem = sender
+        popover?.delegate = self
+        self.presentViewController(menuVC, animated: true, completion: nil)
+    }
+    
+    func dialNumber(phonestr: String) {
+        let telstr = "telprompt://\(phonestr)"
+        UIApplication.sharedApplication().openURL(NSURL(string:telstr)!)
+    }
+    
+    func didTapCallNow() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dialNumber("510-717-8985")
+    }
+    
+    func didTapCallLater() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        showReasonModal(ActionType.Call)
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    
     @IBAction func didTapActionButton(sender: UIButton) {
         var actionType: ActionType
         if sender == encourageButton {
             actionType = .Encourage
-        } else if sender == celebrateButton {
-            actionType = .Celebrate
         } else {
-            actionType = .Call
+            actionType = .Celebrate
         }
         showReasonModal(actionType)
     }
@@ -105,15 +136,19 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
         scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * 3, scrollView.frame.size.height)
         println("scrollview frame width: \(scrollView.frame.size.width), frame: \(self.view.frame.size.width)")
         
-        mathGraph = GKLineGraph(frame: scrollView.frame)
-        scrollView.addSubview(mathGraph)
-        metricViews.append(mathGraph)
-        
         characterPlot = CharacterPlotView(frame: scrollView.frame, studentId: student!.studentId)
-        characterPlot.frame.origin.x += scrollView.frame.size.width
+//        characterPlot.frame.origin.x += scrollView.frame.size.width
         scrollView.addSubview(characterPlot)
         metricViews.append(characterPlot)
+        graphViewsPlotted[characterPlot] = false
         
+        mathGraph = GKLineGraph(frame: scrollView.frame)
+        mathGraph.frame.origin.x += scrollView.frame.size.width
+        mathGraph.dataSource = self
+        scrollView.addSubview(mathGraph)
+        metricViews.append(mathGraph)
+        graphViewsPlotted[mathGraph] = false
+
         var characterPlot2 = CharacterPlotView(frame: scrollView.frame, studentId: student!.studentId)
         characterPlot2.frame.origin.x += scrollView.frame.size.width * 2
         scrollView.addSubview(characterPlot2)
@@ -122,8 +157,8 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        mathGraph.dataSource = self
-        mathGraph.draw()
+//        mathGraph.dataSource = self
+        drawGraphInView(nil)
     }
     
     @IBAction func avatarTouch(sender: AnyObject) {
@@ -165,12 +200,12 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     }
     func weeklyProgressDidChange() {
         //self.graph.reset()
-        self.mathGraph.dataSource = self
-        self.mathGraph.lineWidth = 4.0
-        self.mathGraph.draw()
-        if self.student != nil && self.student?.weeklyProgress? != nil && self.student?.weeklyProgress?.count > 0 {
-//            self.topicLabel.text = "Current Topic: \(self.student!.weeklyProgress![self.student!.weeklyProgress!.count-1].topic)"
-        }
+//        self.mathGraph.dataSource = self
+//        self.mathGraph.lineWidth = 4.0
+//        self.mathGraph.draw()
+//        if self.student != nil && self.student?.weeklyProgress? != nil && self.student?.weeklyProgress?.count > 0 {
+////            self.topicLabel.text = "Current Topic: \(self.student!.weeklyProgress![self.student!.weeklyProgress!.count-1].topic)"
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -222,16 +257,33 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        var pageWidth: CGFloat = self.scrollView.frame.size.width
-        var page = Int(floor((self.scrollView.contentOffset.x - pageWidth / 2.0) / pageWidth)) + 1
-        if (self.pageControl.currentPage != page) {
-            self.pageControl.currentPage = page
-            if metricViews[page] == characterPlot {
+        let pageWidth: CGFloat = self.scrollView.frame.size.width
+        let page = Int(floor((self.scrollView.contentOffset.x - pageWidth / 2.0) / pageWidth)) + 1
+        drawGraphInView(page)
+    }
+    
+    func drawGraphInView(inPage: Int?) {
+        var redrawGraph = false
+        if inPage != nil && self.pageControl.currentPage != inPage! {
+            self.pageControl.currentPage = inPage!
+            redrawGraph = true
+        } else if inPage == nil {
+            redrawGraph = true
+        }
+        if redrawGraph {
+//            self.pageControl.currentPage = page
+            if metricViews[self.pageControl.currentPage] == characterPlot && !graphViewsPlotted[characterPlot]! {
                 NSLog("Calling plotGraph()")
                 characterPlot.plotGraph()
+                graphViewsPlotted[characterPlot] = true
+            } else if metricViews[self.pageControl.currentPage] == mathGraph && !graphViewsPlotted[mathGraph]! {
+                NSLog("Calling math draw")
+                mathGraph.draw()
+                graphViewsPlotted[mathGraph] = true
             }
         }
     }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
