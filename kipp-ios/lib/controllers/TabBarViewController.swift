@@ -22,6 +22,28 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
         super.viewDidLoad()
         mainTabBarController.delegate = self
         mainTabBarController.viewControllers = viewControllers()
+        
+        var button = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        
+        button.frame = CGRect(x: 0.0, y: 0.0, width: 75.0, height: 75.0)
+        button.backgroundColor = UIColor.kippBlue()
+        button.layer.cornerRadius = 75/2.0
+        var buttonImage = UIImageView(image: UIImage(named: "classroom"))
+        buttonImage.center = button.center
+        button.addSubview(buttonImage)
+        
+        
+        button.center = self.mainTabBarController.tabBar.center
+        self.mainTabBarController.view.addSubview(button)
+        
+//        var buttonText: UILabel = UILabel(frame: CGRect(x: 0, y: 50, width: 75.0, height: 10.0))
+//        buttonText.text = "Classrooms"
+//        buttonText.textColor = UIColor.whiteColor
+//        buttonText.center = button.center
+//        button.addSubview(buttonText)
+
+        
+        button.addTarget(self, action: "onClickClassroomsButton", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
@@ -29,15 +51,19 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
             mainTabBarController.selectedViewController?.dismissViewControllerAnimated(false, completion: nil)
             self.presentingModal = false
         } else if (viewController == self.classroomsController) {
-            let classroomSB = UIStoryboard(name: "ClassroomSelection", bundle: nil)
-            let classroomsController = classroomSB.instantiateViewControllerWithIdentifier("classroomsVC") as ClassroomsViewController
-            classroomsController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-            classroomsController.delegate = self
-            self.presentingController = mainTabBarController.selectedViewController
-            mainTabBarController.selectedViewController?.presentViewController(classroomsController, animated: false, completion: nil)
-            self.presentingModal = true
+            onClickClassroomsButton()
         }
         return viewController != self.classroomsController
+    }
+    
+    func onClickClassroomsButton() {
+        let classroomSB = UIStoryboard(name: "ClassroomSelection", bundle: nil)
+        let classroomsController = classroomSB.instantiateViewControllerWithIdentifier("classroomsVC") as ClassroomsViewController
+        classroomsController.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
+        classroomsController.delegate = self
+        self.presentingController = mainTabBarController.selectedViewController
+        mainTabBarController.selectedViewController?.presentViewController(classroomsController, animated: false, completion: nil)
+        self.presentingModal = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -88,7 +114,8 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
             self._viewControllers = [attendanceNavController, rosterNavController, classroomsController, actionNavController, callsNavController]
             
             mainTabBarController.tabBar.tintColor = UIColor.greenTint()
-            mainTabBarController.tabBar.barStyle = .Black
+            //mainTabBarController.tabBar.barStyle = .Black
+            mainTabBarController.tabBar.barTintColor = UIColor.darkBlue()
         }
         return self._viewControllers!
     }

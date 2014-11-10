@@ -33,7 +33,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         navigationItem.title = actionType?.rawValue
         
         tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.estimatedRowHeight = 120.0
+        tableView.estimatedRowHeight = 120.0
         
         tableView.delegate = self
         tableView.dataSource = self
