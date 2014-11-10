@@ -13,4 +13,4 @@
 #import "Pods/FrameAccessor/FrameAccessor/ViewFrameAccessor.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "BTSpiderPlotterView.h"
-#import "PNChart/PNChart.h"
+#import "PNCircleChart.h"

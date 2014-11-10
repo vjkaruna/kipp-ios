@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PNChartDelegate.h"
-#import "PNBar.h"
+@class PNBar;
 
 #define xLabelMargin 15
 #define yLabelMargin 15

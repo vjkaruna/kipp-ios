@@ -10,6 +10,7 @@
 		54124A1F19FCF09100D042C4 /* ActionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54124A1E19FCF09100D042C4 /* ActionCellView.xib */; };
 		54124A2119FCF36600D042C4 /* ActionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54124A2019FCF36600D042C4 /* ActionCellView.swift */; };
 		541BF93819ED05C4007307C6 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541BF93719ED05C4007307C6 /* CharacterViewController.swift */; };
+		543822971A1054CC00105A03 /* PNCircleChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 543822871A1054CC00105A03 /* PNCircleChart.m */; };
 		545F717E19F8E7A6001634D3 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F717D19F8E7A6001634D3 /* Action.swift */; };
 		545F718019F8F4AB001634D3 /* Actions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545F717F19F8F4AB001634D3 /* Actions.storyboard */; };
 		545F718419F8F6C8001634D3 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F718319F8F6C8001634D3 /* ActionViewController.swift */; };
@@ -97,6 +98,9 @@
 		54124A1E19FCF09100D042C4 /* ActionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionCellView.xib; sourceTree = "<group>"; };
 		54124A2019FCF36600D042C4 /* ActionCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionCellView.swift; sourceTree = "<group>"; };
 		541BF93719ED05C4007307C6 /* CharacterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
+		543822861A1054CC00105A03 /* PNCircleChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNCircleChart.h; sourceTree = "<group>"; };
+		543822871A1054CC00105A03 /* PNCircleChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNCircleChart.m; sourceTree = "<group>"; };
+		543822881A1054CC00105A03 /* PNColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNColor.h; sourceTree = "<group>"; };
 		545F717D19F8E7A6001634D3 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		545F717F19F8F4AB001634D3 /* Actions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Actions.storyboard; sourceTree = "<group>"; };
 		545F718319F8F6C8001634D3 /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +221,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5438227D1A1054CC00105A03 /* PNChart */ = {
+			isa = PBXGroup;
+			children = (
+				543822861A1054CC00105A03 /* PNCircleChart.h */,
+				543822871A1054CC00105A03 /* PNCircleChart.m */,
+				543822881A1054CC00105A03 /* PNColor.h */,
+			);
+			path = PNChart;
+			sourceTree = "<group>";
+		};
 		54682D5C19E9EC0800CCE795 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +344,7 @@
 		669ACAA119E75E12004C31ED /* kipp-ios */ = {
 			isa = PBXGroup;
 			children = (
+				5438227D1A1054CC00105A03 /* PNChart */,
 				54CB96F21A0B6386000B1156 /* Spider Plot */,
 				54682D6519EA3FCF00CCE795 /* Views */,
 				54682D6219E9EC8F00CCE795 /* Storyboards */,
@@ -442,11 +457,11 @@
 				TargetAttributes = {
 					669ACA9E19E75E12004C31ED = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = W547A4H69V;
+						DevelopmentTeam = ZBY49BL7XL;
 					};
 					669ACAB319E75E13004C31ED = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = W547A4H69V;
+						DevelopmentTeam = ZBY49BL7XL;
 						TestTargetID = 669ACA9E19E75E12004C31ED;
 					};
 				};
@@ -577,6 +592,7 @@
 				54991DD919FDA9E900389625 /* ActionCollectionViewController.swift in Sources */,
 				54682D5F19E9EC2F00CCE795 /* Student.swift in Sources */,
 				54682D6A19EA469700CCE795 /* Protocols.swift in Sources */,
+				543822971A1054CC00105A03 /* PNCircleChart.m in Sources */,
 				54CB96E71A018A02000B1156 /* AttendanceEditViewController.swift in Sources */,
 				6649802D19EC37230050ACB9 /* Teacher.swift in Sources */,
 				6649802919EB38040050ACB9 /* ParentCallsController.swift in Sources */,

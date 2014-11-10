@@ -20,8 +20,10 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     
     @IBOutlet weak var encourageButton: UIButton!
     @IBOutlet weak var celebrateButton: UIButton!
+    
     var mathGraph: GKLineGraph!
     var characterPlot: CharacterPlotView!
+    var circlePlot: PNCircleChart!
     
     var metricViews: [UIView] = [UIView]()
     
@@ -149,10 +151,19 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
         metricViews.append(mathGraph)
         graphViewsPlotted[mathGraph] = false
 
-        var characterPlot2 = CharacterPlotView(frame: scrollView.frame, studentId: student!.studentId)
-        characterPlot2.frame.origin.x += scrollView.frame.size.width * 2
-        scrollView.addSubview(characterPlot2)
-        metricViews.append(characterPlot2)
+        circlePlot = PNCircleChart(frame: scrollView.frame, andTotal: 100, andCurrent: 0, andClockwise: true, andShadow: true)
+        circlePlot.backgroundColor = UIColor.clearColor()
+        circlePlot.frame.origin.y += 25
+        circlePlot.frame.origin.x += scrollView.frame.size.width * 2
+//        circlePlot.chartType = .Percent
+        scrollView.addSubview(circlePlot)
+        metricViews.append(circlePlot)
+        graphViewsPlotted[circlePlot] = false
+
+//        var characterPlot2 = CharacterPlotView(frame: scrollView.frame, studentId: student!.studentId)
+//        characterPlot2.frame.origin.x += scrollView.frame.size.width * 2
+//        scrollView.addSubview(characterPlot2)
+//        metricViews.append(characterPlot2)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -280,6 +291,9 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
                 NSLog("Calling math draw")
                 mathGraph.draw()
                 graphViewsPlotted[mathGraph] = true
+            } else if metricViews[self.pageControl.currentPage] == circlePlot && !graphViewsPlotted[circlePlot]! {
+                circlePlot.current = 15
+                circlePlot.strokeChart()
             }
         }
     }
