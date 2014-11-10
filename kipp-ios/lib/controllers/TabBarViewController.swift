@@ -28,19 +28,21 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
         button.frame = CGRect(x: 0.0, y: 0.0, width: 75.0, height: 75.0)
         button.backgroundColor = UIColor.kippBlue()
         button.layer.cornerRadius = 75/2.0
-        var buttonImage = UIImageView(image: UIImage(named: "classroom"))
-        buttonImage.center = button.center
+        var buttonImage = UIImageView(image: UIImage(named: "classroom-inverted"))
+        var center = button.center
+        center.y = center.y - 5
+        buttonImage.center = center
         button.addSubview(buttonImage)
         
         
         button.center = self.mainTabBarController.tabBar.center
         self.mainTabBarController.view.addSubview(button)
         
-//        var buttonText: UILabel = UILabel(frame: CGRect(x: 0, y: 50, width: 75.0, height: 10.0))
-//        buttonText.text = "Classrooms"
-//        buttonText.textColor = UIColor.whiteColor
-//        buttonText.center = button.center
-//        button.addSubview(buttonText)
+        var buttonText: UILabel = UILabel(frame: CGRect(x: 10, y: 50, width: 75.0, height: 10.0))
+        buttonText.text = "Classrooms"
+        buttonText.textColor = UIColor.whiteColor()
+        buttonText.font = UIFont.systemFontOfSize(10.0)
+        button.addSubview(buttonText)
 
         
         button.addTarget(self, action: "onClickClassroomsButton", forControlEvents: UIControlEvents.TouchUpInside)
