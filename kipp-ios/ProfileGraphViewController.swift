@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, StudentProfileChangedDelegate, UIImagePickerControllerDelegate, MBProgressHUDDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, ReasonSubmittedDelegate, UIPopoverPresentationControllerDelegate, CallMenuDelegate {
+class ProfileGraphViewController: UIViewController, UIImagePickerControllerDelegate, MBProgressHUDDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, ReasonSubmittedDelegate, UIPopoverPresentationControllerDelegate, CallMenuDelegate {
 
     var student: Student?
 
@@ -24,10 +24,16 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     var mathGraph: GKLineGraph!
     var characterPlot: CharacterPlotView!
     var circlePlot: PNCircleChart!
+    var barGraph: PNBarChart!
     
+    var progressTitle: UILabel!
     var metricViews: [UIView] = [UIView]()
     
     var graphViewsPlotted = [UIView: Bool]()
+    
+    var currentProgress: Int?
+    
+    var pastMonthAttendance: [AttendanceType: Int]?
     
     var HUD: MBProgressHUD?
     var refreshHUD: MBProgressHUD?
@@ -101,29 +107,9 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        //var frame = CGRectMake(0, 40, 320, 200)
-        //self.graph = GKLineGraph(frame: frame)
         
         if self.student != nil {
-            self.student!.delegate = self
-            self.student!.fillWeeklyProgress()
-        }
-        //self.graph.height = self.graph.frame.height
-        //self.graph.width = self.graph.frame.width
-        
-        //println("h: \(self.graph.height) w: \(self.graph.width)")
-        //self.graph.draw()
-        
-        if (student != nil) {
             studentLabel.text = student!.fullName
-            let minutesAttributes = [NSForegroundColorAttributeName: UIColor.magentaColor()]
-            let weeklyAttributes = [NSForegroundColorAttributeName: UIColor.greenTint()]
-            let descText = NSMutableAttributedString()
-            descText.appendAttributedString(NSAttributedString(string: "minutes studied -  ",attributes:minutesAttributes))
-            descText.appendAttributedString(NSAttributedString(string: "weekly progress - ",attributes:weeklyAttributes))
-//            legendLabel.attributedText = descText
             
             self.avatarButton.setImage(student!.profileImage, forState: .Normal)
             self.avatarButton.layer.cornerRadius = self.avatarButton.frame.size.width / 2
@@ -133,37 +119,63 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
             self.avatarFrame.clipsToBounds = true
         }
         
+        fillWeeklyProgress()
+        fillMonthAttendance()
+        
         scrollView.delegate = self
         scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width-10, scrollView.frame.size.height)
         scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * 3, scrollView.frame.size.height)
         println("scrollview frame width: \(scrollView.frame.size.width), frame: \(self.view.frame.size.width)")
         
+        // Add character map
         characterPlot = CharacterPlotView(frame: scrollView.frame, studentId: student!.studentId)
-//        characterPlot.frame.origin.x += scrollView.frame.size.width
         scrollView.addSubview(characterPlot)
         metricViews.append(characterPlot)
         graphViewsPlotted[characterPlot] = false
         
-        mathGraph = GKLineGraph(frame: scrollView.frame)
-        mathGraph.frame.origin.x += scrollView.frame.size.width
-        mathGraph.dataSource = self
-        scrollView.addSubview(mathGraph)
-        metricViews.append(mathGraph)
-        graphViewsPlotted[mathGraph] = false
-
-        circlePlot = PNCircleChart(frame: scrollView.frame, andTotal: 100, andCurrent: 0, andClockwise: true, andShadow: true)
+        // Add circle progress chart
+        progressTitle = UILabel(frame: CGRectMake(0, 5, self.view.frame.size.width-10, 70))
+        progressTitle.frame.origin.x += scrollView.frame.size.width
+        progressTitle.numberOfLines = 0
+        progressTitle.textColor = UIColor.darkBlue()
+        progressTitle.textAlignment = .Center
+        progressTitle.lineBreakMode = .ByWordWrapping
+        scrollView.addSubview(progressTitle)
+        
+        circlePlot = PNCircleChart(frame: CGRectMake(0, 40, self.view.frame.size.width-10, scrollView.frame.size.height-60), andTotal: 100, andCurrent: 0, andClockwise: true, andShadow: true)
         circlePlot.backgroundColor = UIColor.clearColor()
-        circlePlot.frame.origin.y += 25
-        circlePlot.frame.origin.x += scrollView.frame.size.width * 2
-//        circlePlot.chartType = .Percent
+        circlePlot.strokeColor = UIColor.greenTint()
+        circlePlot.strokeColorGradientStart = UIColor.darkBlue()
+        circlePlot.frame.origin.x += scrollView.frame.size.width
+//        circlePlot.strokeChart()
         scrollView.addSubview(circlePlot)
         metricViews.append(circlePlot)
         graphViewsPlotted[circlePlot] = false
-
-//        var characterPlot2 = CharacterPlotView(frame: scrollView.frame, studentId: student!.studentId)
-//        characterPlot2.frame.origin.x += scrollView.frame.size.width * 2
-//        scrollView.addSubview(characterPlot2)
-//        metricViews.append(characterPlot2)
+        
+        // Attendance bar graph
+        var barTitle = UILabel(frame: CGRectMake(0, 5, self.view.frame.size.width-10, 70))
+        barTitle.frame.origin.x += scrollView.frame.size.width * 2
+        barTitle.numberOfLines = 0
+        barTitle.textColor = UIColor.darkBlue()
+        barTitle.text = "Attendance in the Last 30 Days"
+        barTitle.textAlignment = .Center
+        barTitle.lineBreakMode = .ByWordWrapping
+        scrollView.addSubview(barTitle)
+        
+        barGraph = PNBarChart(frame: CGRectMake(10, 70, self.view.frame.size.width-10, scrollView.frame.size.height))
+        barGraph.frame.origin.x += scrollView.frame.size.width * 2
+        barGraph.backgroundColor = UIColor.clearColor()
+        barGraph.barBackgroundColor = UIColor.clearColor()
+        barGraph.labelMarginTop = 5.0;
+        barGraph.xLabels = ["Absences", "Tardies"]
+        barGraph.strokeColors = [UIColor.myRedColor(), UIColor.myYellow()]
+        
+        // Adding gradient
+        barGraph.barColorGradientStart = UIColor.kippBlue()
+        scrollView.addSubview(barGraph)
+        metricViews.append(barGraph)
+        graphViewsPlotted[barGraph] = false
+        
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -205,66 +217,32 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
 
     }
     
-    
-    func attendanceDidChange() {
-        
-    }
-    func weeklyProgressDidChange() {
-        //self.graph.reset()
-//        self.mathGraph.dataSource = self
-//        self.mathGraph.lineWidth = 4.0
-//        self.mathGraph.draw()
-//        if self.student != nil && self.student?.weeklyProgress? != nil && self.student?.weeklyProgress?.count > 0 {
-////            self.topicLabel.text = "Current Topic: \(self.student!.weeklyProgress![self.student!.weeklyProgress!.count-1].topic)"
-//        }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-     func numberOfLines() -> Int {
-        return 2
-    }
-    
-    func colorForLineAtIndex(index: Int) -> UIColor! {
-        var mcolors = [UIColor]()
-        mcolors.append(UIColor.magentaColor())
-        mcolors.append(UIColor.greenTint())
-        return mcolors[index] as UIColor!
-    }
-    
-    func valuesForLineAtIndex(index: Int) -> [AnyObject]! {
-        var data = [Int]()
-
-        if (self.student != nil && self.student!.weeklyProgress != nil && self.student!.weeklyProgress?.count > 0 ) {
-            for progress in self.student!.weeklyProgress! {
-                if index == 0 {
-                    data.append(progress.minutes)
-                } else {
-                    data.append(Int(progress.weeklyProgress))
+    func fillMonthAttendance() {
+        ParseClient.sharedInstance.getAttendanceCountsForRange(self.student!.studentId, startDate: (-30).daysFromNow, endDate: NSDate()) { (counts, error) -> () in
+            if error == nil {
+                self.pastMonthAttendance = counts
+                let absentCount = counts![AttendanceType.Absent]
+                let tardyCount = counts![AttendanceType.Tardy]
+                self.barGraph.yValues = [absentCount!, tardyCount!]
+                if self.graphViewsPlotted[self.barGraph]! {
+                    self.barGraph.strokeChart()
                 }
             }
-            
-        } else {
-            // default data
-            if (index == 0) {
-               data = [2,30,40,70,50,40,80,120,50,3,40,60,90]
-            } else {
-               data = [12,36,62,91,84,75,79,96,57,47,39,56,75]
-            }
         }
-        return data
-    
     }
     
-    func animationDurationForLineAtIndex(index: Int) -> CFTimeInterval {
-        return CFTimeInterval(3)
-    }
-    
-    func titleForLineAtIndex(index: Int) -> String! {
-        return "\(index)"
+    func fillWeeklyProgress() {
+        ParseClient.sharedInstance.getProgressWithCompletion(self.student!.studentId, completion: { (progressArray, error) -> () in
+            if error == nil {
+                let progress = progressArray.last
+                self.progressTitle.text = "Week \(progress!.week) Progress\nCurrent Topic • \(progress!.topic)"
+                self.currentProgress = Int(progress!.weeklyProgress)
+                
+                if self.graphViewsPlotted[self.circlePlot]! { // if the graph has been 'plotted' without a value, re-draw the graph with values
+                    self.circlePlot.strokeChart()
+                }
+            }
+        })
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -273,6 +251,15 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
         drawGraphInView(page)
     }
     
+    @IBAction func changePage(sender: UIPageControl) {
+        let page = sender.currentPage
+        
+        // update the scroll view to the appropriate page
+        var frame = scrollView.frame;
+        frame.origin.x = frame.size.width * CGFloat(page)
+        frame.origin.y = 0
+        scrollView.scrollRectToVisible(frame, animated: true)
+    }
     func drawGraphInView(inPage: Int?) {
         var redrawGraph = false
         if inPage != nil && self.pageControl.currentPage != inPage! {
@@ -287,13 +274,18 @@ class ProfileGraphViewController: UIViewController, GKLineGraphDataSource, Stude
                 NSLog("Calling plotGraph()")
                 characterPlot.plotGraph()
                 graphViewsPlotted[characterPlot] = true
-            } else if metricViews[self.pageControl.currentPage] == mathGraph && !graphViewsPlotted[mathGraph]! {
-                NSLog("Calling math draw")
-                mathGraph.draw()
-                graphViewsPlotted[mathGraph] = true
+            } else if metricViews[self.pageControl.currentPage] == barGraph && !graphViewsPlotted[barGraph]! {
+                NSLog("Calling attendance draw")
+                if pastMonthAttendance != nil {
+                    barGraph.strokeChart()
+                }
+                graphViewsPlotted[barGraph] = true
             } else if metricViews[self.pageControl.currentPage] == circlePlot && !graphViewsPlotted[circlePlot]! {
-                circlePlot.current = 15
-                circlePlot.strokeChart()
+                if currentProgress != nil {
+                    circlePlot.current = currentProgress!
+                    circlePlot.strokeChart()
+                }
+                graphViewsPlotted[circlePlot] = true
             }
         }
     }

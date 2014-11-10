@@ -18,6 +18,8 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
     var presentingModal: Bool = false
     var reloadClassroom: (() -> ())?
     
+    var centerButtonImg: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mainTabBarController.delegate = self
@@ -25,15 +27,18 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
         
         var button = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         
-        button.frame = CGRect(x: 0.0, y: 0.0, width: 75.0, height: 75.0)
+        button.frame = CGRect(x: 0.0, y: 0.0, width: 55.0, height: 55.0)
         button.backgroundColor = UIColor.kippBlue()
-        button.layer.cornerRadius = 75/2.0
-        var buttonImage = UIImageView(image: UIImage(named: "classroom"))
-        buttonImage.center = button.center
-        button.addSubview(buttonImage)
+        button.layer.cornerRadius = 5.0
         
+        centerButtonImg = UIImageView(image: UIImage(named: "classroom"))
+        centerButtonImg.center = button.center
+        centerButtonImg.alpha = 0.6
         
-        button.center = self.mainTabBarController.tabBar.center
+        button.addSubview(centerButtonImg)
+        
+        button.center.x = self.mainTabBarController.tabBar.center.x
+        button.center.y = self.mainTabBarController.tabBar.center.y - 4.0
         self.mainTabBarController.view.addSubview(button)
         
 //        var buttonText: UILabel = UILabel(frame: CGRect(x: 0, y: 50, width: 75.0, height: 10.0))
@@ -49,9 +54,17 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         if self.presentingModal {
             mainTabBarController.selectedViewController?.dismissViewControllerAnimated(false, completion: nil)
+            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 20, options: .CurveEaseIn, animations: { () -> Void in
+                self.centerButtonImg.transform = CGAffineTransformMakeScale(1.0, 1.0)
+                self.centerButtonImg.alpha = 0.6
+                }, completion: nil)
             self.presentingModal = false
         } else if (viewController == self.classroomsController) {
             onClickClassroomsButton()
+            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 20, options: .CurveEaseIn, animations: { () -> Void in
+                self.centerButtonImg.transform = CGAffineTransformMakeScale(1.2, 1.2)
+                self.centerButtonImg.alpha = 1.0
+            }, completion: nil)
         }
         return viewController != self.classroomsController
     }
@@ -63,6 +76,10 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
         classroomsController.delegate = self
         self.presentingController = mainTabBarController.selectedViewController
         mainTabBarController.selectedViewController?.presentViewController(classroomsController, animated: false, completion: nil)
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 20, options: .CurveEaseIn, animations: { () -> Void in
+            self.centerButtonImg.transform = CGAffineTransformMakeScale(1.2, 1.2)
+            self.centerButtonImg.alpha = 1.0
+        }, completion: nil)
         self.presentingModal = true
     }
     
@@ -95,7 +112,7 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
             rosterNavController.tabBarItem = UITabBarItem(title: "Character", image: UIImage(named: "character"), tag: 1)
             actionNavController.tabBarItem = UITabBarItem(title: "Actions", image: UIImage(named: "alert"), tag: 1)
             callsNavController.tabBarItem = UITabBarItem(title: "Calls", image: UIImage(named: "phone"), tag: 1)
-            classroomsController.tabBarItem = UITabBarItem(title: "Classes", image: UIImage(named: "classroom"), tag: 1)
+            classroomsController.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "classroom"), tag: 1)
             
             self.reloadClassroom = {() -> () in
                 if (attendanceNavController as UINavigationController).viewControllers.count > 0 {
@@ -133,6 +150,10 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
 //            classroomVC.loadClassroom()
 //        }
         self.reloadClassroom?()
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 20, options: .CurveEaseIn, animations: { () -> Void in
+            self.centerButtonImg.transform = CGAffineTransformMakeScale(1.0, 1.0)
+            self.centerButtonImg.alpha = 0.6
+        }, completion: nil)
         self.presentingModal = false
     }
 }

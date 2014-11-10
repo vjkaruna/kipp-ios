@@ -56,7 +56,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="x4m-xO-kBj">
-                        <barButtonItem key="leftBarButtonItem" image="5C5A48FF-9212-4930-AACB-2A6D71832BE7" id="yqU-6P-e31"/>
+                        <barButtonItem key="leftBarButtonItem" image="A19704A6-7554-4AFA-A3C7-9185FA4776EA" id="yqU-6P-e31"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="kUd-q9-OjF" id="6Bl-Ut-HMz"/>
@@ -680,7 +680,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="5C5A48FF-9212-4930-AACB-2A6D71832BE7" width="22" height="22">
+        <image name="A19704A6-7554-4AFA-A3C7-9185FA4776EA" width="22" height="22">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -11,6 +11,9 @@
 		54124A2119FCF36600D042C4 /* ActionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54124A2019FCF36600D042C4 /* ActionCellView.swift */; };
 		541BF93819ED05C4007307C6 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541BF93719ED05C4007307C6 /* CharacterViewController.swift */; };
 		543822971A1054CC00105A03 /* PNCircleChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 543822871A1054CC00105A03 /* PNCircleChart.m */; };
+		543822A21A1093D400105A03 /* PNBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5438229F1A1093D400105A03 /* PNBar.m */; };
+		543822A31A1093D400105A03 /* PNBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 543822A11A1093D400105A03 /* PNBarChart.m */; };
+		543822A61A10940700105A03 /* PNChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 543822A51A10940700105A03 /* PNChartLabel.m */; };
 		545F717E19F8E7A6001634D3 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F717D19F8E7A6001634D3 /* Action.swift */; };
 		545F718019F8F4AB001634D3 /* Actions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 545F717F19F8F4AB001634D3 /* Actions.storyboard */; };
 		545F718419F8F6C8001634D3 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545F718319F8F6C8001634D3 /* ActionViewController.swift */; };
@@ -101,6 +104,12 @@
 		543822861A1054CC00105A03 /* PNCircleChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNCircleChart.h; sourceTree = "<group>"; };
 		543822871A1054CC00105A03 /* PNCircleChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNCircleChart.m; sourceTree = "<group>"; };
 		543822881A1054CC00105A03 /* PNColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNColor.h; sourceTree = "<group>"; };
+		5438229E1A1093D400105A03 /* PNBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNBar.h; sourceTree = "<group>"; };
+		5438229F1A1093D400105A03 /* PNBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNBar.m; sourceTree = "<group>"; };
+		543822A01A1093D400105A03 /* PNBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNBarChart.h; sourceTree = "<group>"; };
+		543822A11A1093D400105A03 /* PNBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNBarChart.m; sourceTree = "<group>"; };
+		543822A41A10940700105A03 /* PNChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNChartLabel.h; sourceTree = "<group>"; };
+		543822A51A10940700105A03 /* PNChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNChartLabel.m; sourceTree = "<group>"; };
 		545F717D19F8E7A6001634D3 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		545F717F19F8F4AB001634D3 /* Actions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Actions.storyboard; sourceTree = "<group>"; };
 		545F718319F8F6C8001634D3 /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +233,12 @@
 		5438227D1A1054CC00105A03 /* PNChart */ = {
 			isa = PBXGroup;
 			children = (
+				543822A41A10940700105A03 /* PNChartLabel.h */,
+				543822A51A10940700105A03 /* PNChartLabel.m */,
+				5438229E1A1093D400105A03 /* PNBar.h */,
+				5438229F1A1093D400105A03 /* PNBar.m */,
+				543822A01A1093D400105A03 /* PNBarChart.h */,
+				543822A11A1093D400105A03 /* PNBarChart.m */,
 				543822861A1054CC00105A03 /* PNCircleChart.h */,
 				543822871A1054CC00105A03 /* PNCircleChart.m */,
 				543822881A1054CC00105A03 /* PNColor.h */,
@@ -562,6 +577,7 @@
 				54682D6C19EB232C00CCE795 /* ClassroomsViewController.swift in Sources */,
 				54CB96F71A0B661C000B1156 /* SpiderViewController.swift in Sources */,
 				FC25F95119FC5B8A003949AE /* ClassroomSelectionViewController.swift in Sources */,
+				543822A61A10940700105A03 /* PNChartLabel.m in Sources */,
 				549937F719F64E150026C7E4 /* CharacterTrackingViewController.swift in Sources */,
 				545F718619F8FADF001634D3 /* ActionTableViewCell.swift in Sources */,
 				54124A2119FCF36600D042C4 /* ActionCellView.swift in Sources */,
@@ -575,6 +591,7 @@
 				66147C3E19FC26440001CB6F /* Progress.swift in Sources */,
 				669ACAA519E75E12004C31ED /* AppDelegate.swift in Sources */,
 				54CB96EB1A088040000B1156 /* ClassroomButton.swift in Sources */,
+				543822A31A1093D400105A03 /* PNBarChart.m in Sources */,
 				54CB96E91A087702000B1156 /* BaseClassroomViewController.swift in Sources */,
 				6615BEF119F3065200B7D8EC /* ParseClient.swift in Sources */,
 				549937F919F77E420026C7E4 /* Colors.swift in Sources */,
@@ -585,6 +602,7 @@
 				54682D6E19EB27F200CCE795 /* Classroom.swift in Sources */,
 				54CB96F51A0B63AA000B1156 /* BTSpiderPlotterView.m in Sources */,
 				54682D7019EB2FAF00CCE795 /* ClassroomTableViewCell.swift in Sources */,
+				543822A21A1093D400105A03 /* PNBar.m in Sources */,
 				54CB97271A0CC476000B1156 /* CharacterPlotView.swift in Sources */,
 				54B3B0CA19EFAD2F00BC83B1 /* CharacterTableViewCell.swift in Sources */,
 				54682D6719EA450E00CCE795 /* ProfileViewController.swift in Sources */,

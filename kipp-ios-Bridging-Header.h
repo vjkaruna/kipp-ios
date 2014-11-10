@@ -14,3 +14,4 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "BTSpiderPlotterView.h"
 #import "PNCircleChart.h"
+#import "PNBarChart.h"

@@ -221,6 +221,7 @@
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x - 5*fontSize/2, y - fontSize/2, 5*fontSize, fontSize)];
         label.backgroundColor = [UIColor clearColor];
+        label.textColor = [UIColor darkGrayColor];
         label.font = [UIFont systemFontOfSize:fontSize];
         label.transform = CGAffineTransformMakeRotation(((float)section/[labelArray count]) *
                                                         (2*M_PI) + M_PI_2);
