@@ -22,16 +22,18 @@ class EmptyDataView: UIView {
                 tipLabel.text = "Swipe to mark actions as complete"
                 imageview.image = UIImage(named: "checkmark")
             case .ActionToTake:
-                if actionType! == ActionType.Celebrate {
-                    descriptionLabel.text = "No students to celebrate"
-                    tipLabel.text = "Mark students for Celebration in the Character tab"
-                } else if actionType! == .Encourage {
-                    descriptionLabel.text = "No students to encourage"
-                    tipLabel.text = "Mark students who need work in the Character tab"
-                } else if actionType! == .Call {
-                    descriptionLabel.text = "No parents to call"
-                    tipLabel.text = "Keep parents informed of student progress by marking students to call in the Character tab"
-                }
+//                if actionType! == ActionType.Celebrate {
+//                    descriptionLabel.text = "No students to celebrate"
+//                    tipLabel.text = "Mark students for Celebration in the Character tab"
+//                } else if actionType! == .Encourage {
+//                    descriptionLabel.text = "No students to encourage"
+//                    tipLabel.text = "Mark students who need work in the Character tab"
+//                } else if actionType! == .Call {
+//                    descriptionLabel.text = "No parents to call"
+//                    tipLabel.text = "Keep parents informed of student progress by marking students to call in the Character tab"
+//                }
+                descriptionLabel.text = "No more actions to take"
+                tipLabel.text = "Create actions from student profile page to call, celebrate, or encourage later"
                 imageview.image = UIImage(named: "exclamation")
             case .Attendance:
                 descriptionLabel.text = "Attendance complete!"

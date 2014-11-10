@@ -59,7 +59,8 @@ class Action: NSObject {
     
     init(pfobj: PFObject) {
         let studentObj = pfobj["student"] as PFObject
-        self.type = ActionType(rawValue: pfobj["type"] as String)
+        let actionstr = pfobj["type"] as String
+        self.type = ActionType(rawValue: actionstr)
         self.reason = pfobj["reason"] as String
         self.forDate = pfobj["dateForAction"] as NSDate
         self.dateCompleted = pfobj["dateComplete"] as? NSDate

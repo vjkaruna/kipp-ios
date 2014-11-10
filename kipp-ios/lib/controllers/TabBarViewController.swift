@@ -126,8 +126,6 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
                 (actionNavController as UINavigationController).popToRootViewControllerAnimated(true)
                 return ()
             }
-
-            
             self._viewControllers = [attendanceNavController, rosterNavController, classroomsController, actionNavController, callsNavController]
             
             mainTabBarController.tabBar.tintColor = UIColor.greenTint()

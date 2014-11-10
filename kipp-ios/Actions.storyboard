@@ -50,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4T-uh-txN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1679" y="212"/>
+            <point key="canvasLocation" x="1001" y="212"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1KG-3o-F5S">
@@ -63,7 +63,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="mdT-d0-UoI" kind="relationship" relationship="rootViewController" id="KcI-Zp-35I"/>
+                        <segue destination="cTk-36-vrP" kind="relationship" relationship="rootViewController" id="UMa-Bw-Do0"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4t-VO-ctG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -147,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJu-Md-WTo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1015" y="212"/>
+            <point key="canvasLocation" x="958" y="-405"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XHI-qL-dVA">
@@ -170,4 +170,7 @@
     <resources>
         <image name="call" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="UMa-Bw-Do0"/>
+    </inferredMetricsTieBreakers>
 </document>

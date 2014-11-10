@@ -30,7 +30,7 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        navigationItem.title = actionType?.rawValue
+        navigationItem.title = "Actions to Take"
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120.0
@@ -46,30 +46,29 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         contentView.addSubview(emptyView)
 
         loadCurrentClass() {
-            if self.actionType! != ActionType.History {
-                ParseClient.sharedInstance.findIncompleteActionsWithCompletion(self.actionType!, classroom: self.currentClass) { (actions, error) -> () in
-                    NSLog("Completion called for action type \(self.actionType!.rawValue)")
-                    if actions != nil {
-                        self.data = actions
+            ParseClient.sharedInstance.findIncompleteActionsWithCompletion(nil, classroom: self.currentClass) { (actions, error) -> () in
+                NSLog("Completion called for actions")
+                if actions != nil {
+                    self.data = actions
 //                        self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
-                        self.tableView.reloadData()
-                        self.loadDataOrEmptyState()
-                    } else {
-                        NSLog("Error getting actions: \(error)")
-                    }
+                    self.tableView.reloadData()
+                    self.loadDataOrEmptyState()
+                } else {
+                    NSLog("Error getting actions: \(error)")
                 }
-            } else {
-                ParseClient.sharedInstance.findCompleteActionsWithCompletion(nil, classroom: self.currentClass, completion: { (actions, error) -> () in
-                    if actions != nil {
-                        self.data = actions
-//                        self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
-                        self.tableView.reloadData()
-                        self.loadDataOrEmptyState()
-                    } else {
-                        NSLog("Error getting actions: \(error)")
-                    }
-                })
             }
+//            } else {
+//                ParseClient.sharedInstance.findCompleteActionsWithCompletion(nil, classroom: self.currentClass, completion: { (actions, error) -> () in
+//                    if actions != nil {
+//                        self.data = actions
+////                        self.labelHeights = [CGFloat](count: actions!.count, repeatedValue: CGFloat(0.0))
+//                        self.tableView.reloadData()
+//                        self.loadDataOrEmptyState()
+//                    } else {
+//                        NSLog("Error getting actions: \(error)")
+//                    }
+//                })
+//            }
         }
     }
 
@@ -130,28 +129,45 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
         let action = data![indexPath.row]
-        cell.metadataLabel.text = action.reason
+        cell.metadataLabel.attributedText = getMetadataText(action)
         cell.student = action.student
         if action.dateCompleted != nil {
             NSLog("date completed: \(action.dateCompleted); prettyString: \(action.dateCompleted!.toPrettyString())")
             cell.dateCompleteLabel.text = ("\(action.type.getPastTenseName()) \(action.dateCompleted!.toPrettyString())")
         }
-        if actionType! != .History {
-            cell.delegate = self
-            cell.rightButtons = createRightButton()
-            cell.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
-            cell.rightExpansion.buttonIndex = 0
-            cell.rightExpansion.fillOnTrigger = true
-        }
+//        if actionType! != .History {
+        cell.delegate = self
+        cell.rightButtons = createRightButton()
+        cell.rightSwipeSettings.transition = MGSwipeTransition.TransitionBorder
+        cell.rightExpansion.buttonIndex = 0
+        cell.rightExpansion.fillOnTrigger = true
+//        }
 
 //        cell.layoutIfNeeded()
 //        labelHeights![indexPath.row] = cell.actionComments.bounds.size.height
 //        cell.clipsToBounds = true
+        cell.setNeedsDisplay()
+        cell.layoutIfNeeded()
         return cell
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
+    }
+    
+    func getMetadataText(action: Action) -> NSAttributedString {
+        let typeAttributes = [NSForegroundColorAttributeName: UIColor.labelGrey(), NSFontAttributeName: UIFont.boldSystemFontOfSize(14)]
+        let reasonAttributes = [NSForegroundColorAttributeName: UIColor.labelGrey()]
+        let charText = NSMutableAttributedString()
+        
+        let reasonTxt = action.reason
+        let actionType = action.type
+        
+        charText.appendAttributedString(NSAttributedString(string: "\(actionType.rawValue)", attributes: typeAttributes))
+        if !reasonTxt.isEmpty {
+            charText.appendAttributedString(NSAttributedString(string: ": \(reasonTxt)", attributes: reasonAttributes))
+        }
+        return charText
     }
     
     func loadDataOrEmptyState() {
@@ -161,13 +177,13 @@ class ActionViewController: UIViewController, UITableViewDataSource, UITableView
         } else {
             emptyView.hidden = false
             tableView.hidden = true
-            if actionType! == ActionType.History {
-                emptyView.actionType = actionType
-                emptyView.type = .CompletedAction
-            } else {
-                emptyView.actionType = actionType
-                emptyView.type = .ActionToTake
-            }
+//            if actionType! == ActionType.History {
+//                emptyView.actionType = actionType
+//                emptyView.type = .CompletedAction
+//            } else {
+//            emptyView.actionType = actionType
+            emptyView.type = .ActionToTake
+//            }
         }
     }
     

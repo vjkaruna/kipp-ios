@@ -38,6 +38,10 @@
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iO-Oj-la7">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Fpm-mT-xeC" appends="YES" id="xUj-kH-2Sb"/>
+                                </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-8Z-3Pe">
                                 <rect key="frame" x="25" y="70" width="550" height="380"/>
@@ -105,11 +109,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEj-Dy-Pqq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Fpm-mT-xeC"/>
             </objects>
             <point key="canvasLocation" x="341" y="147"/>
         </scene>
     </scenes>
     <resources>
-        <image name="classroom" width="22" height="22"/>
+        <image name="classroom" width="33" height="33"/>
     </resources>
 </document>

@@ -28,4 +28,8 @@ extension UIColor {
     class func myYellow() -> UIColor {
         return UIColor(red: CGFloat(255.0/255.0), green: CGFloat(233.0/255.0), blue: CGFloat(100.0/255.0), alpha: CGFloat(1))
     }
+    
+    class func labelGrey() -> UIColor {
+        return UIColor(red: CGFloat(143.0/255.0), green: CGFloat(143.0/255.0), blue: CGFloat(143.0/255.0), alpha: CGFloat(1))
+    }
 }
