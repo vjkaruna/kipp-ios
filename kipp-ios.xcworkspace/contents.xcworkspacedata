@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:PNChart"
+      name = "PNChart">
+      <FileRef
+         location = "group:PNBar.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNBar.m">
+      </FileRef>
+      <FileRef
+         location = "group:PNBarChart.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNBarChart.m">
+      </FileRef>
+      <FileRef
+         location = "group:PNChart.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNChartDelegate.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNChartLabel.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNChartLabel.m">
+      </FileRef>
+      <FileRef
+         location = "group:PNCircleChart.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNCircleChart.m">
+      </FileRef>
+      <FileRef
+         location = "group:PNColor.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNColor.m">
+      </FileRef>
+      <FileRef
+         location = "group:PNLineChart.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNLineChart.m">
+      </FileRef>
+      <FileRef
+         location = "group:PNLineChartData.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNLineChartData.m">
+      </FileRef>
+      <FileRef
+         location = "group:PNLineChartDataItem.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNLineChartDataItem.m">
+      </FileRef>
+      <FileRef
+         location = "group:PNPieChart.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNPieChart.m">
+      </FileRef>
+      <FileRef
+         location = "group:PNPieChartDataItem.h">
+      </FileRef>
+      <FileRef
+         location = "group:PNPieChartDataItem.m">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:kipp-ios.xcodeproj">
    </FileRef>
