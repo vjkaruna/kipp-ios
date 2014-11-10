@@ -77,6 +77,14 @@ class StudentTableViewCell: MGSwipeTableCell, StudentProfileChangedDelegate {
         self.attendanceImageView.image = UIImage(named: student!.attendance!.getIcon())
     }
     
+    func attendanceCountsDidChange(studentId: Int, absentCount: Int, tardyCount: Int) {
+
+    }
+    
+    func weeklyProgressDidChange() {
+        
+    }
+    
     func profilePicDidChange() {
         self.profilePic.image = student!.profileImage
     }
