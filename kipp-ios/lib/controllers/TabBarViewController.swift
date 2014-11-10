@@ -29,6 +29,7 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
         
         button.frame = CGRect(x: 0.0, y: 0.0, width: 55.0, height: 55.0)
         button.backgroundColor = UIColor.kippBlue()
+
         button.layer.cornerRadius = 5.0
         
         centerButtonImg = UIImageView(image: UIImage(named: "classroom"))
@@ -41,11 +42,10 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate, Classr
         button.center.y = self.mainTabBarController.tabBar.center.y - 4.0
         self.mainTabBarController.view.addSubview(button)
         
-//        var buttonText: UILabel = UILabel(frame: CGRect(x: 0, y: 50, width: 75.0, height: 10.0))
-//        buttonText.text = "Classrooms"
-//        buttonText.textColor = UIColor.whiteColor
-//        buttonText.center = button.center
-//        button.addSubview(buttonText)
+        var buttonText: UILabel = UILabel(frame: CGRect(x: 10, y: 50, width: 75.0, height: 10.0))
+        buttonText.textColor = UIColor.whiteColor()
+        buttonText.font = UIFont.systemFontOfSize(10.0)
+        button.addSubview(buttonText)
 
         
         button.addTarget(self, action: "onClickClassroomsButton", forControlEvents: UIControlEvents.TouchUpInside)
